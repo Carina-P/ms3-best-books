@@ -36,6 +36,20 @@ There are three types of users:
 - Authority to edit and remove all ideas of all users.
 - Authority to manage categories.
 
+### Scoope Plane
+#### Features
+- Search for book by giving title or author/s. 
+- Search for books belonging to category.
+- Easy to buy a book with a link.
+- Overview many books with limited information for each book.
+- Possibility to easily get more detailed information about a book.
+- Add, edit and remove a book.
+- Add, edit and remove review and grade for a book.
+- Authentications system: User can only edit and remove "own books" and 
+"own reviews".
+- Add, edit and remove categories. Authentication system limits this
+capability to those with administator privleges.
+
 ### User stories
 
 ### Wireframes
