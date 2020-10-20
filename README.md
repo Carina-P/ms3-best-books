@@ -21,40 +21,65 @@ There are three types of users:
  about a book/books: **Reviewer**.
 - The administrator of the page who manages book categories: **Administrator**.
 
+**Site owners need**
+- That it is easy for user to buy book: priority 1.
+
 **Viewers and Reviewers** needs:
-- Easy and intuitive way to browse books.
-- Easy find more information about a book.
-- See what other users think about book.
+- Easy and intuitive way to browse books: priority 1.
+- Easy find more information about a book: priority 2.
+- Buy book/s. 
+- See what other users think about book: priority 2.
 
 **Reviewers** needs:
-- Easy search for a book and add book that is not present on site.
-- Easy grade and give review of book.
-- Update and remove "own books" (books that user has added)
-- Update and remove "own reviews" (reviews that user has added)
+- Easy search for a book and add book that is not present on site: priority 2.
+- Easy grade and give review of book: priority 2.
+- Update and remove "own books" (books that user has added) :  priority 3.
+- Update and remove "own reviews" (reviews that user has added): priority 3.
 
 **Administrators** needs:
-- Authority to edit and remove all ideas of all users.
-- Authority to manage categories.
+- Authority to edit and remove all ideas of all users: priority 3.
+- Authority to manage categories: priority 3.
 
 ### Scoope Plane
+#### User stories
+US_001: As a user I want to browse for a book.
+US_002: As a user I want to see detailed information about a book. 
+US_003: As a user I want to buy a book
+US_004: As a user I want to see which books are most popular on the site.
+US_005: As a user I want to look for book in a category.
+US_006: As a user I want to add book to the site.
+US_007: As a user I want to edit information about the book.
+US_007: As a user I want to remove book.
+US_008: As a user I want to grade a book.
+US_009: As a user I want to review a book.
+US_010: As a user I want to edit my opinion of a book.
+US_011: As a user I want to remove my opinion of a book.
+US_0012: As a user I want to register to the system.
+US_0013: As a user I want to log in to the system.
+US_0014: As a user I want to log out of the system.
+US_0015: As a "administration" user I want to add categories.
+US_0016: As a "administration" user I want to edit and remove categories.
+
 #### Features
-- Search for book by giving title or author/s. 
+- Search for books. 
 - Search for books belonging to category.
 - Easy to buy a book with a link.
-- Overview many books with limited information for each book.
+- Overview: many books with limited information for each book.
 - Possibility to easily get more detailed information about a book.
 - Add, edit and remove a book.
+- When adding a book: help to fill in information.
 - Add, edit and remove review and grade for a book.
 - Authentications system: User can only edit and remove "own books" and 
 "own reviews".
 - Add, edit and remove categories. Authentication system limits this
 capability to those with administator privleges.
 
-### User stories
+### Structure Plane
 
-### Wireframes
+### Skeleton Plane
+#### Wireframes
 
-#### Major changes compared to wireframes
+##### Major changes compared to wireframes
 
 ### Design Choices
 #### Fonts
