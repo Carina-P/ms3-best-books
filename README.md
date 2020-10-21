@@ -89,7 +89,8 @@ that user choose between. After adding a book user is moved to
     - Result from book search. User can choose a book from search-result and 
 being redirected to "Book details/Manage Book".
 
-- "Register", "Log In" and "Manage Categories" has own pages.
+- "Register", "Log In" and "Manage Categories" separate pages.
+![](https://https://github.com/Carina-P/ms3-best-books/blob/master/wireframes/stucture.jpg "Structure: The Best Books")
 
 
 ### Skeleton Plane
