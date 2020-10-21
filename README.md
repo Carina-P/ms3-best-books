@@ -125,8 +125,34 @@ reviews are fetched from review collection.
 
 #### Design Choices
 ##### Fonts
-##### Colours
+For this project the Google Font Poppins is choosen. Poppins is a newcommer in
+the geometric sans serif typefaces tradition. It is a rounded and modern fontawesome
+that I think feels friendly and fits on this site.
+As alternative Google Font Roboto is choosen.
 
+##### Colours
+**Text and background**
+![](https://github.com/Carina-P/ms3-best-books/blob/master/wireframes/text-colour.png)
+- Floral White, #fffcf2, is used for background most of the time. But also for
+text on dark background.
+- Black Coffe, #32292f, is used for text most of the time. But also for text on
+light background.
+
+Floral White and Black Coffe is chosed because they are a little softer than 
+White, #ffffff, and Black, #000000, respectively. But they still give good
+contrast when used together.
+
+**For attention**
+![](https://github.com/Carina-P/ms3-best-books/blob/master/wireframes/category-colour.png)
+The following colours are used for the different categories. One or some of 
+them will also be used to draw attention to e.g. buttons. For me this is autumn
+colours and autumn is a good season to read a book.
+- Charcoal, #264653
+- Persian Green, #2a9d8f
+- Sandy Brown, #f4a261
+- Burnt Sienna, #e76f51
+- Madder Lake, #cc2936
+- Coffee, #774936
 
 Use this section to provide insight into your UX process, focusing on who this website is for, what it is that they want to achieve and how your project is the best way to help them achieve these things.
 
