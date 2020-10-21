@@ -42,23 +42,23 @@ There are three types of users:
 
 ### Scoope Plane
 #### User stories
-US_001: As a user I want to browse for a book.
-US_002: As a user I want to see detailed information about a book. 
-US_003: As a user I want to buy a book
-US_004: As a user I want to see which books are most popular on the site.
-US_005: As a user I want to look for book in a category.
-US_006: As a user I want to add book to the site.
-US_007: As a user I want to edit information about the book.
-US_007: As a user I want to remove book.
-US_008: As a user I want to grade a book.
-US_009: As a user I want to review a book.
-US_010: As a user I want to edit my opinion of a book.
-US_011: As a user I want to remove my opinion of a book.
-US_0012: As a user I want to register to the system.
-US_0013: As a user I want to log in to the system.
-US_0014: As a user I want to log out of the system.
-US_0015: As a "administration" user I want to add categories.
-US_0016: As a "administration" user I want to edit and remove categories.
+- US_001: As a user I want to browse for a book.
+- US_002: As a user I want to see detailed information about a book. 
+- US_003: As a user I want to buy a book
+- US_004: As a user I want to see which books are most popular on the site.
+- US_005: As a user I want to look for book in a category.
+- US_006: As a user I want to add book to the site.
+- US_007: As a user I want to edit information about the book.
+- US_007: As a user I want to remove book.
+- US_008: As a user I want to grade a book.
+- US_009: As a user I want to review a book.
+- US_010: As a user I want to edit my opinion of a book.
+- US_011: As a user I want to remove my opinion of a book.
+- US_0012: As a user I want to register to the system.
+- US_0013: As a user I want to log in to the system.
+- US_0014: As a user I want to log out of the system.
+- US_0015: As a "administration" user I want to add categories.
+- US_0016: As a "administration" user I want to edit and remove categories.
 
 #### Features
 - Search for books. 
@@ -75,6 +75,22 @@ US_0016: As a "administration" user I want to edit and remove categories.
 capability to those with administator privleges.
 
 ### Structure Plane
+- The site starts with the homepage: "Books", where you can search and find books.
+- From navbar you can choose to Register, Log In/Log Out and Manage Categories, 
+depending on your authorities.
+- From "Books" you reach:
+    - "Book Details/ Manage Book" with more details about book. Here user also can add
+opinion about book and manage user own opinions. User can edit and remove if it is 
+users "own" book. If user deletes book: all opinions is also deleted. When book is 
+removed, user is redirected to homepage.
+    - "Add Book": User search with title or author and gets suggestions from system
+that user choose between. After adding a book user is moved to 
+"Book details/Manage Book" page.
+    - Result from book search. User can choose a book from search-result and 
+being redirected to "Book details/Manage Book".
+
+- "Register", "Log In" and "Manage Categories" has own pages.
+
 
 ### Skeleton Plane
 #### Wireframes
