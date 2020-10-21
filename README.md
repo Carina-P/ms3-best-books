@@ -1,7 +1,7 @@
 # Best Books
 
 This is the site where you get inspired and find new books to read. 
-A place with short descriptions of different books and also reviews with other
+You will find descriptions of different books and also reviews with other
 readers best tips.
 
 The live project can be found here: [https://ms3-best-books.herokuapp.com/](https://ms3-best-books.herokuapp.com/)
@@ -94,13 +94,38 @@ being redirected to "Book details/Manage Book".
 ![](https://github.com/Carina-P/ms3-best-books/blob/master/wireframes/structure.jpg?raw=true)
 
 ### Skeleton Plane
+- The user browses via navigation system.
+- User searches for book/s by giving book title or author or part of it.
+- User can filter search by giving categories (taged for this page)
+- Interactive design that works on Mobile, Tablet as well as Desktop.
 #### Wireframes
+- [Mobile](https://github.com/Carina-P/ms3-best-books/blob/master/wireframes/wireframe-mobile.pdf)
+- [Tablet](https://github.com/Carina-P/ms3-best-books/blob/master/wireframes/wireframe-tablet.pdf)
+- [Desktop](https://github.com/Carina-P/ms3-best-books/blob/master/wireframes/wireframe-desktop.pdf)
 
 ##### Major changes compared to wireframes
 
-### Design Choices
-#### Fonts
-#### Colours
+#### Data structure
+According to project instructions the document-based 
+database MongoDB. Here is a visual of the collections:
+![](https://github.com/Carina-P/ms3-best-books/blob/master/database/database-design.jpg)
+
+- Both books and books_details contain information about books. I decided to 
+divid the information into two collections using the **subset pattern**
+([Mongo DB Documentation](https://docs.mongodb.com/manual/tutorial/model-embedded-one-to-one-relationships-between-documents/))
+The information in books collection is accessed often from the page but information in the books_details
+collection is less frequently-accessed.
+- The **subset pattern** 
+([MongoDB Documentation](https://docs.mongodb.com/manual/tutorial/model-embedded-one-to-many-relationships-between-documents/)) is also used for book_details and reviews collections.
+It is possible to add a huge amount of reviews and I deceided to embed the five 
+latest reviews in the books_details collection.
+This five (or fewer if less reviews) reviews will be shown together with the 
+book details. User is given possibility to see more reviews and then all
+reviews are fetched from review collection.
+
+#### Design Choices
+##### Fonts
+##### Colours
 
 
 Use this section to provide insight into your UX process, focusing on who this website is for, what it is that they want to achieve and how your project is the best way to help them achieve these things.
@@ -125,7 +150,7 @@ In addition, you may also use this section to discuss plans for additional featu
 ### Features Left to Implement
 - Another feature idea
 
-## Data structure
+
 
 ## Technologies Used
 
@@ -133,7 +158,83 @@ In this section, you should mention all of the languages, frameworks, libraries,
 
 - [JQuery](https://jquery.com)
     - The project uses **JQuery** to simplify DOM manipulation.
+### Languages
+- HTML
+    - to structure the web content
+    - [https://developer.mozilla.org/en-US/docs/Web/HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
+- CSS
+    - to describe the web page's appearance/presentation
+    - [https://www.w3.org/Style/CSS/](https://www.w3.org/Style/CSS/)
+- JavaScript
+    - to provide interactivity and logic
+    - [https://www.javascript.com/](https://www.javascript.com/)
+- Python
+    - to manage information on server side
+    - [https://www.python.org](https://www.python.org)
+- Jinja
+    - for templating logic
+    - [https://jinja.palletsprojects.com/en/2.11.x/](https://jinja.palletsprojects.com/en/2.11.x/)
 
+
+### Libraries
+- Flask
+    - micro framework
+    - [https://flask.palletsprojects.com/en/1.1.x/](https://flask.palletsprojects.com/en/1.1.x/)
+- Werkzeug!!!!
+- PyMongo
+    - enables interaction with the MongoDB database through Python 
+    - [https://flask-pymongo.readthedocs.io/en/latest/](https://flask-pymongo.readthedocs.io/en/latest/)
+- JQuery
+    - to simplify DOM manipulation.
+    - [https://jquery.com/](https://jquery.com/)
+    
+!!!!- [JSON](https://www.json.org/json-en.html)
+    - A data-interchange format used when retrieve information from other 
+    sources as [Weather Unlocked](http://www.weatherunlocked.com/)
+- Google Fonts!!!
+- Font Awesome
+    - to use icons
+    - [https://fontawesome.com](https://fontawesome.com)
+- Materialize
+    - to add styling and interactivity
+    - [https://materializecss.com](https://materializecss.com)
+
+### Other tools
+- MongoDB
+    - the database used in this project
+    - [https://www.mongodb.com/cloud/atlas](https://www.mongodb.com/cloud/atlas)
+!!!!- Color blind filter
+    - to check the used color palette
+    - [https://www.toptal.com/designers/colorfilter](https://www.toptal.com/designers/colorfilter)
+!!!!- GT Metrix
+    - to check the loading times
+    - [https://gtmetrix.com](https://gtmetrix.com)
+- JSHint
+    - to check JavaScript
+    - [https://jshint.com](https://jshint.com)
+- Markup Validation Service
+    - to check HTML
+    - [https://validator.w3.org](https://validator.w3.org)
+- CSS Validation Service
+    - to check CSS
+    - [https://jigsaw.w3.org/css-validator/](https://jigsaw.w3.org/css-validator/)
+!!!!- Autoprefixer CSS online
+    - to add vendor prefixes
+    - [https://autoprefixer.github.io](https://autoprefixer.github.io)
+- GitPod
+    - used for version control by utilizing the GitPod terminal to
+    commit to Git and push to GitHub and Heroku.
+    - [https://gitpod.io/](https://gitpod.io/)
+- Heroku
+    - to host the web app
+    - [https://www.heroku.com](https://www.heroku.com/home)
+- Balsamiq
+    - for designing the wireframes
+    - [https://balsamiq.com/](https://balsamiq.com/)
+- Coolors
+    - to generate color-schemes
+    - [https://coolors.co/](https://coolors.co/)
+    
 
 ## Testing
 
