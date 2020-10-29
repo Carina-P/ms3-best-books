@@ -200,9 +200,37 @@ How to test:
     - Press "Book Details"
     - Removed review should not appear
 
-- US_0013: As a user I want to register to the system.
-- US_0014: As a user I want to log in to the system.
-- US_0015: As a user I want to log out of the system.
+Testing use case US_0013: As a user I want to Sign up for the site.
+**TC_015** Sign up to the site
+- How to test
+    - In navigation bar choose "Sign Up"
+    - In form:
+        - Add name: "David"
+        - Add email: "david@gmail.com"
+        - Add password: "Ilovesoccer"
+        - Press "Submit"-button
+- Expected outcome
+    - A welcome text and a possibility to log in to page.
+
+Testing use case US_0014: As a user I want to log in to the system.
+**TC_016** Log in
+- How to test:
+    - In navigation bar choose "Log in"
+    - In form:
+        - Print name: "David"
+        - Print password: "Ilovesoccer"
+        - Press "Submit"-button
+- Expected outcome:
+    - A welcome text in the Homepage
+
+Testing use case US_0015: As a user I want to log out of the system.
+**TC_017** Log out
+- How to test:
+    - In navigation bar choose Log out.
+    - Answere YES to the question: "Are you sure you want to log out?"
+- Expected outcome:
+    - A message that you are logged out in the Homepage.
+    
 - US_0016: As a "administration" user I want to add categories.
 - US_0017: As a "administration" user I want to edit and remove categories.
 
