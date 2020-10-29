@@ -12,3 +12,13 @@ body{
     background-color: #fffcf2; 
     font-size: 1rem;
 }
+
+/* Header */
+nav {
+    background-color: #fffcf2;
+    color: #32292f;
+}
+
+nav .brand-logo, nav a, nav ul a{
+    color: #32292f
+}

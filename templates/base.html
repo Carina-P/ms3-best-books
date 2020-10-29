@@ -9,9 +9,44 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
     {% block styles %}
     {% endblock %}
-    <title>Best Books</title>
+    <title>The Best Books</title>
 </head>
 <body>
+    <header>
+        <!-- top navbar -->
+        <nav>
+            <div class="nav-wrapper">
+                <ul class="left hide-on-med-and-down">
+                    <li><a href="#">Popular</a></li>
+                    <li><a href="#">Categories</a></li>
+                    <li><a href="#">Add Book</a></li>
+                </ul>
+
+                <a href="#!" class="brand-logo center">The Best Books</a>
+                
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="#">Log In</a></li>
+                    <li><a href="#">Sign Up</a></li>
+                    <li><a href="#">Log Out</a></li>
+                    <li><a href="#">Manage Categories</a></li>
+                </ul>
+
+                <a href="#" data-target="mobile-dev" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
+            </div>
+        </nav>
+
+        <!-- mobile sidenav-->
+        <ul class="sidenav" id="mobile-dev">
+            <li><a href="#">Popular</a></li>
+            <li><a href="#">Categories</a></li>
+            <li><a href="#">Add Book</a></li>
+            <li><a href="#">Log In</a></li>
+            <li><a href="#">Sign Up</a></li>
+            <li><a href="#">Log Out</a></li>
+            <li><a href="#">Manage Categories</a></li>
+        </ul>
+
+    </header>
 
     {% block content %}
     {% endblock %}
