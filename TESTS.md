@@ -33,7 +33,8 @@ But the site is also tested with iPad mini and iPhone8.
 
 ### Test cases
 
-Testing use case US_001: As a user I want to browse for a book.
+Testing use case US_001, As a user I want to browse for a book:
+
 **TC_001** Browse for a book by giving the books title:
 - How to test:
     - Go to form for searching.
@@ -42,6 +43,7 @@ Testing use case US_001: As a user I want to browse for a book.
 - Expected outcome:
     - View is moved to the page's "Search results" part.
     - The book is found there. Or message that book is not present in site.
+
 **TC_002** Browse for book by giving an author:
 - How to test:
     - Go to form for searching.
@@ -51,6 +53,7 @@ Testing use case US_001: As a user I want to browse for a book.
     - View is moved to the page's "Search results" part.
     - Book written by August Strindberg is found there. Or message that book is
     not present in site.
+
 **TC_003** Browse for book by giving part of title
 - How to test:
     - Go to form for searching.
@@ -59,6 +62,7 @@ Testing use case US_001: As a user I want to browse for a book.
 - Expected outcome:
     - View is moved to the page's "Search results" part.
     - The book is found there. Or message that book/s is not present in site.
+
 **TC_004** Browse for book by giving part of an authors name:
 - How to test:
     - Go to form for searching.
@@ -69,7 +73,9 @@ Testing use case US_001: As a user I want to browse for a book.
     - Book/S written by August Strindberg is found there. Or message that book is
     not present in site.
 
-Testing use case US_002: As a user I want to see detailed information about a book. 
+
+Testing use case US_002, As a user I want to see detailed information about a book: 
+
 **TC_005** See detailed information about a book
 - How to test:
     - Go to list of most popular books
@@ -77,7 +83,9 @@ Testing use case US_002: As a user I want to see detailed information about a bo
 - Expected outcome:
     - Page "About book" appears with information about choosen book.
 
-Testing use case US_003: As a user I want to buy a book
+
+Testing use case US_003, As a user I want to buy a book:
+
 **TC_006** Buy a book
 - How to test:
     - Go to list of most popular books
@@ -85,7 +93,9 @@ Testing use case US_003: As a user I want to buy a book
 - Expected outcome:
     - Linked to a page with possibility to buy the choosen book
 
-Testing use case US_004: As a user I want to see which books are most popular on the site.
+
+Testing use case US_004, As a user I want to see which books are most popular on the site:
+
 **TC_007** See the most popular books on the site
 - How to test:
     - Go to homepage and look for the header: "Most popular books" or
@@ -94,7 +104,9 @@ Testing use case US_004: As a user I want to see which books are most popular on
     - Moved to view that shows a list with the sites most popular books,
     including average grade for each book.
 
-Testing use case US_005: As a user I want to look for book in a category.
+
+Testing use case US_005, As a user I want to look for book in a category:
+
 **TC_008** Look for a book in a category
 - How to test:
     - Go to navigation bar and choose "Categories"
@@ -103,7 +115,9 @@ Testing use case US_005: As a user I want to look for book in a category.
     - Moved to view that shows search results
     - Books within the category should be shown in the results.
 
-Testing use case US_006: As a user I want to add book to the site.
+
+Testing use case US_006, As a user I want to add book to the site:
+
 **TC_009** Add book
 - How to test:
     - Log in, if needed sign in first
@@ -116,7 +130,9 @@ Testing use case US_006: As a user I want to add book to the site.
     - Also when on homepage searching for "Pippi Longstocking" the book added
     should appear in search list
 
-Testing use case US_007: As a user I want to edit information about a book.
+
+Testing use case US_007, As a user I want to edit information about a book:
+
 **TC_010** Edit book information
 - How to test:
     - Log in with same user as added Pippi Longstocking
@@ -130,7 +146,9 @@ Testing use case US_007: As a user I want to edit information about a book.
     - When looking at the book the author is A Lindgren instead of Astrid 
     Lindgren.
 
-Testing use case US_008: As a user I want to remove book.
+
+Testing use case US_008, As a user I want to remove book:
+
 **TC_011** Remove book
 - How to test:
     - Log in with same user as added Pippi Longstocking
@@ -143,9 +161,11 @@ Testing use case US_008: As a user I want to remove book.
 - Expected outcome:
     - When searching for the book it no longer appears on the site.
 
-Testing use case US_009: As a user I want to grade a book. And use case
-US_010: As a user I want to review a book.
-**TC_012**: Grade a book
+
+Testing use case US_009, As a user I want to grade a book **and* use case
+US_010, As a user I want to review a book:
+
+**TC_012**: Grade and review a book
 - How to test:
     - Log in, if needed sign in first
     - On homepage search for "Where the crawdads sings"
@@ -164,7 +184,9 @@ US_010: As a user I want to review a book.
     - Press "Book Details"
     - The added review should appear in reviews list in "Book Details"-page
 
-Test use case US_011: As a user I want to edit my opinion of a book.
+
+Testing use case US_011, As a user I want to edit my opinion of a book:
+
 **TC_013** Edit opinion
 - How to test:
     - Log in with same user as added review and grade for 
@@ -184,7 +206,9 @@ Test use case US_011: As a user I want to edit my opinion of a book.
     - Press "Book Details"
     - Look for review and notice if changed.
 
-Test use case US_012: As a user I want to remove my opinion of a book.
+
+Testing use case US_012, As a user I want to remove my opinion of a book:
+
 **TC_014** Remove opinion
 How to test:
     - Log in with same user as added review and grade for 
@@ -200,7 +224,9 @@ How to test:
     - Press "Book Details"
     - Removed review should not appear
 
-Testing use case US_0013: As a user I want to Sign up for the site.
+
+Testing use case US_0013, As a user I want to Sign up for the site:
+
 **TC_015** Sign up to the site
 - How to test
     - In navigation bar choose "Sign Up"
@@ -212,7 +238,9 @@ Testing use case US_0013: As a user I want to Sign up for the site.
 - Expected outcome
     - A welcome text and a possibility to log in to page.
 
-Testing use case US_0014: As a user I want to log in to the system.
+
+Testing use case US_0014, As a user I want to log in to the system:
+
 **TC_016** Log in
 - How to test:
     - In navigation bar choose "Log in"
@@ -223,16 +251,54 @@ Testing use case US_0014: As a user I want to log in to the system.
 - Expected outcome:
     - A welcome text in the Homepage
 
-Testing use case US_0015: As a user I want to log out of the system.
+
+Testing use case US_0015, As a user I want to log out of the system:
+
 **TC_017** Log out
 - How to test:
     - In navigation bar choose Log out.
     - Answere YES to the question: "Are you sure you want to log out?"
 - Expected outcome:
     - A message that you are logged out in the Homepage.
-    
-- US_0016: As a "administration" user I want to add categories.
-- US_0017: As a "administration" user I want to edit and remove categories.
+ 
+
+Testing use case US_0016, As a "administrative" user I want to add categories:
+
+**TC_018** Add category
+- How to test:
+    - In navigation bar choose "Log In"
+    - In Log In-page give:
+        - Name: Admin 
+        - Password: Averydifficultone
+    - In navigation bar choose "Manage categories"
+    - In "Manage Categories"-page press "Add Category"-button
+    - In "Add/Edit Category"-page give:
+        - Category name: Historical Fiction
+        - Short Description: Fictional books where the author is inspired by
+        an event/person from history.
+        -   Colour background: #000000
+        -   Colour text: #ffffff
+        - Press "Submit"-button"
+- Expected outcome:
+    - The new category is added to list of categories in "Manage Categories"-page
+    - In homepage the new category is shown if "Categories" is choosen in
+    navigation bar. And background colour is black and text white.
+
+
+Testing use case US_0017, As a "administration" user I want to edit and remove categories:
+
+**TC_019** Edit category
+- How to test:
+    - Login as Admin (See TC_018)
+    - In navigation bar choose "Manage categories"
+    - Choose category "Historical Fiction" and press the "Edit"-button for this
+    category.
+    - In "Edit category"-page change colour background to #d00000
+    - Press "Submit"-button
+- Expected outcome:
+    - - The background colour for category is changed
+    - In homepage the new category is shown if "Categories" is choosen in
+    navigation bar. And background colour is **red** and text white.
 
 #### Test protocol
 ## UX testing
