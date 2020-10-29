@@ -91,6 +91,7 @@ being redirected to "Book details/Manage Book".
 
 - "Register", "Log In" and "Manage Categories" has separate pages.
 
+Here is a visual of the structure:
 ![](https://github.com/Carina-P/ms3-best-books/blob/master/wireframes/structure.jpg?raw=true)
 
 ### Skeleton Plane
@@ -107,8 +108,8 @@ being redirected to "Book details/Manage Book".
 
 #### Data structure
 According to project instructions the document-based 
-database MongoDB. Here is a visual of the collections:
-![](https://github.com/Carina-P/ms3-best-books/blob/master/database/database-design.jpg)
+database MongoDB is used. Here is a visual of the collections:
+![](https://github.com/Carina-P/ms3-best-books/blob/master/database/database-design.jpg?raw=true)
 
 - Both books and books_details contain information about books. I decided to 
 divid the information into two collections using the **subset pattern**
@@ -235,6 +236,9 @@ In this section, you should mention all of the languages, frameworks, libraries,
 !!!!- GT Metrix
     - to check the loading times
     - [https://gtmetrix.com](https://gtmetrix.com)
+- Google Fonts
+    - got the fonts used
+    - [https://fonts.google.com/](https://fonts.google.com/)
 - JSHint
     - to check JavaScript
     - [https://jshint.com](https://jshint.com)
