@@ -37,8 +37,8 @@ Testing use case US_001, As a user I want to browse for a book:
 
 **TC_001** Browse for a book by giving the books title:
 - How to test:
-    - Go to form for searching.
-    - Print "Where the crawdads sings" in the form
+    - Go to field for searching.
+    - Print "Where the crawdads sings" in the field
     - Press return
 - Expected outcome:
     - View is moved to the page's "Search results" part.
@@ -46,8 +46,8 @@ Testing use case US_001, As a user I want to browse for a book:
 
 **TC_002** Browse for book by giving an author:
 - How to test:
-    - Go to form for searching.
-    - Print "August Strindberg" in the form
+    - Go to field for searching.
+    - Print "August Strindberg" in the field
     - Press return
 - Expected outcome:
     - View is moved to the page's "Search results" part.
@@ -56,8 +56,8 @@ Testing use case US_001, As a user I want to browse for a book:
 
 **TC_003** Browse for book by giving part of title
 - How to test:
-    - Go to form for searching.
-    - Print "crawdads sings" in the form
+    - Go to field for searching.
+    - Print "crawdads sings" in the field
     - Press return
 - Expected outcome:
     - View is moved to the page's "Search results" part.
@@ -65,8 +65,8 @@ Testing use case US_001, As a user I want to browse for a book:
 
 **TC_004** Browse for book by giving part of an authors name:
 - How to test:
-    - Go to form for searching.
-    - Print "August" in the form
+    - Go to field for searching.
+    - Print "August" in the field
     - Press return
 - Expected outcome:
     - View is moved to the page's "Search results" part.
@@ -122,7 +122,7 @@ Testing use case US_006, As a user I want to add book to the site:
 - How to test:
     - Log in, if needed sign in first
     - In navigation bar choose: "Add Book"
-    - In "search-form" print: "Pippi Longstocking"
+    - In "search-field" print: "Pippi Longstocking"
     - Press "Add book to this site" for the book from 2020 in the search-results
 - Expected outcome:
     - Moved to page "Book details/Manage Book" with information about
@@ -136,7 +136,7 @@ Testing use case US_007, As a user I want to edit information about a book:
 **TC_010** Edit book information
 - How to test:
     - Log in with same user as added Pippi Longstocking
-    - Search in search-form for "Pippi Longstocking"
+    - Search in search-field for "Pippi Longstocking"
     - In search result, find "Pippi Longstocking"
     - Press "Book Details"-button/link
     - In "Book details/Manage Book"-page press "Edit book info"
@@ -152,7 +152,7 @@ Testing use case US_008, As a user I want to remove book:
 **TC_011** Remove book
 - How to test:
     - Log in with same user as added Pippi Longstocking
-    - Search in search-form for "Pippi Longstocking"
+    - Search in search-field for "Pippi Longstocking"
     - In search result, find "Pippi Longstocking"
     - Press "Book Details"-button/link
     - In "Book details/Manage Book"-page press "Edit book info"

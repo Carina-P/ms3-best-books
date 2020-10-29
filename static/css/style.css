@@ -1,0 +1,14 @@
+/* Import fonts from Google Fonts: https://fonts.google.com/ */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* General */
+html{
+    scroll-behavior: smooth;
+    font-size: 16px;
+} 
+body{
+    font-family: "Poppins", "Roboto", sans-serif;
+    color: #32292f;
+    background-color: #fffcf2; 
+    font-size: 1rem;
+}
