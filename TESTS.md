@@ -143,10 +143,63 @@ Testing use case US_008: As a user I want to remove book.
 - Expected outcome:
     - When searching for the book it no longer appears on the site.
 
-- US_009: As a user I want to grade a book.
-- US_010: As a user I want to review a book.
-- US_011: As a user I want to edit my opinion of a book.
-- US_012: As a user I want to remove my opinion of a book.
+Testing use case US_009: As a user I want to grade a book. And use case
+US_010: As a user I want to review a book.
+**TC_012**: Grade a book
+- How to test:
+    - Log in, if needed sign in first
+    - On homepage search for "Where the crawdads sings"
+    - In search results choose book with title "Where the crawdads sings"
+    - Notice average grade given to the book
+    - Press Add opinion
+    - In "Manage opinion"-modal:
+        - Choose a grade 5
+        - Print review: "The best book I have read"
+    - Press "Submit/Save" button
+
+- Expected outcome:
+    - In Homepage search for "Where the crawdads sings"
+    - Look in search result for the book and notice if the average grade
+    has changed according to the grade given.
+    - Press "Book Details"
+    - The added review should appear in reviews list in "Book Details"-page
+
+Test use case US_011: As a user I want to edit my opinion of a book.
+**TC_013** Edit opinion
+- How to test:
+    - Log in with same user as added review and grade for 
+    "Where the crawdads sings" (TC_012)
+    - In Homepage search for "Where the crawdads sings"
+    - In search results press "Book Details" for the book
+    - In "Book details/Manage book"-page find the review added in TC012.
+    - Press "Edit review" for this review
+    - Change grade from 5 to 4.
+    - Change review: 
+        - Replace "The best book" with "Among the 10 best books"
+    - Press "Submit/Save" button
+- Expected outcome:
+    - In Homepage search for "Where the crawdads sings"
+    - Look in search result for the book and notice if the average grade
+    has changed according to the grade given.
+    - Press "Book Details"
+    - Look for review and notice if changed.
+
+Test use case US_012: As a user I want to remove my opinion of a book.
+**TC_014** Remove opinion
+How to test:
+    - Log in with same user as added review and grade for 
+    "Where the crawdads sings" (TC_012)
+    - In Homepage search for "Where the crawdads sings"
+    - In search results press "Book Details" for the book
+    - In "Book details/Manage book"-page find the review added in TC012.
+    - Press "Remove review" for this review
+    - Press Yes when question "Are you sure?" appears
+- Expected outcome:
+    - In Homepage search for "Where the crawdads sings"
+    - Look in search result for the book
+    - Press "Book Details"
+    - Removed review should not appear
+
 - US_0013: As a user I want to register to the system.
 - US_0014: As a user I want to log in to the system.
 - US_0015: As a user I want to log out of the system.
