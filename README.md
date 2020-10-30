@@ -205,9 +205,11 @@ In this section, you should mention all of the languages, frameworks, libraries,
 
 ### Libraries
 - Flask
-    - micro framework
+    - a micro framework that makes it easy to manage databases from python
     - [https://flask.palletsprojects.com/en/1.1.x/](https://flask.palletsprojects.com/en/1.1.x/)
-- Werkzeug!!!!
+- Werkzeug
+    - used in this app for authentication
+    - [https://werkzeug.palletsprojects.com/en/1.0.x/](https://werkzeug.palletsprojects.com/en/1.0.x/)
 - PyMongo
     - enables interaction with the MongoDB database through Python 
     - [https://flask-pymongo.readthedocs.io/en/latest/](https://flask-pymongo.readthedocs.io/en/latest/)
@@ -308,7 +310,8 @@ In addition, if it is not obvious, you should also describe how to run your code
 - The text for section Y was copied from the [Wikipedia article Z](https://en.wikipedia.org/wiki/Z)
 
 ### Media
-- The photos used in this site were obtained from ...
+- The photos used in this site were obtained from
+    - pixabay: [https://pixabay.com/](https://pixabay.com/)
 
 ### Acknowledgements
 

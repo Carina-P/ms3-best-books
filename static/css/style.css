@@ -11,22 +11,28 @@ body{
     color: #32292f;
     background-color: #fffcf2; 
     font-size: 1rem;
-}
-
+} 
 .black-shadow{
     text-shadow: 2px 2px 2px rgba(50,41,47,1);
-}
-
+} 
 .red-text{
     color: #cc2936;
+}
+white-text{
+    color: #fffcf2;
+}
+black-text{
+    color: #32292f;
+}
+.red-bgr{
+    background-color: #cc2936;
 }
 
 /* Header */
 nav, .sidenav {
     background-color: #fffcf2;
     color: #32292f;
-}
-
+} 
 nav .brand-logo, nav a, nav ul a{
     color: #32292f
 }

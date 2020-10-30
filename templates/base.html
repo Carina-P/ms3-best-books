@@ -4,11 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
-        integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" type="text/css">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='favicon/apple-touch-icon.png') }}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon/favicon-32x32.png') }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon/favicon-16x16.png') }}">
+        integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" 
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" 
+        type="text/css">
+    <link rel="apple-touch-icon" sizes="180x180" 
+        href="{{ url_for('static', filename='favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32"
+        href="{{ url_for('static', filename='favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16"
+        href="{{ url_for('static', filename='favicon/favicon-16x16.png') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
     {% block styles %}
     {% endblock %}
@@ -29,7 +34,7 @@
                 
                 <ul class="right hide-on-med-and-down">
                     <li><a href="#">Log In</a></li>
-                    <li><a href="#">Sign Up</a></li>
+                    <li><a href="{{ url_for('sign_up') }}">Sign Up</a></li>
                     <li><a href="#">Log Out</a></li>
                     <li><a href="#">Manage Categories</a></li>
                 </ul>
@@ -45,7 +50,7 @@
             <li><a href="#" class="center-align">Categories</a></li>
             <li><a href="#" class="center-align">Add Book</a></li>
             <li><a href="#" class="center-align">Log In</a></li>
-            <li><a href="#" class="center-align">Sign Up</a></li>
+            <li><a href="{{ url_for('sign_up') }}" class="center-align">Sign Up</a></li>
             <li><a href="#" class="center-align">Log Out</a></li>
             <li><a href="#" class="center-align">Manage Categories</a></li>
         </ul>
