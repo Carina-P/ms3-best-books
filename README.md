@@ -263,6 +263,9 @@ In this section, you should mention all of the languages, frameworks, libraries,
 - Coolors
     - to generate color-schemes
     - [https://coolors.co/](https://coolors.co/)
+- Favicon
+    - to generate Favicon
+    - [https://favicon.io/](https://favicon.io/)
     
 
 ## Testing
