@@ -27,6 +27,9 @@ black-text{
 .red-bgr{
     background-color: #cc2936;
 }
+.white-bgr{
+    background-color: #fffcf2;
+}
 
 /* Header */
 nav, .sidenav {
