@@ -24,9 +24,29 @@ def get_books():
     books = mongo.db.books.find()
     return render_template("books.html", books=books)
 
+
 @app.route("/sign_up", methods=["GET", "POST"])
 def sign_up():
+    if request.method == "POST":
+        existing_user = mongo.db.users.find_one(
+            {"username": request.form.get("username").lower()})
+
+        if existing_user:
+            flash("Username already exists")
+            return redirect(url_for("sign_up"))
+
+        sign_up = {
+            "username": request.form.get("username").lower(),
+            "password": generate_password_hash(request.form.get("password")),
+            "email": request.form.get("email")
+        }
+        mongo.db.users.insert_one(sign_up)
+
+        session["username"] = sign_up["username"]
+        flash("Sign Up successfull")
+
     return render_template("sign_up.html")
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),

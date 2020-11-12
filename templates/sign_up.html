@@ -6,7 +6,7 @@
                 <div class="card-image">
                     <img src="./static/images/reading_by_the_sea.jpg">
                 </div> 
-                <div class="card-content white-bgr">
+                <div class="card-content bgr-white">
                     <form method="POST" action="{{ url_for('sign_up') }}">
                         <div>
                             <div class="center-align">
@@ -15,14 +15,16 @@
                             <div class="row">
                                 <div class="input-field col s12">
                                     <i class="fas fa-user prefix"></i>
-                                    <input id="username" name="username" type="text" class="validate">
+                                    <input id="username" name="username" type="text"
+                                    minlength="3" maxlength="15" class="validate" required>
                                     <label for="username">Username</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
                                     <i class="fas fa-user-lock prefix"></i>
-                                    <input id="password" name="password" type="password" class="validate">
+                                    <input id="password" name="password" type="password"
+                                        minlength="3" maxlenght="15" class="validate" required>
                                     <label for="password">Password</label>
                                 </div>
                             </div>
@@ -34,7 +36,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <button type="submit" class="col s12 m8 offset-m2 offset-2 btn-large red-bgr white-text black-shadow">
+                                <button type="submit" class="col s12 m8 offset-m2 offset-2 btn-large bgr-red text-light dark-shadow">
                                     Submit <i class="fas fa-sign-in-alt"></i>
                                 </button>
                             </div>
