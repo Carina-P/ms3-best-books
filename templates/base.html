@@ -33,7 +33,7 @@
                 <a href="#!" class="brand-logo center dark-shadow">the.Best.Books</a>
                 
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="#">Log In</a></li>
+                    <li><a href="{{ url_for('login') }}">Log In</a></li>
                     <li><a href="{{ url_for('sign_up') }}">Sign Up</a></li>
                     <li><a href="#">Log Out</a></li>
                     <li><a href="#">Manage Categories</a></li>
@@ -49,7 +49,7 @@
             <li><a href="#" class="center-align">Popular</a></li>
             <li><a href="#" class="center-align">Categories</a></li>
             <li><a href="#" class="center-align">Add Book</a></li>
-            <li><a href="#" class="center-align">Log In</a></li>
+            <li><a href="{{ url_for('login') }}" class="center-align">Log In</a></li>
             <li><a href="{{ url_for('sign_up') }}" class="center-align">Sign Up</a></li>
             <li><a href="#" class="center-align">Log Out</a></li>
             <li><a href="#" class="center-align">Manage Categories</a></li>
