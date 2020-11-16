@@ -44,6 +44,9 @@ def sign_up():
 
         session["username"] = sign_up["username"]
         flash("Sign Up successfull")
+        return redirect(url_for(
+            "profile", username=sign_up["username"], email=sign_up["email"])
+            )
 
     return render_template("sign_up.html")
 
@@ -60,7 +63,7 @@ def login():
                 existing_user["password"], request.form.get("password")
             ):
                 session["username"] = request.form.get("username").lower()
-                flash("Welcome, {}".format(request.form.get("username")))
+                flash("Welcome, {}!".format(request.form.get("username")))
             else:
                 flash("Incorrect Username and/or Password")
                 return redirect(url_for("login"))
@@ -70,6 +73,14 @@ def login():
             return redirect(url_for("login"))
 
     return render_template("login.html")
+
+
+@app.route("/logout")
+def logout():
+    flash("You have been logged out")
+    session.pop("username")
+    
+    return redirect(url_for("login"))
 
 
 if __name__ == "__main__":

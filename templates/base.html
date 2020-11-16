@@ -27,16 +27,21 @@
                 <ul class="left hide-on-med-and-down">
                     <li><a href="#">Popular</a></li>
                     <li><a href="#">Categories</a></li>
-                    <li><a href="#">Add Book</a></li>
+                    {% if session.username %}
+                        <li><a href="#">Add Book</a></li>
+                    {% endif %}
                 </ul>
 
                 <a href="#!" class="brand-logo center dark-shadow">the.Best.Books</a>
                 
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="{{ url_for('login') }}">Log In</a></li>
-                    <li><a href="{{ url_for('sign_up') }}">Sign Up</a></li>
-                    <li><a href="#">Log Out</a></li>
-                    <li><a href="#">Manage Categories</a></li>
+                    {% if session.username %}
+                        <li><a href="#">Manage Categories</a></li>
+                        <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+                    {% else %}
+                        <li><a href="{{ url_for('login') }}">Log In</a></li>
+                        <li><a href="{{ url_for('sign_up') }}">Sign Up</a></li>
+                    {% endif %}
                 </ul>
 
                 <a href="#" data-target="mobile-dev" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
@@ -48,11 +53,15 @@
             <li><h4 class="center-align text-red dark-shadow">the.Best.Books</h4></li>
             <li><a href="#" class="center-align">Popular</a></li>
             <li><a href="#" class="center-align">Categories</a></li>
-            <li><a href="#" class="center-align">Add Book</a></li>
-            <li><a href="{{ url_for('login') }}" class="center-align">Log In</a></li>
-            <li><a href="{{ url_for('sign_up') }}" class="center-align">Sign Up</a></li>
-            <li><a href="#" class="center-align">Log Out</a></li>
-            <li><a href="#" class="center-align">Manage Categories</a></li>
+            {% if session.username %}
+                <li><a href="#" class="center-align">Manage Categories</a></li>
+                <li><a href="{{ url_for('logout') }}" class="center-align">Log Out</a></li>
+            {% else %}
+                <li><a href="#" class="center-align">Add Book</a></li>
+                <li><a href="{{ url_for('login') }}" class="center-align">Log In</a></li>
+                <li><a href="{{ url_for('sign_up') }}" class="center-align">Sign Up</a></li>
+            {% endif %}
+            
         </ul>
 
     </header>
