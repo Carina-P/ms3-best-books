@@ -21,7 +21,7 @@
                                     </a>
                                 </div>
                                 <div class="col s8">
-                                    <a href="#" class="btn bgr-sandy text-dark light-shadow">
+                                    <a href="{{ url_for('delete_group', id=group._id) }}" class="btn bgr-sandy text-dark light-shadow">
                                         Delete 
                                     </a>
                                 </div>
@@ -33,7 +33,7 @@
                     <div class="row">
                         <div class="col s12 center-align">
                             <a href="{{ url_for('add_group') }}" class="btn-large bgr-red txt-light dark-shadow">
-                                Add Group <i class="fas fa-plus-square right"></i></a>
+                                Add New Group <i class="fas fa-plus-square right"></i></a>
                         </div>
                     </div>
                 </div>

@@ -119,6 +119,13 @@ def edit_group(id):
     return render_template("edit_group.html", group=group)
 
 
+@app.route("/delete_group/<id>")
+def delete_group(id):
+    mongo.db.category_groups.remove({"_id": ObjectId(id)})
+    flash("Category Group Successfully Deleted")
+    return redirect(url_for("get_category_groups"))
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
