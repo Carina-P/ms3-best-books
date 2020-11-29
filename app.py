@@ -91,6 +91,19 @@ def get_category_groups():
     )
 
 
+@app.route("/add_group", methods=["GET", "POST"])
+def add_group():
+    if request.method == "POST":
+        group_name = {
+            "group_name": request.form.get("group_name")
+        }
+        mongo.db.category_groups.insert_one(group_name)
+        flash("New Category group Added")
+        return redirect(url_for("get_category_groups"))
+
+    return render_template("add_group.html")
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
