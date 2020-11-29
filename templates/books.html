@@ -1,8 +1,29 @@
 {% extends "base.html" %}
 {% block content %}
 
+    <h3>Most Popular Books</h3>
+    <h3>Different Categories</h3>
+    <div class="row">
+        <form id="add_book" class="col s12">
+            <div class="row">
+                <div class="input-field col s6">
+                    <input placeholder="title" id="title" type="text" class="validate">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div id="result">
+        Här ska resultatet skrivas ut
+    </div>
+
+
     {% for book in books %}
         {{ book.title }}<br>
     {% endfor %}
- 
+
+    {% if session.username %}
+    <h3>Add Book</h3>
+    {% endif %}
+
 {% endblock %}

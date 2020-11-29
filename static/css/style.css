@@ -39,6 +39,15 @@ body{
 .bgr-green{
     background-color: #2a9d8f;
 }
+.bgr-brown{
+    background-color: #774936;
+}
+.bgr-orange{
+    background-color: #e76f51;
+}
+.bgr-sandy{
+    background-color: #f4a261;
+}
 
 /* Header */
 nav, .sidenav {

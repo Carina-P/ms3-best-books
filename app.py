@@ -18,8 +18,8 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
-@app.route("/")
-@app.route("/get_books")
+@app.route("/", methods=["GET", "POST"])
+@app.route("/get_books", methods=["GET", "POST"])
 def get_books():
     books = mongo.db.books.find()
     return render_template("books.html", books=books)
@@ -44,9 +44,7 @@ def sign_up():
 
         session["username"] = sign_up["username"]
         flash("Sign Up successfull")
-        return redirect(url_for(
-            "profile", username=sign_up["username"], email=sign_up["email"])
-            )
+        return redirect(url_for("get_books"))
 
     return render_template("sign_up.html")
 
@@ -64,6 +62,7 @@ def login():
             ):
                 session["username"] = request.form.get("username").lower()
                 flash("Welcome, {}!".format(request.form.get("username")))
+                return redirect(url_for("get_books"))
             else:
                 flash("Incorrect Username and/or Password")
                 return redirect(url_for("login"))
@@ -79,8 +78,17 @@ def login():
 def logout():
     flash("You have been logged out")
     session.pop("username")
-    
-    return redirect(url_for("login"))
+    return redirect(url_for("get_books"))
+
+
+@app.route("/get_category_groups")
+def get_category_groups():
+    category_groups = list(
+        mongo.db.category_groups.find().sort("group_name", 1)
+    )
+    return render_template(
+        "category_groups.html", category_groups=category_groups
+    )
 
 
 if __name__ == "__main__":
