@@ -8,21 +8,15 @@
                         <span class="card-title">Manage Category Groups</span>
                         <br>
                     </div>
-                    <div class="row">
-                        <div class="col s12 center-align">
-                            <a href="{{ url_for('add_group') }}" class="btn-large bgr-red txt-light dark-shadow">
-                                Add Group <i class="fas fa-plus-square right"></i></a>
-                        </div>
-                    </div>
                     <div class="divider"></div>
-                    {% for category in category_groups %}
+                    {% for group in category_groups %}
                         <div class="row section">
                             <div class="col s7 center">
-                                {{ category.group_name }}
+                                {{ group.group_name }}
                             </div>
                             <div class="col s5">
                                 <div class="col s8">
-                                    <a href="#" class="btn bgr-green text-light dark-shadow">
+                                    <a href="{{ url_for('edit_group', id=group._id) }}" class="btn bgr-green text-light dark-shadow">
                                         Edit 
                                     </a>
                                 </div>
@@ -35,6 +29,13 @@
                         </div>
                         <div class="divider"></div>
                     {% endfor %}
+                    <br>
+                    <div class="row">
+                        <div class="col s12 center-align">
+                            <a href="{{ url_for('add_group') }}" class="btn-large bgr-red txt-light dark-shadow">
+                                Add Group <i class="fas fa-plus-square right"></i></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

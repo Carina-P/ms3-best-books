@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="row">
+        <div class="col s12 m10 offset-m1">
+            <div class="card">
+                <form class="col s12" method="POST" action="{{ url_for('edit_group', id=group._id) }}">
+                    <div class="card-content bgr-white">
+                        <div class="center-align">
+                            <span class="card-title">Edit Category Group</span>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="group_name" name="group_name" placeholder="Name of new category group" minlength="3" maxlength="25"
+                                    type="text" value="{{ group.group_name }}" class="validate" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12 center-align">
+                                <a href="{{url_for('get_category_groups')}}" class="btn-large bgr-red txt-light dark-shadow">
+                                    Cancel <i class="fas fa-times-circle right"></i>
+                                </a>
+                                <button type="submit" class="btn-large bgr-green txt-light dark-shadow">
+                                    Submit <i class="fas fa-plus-square right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div> 
+{% endblock %}

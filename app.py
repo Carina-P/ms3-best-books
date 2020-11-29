@@ -104,6 +104,21 @@ def add_group():
     return render_template("add_group.html")
 
 
+@app.route("/edit_group/<id>", methods=["GET", "POST"])
+def edit_group(id):
+    if request.method == "POST":
+        new_name = {
+            "group_name": request.form.get("group_name")
+        }
+        print(new_name)
+        mongo.db.category_groups.update({"_id": ObjectId(id)}, new_name)
+        flash("Category Group Succesfully Updated")
+        return redirect(url_for("get_category_groups"))
+
+    group = mongo.db.category_groups.find_one({"_id": ObjectId(id)})
+    return render_template("edit_group.html", group=group)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
