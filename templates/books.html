@@ -23,7 +23,38 @@
     {% endfor %}
 
     {% if session.username %}
-    <h3>Add Book</h3>
+        <div class="row">
+            <div class="col s12 m8 offset-m2">
+                <div class="card">
+                    <div class="card-content bgr-white">
+                        <div class="center-align">
+                            <span class="card-title">Add Book</span>
+                            <span>Voluntary search for information</span>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="search_txt" name="search_txt" placeholder="Part of Title or Author" minlength="3" maxlength="25"
+                                    type="text" class="validate" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12 center-align">
+                                <button type="submit" class="btn-large bgr-sandy text-dark light-shadow" onclick="searchTitle()">
+                                    Search among book titles
+                                </button>
+                                <button type="submit" class="btn-large bgr-green text-light dark-shadow" onclick="searchAuthor()">
+                                    Search among authors
+                                </button>
+                            </div>
+                            <div class="col s12 center-align">
+                                <br>
+                                <a href="#" class="btn-large bgr-red txt-ligth dark-shadow">Continue to Add book without searching for information</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
     {% endif %}
 
 {% endblock %}
