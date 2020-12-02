@@ -11,7 +11,7 @@ function searchTitle(){
     }
     else{
         console.log(title);
-        fetch("https://www.googleapis.com/books/v1/volumes?q=intitle:"+ title+"&printType=books&projection=lite&key=AIzaSyAa48h04CAMjJ1bVewMoBx-_8EZv1IBNpI")
+        fetch("https://www.googleapis.com/books/v1/volumes?q=intitle:"+ title+"&printType=books&projection=full&key=AIzaSyAa48h04CAMjJ1bVewMoBx-_8EZv1IBNpI")
         .then(res =>res.json())
         .then(res => {
             console.log(res);

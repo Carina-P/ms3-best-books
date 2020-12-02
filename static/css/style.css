@@ -61,6 +61,18 @@ nav .brand-logo{
     color: #cc2936;
 }
 
+/* Books: Add book section */
+.card .card-content{
+    padding: 1rem;
+}
+.card .card-image img{
+    height: 100%;
+    width: auto;
+    margin-top: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /* For a responsive site */
 @media screen and (max-width: 400px){
     html{
