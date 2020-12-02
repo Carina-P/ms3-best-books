@@ -1,13 +1,12 @@
 {% extends "base.html" %}
 {% block content%}
     <div class="row">
+        <div class="center-align">
+            <h2>Manage Category Groups</h2>
+        </div>
         <div class="col s12 m10 offset-m1">
             <div class="card">
                 <div class="card-content bgr-white">
-                    <div class="center-align">
-                        <span class="card-title">Manage Category Groups</span>
-                        <br>
-                    </div>
                     <div class="divider"></div>
                     {% for group in category_groups %}
                         <div class="row section">
