@@ -2,16 +2,16 @@
 {% block content %}
     <div class="row">
         <div class="center-align">
-            <h2>Edit Category Group</h2>
+            <h2>Add Book</h2>
         </div>
         <div class="col s12 m10 offset-m1">
             <div class="card">
-                <form class="col s12" method="POST" action="{{ url_for('edit_group', id=group._id) }}">
+                <form class="col s12" method="POST" action="{{ url_for('add_book') }}">
                     <div class="card-content bgr-white">
                         <div class="row">
                             <div class="input-field col s12">
                                 <input id="group_name" name="group_name" placeholder="Name of new category group" minlength="3" maxlength="25"
-                                    type="text" value="{{ group.group_name }}" class="validate" required>
+                                    type="text" class="validate" required>
                             </div>
                         </div>
                         <div class="row">
@@ -20,7 +20,7 @@
                                     Cancel <i class="fas fa-times-circle right"></i>
                                 </a>
                                 <button type="submit" class="btn-large btn-grey waves-effect waves-light">
-                                    Submit <i class="fas fa-plus-square right"></i>
+                                    Add Group <i class="fas fa-plus-square right"></i>
                                 </button>
                             </div>
                         </div>

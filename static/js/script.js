@@ -1,6 +1,12 @@
+let books = [];
+
 $(document).ready(function(){
     $('.sidenav').sidenav({edge:"right"});
 });
+
+function addBook(index){
+    console.log(index, typeof(index));
+}
 
 function resultToDocument(result){
     let text = `<div class="center-align">
@@ -11,6 +17,7 @@ function resultToDocument(result){
         text += `<div>No books found with the input given.</div>`;
     }
     else{
+        let index = 0;
         for (book of result.items){
             if ("volumeInfo" in book){
                 text += `<div class="col s12 m6 l4">
@@ -41,19 +48,22 @@ function resultToDocument(result){
                 text += `   </p>
                         </div>
                         <div class="card-action">
-                            <a href="#" class="btn-small bgr-red txt-ligth dark-shadow">Add book to this site</a>
-                        </div>    
+                            <button type="submit" class="btn-small btn-green waves-effect waves-light" onclick="addBook(${index})">
+                                Add book to this site
+                            </button>
+                        </div>
                     </div>
                 </div>`;
+
+                index++;
             }
         }
     }
     $("#search_results").html(text);
+    window.location.href="#search_results";
 }
 
-function searchForBooks(title_or_author){
-    let search_text = $("#search_txt").val();
-
+function searchForBooks(title_or_author, search_text){
     if (!search_text || search_text.trim().length === 0){
         console.log("ingen info");
     }
@@ -63,6 +73,9 @@ function searchForBooks(title_or_author){
         .then(res =>res.json())
         .then(res => {
             console.log(res);
+            books = res.items;
+
+
             resultToDocument(res);
         })
         .catch(error => {
@@ -73,10 +86,12 @@ function searchForBooks(title_or_author){
 
 function searchTitle(){
     console.log("Sök title");
-    searchForBooks("intitle");
+    let search_title = $("#search_title").val();
+    searchForBooks("intitle", search_title);
 }
 
 function searchAuthor(){
     console.log("Sök författare");
-    searchForBooks("inauthor");
+    let search_author = $("#search_author").val();
+    searchForBooks("inauthor", search_author);
 }

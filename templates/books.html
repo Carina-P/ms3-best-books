@@ -34,21 +34,23 @@
                             <span>Voluntary search for information</span>
                         </div>
                         <div class="row">
-                            <div class="input-field col s12 l7">
-                                <input id="search_txt" name="search_txt" placeholder="Part of Title or Author" minlength="3" maxlength="25"
-                                    type="text" class="validate" required>
+                            <div class="input-field col s12 m7">
+                                <input id="search_title" name="search_title" placeholder="Full title or part of title" maxlength="30"
+                                    type="text">
                             </div>
-                            <div class="col s12 l5 center-align">
-                                <div class="col s6 l12">
-                                    <button type="submit" class="btn-large btn-green" onclick="searchTitle()">
-                                        Title 
-                                    </button>
-                                </div>
-                                <div class="col s6 l12">
-                                    <button type="submit" class="btn-large btn-green" onclick="searchAuthor()">
-                                        Author
-                                    </button>
-                                </div>
+                            <div class="col s12 m5">
+                                <button type="submit" class="btn-large btn-green waves-effect waves-light" onclick="searchTitle()">
+                                    <i class="fas fa-search"></i>  Title 
+                                </button>
+                            </div>
+                            <div class="input-field col s12 m7">
+                                <input id="search_author" name="search_author" placeholder="Authors full name or part of name" maxlength="30"
+                                    type="text">
+                            </div>
+                            <div class="col s12 m5">
+                                <button type="submit" class="btn-large btn-green waves-effect waves-light" onclick="searchAuthor()">
+                                    <i class="fas fa-search"></i>  Author
+                                </button>
                             </div>
                         </div>
                         <div class="row">
