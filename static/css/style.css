@@ -9,7 +9,7 @@ html{
 body{
     font-family: "Poppins", "Roboto", sans-serif;
     color: #32292f;
-    background-color: #fffcf2; 
+    background-color: #f5f4f6; 
     font-size: 1rem;
 } 
 .dark-shadow{
@@ -26,6 +26,17 @@ body{
 }
 .text-dark{
     color: #32292f;
+}
+.btn-green{
+    background-color: #2a9d8f;
+    color: #ffffff;
+    text-shadow: 1px 1px 1px rgba(0,0,0,1);
+}
+.btn-grey{
+    background-color: #e0dde3;
+    color: #2a9d8f;
+    text-shadow: 1px 1px 1px rgba(0,0,0,1);
+    border-color: #2a9d8f;
 }
 .bgr-red{
     background-color: #cc2936;
@@ -51,21 +62,21 @@ body{
 
 /* Header */
 nav, .sidenav {
-    background-color: #fffcf2;
+    background-color: #e0dde3;
     color: #32292f;
 } 
 nav a, nav ul a{
-    color: #32292f
+    color: #32292f;
 }
 nav .brand-logo{
     color: #cc2936;
 }
 
 /* Books: Add book section */
-.card .card-content{
+#search_results .card .card-content{
     padding: 1rem;
 }
-.card .card-image img{
+#search_results .card .card-image img{
     height: 100%;
     width: auto;
     margin-top: 1rem;

@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% block content%}
     <div class="row">
+        <div class="center-align">
+            <h2>Sign Up</h2>
+        </div>
         <div class="col s12 m10 offset-m1">
             <div class="card">
                 <div class="card-image">
@@ -9,9 +12,6 @@
                 <div class="card-content bgr-white">
                     <form method="POST" action="{{ url_for('sign_up') }}">
                         <div>
-                            <div class="center-align">
-                                <span class="card-title">Sign Up</span>
-                            </div>
                             <div class="row">
                                 <div class="input-field col s12">
                                     <i class="fas fa-user prefix"></i>
@@ -36,8 +36,8 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <button type="submit" class="col s12 m8 offset-m2 offset-2 btn-large bgr-red text-light dark-shadow">
-                                    Submit <i class="fas fa-sign-in-alt"></i>
+                                <button type="submit" class="col s12 m8 offset-m2 offset-2 btn-large btn-green">
+                                    Sign Up <i class="fas fa-sign-in-alt"></i>
                                 </button>
                             </div>
                         </div>
