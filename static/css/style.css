@@ -83,6 +83,10 @@ nav .brand-logo{
     margin-left: auto;
     margin-right: auto;
 }
+.text_wrap{
+    float: left;
+    margin: 1rem;
+}
 
 /* For a responsive site */
 @media screen and (max-width: 400px){

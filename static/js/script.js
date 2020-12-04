@@ -49,7 +49,7 @@ function resultToDocument(result){
                         </div>
                         <div class="card-action">
                             <button type="submit" class="btn-small btn-green waves-effect waves-light" onclick="addBook(${index})">
-                                Add book to this site
+                                Add this book
                             </button>
                         </div>
                     </div>
@@ -69,13 +69,13 @@ function searchForBooks(title_or_author, search_text){
     }
     else{
         console.log(search_text);
+        console.log(title_or_author);
         fetch("https://www.googleapis.com/books/v1/volumes?q="+ title_or_author + ":" + search_text + "&printType=books&projection=lite&key=AIzaSyAa48h04CAMjJ1bVewMoBx-_8EZv1IBNpI")
         .then(res =>res.json())
         .then(res => {
             console.log(res);
             books = res.items;
-
-
+            console.log(books);
             resultToDocument(res);
         })
         .catch(error => {
