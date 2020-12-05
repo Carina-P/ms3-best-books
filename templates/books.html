@@ -9,51 +9,54 @@
     {% endfor %}
 
     {% if session.username %}
-        <div class="row">
+        <div id="book" class="row">
             <div class="center-align">
                 <h2>Add book</h2>
             </div>
-            <div class="col s12 m10 offset-m1">
-                <div class="card">
-                    <div class="card-content">
-                        <div class="center-align">
-                            <p>Search in ... for a book you want to add to this site</p>
-                        </div>
-                        <div class="row">
-                            <form id="title_form">
-                                <div class="input-field col s12 m7">
-                                    <input id="search_title" name="search_title" placeholder="Full title or part of title" type="text" maxlength="30"
-                                        class="validate" required>
-                                </div>
-                                <div class="col s12 m5">
-                                    <button type="submit" class="btn-large btn-grey waves-effect waves-light">
-                                        <i class="fas fa-search"></i>  Title 
-                                    </button>
-                                </div>
-                            </form>
-                            <form id="author_form">
-                                <div class="input-field col s12 m7">
-                                    <input id="search_author" name="search_author" placeholder="Authors full name or part of name" maxlength="30"
-                                        type="text" class="validate" required>
-                                </div>
-                                <div class="col s12 m5">
-                                    <button type="submit" class="btn-large btn-grey waves-effect waves-light" onclick="searchAuthor()">
-                                        <i class="fas fa-search"></i>  Author
-                                    </button>
-                                </div>
-                            </form>
+            <div id="add_book">
+                <div class="col s12 m10 offset-m1">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="center-align">
+                                <p>Search in ... for a book you want to add to this site</p>
+                            </div>
+                            <div class="row">
+                                <form id="title_form" onsubmit="searchTitle({{category_groups}}); return false">
+                                    <div class="input-field col s12 m7">
+                                        <input id="search_title" name="search_title" placeholder="Full title or part of title" type="text" maxlength="30"
+                                            class="validate" required>
+                                    </div>
+                                    <div class="col s12 m5">
+                                        <button type="submit" class="btn-large btn-grey waves-effect waves-light">
+                                            <i class="fas fa-search"></i>  Title 
+                                        </button>
+                                    </div>
+                                </form>
+                                <form id="author_form" onsubmit="searchAuthor({{category_groups}}); return false">
+                                    <div class="input-field col s12 m7">
+                                        <input id="search_author" name="search_author" placeholder="Authors full name or part of name" maxlength="30"
+                                            type="text" class="validate" required>
+                                    </div>
+                                    <div class="col s12 m5">
+                                        <button type="submit" class="btn-large btn-grey waves-effect waves-light">
+                                            <i class="fas fa-search"></i>  Author
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         
-        <div id="search_results" class="row">
-        </div>
+        <div id="search_results" class="row"></div>
     {% endif %}
-    <div class="row">
+  <div class="row">
         <div class="center-align">
             <h2>Add Book</h2>
+        </div>
+        <div>
             <p>Choose category group for the book before it is added to the site. Book information below.</p>
         </div>
         <div class="col s12 m10 offset-m1">
@@ -83,7 +86,8 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="center-align">
+                        
+                        <div class="center-align section">
                             <h5>Book Information:</h5>
                         </div>
                         <div class="row">
@@ -128,7 +132,7 @@
             </div>
         </div>
     </div>
-    
+   
     
 
 {% endblock %}

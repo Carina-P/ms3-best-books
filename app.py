@@ -22,9 +22,11 @@ mongo = PyMongo(app)
 @app.route("/get_books", methods=["GET", "POST"])
 def get_books():
     books = mongo.db.books.find()
-    category_groups = mongo.db.category_groups.find()
+    category_groups = list(mongo.db.category_groups.find())
+    # Do not want to send ObjectId
+    group_names = [item["group_name"] for item in category_groups]
     return render_template(
-        "books.html", books=books, category_groups=category_groups)
+        "books.html", books=books, category_groups=group_names)
 
 
 @app.route("/sign_up", methods=["GET", "POST"])
