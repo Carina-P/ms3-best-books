@@ -36,7 +36,13 @@ body{
     background-color: #e0dde3;
     color: #2a9d8f;
     text-shadow: 1px 1px 1px rgba(0,0,0,1);
+    border-style: solid;
     border-color: #2a9d8f;
+}
+.btn-red{
+    background-color: #cc2936;
+    color: #ffffff;
+    text-shadow: 1px 1px 1px rgba(0,0,0,1);
 }
 .bgr-red{
     background-color: #cc2936;
@@ -83,7 +89,6 @@ nav .brand-logo{
     margin-left: auto;
     margin-right: auto;
 }
-
 /* For a responsive site */
 @media screen and (max-width: 400px){
     html{
