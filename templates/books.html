@@ -20,24 +20,28 @@
                             <p>Search in ... for a book you want to add to this site</p>
                         </div>
                         <div class="row">
-                            <div class="input-field col s12 m7">
-                                <input id="search_title" name="search_title" placeholder="Full title or part of title" maxlength="30"
-                                    type="text">
-                            </div>
-                            <div class="col s12 m5">
-                                <button type="submit" class="btn-large btn-grey waves-effect waves-light" onclick="searchTitle()">
-                                    <i class="fas fa-search"></i>  Title 
-                                </button>
-                            </div>
-                            <div class="input-field col s12 m7">
-                                <input id="search_author" name="search_author" placeholder="Authors full name or part of name" maxlength="30"
-                                    type="text">
-                            </div>
-                            <div class="col s12 m5">
-                                <button type="submit" class="btn-large btn-grey waves-effect waves-light" onclick="searchAuthor()">
-                                    <i class="fas fa-search"></i>  Author
-                                </button>
-                            </div>
+                            <form id="title_form">
+                                <div class="input-field col s12 m7">
+                                    <input id="search_title" name="search_title" placeholder="Full title or part of title" type="text" maxlength="30"
+                                        class="validate" required>
+                                </div>
+                                <div class="col s12 m5">
+                                    <button type="submit" class="btn-large btn-grey waves-effect waves-light">
+                                        <i class="fas fa-search"></i>  Title 
+                                    </button>
+                                </div>
+                            </form>
+                            <form id="author_form">
+                                <div class="input-field col s12 m7">
+                                    <input id="search_author" name="search_author" placeholder="Authors full name or part of name" maxlength="30"
+                                        type="text" class="validate" required>
+                                </div>
+                                <div class="col s12 m5">
+                                    <button type="submit" class="btn-large btn-grey waves-effect waves-light" onclick="searchAuthor()">
+                                        <i class="fas fa-search"></i>  Author
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

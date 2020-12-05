@@ -85,14 +85,14 @@ function searchForBooks(title_or_author, search_text){
     }
 }
 
-function searchTitle(){
+$("#title_form").submit( () => {
     console.log("Sök title");
     let search_title = $("#search_title").val();
     searchForBooks("intitle", search_title);
-}
+});
 
-function searchAuthor(){
+$("#author_form").submit( () => {
     console.log("Sök författare");
     let search_author = $("#search_author").val();
     searchForBooks("inauthor", search_author);
-}
+});

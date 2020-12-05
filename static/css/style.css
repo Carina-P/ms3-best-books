@@ -34,10 +34,8 @@ body{
 }
 .btn-grey{
     background-color: #e0dde3;
-    color: #2a9d8f;
-    text-shadow: 1px 1px 1px rgba(0,0,0,1);
-    border-style: solid;
-    border-color: #2a9d8f;
+    color: #000000;
+    text-shadow: 1px 1px 1px rgba(255,255,255,1);
 }
 .btn-red{
     background-color: #cc2936;
