@@ -22,7 +22,9 @@ mongo = PyMongo(app)
 @app.route("/get_books", methods=["GET", "POST"])
 def get_books():
     books = mongo.db.books.find()
-    return render_template("books.html", books=books)
+    category_groups = mongo.db.category_groups.find()
+    return render_template(
+        "books.html", books=books, category_groups=category_groups)
 
 
 @app.route("/sign_up", methods=["GET", "POST"])

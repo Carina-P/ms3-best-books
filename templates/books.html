@@ -56,6 +56,7 @@
     <div class="row">
         <div class="center-align">
             <h2>Add Book</h2>
+            <p>Choose category group for the book before it is added to the site. Book information below.</p>
         </div>
         <div class="col s12 m10 offset-m1">
             <div class="card">
@@ -65,10 +66,36 @@
                             <img src="http://books.google.com/books/content?id=DKcWE3WXoj8C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" 
                                 alt="Picture of book cover">
                         </div>
+                        <div class="col s12">
+                            <label for="category_group"></label>
+                            <select id="category_group" name="category_group" class="validate" required>
+                                <option value="" disabled selected>Choose Category Group</option>
+                                {% for group in category_groups %}
+                                    <option value="{{ group.group_name}}">{{ group.group_name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="row">
+                            <div class="col s12 center-align">
+                                <a href="{{url_for('get_books')}}" class="btn-large btn-grey waves-effect waves-light">
+                                    Cancel <i class="fas fa-times-circle right"></i>
+                                </a>
+                                <button type="submit" class="btn-large btn-green waves-effect waves-light">
+                                    Add <i class="fas fa-plus-square right"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="center-align">
+                            <h5>Book Information:</h5>
+                        </div>
                         <div class="row">
                             <div class="input-field col s12">
                                 <label for="title">Title:</label>
                                 <input id="title" name="title" type="text" value="Harry Potter and international relations" readonly>
+                            </div>
+                            <div class="col s12">
+                                <label for="category">Category/ies:</label>
+                                <input id="category" name="category" type="text" value="Historical" readonly>
                             </div>
                             <div class="col s12">
                                 <label for="author">Author/s:</label>
@@ -96,24 +123,6 @@
                                 <label for="image_link">Image Link:</label>
                                 <textarea id="image_link" name="image_link" class="materialize-textarea" readonly
                                     >http://books.google.com/books/content?id=DKcWE3WXoj8C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api</textarea>
-                            </div>
-                            <div class="col s12">
-                                <label for="category">Category/ies:</label>
-                                <input id="category" name="category" type="text" value="Historical" readonly>
-                            </div>
-                            <div class="input-field col s12">
-                                <input id="category_group" name="category_group" placeholder="Name category group" minlength="3" maxlength="25"
-                                    type="text" class="validate" required>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col s12 center-align">
-                                <a href="{{url_for('get_books')}}" class="btn-large btn-green waves-effect waves-light">
-                                    Cancel <i class="fas fa-times-circle right"></i>
-                                </a>
-                                <button type="submit" class="btn-large btn-grey waves-effect waves-light">
-                                    Submit <i class="fas fa-plus-square right"></i>
-                                </button>
                             </div>
                         </div>
                     </form>

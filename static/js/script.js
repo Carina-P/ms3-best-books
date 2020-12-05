@@ -2,6 +2,7 @@ let books = [];
 
 $(document).ready(function(){
     $('.sidenav').sidenav({edge:"right"});
+    $('select').formSelect();
 });
 
 function addBook(index){
