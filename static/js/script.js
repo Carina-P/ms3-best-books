@@ -11,7 +11,8 @@ function bookToDocument(book){
     console.log(book);
 
     let text = `<div class="center-align">
-                    <p>Choose category group for the book. Book information below.</p>
+                    <p>Choose category group(mandatory) and give your opinion(voluntary) of the book, before you add it.<br>
+                    Book information below (if you can not see whole text: resizing is possible by pointing and moving the bottom right corner).</p>
                 </div>
                 <div class="col s12 m10 offset-m1">
                     <div class="card">
@@ -19,6 +20,12 @@ function bookToDocument(book){
                             <form>`;
     
     if ("volumeInfo" in book){
+         if("title" in book.volumeInfo){  
+            text += `<div class="col s12">
+                                <label for="title">Title:</label>
+                                <input id="title" name="title" type="text" value="Harry Potter and international relations" readonly>
+                            </div>`;
+        }
         if ("imageLinks" in book.volumeInfo){
             if ("thumbnail" in book.volumeInfo.imageLinks){
                 text += `<div class="center-align">
@@ -26,6 +33,13 @@ function bookToDocument(book){
                                 alt="Picture of book cover">
                         </div>`;
             }
+        }
+        if("categories" in book.volumeInfo){
+            let categories = book.volumeInfo.categories.join(" · ");
+            text += `       <div class="col s12">
+                                <label for="category">Category/ies:</label>
+                                <input id="category" name="category" type="text" value="${categories}" readonly>
+                            </div>`; 
         }
     }
 
@@ -37,6 +51,21 @@ function bookToDocument(book){
         text += `              <option value="${category_group}">${category_group}</option>`;
     }
     text += `               </select>
+                        </div>
+                        <div class="col s12">
+                            <label for="grade"></label>
+                            <select id="grade" name="grade" class="validate">
+                                <option value="" disabled selected>Grade book</option>
+                                <option value="5">5</option>
+                                <option value="4">4</option>
+                                <option value="3">3</option>
+                                <option value="2">2</option>
+                                <option value="1">1</option>
+                            </select>
+                        </div>
+                        <div class="col s12">
+                                <label for="review">Your review of the book</label>
+                                <textarea id="review" name="review"></textarea>
                         </div>
                         <div class="row">
                             <div class="col s12 center-align">
@@ -217,8 +246,9 @@ function searchTitle(group_names){
     searchForBooks("intitle", search_title);
 }
 
-function searchAuthor(category_groups){
+function searchAuthor(group_names){
     console.log("Sök författare");
+    category_groups = group_names;
     let search_author = $("#search_author").val();
     searchForBooks("inauthor", search_author);
 }

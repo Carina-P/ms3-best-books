@@ -130,6 +130,11 @@ def delete_group(id):
     return redirect(url_for("get_category_groups"))
 
 
+@app.route("/add_book/<book>")
+def add_book(book):
+    return render_template("add_book.html", book=book)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),

@@ -63,9 +63,17 @@
             <div class="card">
                 <div class="card-content bgr-white">
                     <form>
+                        <div class="input-field col s12">
+                                <label for="title">Title:</label>
+                                <input id="title" name="title" type="text" value="Harry Potter and international relations" readonly>
+                        </div>
                         <div class="center-align">
                             <img src="http://books.google.com/books/content?id=DKcWE3WXoj8C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" 
                                 alt="Picture of book cover">
+                        </div>
+                        <div class="col s12">
+                                <label for="category">Category/ies:</label>
+                                <input id="category" name="category" type="text" value="Historical" readonly>
                         </div>
                         <div class="col s12">
                             <label for="category_group"></label>
@@ -75,6 +83,21 @@
                                     <option value="{{ group.group_name}}">{{ group.group_name}}</option>
                                 {% endfor %}
                             </select>
+                        </div>
+                        <div class="col s12">
+                            <label for="grade"></label>
+                            <select id="grade" name="grade" class="validate">
+                                <option value="" disabled selected>Grade book</option>
+                                <option value="5">5</option>
+                                <option value="4">4</option>
+                                <option value="3">3</option>
+                                <option value="2">2</option>
+                                <option value="1">1</option>
+                            </select>
+                        </div>
+                        <div class="col s12">
+                                <label for="review">Your review of the book</label>
+                                <textarea id="review" name="review"></textarea>
                         </div>
                         <div class="row">
                             <div class="col s12 center-align">
@@ -90,14 +113,6 @@
                             <h5>Book Information:</h5>
                         </div>
                         <div class="row">
-                            <div class="input-field col s12">
-                                <label for="title">Title:</label>
-                                <input id="title" name="title" type="text" value="Harry Potter and international relations" readonly>
-                            </div>
-                            <div class="col s12">
-                                <label for="category">Category/ies:</label>
-                                <input id="category" name="category" type="text" value="Historical" readonly>
-                            </div>
                             <div class="col s12">
                                 <label for="author">Author/s:</label>
                                 <textarea id="author" name="author" class="materialize-textarea" maxlength="200" readonly
