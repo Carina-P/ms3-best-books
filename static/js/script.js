@@ -1,4 +1,4 @@
-let books = [];
+let search_result = {};
 let category_groups = [];
 
 $(document).ready(function(){
@@ -6,11 +6,18 @@ $(document).ready(function(){
     $('select').formSelect();
 });
 
+function cancelAddBook(){
+    $("#add_book").html(``);
+    window.location.href="#search_results";
+}
 
 function bookToDocument(book){
     console.log(book);
 
     let text = `<div class="center-align">
+                    <h3>Book to Add</h3>
+                </div>
+                <div class="center-align">
                     <p>Choose category group(mandatory) and give your opinion(voluntary) of the book, before you add it.<br>
                     Book information below (if you can not see whole text: resizing is possible by pointing and moving the bottom right corner).</p>
                 </div>
@@ -23,7 +30,7 @@ function bookToDocument(book){
          if("title" in book.volumeInfo){  
             text += `<div class="col s12">
                                 <label for="title">Title:</label>
-                                <input id="title" name="title" type="text" value="Harry Potter and international relations" readonly>
+                                <input id="title" name="title" type="text" value="${book.volumeInfo.title}" readonly>
                             </div>`;
         }
         if ("imageLinks" in book.volumeInfo){
@@ -69,9 +76,9 @@ function bookToDocument(book){
                         </div>
                         <div class="row">
                             <div class="col s12 center-align">
-                                <a href="{{url_for('get_books')}}" class="btn-large btn-red waves-effect waves-light">
+                                <button type="reset" class="btn-large btn-red waves-effect waves-light" onclick="cancelAddBook()">
                                     Cancel <i class="fas fa-times-circle right"></i>
-                                </a>
+                                </button>
                                 <button type="submit" class="btn-large btn-green waves-effect waves-light">
                                     Add <i class="fas fa-plus-square right"></i>
                                 </button>
@@ -83,19 +90,6 @@ function bookToDocument(book){
                         <div class="row">`;
 
     if ("volumeInfo" in book){
-        if("title" in book.volumeInfo){  
-            text += `<div class="col s12">
-                                <label for="title">Title:</label>
-                                <input id="title" name="title" type="text" value="Harry Potter and international relations" readonly>
-                            </div>`;
-        }
-        if("categories" in book.volumeInfo){
-            let categories = book.volumeInfo.categories.join(" · ");
-            text += `       <div class="col s12">
-                                <label for="category">Category/ies:</label>
-                                <input id="category" name="category" type="text" value="${categories}" readonly>
-                            </div>`; 
-        }
         if ("authors" in book.volumeInfo){
             let authors = book.volumeInfo.authors.join(" · ");
             text += `       <div class="col s12">
@@ -149,30 +143,29 @@ function bookToDocument(book){
             </div>
         </div>`; 
 
-    $("#search_results").html(``);
     $("#add_book").html(text);
     $('select').formSelect();
-    window.location.href="#book";
+    window.location.href="#add_book";
 }
 
 function addBook(index){
     console.log(index, typeof(index));
-    let book = books[index];
+    let book = search_result.items[index];
     console.log(book);
     bookToDocument(book);
 }
 
-function searchToDocument(result){
+function searchToDocument(){
     let text = `<div class="center-align">
                 <h3>Search results:</h3>
             </div>`;
     
-    if (result.totalItems==0){
+    if (search_result.totalItems==0){
         text += `<div>No books found with the input given.</div>`;
     }
     else{
         let index = 0;
-        for (book of result.items){
+        for (book of search_result.items){
             if ("volumeInfo" in book){
                 text += `<div class="col s12 m6 l4">
                             <div class="card medium center-align">`;
@@ -195,8 +188,7 @@ function searchToDocument(result){
                     }
                 }
                 if ("publishedDate" in book.volumeInfo){
-                    publish_year = book.volumeInfo.publishedDate.substr(0,4);
-                    text += publish_year;
+                    text += `${book.volumeInfo.publishedDate}`;
                 }
 
                 text += `   </p>
@@ -228,9 +220,8 @@ function searchForBooks(title_or_author, search_text){
         .then(res =>res.json())
         .then(res => {
             console.log(res);
-            books = res.items;
-            console.log(books);
-            searchToDocument(res);
+            search_result = res;
+            searchToDocument();
         })
         .catch(error => {
             console.log("something is wrong", error);
