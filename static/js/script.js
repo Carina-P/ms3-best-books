@@ -8,7 +8,7 @@ $(document).ready(function(){
 
 function cancelAddBook(){
     $("#add_book").html(``);
-    window.location.href="#search_results";
+    window.location.href="#book";
 }
 
 function bookToDocument(book){
@@ -19,12 +19,12 @@ function bookToDocument(book){
                 </div>
                 <div class="center-align">
                     <p>Choose category group(mandatory) and give your opinion(voluntary) of the book, before you add it.<br>
-                    Book information below (if you can not see whole text: resizing is possible by pointing and moving the bottom right corner).</p>
+                    More book information below (if you can not see whole text: resizing is possible by pointing and moving the bottom right corner).</p>
                 </div>
                 <div class="col s12 m10 offset-m1">
                     <div class="card">
                         <div class="card-content bgr-white">
-                            <form>`;
+                            <form method="POST" action="/get_books">`;
     
     if ("volumeInfo" in book){
          if("title" in book.volumeInfo){  
@@ -85,7 +85,7 @@ function bookToDocument(book){
                             </div>
                         </div>
                         <div class="center-align section">
-                            <h5>Book Information:</h5>
+                            <h5>More Information:</h5>
                         </div>
                         <div class="row">`;
 
@@ -206,6 +206,7 @@ function searchToDocument(){
         }
     }
     $("#search_results").html(text);
+    $("#add_book").html("");
     window.location.href="#search_results";
 }
 

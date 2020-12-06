@@ -21,12 +21,61 @@ mongo = PyMongo(app)
 @app.route("/", methods=["GET", "POST"])
 @app.route("/get_books", methods=["GET", "POST"])
 def get_books():
+    if request.method == "POST":
+        grade = request.form.get("grade")
+        print(grade)
+        if grade:
+            average_grade = grade
+            no_of_votes = 1
+        else:
+            average_grade = 0
+            no_of_votes = 0
+
+        book = {
+            "title": request.form.get("title"),
+            "author": request.form.get("author"),
+            "image": request.form.get("image_link"),
+            "category": request.form.get("category"),
+            "average_grade": average_grade,
+            "no_of_votes": no_of_votes,
+            "added_by": session["username"],
+            "category_group": request.form.get("category_group")
+        }
+        result = mongo.db.books.insert_one(book)
+        print(result.inserted_id)
+        flash("Book Successfully Added")
+
     books = mongo.db.books.find()
     category_groups = list(mongo.db.category_groups.find())
     # Do not want to send ObjectId
     group_names = [item["group_name"] for item in category_groups]
     return render_template(
         "books.html", books=books, category_groups=group_names)
+
+
+@app.route("/add_book", methods=["GET", "POST"])
+def add_book():
+    grade = request.form.get("grade")
+    if (grade == ""):
+        average_grade = 0
+        no_of_votes = 0
+    else:
+        average_grade = grade
+        no_of_votes = 1
+
+    book = {
+        "title": request.form.get("title"),
+        "author": request.form.get("author"),
+        "image": request.form.get("image_link"),
+        "category": request.form.get("category"),
+        "average_grade": average_grade,
+        "no_of_votes": no_of_votes,
+        "added_by": session["user"],
+        "category_group": request.form.get("category_group")
+    }
+    mongo.db.books.insert_one(book)
+    flash("Book Successfully Added")
+    return redirect(url_for("get_books"))
 
 
 @app.route("/sign_up", methods=["GET", "POST"])
@@ -128,11 +177,6 @@ def delete_group(id):
     mongo.db.category_groups.remove({"_id": ObjectId(id)})
     flash("Category Group Successfully Deleted")
     return redirect(url_for("get_category_groups"))
-
-
-@app.route("/add_book/<book>")
-def add_book(book):
-    return render_template("add_book.html", book=book)
 
 
 if __name__ == "__main__":
