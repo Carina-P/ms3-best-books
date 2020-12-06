@@ -11,7 +11,7 @@ function bookToDocument(book){
     console.log(book);
 
     let text = `<div class="center-align">
-                    <p>Choose category group for the book before it is added to the site. Book information below.</p>
+                    <p>Choose category group for the book. Book information below.</p>
                 </div>
                 <div class="col s12 m10 offset-m1">
                     <div class="card">
@@ -54,17 +54,17 @@ function bookToDocument(book){
                         <div class="row">`;
 
     if ("volumeInfo" in book){
-        if("title" in book.volumeInfo){       
-            text += `   <div class="input-field col s12">
-                            <label for="title">Title:</label>
-                            <input id="title" name="title" type="text" value="${book.volumeInfo.title}" readonly>
-                        </div>`;
+        if("title" in book.volumeInfo){  
+            text += `<div class="col s12">
+                                <label for="title">Title:</label>
+                                <input id="title" name="title" type="text" value="Harry Potter and international relations" readonly>
+                            </div>`;
         }
         if("categories" in book.volumeInfo){
             let categories = book.volumeInfo.categories.join(" · ");
             text += `       <div class="col s12">
                                 <label for="category">Category/ies:</label>
-                                <input id="category" name="category" type="text" value="${categories} readonly>
+                                <input id="category" name="category" type="text" value="${categories}" readonly>
                             </div>`; 
         }
         if ("authors" in book.volumeInfo){
@@ -106,7 +106,7 @@ function bookToDocument(book){
                 text += `   <div class="col s12">
                                 <label for="image_link">Image Link:</label>
                                 <textarea id="image_link" name="image_link" class="materialize-textarea" readonly
-                                    >http://books.google.com/books/content?id=DKcWE3WXoj8C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api</textarea>
+                                    >${book.volumeInfo.imageLinks.thumbnail}</textarea>
                             </div>`;
             }
         }
