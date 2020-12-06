@@ -24,7 +24,7 @@ function bookToDocument(book){
                 <div class="col s12 m10 offset-m1">
                     <div class="card">
                         <div class="card-content bgr-white">
-                            <form method="POST" action="/get_books">`;
+                            <form method="POST" action="/add_book">`;
     
     if ("volumeInfo" in book){
          if("title" in book.volumeInfo){  
