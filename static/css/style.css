@@ -41,27 +41,33 @@ body{
     background-color: #cc2936;
     color: #ffffff;
     text-shadow: 1px 1px 1px rgba(0,0,0,1);
-}
-.bgr-red{
-    background-color: #cc2936;
-}
+    }
 .bgr-light{
     background-color: #fffcf2;
 }
 .bgr-white{
     background-color: #ffffff;
 }
+.bgr-acid{
+    background-color: #acc12f;
+}
+.bgr-darkgreen{
+    background-color: #264653;
+}
 .bgr-green{
     background-color: #2a9d8f;
 }
-.bgr-brown{
-    background-color: #774936;
+.bgr-sandy{
+    background-color: #f4a261;
 }
 .bgr-orange{
     background-color: #e76f51;
 }
-.bgr-sandy{
-    background-color: #f4a261;
+.bgr-red{
+    background-color: #cc2936;
+}
+.bgr-brown{
+    background-color: #774936;
 }
 
 /* Header */

@@ -1,5 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
+    <section id="search_for_book" class="container">
+        <div class="center-align">
+            <h3>Search for book in this database</h3>
+            <div class="card">
+                <div class="card-content"></div>
+            </div>
+        </div>
+    </section>
     <section id="popular" class="container">
         <div class="center-align">
             <h3>10 Most Popular Books</h3>
@@ -107,8 +115,41 @@
             </button>
         </div>
     </div>
-    </section>    
-    <h3>Different Categories</h3>
+    </section>
+
+    <section id="categories">
+        <div class="center-align">
+            <h3>Most Popular in Category</h3>
+            <div class="row">
+                <div class="col s6 m3">
+                    <div class="card-panel bgr-darkgreen text-light dark-shadow">
+                        <span>Thriller</span>
+                    </div>
+                </div>
+                <div class="col s6 m3">
+                    <div class="card-panel bgr-sandy text-dark light-shadow">
+                        <span>Fiction</span>
+                    </div>
+                </div>
+                <div class="col s6 m3">
+                    <div class="card-panel bgr-orange text-light dark-shadow">
+                        <span>Contemporary</span>
+                    </div>
+                </div>
+                <div class="col s6 m3">
+                    <div class="card-panel bgr-brown text-light dark-shadow">
+                        <span>Romance</span>
+                    </div>
+                </div>
+                <div class="col s6 m3">
+                    <div class="card-panel bgr-acid text-dark light-shadow">
+                        <span>Other</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>  
+    
 
     {% for book in books %}
         {{ book.title }}<br>
