@@ -29,6 +29,18 @@ def get_books():
         "books.html", books=books, category_groups=group_names)
 
 
+@app.route("/get_book/<book_id>")
+def get_book(book_id):
+    book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
+    book_details = mongo.db.books_details.find_one(
+        {"book_id": ObjectId(book_id)}
+    )
+
+    return render_template(
+        "get_book.html", book=book, book_details=book_details
+    )
+
+
 @app.route("/add_book", methods=["GET", "POST"])
 def add_book():
     if request.method == "POST":

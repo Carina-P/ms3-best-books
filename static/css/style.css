@@ -136,6 +136,16 @@ textarea.materialize-textarea{
 #image_link{
      height: 4rem;
 }
+/* Get book */
+img.left{
+    margin-right: 1em;
+    margin-botton: 1em;
+}
+.review_list{
+    border-style: solid;
+    padding: 1em;
+}
+
 /* For a responsive site */
 @media screen and (max-width: 400px){
     html{

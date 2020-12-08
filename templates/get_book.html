@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="row">
+        <div class="center-align">
+            <h2>Book Details</h2>
+        </div>
+        <div class="col s12 m10 offset-m1">
+            <div class="card">
+                    <div class="card-content bgr-white">
+                        <h3>{{book.title}}</h3>
+                        <img class="left" src="{{book.image}}">
+                        <p>
+                            <strong>Author/s:</strong> {{book.author}}<br>
+                            <strong>Published:</strong> {{ book_details.published_date }}<br>
+                            <strong>Grade:</strong> {{ book.average_grade }}<br><br>
+                            <strong>Category:</strong> {{ book.category}}<br>
+                            <strong>Category Group:</strong> {{ book.category_group}}<br><br>
+                            <strong>Industry identifier:</strong> {{ book_details.identifier }}<br><br>
+                            <strong>Description:</strong> {{ book_details.description }}<br><br>
+                            <strong>Image link:</strong> {{book.image}}<br><br>
+                            <strong>Book added by user:</strong> <em>{{ book.added_by}}</em>
+                        </p>
+                        <div class="row">
+                            <div class="col s12 center-align">
+                                <a href="{{url_for('get_books')}}" class="btn-large btn-red waves-effect waves-light">
+                                    Done
+                                </a>
+                                <a class="btn-large btn-green waves-effect waves-light modal-trigger" href="#modal2">
+                                    Add opinion
+                                </a>
+                                
+                            </div>
+                        </div>
+                        {% for review in book_details.reviews_max5 %}
+                        <div class="review_list">
+                            Opinion added by user <em>{{ review.added_by }}</em>:<br>
+                            <strong>Grade:</strong> {{ review.grade }}<br>
+                            "{{ review.review }}"
+                            <div class="center-align">
+                                <a class="btn-small btn-red waves-effect waves-light">
+                                    Delete
+                                </a>
+                                <a class="btn-small btn-green waves-effect waves-light modal-trigger">
+                                    Change
+                                </a>
+                            </div>
+                        </div>
+                        {% endfor%}
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Structure from Materialize -->
+    <div id="modal2" class="modal modal-fixed-footer">
+        <div class="modal-content">
+            <h4>Harry Potter och dödsrelikerna</h4>
+            <form>
+                <div class="input-field">
+                    <label for="grade_m"></label>
+                    <select id="grade_m" name="grade_m" class="validate">
+                        <option value="" disabled selected>Grade book</option>
+                        <option value="5">5</option>
+                        <option value="4">4</option>
+                        <option value="3">3</option>
+                        <option value="2">2</option>
+                        <option value="1">1</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="review_m">Your review of the book</label>
+                    <textarea id="review_m" name="review_m"></textarea>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <a href="#popular" class="modal-close btn-small btn-red waves-effect">Cancel</a>
+            <button type="submit" class="btn-small btn-green waves-effect">
+                Add
+            </button>
+        </div>
+    </div>
+{% endblock %}
