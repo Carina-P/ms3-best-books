@@ -126,9 +126,11 @@ nav .brand-logo{
 }
 
 /* Books: Add book section */
-#search_results .card .card-content{
+#search_results .card .card-content,
+#search_category .card .card-content{
     padding: 1rem;
 }
+#search_results .card .card-image img,
 #search_results .card .card-image img{
     height: 100%;
     width: auto;
