@@ -1,7 +1,55 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <h3>Most Popular Books</h3>
+    <div class="row">
+        <div class="center-align">
+            <h3>Most Popular Books</h3>
+        </div>
+        <!-- Code inspired by Materialize -->
+        <div class="carousel">
+            <div class="carousel-item red white-text" href="#one!">
+                <h2>First Panel</h2>
+                <p class="white-text">This is your first panel</p>
+            </div>
+            <div class="carousel-item amber white-text" href="#two!">
+                <h2>Second Panel</h2>
+                <p class="white-text">This is your second panel</p>
+            </div>
+            <div class="carousel-item green white-text" href="#three!">
+                <h2>Third Panel</h2>
+                <p class="white-text">This is your third panel</p>
+            </div>
+            <div class="carousel-item blue white-text" href="#four!">
+                <h2>Fourth Panel</h2>
+                <p class="white-text">This is your fourth panel</p>
+            </div>
+            <div class="carousel-item blue white-text" href="#five!">
+                <h2>5 Panel</h2>
+                <p class="white-text">This is your fourth panel</p>
+            </div>
+            <div class="carousel-item blue white-text" href="#six!">
+                <h2>6 Fourth Panel</h2>
+                <p class="white-text">This is your fourth panel</p>
+            </div>
+            <div class="carousel-item blue white-text" href="#seven!">
+                <h2> 7 Fourth Panel</h2>
+                <p class="white-text">This is your fourth panel</p>
+            </div>
+            <div class="carousel-item blue white-text" href="#eight!">
+                <h2>8 Fourth Panel</h2>
+                <p class="white-text">This is your fourth panel</p>
+            </div>
+            <div class="carousel-item blue white-text" href="#nine!">
+                <h2>9 Fourth Panel</h2>
+                <p class="white-text">This is your fourth panel</p>
+            </div>
+            <div class="carousel-item blue white-text" href="#ten!">
+                <h2>10 Fourth Panel</h2>
+                <p class="white-text">This is your fourth panel</p>
+            </div>
+        </div>
+    </div>
+        
     <h3>Different Categories</h3>
 
     {% for book in books %}
