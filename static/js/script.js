@@ -4,7 +4,13 @@ let category_groups = [];
 $(document).ready(function(){
     $('.sidenav').sidenav({edge:"right"});
     $('select').formSelect();
-    $('.carousel').carousel();
+    $('.carousel.carousel-slider').carousel();
+    $('#next').click( () => {
+        $('.carousel.carousel-slider').carousel('next');
+    });
+    $('#prev').click( () => {
+        $('.carousel.carousel-slider').carousel('prev');
+    });
 });
 
 function cancelAddBook(){

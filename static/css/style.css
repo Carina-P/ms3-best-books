@@ -76,28 +76,46 @@ nav .brand-logo{
     color: #cc2936;
 }
 
-/* Books: Carousel section */
-.row.carousel-center {
-    position: absolute;
-    top:50%;
-    width:100%;
+/* Carousel
+.carousel-item .card .card-img img{
+    height: 100%;
+    width: auto;
+    margin-top: 1rem;
+    margin-left: auto;
+    margin-right: auto;
 }
-#next {
+
+.carousel-item{
+    height: 500px;
+}
+
+.container .carousel{
     position: absolute;
-    right: 2rem;
-    color: #000000;
-    background: #ffffff;
-    font-size: 2rem;
-    border-radius: 50px;
+    top: 50%;
+}
+*/
+.middle {
+    position: absolute;
+    top:40%;
+    width:48%;
 }
 #prev {
     position: absolute;
-    left: 2rem;
+    left: 1rem;
     color: #000000;
     background: #ffffff;
     font-size: 2rem;
     border-radius: 50px;
 }
+#next {
+    position: absolute;
+    right: 0.5rem;
+    color: #000000;
+    background: #ffffff;
+    font-size: 2rem;
+    border-radius: 50px;
+}
+
 /* Books: Add book section */
 #search_results .card .card-content{
     padding: 1rem;
