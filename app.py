@@ -32,6 +32,7 @@ def get_books():
         contains_category = 1
         print(contains_category)
     else:
+        category=""
         category_books = []
         contains_category = 0
         print(contains_category)
@@ -42,7 +43,8 @@ def get_books():
     group_names = [item["group_name"] for item in category_groups]
     return render_template(
         "books.html", books=books, category_groups=group_names,
-        contains_category=contains_category, category_books=category_books
+        contains_category=contains_category, category=category,
+        category_books=category_books
     )
 
 

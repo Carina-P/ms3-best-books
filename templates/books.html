@@ -163,93 +163,41 @@
         </div>
 
         <div id="search_category">
-            <div class="center-align">
-                <h3>Popular in Category Thriller:</h3>
-            </div>
-            <div class="row">
-                <div class="col s12 m6 xl4">
-                    <div class="card medium center-align">
-                        <div class="card-image">
-                            <img src="http://books.google.com/books/content?id=i55yDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api">
-                        </div>
-                        <div class="card-content">
-                            <h6>Den inofficiella Harry Potter-kokboken</h6>
-                            <p>Dinah Bucholz * 2013-06-08</p>
-                        </div>
-                        <div class="card-action">
-                            <div class="row">
-                                <a href="#" class="btn-small btn-red wave-effect wave-ligth">Buy</a>
-                            </div>
-                            <div class="row">
-                                <div class="col s6">
-                                    <a href="/get_book/5fcdd55a9fe0284fdf4cae5a" class="btn-small btn-green waves-effect waves-light">
-                                            More
-                                    </a>
-                                </div>
-                                <div class="col s6">
-                                    <a class="btn-small btn-green waves-effect waves-light modal-trigger" href="#modal1">Opinion</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            {% if contains_category==1 %}
+                <div class="center-align">
+                    <h3>Popular in Category {{category}}:</h3>
                 </div>
-                <div class="col s12 m6 xl4">
-                    <div class="card medium center-align">
-                        <div class="card-image">
-                            <img src="http://books.google.com/books/content?id=i55yDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api">
-                        </div>
-                        <div class="card-content">
-                            <h6>Den inofficiella Harry Potter-kokboken</h6>
-                            <p>Dinah Bucholz * 2013-06-08</p>
-                        </div>
-                        <div class="card-action">
-                            <div class="row">
-                                <a href="#" class="btn-small btn-red wave-effect wave-ligth">Buy</a>
-                            </div>
-                            <div class="row">
-                                <div class="col s6">
-                                    <button type="submit" class="btn-small btn-green waves-effect waves-light">
-                                            More
-                                    </button>
+                <div class="row">
+                    {% for category_book in category_books %}
+                        <div class="col s12 m6 xl4">
+                            <div class="card medium center-align">
+                                <div class="card-image">
+                                    <img src="{{ category_book.image }}">
                                 </div>
-                                <div class="col s6">
-                                    <button type="submit" class="btn-small btn-green waves-effect waves-light">
-                                            Opinion
-                                    </button>
+                                <div class="card-content">
+                                    <h6>{{ category_book.title }}</h6>
+                                    <p>{{ category_book.author }}</p>
+                                </div>
+                                <div class="card-action">
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <a href="#" class="btn-small btn-red wave-effect wave-ligth">Buy</a>
+                                        </div>
+                                        <div class="col s6">
+                                            <a href="/get_book/{{ category_book._id }}" class="btn-small btn-green waves-effect waves-light">
+                                                    More
+                                            </a>
+                                        </div>
+                                        <div class="col s6">
+                                            <a class="btn-small btn-green waves-effect waves-light modal-trigger" href="#modal1">Opinion</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    {% endfor %}
                 </div>
-                <div class="col s12 m6 xl4">
-                    <div class="card medium center-align">
-                        <div class="card-image">
-                            <img src="http://books.google.com/books/content?id=i55yDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api">
-                        </div>
-                        <div class="card-content">
-                            <h6>Den inofficiella Harry Potter-kokboken</h6>
-                            <p>Dinah Bucholz * 2013-06-08</p>
-                        </div>
-                        <div class="card-action">
-                            <div class="row">
-                                <a href="#" class="btn-small btn-red wave-effect wave-ligth">Buy</a>
-                            </div>
-                            <div class="row">
-                                <div class="col s6">
-                                    <a href="/get_book/5fcdd55a9fe0284fdf4cae5a" class="btn-small btn-green waves-effect waves-light">
-                                            More
-                                    </a>
-                                </div>
-                                <div class="col s6">
-                                    <button type="submit" class="btn-small btn-green waves-effect waves-light">
-                                            Opinion
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% endif %}
         </div>
     </section>  
     
