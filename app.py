@@ -21,12 +21,29 @@ mongo = PyMongo(app)
 @app.route("/", methods=["GET", "POST"])
 @app.route("/get_books", methods=["GET", "POST"])
 def get_books():
+    if request.method == "POST":
+        category = request.form.get("category")
+        print(category)
+        category_books = list(
+            mongo.db.books.find(
+                {"category_group": category}
+                ).sort("average_grade", -1).limit(10)
+        )
+        contains_category = 1
+        print(contains_category)
+    else:
+        category_books = []
+        contains_category = 0
+        print(contains_category)
+
     books = mongo.db.books.find()
     category_groups = list(mongo.db.category_groups.find())
     # Do not want to send ObjectId
     group_names = [item["group_name"] for item in category_groups]
     return render_template(
-        "books.html", books=books, category_groups=group_names)
+        "books.html", books=books, category_groups=group_names,
+        contains_category=contains_category, category_books=category_books
+    )
 
 
 @app.route("/get_book/<book_id>")

@@ -123,9 +123,12 @@
             <div class="row">
                 <div class="col s6 m3">
                     <div class="card-panel bgr-darkgreen">
-                        <button type="submit" class="btn-small bgr-black text-light" onclick="findCategory('Thriller')">
-                            Thriller
-                        </button>
+                        <form method="POST" action="{{ url_for('get_books') }}">
+                            <input type="hidden" id="category1" name="category" value="Historical fiction"> 
+                            <button type="submit" class="btn-small bgr-black text-light">
+                                Historical fiction
+                            </button>
+                        </form>
                     </div>
                 </div>
                 <div class="col s6 m3">
@@ -254,7 +257,11 @@
     {% for book in books %}
         {{ book.title }}<br>
     {% endfor %}
-
+    {{ contains_category }}
+    {% for book in category_books %}
+        {{ book.title }}<br>
+    {% endfor %}
+    
     {% if session.username %}
         <div id="book" class="row">
             <div class="center-align">
