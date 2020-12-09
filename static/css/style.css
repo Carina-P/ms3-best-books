@@ -131,7 +131,7 @@ nav .brand-logo{
     padding: 1rem;
 }
 #search_results .card .card-image img,
-#search_results .card .card-image img{
+#search_category .card .card-image img{
     height: 100%;
     width: auto;
     margin-top: 1rem;
