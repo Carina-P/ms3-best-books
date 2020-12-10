@@ -123,11 +123,11 @@
             <div class="row">
                 {% for category_group in category_groups %}
                     <div class="col s6 m3">
-                        <div class="card-panel bgr-sandy">
+                        <div class = "card-panel bgr-{{ category_group.colour }}" >
                             <form method="POST" action="{{ url_for('get_books') }}">
-                                <input type="hidden" name="category" value="{{ category_group }}"> 
+                                <input type="hidden" name="category" value="{{ category_group.group_name }}"> 
                                 <button type="submit" class="btn-small bgr-black text-light" onclick="moveTo()">
-                                    {{ category_group }}
+                                    {{ category_group.group_name }}
                                 </button>
                             </form>
                         </div>

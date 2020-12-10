@@ -69,7 +69,7 @@ function bookToDocument(book){
                             <select id="category_group" name="category_group" class="validate" required>
                                 <option value="" disabled selected>Choose Category Group</option>`;
     for (category_group of category_groups){
-        text += `              <option value="${category_group}">${category_group}</option>`;
+        text += `              <option value="${category_group.group_name}">${category_group.group_name}</option>`;
     }
     text += `               </select>
                         </div>
