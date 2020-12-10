@@ -21,6 +21,10 @@ function cancelAddBook(){
     window.location.href="#book";
 }
 
+function moveTo(){
+    window.location.href="#search_category";
+}
+
 function bookToDocument(book){
     console.log(book);
 

@@ -121,44 +121,18 @@
         <div class="center-align">
             <h3>Most Popular in Category</h3>
             <div class="row">
-                <div class="col s6 m3">
-                    <div class="card-panel bgr-darkgreen">
-                        <form method="POST" action="{{ url_for('get_books') }}">
-                            <input type="hidden" id="category1" name="category" value="Historical fiction"> 
-                            <button type="submit" class="btn-small bgr-black text-light">
-                                Historical fiction
-                            </button>
-                        </form>
+                {% for category_group in category_groups %}
+                    <div class="col s6 m3">
+                        <div class="card-panel bgr-sandy">
+                            <form method="POST" action="{{ url_for('get_books') }}">
+                                <input type="hidden" name="category" value="{{ category_group }}"> 
+                                <button type="submit" class="btn-small bgr-black text-light" onclick="moveTo()">
+                                    {{ category_group }}
+                                </button>
+                            </form>
+                        </div>
                     </div>
-                </div>
-                <div class="col s6 m3">
-                    <div class="card-panel bgr-sandy">
-                        <button type="submit" class="btn-small bgr-black text-light" onclick="findCategory('Fiction')">
-                            Fiction
-                        </button>
-                    </div>
-                </div>
-                <div class="col s6 m3">
-                    <div class="card-panel bgr-orange">
-                        <button type="submit" class="btn-small bgr-black text-light" onclick="findCategory('Contemporary')">
-                            Contemporary
-                        </button>
-                    </div>
-                </div>
-                <div class="col s6 m3">
-                    <div class="card-panel bgr-brown">
-                        <button type="submit" class="btn-small bgr-black text-light" onclick="findCategory('Romance')">
-                            Romance
-                        </button>
-                    </div>
-                </div>
-                <div class="col s6 m3">
-                    <div class="card-panel bgr-acid">
-                        <button type="submit" class="btn-small bgr-black text-light" onclick="findCategory('Other')">
-                            Other
-                        </button>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
 
