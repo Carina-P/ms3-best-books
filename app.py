@@ -149,6 +149,37 @@ def add_book():
     return redirect(url_for("get_books"))
 
 
+@app.route("/add_opinion", methods=["GET", "POST"])
+def add_opinion():
+    book_id = request.form.get("book_id")
+    grade_str = request.form.get("grade_m")
+    review = request.form.get("review_m")
+    if not(review) and not(grade_str):
+        flash("No opinion added since you gave no values")
+        return redirect(url_for("get_books"))
+
+    if grade_str:
+        grade = int(grade_str)
+        book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
+        print(book)
+        no_of_votes = book["no_of_votes"] + 1
+        new_average = (
+            int(book["average_grade"]) * int(book["no_of_votes"]) + grade
+            )/no_of_votes
+        new_grading = {
+            "average_grade": new_average,
+            "no_of_votes": no_of_votes
+        }
+        mongo.db.books.update_one(
+            {"_id": ObjectId(book_id)}, {"$set": new_grading})
+
+    book_details = mongo.db.books_details.find_one(
+        {"book_id": ObjectId(book_id)}
+    )
+
+    return redirect(url_for("get_books"))
+
+
 @app.route("/sign_up", methods=["GET", "POST"])
 def sign_up():
     if request.method == "POST":

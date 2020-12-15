@@ -38,7 +38,7 @@
                             <a href="/get_book/{{ best_book.book._id }}" class="btn-large btn-green waves-effect waves-light">
                                 Book Details
                             </a>
-                            <button type="submit" class="btn-large btn-green waves-effect waves-light" onclick="addOpinion()">
+                            <button type="submit" class="btn-large btn-green waves-effect waves-light" onclick="addOpinion('{{ best_book.book._id }}', '{{ best_book.book.title }}', 'popular')">
                                 Add opinion
                             </button>
                         </div>
@@ -54,10 +54,11 @@
         -->
 
     <!-- Modal Structure from Materialize -->
-    <div id="modal1" class="modal modal-fixed-footer">
+    <div id="modal" class="modal modal-fixed-footer">
         <div class="modal-content">
             <h4 id="modal_header"></h4>
-            <form>
+            <form id="modal_form" method="POST" action="{{ url_for('add_opinion') }}">
+                <div id="hidden_input"></div>
                 <div class="input-field">
                     <label for="grade_m"></label>
                     <select id="grade_m" name="grade_m" class="validate">
@@ -125,7 +126,7 @@
                                             </a>
                                         </div>
                                         <div class="col s6">
-                                            <a class="btn-small btn-green waves-effect waves-light modal-trigger" href="#modal1">Opinion</a>
+                                            <a class="btn-small btn-green waves-effect waves-light modal-trigger" href="#modal">Opinion</a>
                                         </div>
                                     </div>
                                 </div>
