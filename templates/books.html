@@ -15,70 +15,34 @@
         </div>
         <!-- Code inspired by Materialize -->
         <div class="carousel carousel-slider">
-            <div class="carousel-item" href="{{ best_books[0].href }}">
-                <div class="card center-align">
-                    <div class="card-content row">
-                        <div class="col s6">
-                            <img src="{{ best_books[0].book.image }}">
+            {% for best_book in best_books %}
+                <div class="carousel-item" href="#{{ best_book.number }}!">
+                    <div class="card center-align">
+                        <div class="card-content row">
+                            <div class="col s6">
+                                <img src="{{ best_book.book.image }}">
+                            </div>
+                            <div class="col s6">
+                                <h6>Number {{ best_book.number }}:</h6>
+                                <p> {{ best_book.book.title }} <br>
+                                    {{ best_book.book.author }}<br>
+                                    {{ best_book.book.published_date }}<br><br>
+                                    <i class="fas fa-star">{{ best_book.book.average_grade }}</i><br>
+                                </p>
+                            </div>
                         </div>
-                        <div class="col s6">
-                            <h6>Number 1:</h6>
-                            <p> {{ best_books[0].book.title }} <br>
-                                R.K.Rowling<br>
-                                2006<br><br>
-                                <i class="fas fa-star">4,8</i><br>
-                                "Best book I ever read!"
-                            </p>
+                        <div class="card-action">
+                            <button type="submit" class="btn-large btn-red waves-effect waves-light">
+                                Buy
+                            </button>
+                            <a href="/get_book/{{ best_book.book._id }}" class="btn-large btn-green waves-effect waves-light">
+                                Book Details
+                            </a>
+                            <a class="btn-large btn-green waves-effect waves-light modal-trigger" href="#modal1">Add opinion</a>
                         </div>
-                    </div>
-                    <div class="card-action">
-                        <button type="submit" class="btn-large btn-red waves-effect waves-light">
-                            Buy
-                        </button>
-                        <a href="/get_book/5fcdd55a9fe0284fdf4cae5a" class="btn-large btn-green waves-effect waves-light">
-                            Book Details
-                        </a>
-                        <a class="btn-large btn-green waves-effect waves-light modal-trigger" href="#modal1">Add opinion</a>
                     </div>
                 </div>
-            </div>
-                    <div class="carousel-item amber white-text" href="#two!">
-                        <h2>Second Panel</h2>
-                        <p class="white-text">This is your second panel</p>
-                    </div>
-                    <div class="carousel-item green white-text" href="#three!">
-                        <h2>Third Panel</h2>
-                        <p class="white-text">This is your third panel</p>
-                    </div>
-                    <div class="carousel-item blue white-text" href="#four!">
-                        <h2>Fourth Panel</h2>
-                        <p class="white-text">This is your fourth panel</p>
-                    </div>
-                    <div class="carousel-item blue white-text" href="#five!">
-                        <h2>5 Panel</h2>
-                        <p class="white-text">This is your fourth panel</p>
-                    </div>
-                    <div class="carousel-item blue white-text" href="#six!">
-                        <h2>6 Fourth Panel</h2>
-                        <p class="white-text">This is your fourth panel</p>
-                    </div>
-                    <div class="carousel-item blue white-text" href="#seven!">
-                        <h2> 7 Fourth Panel</h2>
-                        <p class="white-text">This is your fourth panel</p>
-                    </div>
-                    <div class="carousel-item blue white-text" href="#eight!">
-                        <h2>8 Fourth Panel</h2>
-                        <p class="white-text">This is your fourth panel</p>
-                    </div>
-                    <div class="carousel-item blue white-text" href="#nine!">
-                        <h2>9 Fourth Panel</h2>
-                        <p class="white-text">This is your fourth panel</p>
-                    </div>
-                    <div class="carousel-item blue white-text" href="#ten!">
-                        <h2>10 Fourth Panel</h2>
-                        <p class="white-text">This is your fourth panel</p>
-                    </div>
-                    
+            {% endfor %}
         </div>
         <!--
         <div class="middle">
