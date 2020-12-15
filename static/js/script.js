@@ -258,3 +258,19 @@ function searchAuthor(group_names){
     let search_author = $("#search_author").val();
     searchForBooks("inauthor", search_author);
 }
+
+function modalFooterToDocument(title, called_from){
+    text = `<a href="#${called_from}" class="modal-close btn-small btn-red waves-effect">Cancel</a>
+            <button type="submit" class="btn-small btn-green waves-effect">
+                Add
+            </button>`;
+    
+    return text;
+    
+}
+
+function addOpinion(){
+    $("#modal_header").html("Harry Potter");
+    $("#modal_buttons").html(modalFooterToDocument("Harry Potter", "popular"));
+    $('.modal').modal('open');
+}

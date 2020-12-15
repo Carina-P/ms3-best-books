@@ -38,7 +38,9 @@
                             <a href="/get_book/{{ best_book.book._id }}" class="btn-large btn-green waves-effect waves-light">
                                 Book Details
                             </a>
-                            <a class="btn-large btn-green waves-effect waves-light modal-trigger" href="#modal1">Add opinion</a>
+                            <button type="submit" class="btn-large btn-green waves-effect waves-light" onclick="addOpinion()">
+                                Add opinion
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -54,7 +56,7 @@
     <!-- Modal Structure from Materialize -->
     <div id="modal1" class="modal modal-fixed-footer">
         <div class="modal-content">
-            <h4>Harry Potter och dödsrelikerna</h4>
+            <h4 id="modal_header"></h4>
             <form>
                 <div class="input-field">
                     <label for="grade_m"></label>
@@ -73,12 +75,7 @@
                 </div>
             </form>
         </div>
-        <div class="modal-footer">
-            <a href="#popular" class="modal-close btn-small btn-red waves-effect">Cancel</a>
-            <button type="submit" class="btn-small btn-green waves-effect">
-                Add
-            </button>
-        </div>
+        <div id="modal_buttons" class="modal-footer"></div>
     </div>
     </section>
 
@@ -173,7 +170,7 @@
                                         </button>
                                     </div>
                                 </form>
-                                <form id="author_form" onsubmit="searchAuthor({{category_groups}}); return false">
+                                <form id="author_form" onsubmit="searchAuthor({{ category_groups }}); return false">
                                     <div class="input-field col s12 m7">
                                         <input id="search_author" name="search_author" placeholder="Authors full name or part of name" maxlength="30"
                                             type="text" class="validate" required>
