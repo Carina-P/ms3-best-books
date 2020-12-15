@@ -8,21 +8,22 @@
             </div>
         </div>
     </section>
+
     <section id="popular" class="container">
         <div class="center-align">
             <h3>10 Most Popular Books</h3>
         </div>
         <!-- Code inspired by Materialize -->
         <div class="carousel carousel-slider">
-            <div class="carousel-item" href="#one!">
+            <div class="carousel-item" href="{{ best_books[0].href }}">
                 <div class="card center-align">
                     <div class="card-content row">
                         <div class="col s6">
-                            <img src="http://books.google.com/books/content?id=DKcWE3WXoj8C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api">
+                            <img src="{{ best_books[0].book.image }}">
                         </div>
                         <div class="col s6">
                             <h6>Number 1:</h6>
-                            <p> Harry Potter och dödsrelikerna <br>
+                            <p> {{ best_books[0].book.title }} <br>
                                 R.K.Rowling<br>
                                 2006<br><br>
                                 <i class="fas fa-star">4,8</i><br>
@@ -176,8 +177,8 @@
     </section>  
     
 
-    {% for book in books %}
-        {{ book.title }}<br>
+    {% for book in best_books %}
+        {{ book.book.title }}<br>
     {% endfor %}
     {{ contains_category }}
     {% for book in category_books %}

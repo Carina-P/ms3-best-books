@@ -17,8 +17,18 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
+def get_best_books():
+    href_list = ["#one!", "#two!", "#three!", "#four!", "#five!", "#six!", "#seven!", "#eight!", "#nine!", "#ten!"]
+    ten_best_books = mongo.db.books.find().sort("average_grade", -1).limit(10)
+    index = 0
+    best_books = []
+    for book in ten_best_books:
+        best_books.append({"book": book, "href": href_list[index]})
+        index += 1
 
-def getColours():
+    return best_books
+
+def get_colours():
     return [
         'darkgreen', 'sandy', 'orange', 'brown',
         'acid'
@@ -41,12 +51,13 @@ def get_books():
         category_books = []
         contains_category = 0
 
-    books = mongo.db.books.find()
+    best_books = get_best_books()
+
     cat_groups = list(mongo.db.category_groups.find())
     # Do not want to send ObjectId
     group_names = []
     print(cat_groups[0]['group_name'])
-    colours = getColours()
+    colours = get_colours()
     length = len(colours)
     index = 0
     for group in cat_groups:
@@ -60,7 +71,7 @@ def get_books():
     print(group_names)
     # group_names = [item["group_name"] for item in category_groups]
     return render_template(
-        "books.html", books=books, category_groups=group_names,
+        "books.html", best_books=best_books, category_groups=group_names,
         contains_category=contains_category, category=category,
         category_books=category_books
     )
