@@ -40,6 +40,24 @@ def get_colours():
         ]
 
 
+def get_groups():
+    cat_groups = list(mongo.db.category_groups.find())
+    category_groups = []
+    colours = get_colours()
+    length = len(colours)
+    index = 0
+    for group in cat_groups:
+        category_groups.append(
+            {
+                "group_name": group['group_name'],
+                "colour": colours[index % length]
+            }
+        )
+        index += 1
+
+    return category_groups
+
+
 @app.route("/", methods=["GET", "POST"])
 @app.route("/get_books", methods=["GET", "POST"])
 def get_books():
@@ -58,25 +76,10 @@ def get_books():
 
     best_books = get_best_books()
 
-    cat_groups = list(mongo.db.category_groups.find())
-    # Do not want to send ObjectId
-    group_names = []
-    print(cat_groups[0]['group_name'])
-    colours = get_colours()
-    length = len(colours)
-    index = 0
-    for group in cat_groups:
-        group_names.append(
-            {
-                "group_name": group['group_name'],
-                "colour": colours[index % length]
-            }
-        )
-        index += 1
-    print(group_names)
-    # group_names = [item["group_name"] for item in category_groups]
+    category_groups = get_groups()
+
     return render_template(
-        "books.html", best_books=best_books, category_groups=group_names,
+        "books.html", best_books=best_books, category_groups=category_groups,
         contains_category=contains_category, category=category,
         category_books=category_books
     )
