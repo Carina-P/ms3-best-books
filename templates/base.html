@@ -25,10 +25,10 @@
         <nav>
             <div class="nav-wrapper">
                 <ul class="left hide-on-med-and-down">
-                    <li><a href="#">Popular</a></li>
-                    <li><a href="#">Category Groups</a></li>
+                    <li><a href="/#popular">Popular</a></li>
+                    <li><a href="/#categories">Category Groups</a></li>
                     {% if session.username %}
-                        <li><a href="#">Add Book</a></li>
+                        <li><a href="/#book">Add Book</a></li>
                     {% endif %}
                 </ul>
 
@@ -51,13 +51,13 @@
         <!-- mobile sidenav-->
         <ul class="sidenav" id="mobile-dev">
             <li><h4 class="center-align text-red dark-shadow">the.Best.Books</h4></li>
-            <li><a href="#" class="center-align">Popular</a></li>
-            <li><a href="#" class="center-align">Category Groups</a></li>
+            <li><a href="/#popular" class="center-align">Popular</a></li>
+            <li><a href="/#categories" class="center-align">Category Groups</a></li>
             {% if session.username %}
                 <li><a href="{{ url_for('get_category_groups') }}" class="center-align">Manage Category Groups</a></li>
                 <li><a href="{{ url_for('logout') }}" class="center-align">Log Out</a></li>
             {% else %}
-                <li><a href="#" class="center-align">Add Book</a></li>
+                <li><a href="/#book" class="center-align">Add Book</a></li>
                 <li><a href="{{ url_for('login') }}" class="center-align">Log In</a></li>
                 <li><a href="{{ url_for('sign_up') }}" class="center-align">Sign Up</a></li>
             {% endif %}
