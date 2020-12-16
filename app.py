@@ -156,16 +156,15 @@ def add_book():
 
 @app.route("/delete_book/<id>")
 def delete_book(id):
-    mongo.db.books.remove({"_id": ObjectId(id)})
-    mongo.db.books_details.remove({"book_id": ObjectId(id)})
-    mongo.db.reviews.remove({"book_id": ObjectId(id)})
+    mongo.db.books.delete_one({"_id": ObjectId(id)})
+    mongo.db.books_details.delete_one({"book_id": ObjectId(id)})
+    mongo.db.reviews.delete_many({"book_id": ObjectId(id)})
     flash("Book Successfully Deleted")
     return redirect(url_for("get_books"))
 
 
 @app.route("/add_opinion/<return_to>", methods=["GET", "POST"])
 def add_opinion(return_to):
-    print(return_to)
     book_id = request.form.get("book_id")
     grade_str = request.form.get("grade_m")
     review = request.form.get("review_m")
@@ -176,7 +175,7 @@ def add_opinion(return_to):
     if grade_str:
         grade = int(grade_str)
         book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
-        print(book)
+
         no_of_votes = int(book["no_of_votes"]) + 1
         new_average = (
             float(book["average_grade"]) * int(book["no_of_votes"]) + grade
@@ -225,6 +224,53 @@ def add_opinion(return_to):
     if return_to == 'details':
         return redirect(url_for("get_book", book_id=book_id))
     return redirect(url_for("get_books"))
+
+
+@app.route("/delete_opinion/<book_id>/<review_id>")
+def delete_opinion(book_id, review_id):
+    opinion = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
+    if not opinion:
+        flash("Something went wrong")
+        return redirect(url_for("get_book", book_id=book_id))
+
+    mongo.db.reviews.delete_one({"_id": ObjectId(review_id)})
+
+    book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
+    if opinion["grade"] and opinion["grade"] != "0":
+        if book["no_of_votes"] < 2:
+            no_of_votes = 0
+            average_grade = 0
+        else:
+            no_of_votes = book["no_of_votes"]-1
+            average_grade = (
+                float(book["average_grade"]) * int(book["no_of_votes"])
+                - int(opinion["grade"]))/no_of_votes
+        new_grading = {
+            "average_grade": average_grade,
+            "no_of_votes": no_of_votes
+        }
+        mongo.db.books.update_one(
+            {"_id": ObjectId(book_id)}, {"$set": new_grading})
+
+    book_details = mongo.db.books_details.find_one(
+        {"book_id": ObjectId(book_id)}
+    )
+    review_list = book_details["reviews_max5"]
+    found = False
+    for item in review_list:
+        if str(item["review_id"]) == review_id:
+            place = review_list.index(item)
+            found = True
+    if found:
+        review_list.pop(place)
+        update_details = {
+            "reviews_max5": review_list
+        }
+        mongo.db.books_details.update_one(
+            {"book_id": ObjectId(book_id)}, {"$set": update_details})
+
+    flash("Opinion Successfully Deleted")
+    return redirect(url_for("get_book", book_id=book_id))
 
 
 @app.route("/sign_up", methods=["GET", "POST"])
@@ -312,7 +358,6 @@ def edit_group(id):
         new_name = {
             "group_name": request.form.get("group_name")
         }
-        print(new_name)
         mongo.db.category_groups.update({"_id": ObjectId(id)}, new_name)
         flash("Category Group Succesfully Updated")
         return redirect(url_for("get_category_groups"))
