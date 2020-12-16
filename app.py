@@ -149,8 +149,9 @@ def add_book():
     return redirect(url_for("get_books"))
 
 
-@app.route("/add_opinion", methods=["GET", "POST"])
-def add_opinion():
+@app.route("/add_opinion/<return_to>", methods=["GET", "POST"])
+def add_opinion(return_to):
+    print(return_to)
     book_id = request.form.get("book_id")
     grade_str = request.form.get("grade_m")
     review = request.form.get("review_m")
@@ -205,6 +206,8 @@ def add_opinion():
     mongo.db.reviews.insert_one(add_review)
     flash("Opinion Successfully Added")
 
+    if return_to == 'details':
+        return redirect(url_for("get_book", book_id=book_id))
     return redirect(url_for("get_books"))
 
 

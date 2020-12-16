@@ -57,7 +57,7 @@
     <div id="modal" class="modal modal-fixed-footer">
         <div class="modal-content">
             <h4 id="modal_header"></h4>
-            <form id="modal_form" method="POST" action="{{ url_for('add_opinion') }}">
+            <form id="modal_form" method="POST" action="{{ url_for('add_opinion', return_to='books') }}">
                 <div id="hidden_input"></div>
                 <div class="input-field">
                     <label for="grade_m"></label>
