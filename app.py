@@ -131,11 +131,13 @@ def add_book():
                 "book_id": result.inserted_id
             }
             review_result = mongo.db.reviews.insert_one(reviews)
+
             opinion = {
+                "_id": review_result.inserted_id,
                 "grade": grade,
                 "review": review,
                 "added_by": username,
-                "review_id": review_result.inserted_id
+                "book_id": result.inserted_id
                 }
             reviews_max5.append(opinion)
 
@@ -193,27 +195,19 @@ def add_opinion(return_to):
         "added_by": session["username"],
         "book_id": ObjectId(book_id)
     }
-    review_result = mongo.db.reviews.insert_one(add_review)
+    mongo.db.reviews.insert_one(add_review)
 
-    book_details = mongo.db.books_details.find_one(
-        {"book_id": ObjectId(book_id)}
-    )
-    review_max5 = {
-        "grade": grade_str,
-        "review": review,
-        "added_by": session["username"],
-        "review_id": review_result.inserted_id
-    }
-    new_list = book_details["reviews_max5"]
-    new_list.insert(0, review_max5)
-    if len(new_list) > 5:
-        new_list.pop()
+    reviews_max5 = list(mongo.db.reviews.find(
+        {"book_id": ObjectId(book_id)}).sort("_id", -1).limit(6))
+
+    if len(reviews_max5) > 5:
+        reviews_max5.pop()
         more_reviews = "y"
     else:
         more_reviews = "n"
 
     update_details = {
-        "reviews_max5": new_list,
+        "reviews_max5": reviews_max5,
         "more_reviews": more_reviews
     }
     mongo.db.books_details.update_one(
