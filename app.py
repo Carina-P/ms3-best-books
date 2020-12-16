@@ -220,6 +220,59 @@ def add_opinion(return_to):
     return redirect(url_for("get_books"))
 
 
+@app.route("/change_opinion", methods=["GET", "POST"])
+def change_opinion():
+    book_id = request.form.get("book_id")
+    review_id = request.form.get("review_id")
+    grade_str = request.form.get("grade_m2")
+    review = request.form.get("review_m2")
+    if not(review) and not(grade_str):
+        flash("Something is wrong")
+        return redirect(url_for("get_book"))
+
+    old_review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
+    if (old_review["grade"] != grade_str):
+        grade_diff = int(old_review["grade"]) - int(grade_str)
+        book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
+
+        no_of_votes = int(book["no_of_votes"])
+        new_average = (
+            float(book["average_grade"]) * int(
+                book["no_of_votes"]) + grade_diff)/no_of_votes
+        new_grading = {
+            "average_grade": new_average
+        }
+        mongo.db.books.update_one(
+            {"_id": ObjectId(book_id)}, {"$set": new_grading})
+
+    change_review = {
+        "grade": grade_str,
+        "review": review
+    }
+    mongo.db.reviews.update_one(
+        {"_id": ObjectId(review_id)}, {"$set": change_review})
+
+    reviews_max5 = list(mongo.db.reviews.find(
+        {"book_id": ObjectId(book_id)}).sort("_id", -1).limit(6))
+
+    if len(reviews_max5) > 5:
+        reviews_max5.pop()
+        more_reviews = "y"
+    else:
+        more_reviews = "n"
+
+    update_details = {
+        "reviews_max5": reviews_max5,
+        "more_reviews": more_reviews
+    }
+    mongo.db.books_details.update_one(
+            {"book_id": ObjectId(book_id)}, {"$set": update_details})
+
+    flash("Opinion Successfully Changed")
+
+    return redirect(url_for("get_book", book_id=book_id))
+
+
 @app.route("/delete_opinion/<book_id>/<review_id>")
 def delete_opinion(book_id, review_id):
     opinion = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})

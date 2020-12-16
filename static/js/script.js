@@ -13,7 +13,8 @@ $(document).ready(function(){
         $('.carousel.carousel-slider').carousel('prev');
     });
 */
-    $('.modal').modal();
+    $('#modal').modal();
+    $('#modal2').modal();
 });
 
 function cancelAddBook(){
@@ -272,5 +273,42 @@ function addOpinion(book_id, title, called_from){
     $("#modal_header").html(title);
     $("#hidden_input").html(`<input type="hidden" name="book_id" value="${book_id}"></input>`);
     $("#modal_buttons").html(modalFooterToDocument(called_from));
-    $('.modal').modal('open');
+    $('#modal').modal('open');
+}
+
+function modal2Select(grade){
+    text = `<label for="grade_m"></label>
+            <select id="grade_m" name="grade_m" class="validate">
+                <option value="" disabled>Grade book</option>`;
+    for (i=0; i<5; i++){
+        console.log(grade);
+        console.log(Number(grade));
+        if (i == Number(grade)){
+            text += `<option value="${i}" selected>${i}</option>`;
+        }
+        else{
+            text += `<option value="${i}">${i}</option>`;
+        }
+    }
+    text += `</select>`;
+    return text;
+}
+
+function modal2FooterToDocument(){
+    text = `<a href="#details" class="modal-close btn-small btn-red waves-effect">Cancel</a>
+            <button type="submit" form="modal2_form" class="btn-small btn-green waves-effect">
+                Submit
+            </button>`;
+    
+    return text;   
+}
+
+function changeOpinion(book_id, title, review_id, grade, review){
+    $("#modal2_header").html(title);
+    $("#hidden2_input").html(`<input type="hidden" name="book_id" value="${book_id}"></input>
+        <input type="hidden" name="review_id" value="${review_id}"></input>`);
+    $("#grade_m2").html(modal2Select(grade));
+    $("#review_m2").html(review)
+    $("#modal2_buttons").html(modal2FooterToDocument());
+    $('#modal2').modal('open');
 }
