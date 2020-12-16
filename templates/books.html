@@ -4,7 +4,7 @@
         <div class="center-align">
             <h3>Search for book in this database</h3>
             <div class="card">
-                <div class="card-content"></div>
+                <div class="card-content">Not yet implemented</div>
             </div>
         </div>
     </section>
@@ -108,12 +108,9 @@
                     {% for category_book in category_books %}
                         <div class="col s12 m6 xl4">
                             <div class="card medium center-align">
-                                <div class="card-image">
-                                    <img src="{{ category_book.image }}">
-                                </div>
                                 <div class="card-content">
+                                    <img src="{{ category_book.image }}">
                                     <h6>{{ category_book.title }}</h6>
-                                    <p>{{ category_book.author }}</p>
                                 </div>
                                 <div class="card-action">
                                     <div class="row">
