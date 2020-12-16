@@ -162,9 +162,9 @@ def add_opinion():
         grade = int(grade_str)
         book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
         print(book)
-        no_of_votes = book["no_of_votes"] + 1
+        no_of_votes = int(book["no_of_votes"]) + 1
         new_average = (
-            int(book["average_grade"]) * int(book["no_of_votes"]) + grade
+            float(book["average_grade"]) * int(book["no_of_votes"]) + grade
             )/no_of_votes
         new_grading = {
             "average_grade": new_average,
@@ -176,6 +176,24 @@ def add_opinion():
     book_details = mongo.db.books_details.find_one(
         {"book_id": ObjectId(book_id)}
     )
+    review_max5 = {
+        "grade": grade_str,
+        "review": review,
+        "added_by": session["username"]
+    }
+    new_list = book_details["reviews_max5"]
+    new_list.insert(0, review_max5)
+    if len(new_list) > 5:
+        new_list.pop()
+        more_reviews = "y"
+    else:
+        more_reviews = "n"
+    update = {
+        "reviews_max5": new_list,
+        "more_reviews": more_reviews
+    }
+    mongo.db.books_details.update_one(
+            {"book_id": ObjectId(book_id)}, {"$set": update})
 
     return redirect(url_for("get_books"))
 
