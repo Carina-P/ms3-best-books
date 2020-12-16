@@ -25,9 +25,11 @@
                                 <a href="{{url_for('get_books')}}" class="btn-large btn-red waves-effect waves-light">
                                     Done
                                 </a>
-                                <button type="submit" class="btn-large btn-green waves-effect waves-light" onclick="addOpinion('{{ book._id }}', '{{ book.title }}', 'details')">
-                                    Add opinion
-                                </button>    
+                                {% if session.username %}
+                                    <button type="submit" class="btn-large btn-green waves-effect waves-light" onclick="addOpinion('{{ book._id }}', '{{ book.title }}', 'details')">
+                                        Add opinion
+                                    </button>  
+                                {% endif %}  
                             </div>
                         </div>
                         {% for review in book_details.reviews_max5 %}
