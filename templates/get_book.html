@@ -37,14 +37,17 @@
                             Opinion added by user <em>{{ review.added_by }}</em>:<br>
                             <strong>Grade:</strong> {{ review.grade }}<br>
                             "{{ review.review }}"
-                            <div class="center-align">
-                                <a class="btn-small btn-red waves-effect waves-light">
-                                    Delete
-                                </a>
-                                <a class="btn-small btn-green waves-effect waves-light modal-trigger">
-                                    Change
-                                </a>
-                            </div>
+                        
+                            {% if session.username == review.added_by %}
+                                <div class="center-align">
+                                    <a class="btn-small btn-red waves-effect waves-light">
+                                        Delete
+                                    </a>
+                                    <a class="btn-small btn-green waves-effect waves-light modal-trigger">
+                                        Change
+                                    </a>
+                                </div>
+                            {% endif %}
                         </div>
                         {% endfor%}
                     </div>
