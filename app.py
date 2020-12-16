@@ -149,6 +149,15 @@ def add_book():
     return redirect(url_for("get_books"))
 
 
+@app.route("/delete_book/<id>")
+def delete_book(id):
+    mongo.db.books.remove({"_id": ObjectId(id)})
+    mongo.db.books_details.remove({"book_id": ObjectId(id)})
+    mongo.db.reviews.remove({"book_id": ObjectId(id)})
+    flash("Book Successfully Deleted")
+    return redirect(url_for("get_books"))
+
+
 @app.route("/add_opinion/<return_to>", methods=["GET", "POST"])
 def add_opinion(return_to):
     print(return_to)
