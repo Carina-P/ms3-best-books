@@ -139,7 +139,7 @@ def add_book():
             "identifier": request.form.get("identifier"),
             "description": request.form.get("description"),
             "reviews_max5": reviews_max5,
-            "more_reviews": "False",
+            "more_reviews": "n",
             "book_id": result.inserted_id
         }
 
@@ -188,12 +188,22 @@ def add_opinion():
         more_reviews = "y"
     else:
         more_reviews = "n"
-    update = {
+
+    update_details = {
         "reviews_max5": new_list,
         "more_reviews": more_reviews
     }
     mongo.db.books_details.update_one(
-            {"book_id": ObjectId(book_id)}, {"$set": update})
+            {"book_id": ObjectId(book_id)}, {"$set": update_details})
+
+    add_review = {
+        "grade": grade_str,
+        "review": review,
+        "added_by": session["username"],
+        "book_id": ObjectId(book_id)
+    }
+    mongo.db.reviews.insert_one(add_review)
+    flash("Opinion Successfully Added")
 
     return redirect(url_for("get_books"))
 
