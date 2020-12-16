@@ -246,21 +246,20 @@ def delete_opinion(book_id, review_id):
         mongo.db.books.update_one(
             {"_id": ObjectId(book_id)}, {"$set": new_grading})
 
-    book_details = mongo.db.books_details.find_one(
-        {"book_id": ObjectId(book_id)}
-    )
-    review_list = book_details["reviews_max5"]
-    found = False
-    for item in review_list:
-        if str(item["review_id"]) == review_id:
-            place = review_list.index(item)
-            found = True
-    if found:
-        review_list.pop(place)
-        update_details = {
-            "reviews_max5": review_list
-        }
-        mongo.db.books_details.update_one(
+    reviews_max5 = list(mongo.db.reviews.find(
+        {"book_id": ObjectId(book_id)}).sort("_id", -1).limit(6))
+
+    if len(reviews_max5) > 5:
+        reviews_max5.pop()
+        more_reviews = "y"
+    else:
+        more_reviews = "n"
+
+    update_details = {
+        "reviews_max5": reviews_max5,
+        "more_reviews": more_reviews
+    }
+    mongo.db.books_details.update_one(
             {"book_id": ObjectId(book_id)}, {"$set": update_details})
 
     flash("Opinion Successfully Deleted")
