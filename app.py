@@ -124,15 +124,20 @@ def add_book():
         reviews_max5 = []
         review = request.form.get("review")
         if grade or review:
-            opinion = {"grade": grade, "review": review, "added_by": username}
-            reviews_max5.append(opinion)
             reviews = {
                 "grade": grade,
                 "review": review,
                 "added_by": username,
                 "book_id": result.inserted_id
             }
-            mongo.db.reviews.insert_one(reviews)
+            review_result = mongo.db.reviews.insert_one(reviews)
+            opinion = {
+                "grade": grade,
+                "review": review,
+                "added_by": username,
+                "review_id": review_result.inserted_id
+                }
+            reviews_max5.append(opinion)
 
         book_details = {
             "published_date": request.form.get("published_date"),
@@ -183,13 +188,22 @@ def add_opinion(return_to):
         mongo.db.books.update_one(
             {"_id": ObjectId(book_id)}, {"$set": new_grading})
 
+    add_review = {
+        "grade": grade_str,
+        "review": review,
+        "added_by": session["username"],
+        "book_id": ObjectId(book_id)
+    }
+    review_result = mongo.db.reviews.insert_one(add_review)
+
     book_details = mongo.db.books_details.find_one(
         {"book_id": ObjectId(book_id)}
     )
     review_max5 = {
         "grade": grade_str,
         "review": review,
-        "added_by": session["username"]
+        "added_by": session["username"],
+        "review_id": review_result.inserted_id
     }
     new_list = book_details["reviews_max5"]
     new_list.insert(0, review_max5)
@@ -206,13 +220,6 @@ def add_opinion(return_to):
     mongo.db.books_details.update_one(
             {"book_id": ObjectId(book_id)}, {"$set": update_details})
 
-    add_review = {
-        "grade": grade_str,
-        "review": review,
-        "added_by": session["username"],
-        "book_id": ObjectId(book_id)
-    }
-    mongo.db.reviews.insert_one(add_review)
     flash("Opinion Successfully Added")
 
     if return_to == 'details':
