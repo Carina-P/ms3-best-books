@@ -28,7 +28,7 @@ body{
     color: #32292f;
 }
 .btn-green{
-    background-color: #2a9d8f;
+    background-color: #264653;
     color: #ffffff;
     text-shadow: 1px 1px 1px rgba(0,0,0,1);
 }
@@ -75,14 +75,14 @@ body{
 
 /* Header */
 nav, .sidenav {
-    background-color: #e0dde3;
-    color: #32292f;
+    background-color: #264653;
+    color: #ffffff;
 } 
 nav a, nav ul a{
-    color: #32292f;
+    color: #ffffff;
 }
 nav .brand-logo{
-    color: #cc2936;
+    color: #f4a261;
 }
 
 /* Carousel

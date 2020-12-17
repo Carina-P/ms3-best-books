@@ -35,8 +35,7 @@ def get_best_books():
 
 def get_colours():
     return [
-        'darkgreen', 'sandy', 'orange', 'brown',
-        'acid'
+        'acid', 'darkgreen', 'green', 'sandy', 'orange', 'red', 'brown'
         ]
 
 
