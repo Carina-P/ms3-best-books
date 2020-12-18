@@ -19,16 +19,12 @@ mongo = PyMongo(app)
 
 
 def get_best_books():
-    number_list = [
-        "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
-        "ten"
-        ]
     ten_best_books = mongo.db.books.find().sort("average_grade", -1).limit(10)
-    index = 0
+    number_count = 1
     best_books = []
     for book in ten_best_books:
-        best_books.append({"book": book, "number": number_list[index]})
-        index += 1
+        best_books.append({"book": book, "number": number_count})
+        number_count += 1
 
     return best_books
 

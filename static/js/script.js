@@ -4,7 +4,7 @@ let category_groups = [];
 $(document).ready(function(){
     $('.sidenav').sidenav({edge:"right"});
     $('select').formSelect();
-    $('.carousel.carousel-slider').carousel();
+    
 /*
     $('#next').click( () => {
         $('.carousel.carousel-slider').carousel('next');

@@ -17,7 +17,10 @@ body{
 }
 .light-shadow{
     text-shadow: 2px 2px 2px rgba(255,252,242,1);
-} 
+}
+.text-white{
+    color: #ffffff;
+}
 .text-red{
     color: #cc2936;
 }
