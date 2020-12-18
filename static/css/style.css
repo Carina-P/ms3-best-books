@@ -103,27 +103,18 @@ nav .brand-logo{
     top: 50%;
 }
 */
-.middle {
-    position: absolute;
-    top:40%;
-    width:48%;
-}
-#prev {
-    position: absolute;
-    left: 1rem;
-    color: #000000;
-    background: #ffffff;
+#next, #prev{
+    /*position: absolute;
+    right: 0.5rem;*/
     font-size: 2rem;
     border-radius: 50px;
-}
-#next {
-    position: absolute;
-    right: 0.5rem;
-    color: #000000;
     background: #ffffff;
-    font-size: 2rem;
-    border-radius: 50px;
+    color: #000000;
 }
+.carousel-indicators li {
+    filter: invert(100%);
+}
+
 
 /* Books: Add book section */
 #search_results .card .card-content,
