@@ -23,6 +23,8 @@ def get_best_books():
     number_count = 1
     best_books = []
     for book in ten_best_books:
+        average_grade = round(float(book["average_grade"]), 1)
+        book["average_grade"] = average_grade
         best_books.append({"book": book, "number": number_count})
         number_count += 1
 
