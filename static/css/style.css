@@ -77,15 +77,11 @@ body{
 }
 
 /* Header */
-nav, .sidenav {
-    background-color: #264653;
-    color: #ffffff;
-} 
-nav a, nav ul a{
-    color: #ffffff;
-}
-nav .brand-logo{
+.navbar-brand{
     color: #f4a261;
+}
+.navbar, a{
+    color: #ffffff;
 }
 
 /* Carousel
