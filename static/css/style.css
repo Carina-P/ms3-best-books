@@ -75,6 +75,10 @@ body{
 .bgr-brown{
     background-color: #774936;
 }
+.img-fluid{
+    width: 100%;
+    height: auto;
+}
 
 /* Header */
 .navbar-brand{
@@ -145,6 +149,11 @@ img.left{
 .review_list{
     border-style: solid;
     padding: 1em;
+}
+
+/* Log In */
+input, input-field{
+    border-style: none none solid none;
 }
 
 /* For a responsive site */
