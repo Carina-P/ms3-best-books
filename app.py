@@ -319,15 +319,15 @@ def delete_opinion(book_id, review_id):
     return redirect(url_for("get_book", book_id=book_id))
 
 
-@app.route("/sign_up", methods=["GET", "POST"])
-def sign_up():
+@app.route("/signup", methods=["GET", "POST"])
+def signup():
     if request.method == "POST":
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
 
         if existing_user:
             flash("Username already exists")
-            return redirect(url_for("sign_up"))
+            return redirect(url_for("signup", login=False))
 
         sign_up = {
             "username": request.form.get("username").lower(),
@@ -340,7 +340,7 @@ def sign_up():
         flash("Sign Up successfull")
         return redirect(url_for("get_books"))
 
-    return render_template("sign_up.html")
+    return render_template("login.html", login=False)
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -359,13 +359,13 @@ def login():
                 return redirect(url_for("get_books"))
             else:
                 flash("Incorrect Username and/or Password")
-                return redirect(url_for("login"))
+                return redirect(url_for("login", login=True))
 
         else:
             flash("Incorrect Username and/or Password")
-            return redirect(url_for("login"))
+            return redirect(url_for("login", login=True))
 
-    return render_template("login.html")
+    return render_template("login.html", login=True)
 
 
 @app.route("/logout")

@@ -26,13 +26,13 @@
 <body>
     <header>
         <!-- Code inspired from Bootstrap -->
-        <nav class="navbar navbar-expand-lg bgr-darkgreen white-text">
+        <nav class="navbar navbar-expand-lg bgr-darkgreen">
             <a class="navbar-toggler navbar-brand dark-shadow mx-auto" href="/">the Best Books</a>
             <button class="navbar-toggler bgr-white" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
             </button>
 
-            <div class="collapse navbar-collapse white-text" id="navbarToggler">
+            <div class="collapse navbar-collapse" id="navbarToggler">
                 <div class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <a class="nav-item nav-link" href="/#popular">Popular</a>
                     <a class="nav-item nav-link" href="/#categories">Category Groups</a>
@@ -47,54 +47,11 @@
                         <a class="nav-item nav-link" href="{{ url_for('logout') }}">Log Out</a>
                     {% else %}
                         <a class="nav-item nav-link" href="{{ url_for('login') }}">Log In</a>
-                        <a class="nav-item nav-link" href="{{ url_for('sign_up') }}">Sign Up</a>
+                        <a class="nav-item nav-link" href="{{ url_for('signup') }}">Sign Up</a>
                     {% endif %}
                 </div>
             </div>
         </nav>
-        <!-- top navbar
-        <nav>
-            <div class="nav-wrapper">
-                <ul class="left hide-on-med-and-down">
-                    <li><a href="/#popular">Popular</a></li>
-                    <li><a href="/#categories">Category Groups</a></li>
-                    {% if session.username %}
-                        <li><a href="/#book">Add Book</a></li>
-                    {% endif %}
-                </ul>
-
-                <a href="/" class="brand-logo center dark-shadow">the·Best·Books</a>
-                
-                <ul class="right hide-on-med-and-down">
-                    {% if session.username %}
-                        <li><a href="{{ url_for('get_category_groups') }}">Manage Category Groups</a></li>
-                        <li><a href="{{ url_for('logout') }}">Log Out</a></li>
-                    {% else %}
-                        <li><a href="{{ url_for('login') }}">Log In</a></li>
-                        <li><a href="{{ url_for('sign_up') }}">Sign Up</a></li>
-                    {% endif %}
-                </ul>
-
-                <a href="#" data-target="mobile-dev" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
-            </div>
-        </nav>
-
-        <!-- mobile sidenav
-        <ul class="sidenav" id="mobile-dev">
-            <li><h4 class="center-align text-red dark-shadow">the.Best.Books</h4></li>
-            <li><a href="/#popular" class="center-align">Popular</a></li>
-            <li><a href="/#categories" class="center-align">Category Groups</a></li>
-            {% if session.username %}
-                <li><a href="{{ url_for('get_category_groups') }}" class="center-align">Manage Category Groups</a></li>
-                <li><a href="{{ url_for('logout') }}" class="center-align">Log Out</a></li>
-            {% else %}
-                <li><a href="/#book" class="center-align">Add Book</a></li>
-                <li><a href="{{ url_for('login') }}" class="center-align">Log In</a></li>
-                <li><a href="{{ url_for('sign_up') }}" class="center-align">Sign Up</a></li>
-            {% endif %}
-            
-        </ul>
-    -->
 
     </header>
 
