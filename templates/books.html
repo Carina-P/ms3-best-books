@@ -18,11 +18,11 @@
 
             <!-- Indicators -->
             <ul class="carousel-indicators">
-                {% for best_book in best_books %}
-                     {% if best_book.number == 1 %}
-                        <li data-target="#popular_carousel" data-slide-to="{{ best_book.number-1 }}" class="active"></li>
+                {% for count in range(10) %}
+                     {% if count == 1 %}
+                        <li data-target="#popular_carousel" data-slide-to="{{ count }}" class="active"></li>
                     {% else %}
-                        <li data-target="#popular_carousel" data-slide-to="{{ best_book.number-1 }}"></li>
+                        <li data-target="#popular_carousel" data-slide-to="{{ count }}"></li>
                     {% endif %}
                 {% endfor %}
             </ul>
@@ -56,11 +56,13 @@
                                 <div class="row d-none d-md-block mt-2">
                                     <div class="col">
                                         <p>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star-half-alt"></i>
-                                            <i class="far fa-star"></i> {{ best_book.book.average_grade }} <br>
+                                            {% for count in range(best_book.stars) %}
+                                                <i class="fas fa-star"></i>
+                                            {% endfor %}
+                                            {% for count in range(5 - best_book.stars) %}
+                                                <i class="far fa-star"></i>
+                                            {% endfor %}
+                                            {{ best_book.book.average_grade }} <br>
                                             {{ best_book.book.author }}<br>
                                             {{ best_book.book.published_date }}
                                         </p>
