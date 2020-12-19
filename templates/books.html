@@ -1,15 +1,74 @@
 {% extends "base.html" %}
 {% block content %}
     <section id="search_for_book" class="container">
-        <div class="center-align">
+        <div class="text-center mt-5">
             <h3>Search for book in this database</h3>
-            <div class="card">
-                <div class="card-content">Not yet implemented</div>
+            <div class="card mt-2">
+                <div class="card-content">
+                    <form>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <button type="submit" class="btn btn-green input-group-text" id="search_icon"><i class="fas fa-search"></i></button>
+                            </div>
+                            <input type="text" class="form-control validate" placeholder="Title or Author" minlength="3" maxlenght="15" required aria-label="search" aria-describedby="search_icon">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="search_book_results" class="mt-5">
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <div class="card h-100 text-center">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <h5>Harry Potter och den flammande bägaren</h5>
+                            </div>
+                            <img src="http://books.google.com/books/content?id=M1FVAgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" alt="">
+                            <div class="card-text">
+                                J.K.Rowling<br>
+                                <i class="fas fa-star"></i>4.6<br>
+                            </div>
+                        </div>
+                        <div class="card-footer bgr-white">
+                            <button class="btn btn-green">
+                                <a href="#" class="text-white">Book details</a>
+                            </button>
+                            <button type="submit" class="btn btn-green">
+                                    Add opinion
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="card h-100 text-center">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <h5>Harry Potter och den flammande bägaren och så kommer en liten bit till för att testa</h5>
+                            </div>
+                            <img src="http://books.google.com/books/content?id=NdtGNCK69WQC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" alt="">
+                            <div class="card-text">
+                                J.K.Rowling<br>
+                                <i class="fas fa-star"></i>4.6<br>
+                            </div>
+                        </div>
+                        <div class="card-footer bgr-white">
+                            <button class="btn btn-green">
+                                <a href="#" class="text-white">Book details</a>
+                            </button>
+                            <button type="submit" class="btn btn-green">
+                                    Add opinion
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="popular" class="container w-75">
+    <section id="popular" class="container w-75 mt-5">
         <div class="text-center">
             <h2>10 Most Popular Books</h2>
         </div>
