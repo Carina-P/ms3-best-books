@@ -60,8 +60,11 @@
         {% with messages = get_flashed_messages() %}
             {% if messages %}
                 {% for message in messages %}
-                    <div class="row bgr-acid text-dark center-align">
-                        <h5>{{ message }}</h5>
+                    <div class="row bgr-acid text-dark text-center mt-3 mb-3">
+                        <div class="col">
+                            <h5>{{ message }}</h5>
+                            
+                        </div>
                     </div>
                 {% endfor %}
             {% endif %}
