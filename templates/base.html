@@ -25,6 +25,8 @@
 </head>
 <body>
     <header>
+        {% block header %}
+        {% endblock %}
         <!-- Code inspired from Bootstrap -->
         <nav class="navbar navbar-expand-lg bgr-darkgreen">
             <a class="navbar-toggler navbar-brand dark-shadow mx-auto" href="/">the Best Books</a>
@@ -62,8 +64,7 @@
                 {% for message in messages %}
                     <div class="row bgr-acid text-dark text-center mt-3 mb-3">
                         <div class="col">
-                            <h5>{{ message }}</h5>
-                            
+                            <h5>{{ message }}</h5>         
                         </div>
                     </div>
                 {% endfor %}

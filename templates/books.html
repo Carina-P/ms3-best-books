@@ -1,14 +1,28 @@
 {% extends "base.html" %}
+
+{% block header %}
+
+    <div class="image-fluid">
+            <img src="/static/images/books.jpg" alt="Card image" style="width:100%">
+    </div>
+
+{% endblock %}
+
 {% block content %}
-    {% include "modal.html" %}
+
+{% include "modal.html" %}
+
     <section id="search_for_book" class="container">
         <div class="text-center mt-5">
             <h3>Search for book in this database</h3>
-            <div class="card img-fluid mt-2">
+            <div class="card">
+
+                <!--img-fluid mt-2">
                 <img class="card-img-top" src="/static/images/books.jpg" alt="Card image" style="width:100%">
                 <div class="card-img-overlay">
+                -->
                     <div class="card-content">
-                        <form method="POST" action="{{ url_for('search') }}" class="w-50 mx-auto">
+                        <form method="POST" action="{{ url_for('search') }}">
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <button type="submit" class="btn btn-green input-group-text" id="search_icon"><i class="fas fa-search"></i></button>
@@ -17,7 +31,7 @@
                             </div>
                         </form>
                     </div>
-                </div>
+                
             </div>
         </div>
     </section>
