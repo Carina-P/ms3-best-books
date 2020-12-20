@@ -89,9 +89,11 @@
                                     <a href="/get_book/{{ best_book.book._id }}" class="text-white">Book Details</a>
                                 </button>
                             </div>
-                            <div class="col text-center text-md-left">
-                                <button type="submit" class="btn btn-green" onclick="addOpinion('{{ best_book.book._id }}', '{{ best_book.book.title }}', 'popular')">Add opinion</button>
-                            </div>
+                            {% if session.username %}
+                                <div class="col text-center text-md-left">
+                                    <button type="submit" class="btn btn-green" onclick="addOpinion('{{ best_book.book._id }}', '{{ best_book.book.title }}', 'popular')">Add opinion</button>
+                                </div>
+                            {% endif %}
                         </div>
                     </div>
                 {% endfor %}
