@@ -270,10 +270,9 @@ function modalFooterToDocument(called_from){
 }
 
 function addOpinion(book_id, title, called_from){
-    $("#modal_header").html(title);
+    $("#book_title").html(title);
     $("#hidden_input").html(`<input type="hidden" name="book_id" value="${book_id}"></input>`);
-    $("#modal_buttons").html(modalFooterToDocument(called_from));
-    $('#modal').modal('open');
+    $('#modal').modal('show');
 }
 
 function modal2Select(grade){
