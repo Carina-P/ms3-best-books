@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
-    <div id="details" class="row">
-        <div class="center-align">
+    <div id="details" class="container">
+        <div class="text-center m-5">
             <h2>Book Details</h2>
         </div>
-        <div class="col s12 m10 offset-m1">
-            <div class="card">
-                    <div class="card-content bgr-white">
-                        <h3>{{book.title}}</h3>
+        <div class="card m-3">
+            
+                    <div class="card-content bgr-white m-5">
+                        <h3 class="mb-3">{{book.title}}</h3>
                         <img class="left" src="{{book.image}}">
                         <p>
                             <strong>Author/s:</strong> {{book.author}}<br>
@@ -20,18 +20,18 @@
                             <strong>Image link:</strong> {{book.image}}<br><br>
                             <strong>Book added by user:</strong> <em>{{ book.added_by}}</em>
                         </p>
-                        <div class="row">
-                            <div class="col s12 center-align">
-                                <a href="{{url_for('get_books')}}" class="btn-large btn-green waves-effect waves-light">
+                        <div class="row mb-3">
+                            <div class="col s12 text-center">
+                                <a href="{{url_for('get_books')}}" class="btn btn-lg btn-green">
                                     Done
                                 </a>
                                 {% if session.username %}
-                                    <button type="submit" class="btn-large btn-green waves-effect waves-light" onclick="addOpinion('{{ book._id }}', '{{ book.title }}', 'details')">
+                                    <button type="submit" class="btn btn-lg btn-green" onclick="addOpinion('{{ book._id }}', '{{ book.title }}', 'details')">
                                         Add opinion
                                     </button>  
                                 {% endif %}
                                 {% if session.username == book.added_by %}
-                                    <a href="{{ url_for('delete_book', id=book._id) }}" class="btn-large btn-red waves-effect waves-light">
+                                    <a href="{{ url_for('delete_book', id=book._id) }}" class="btn btn-lg btn-red">
                                         Delete Book
                                     </a>
                                 {% endif %}
@@ -44,20 +44,20 @@
                             "{{ review.review }}"
                         
                             {% if session.username == review.added_by %}
-                                <div class="center-align">
-                                    <a href="{{ url_for('delete_opinion', book_id=book._id, review_id=review._id) }}" class="btn-small btn-red waves-effect waves-light">
-                                        Delete 
-                                    </a>
-                                    <button type="submit" class="btn-small btn-green waves-effect waves-light" 
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-sm btn-green" 
                                         onclick="changeOpinion('{{ book._id }}', '{{ book.title }}', '{{ review._id }}', '{{ review.grade }}', '{{ review.review }}')">
                                         Change
                                     </button>
+                                    <a href="{{ url_for('delete_opinion', book_id=book._id, review_id=review._id) }}" class="btn btn-sm btn-red">
+                                        Delete 
+                                    </a>
                                 </div>
                             {% endif %}
                         </div>
                         {% endfor%}
                     </div>
-            </div>
+            
         </div>
     </div>
 

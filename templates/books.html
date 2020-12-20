@@ -98,16 +98,18 @@
                             </div>
                         </div>
                         <div class="row mt-3 mr-2 ml-2 mb-4">
-                            <div class="col text-center text-md-right">
-                                <button class="btn btn-green">
-                                    <a href="/get_book/{{ best_book.book._id }}" class="text-white">Book Details</a>
-                                </button>
-                            </div>
                             {% if session.username %}
-                                <div class="col text-center text-md-left">
+                                <div class="col text-center text-md-right">
                                     <button type="submit" class="btn btn-green" onclick="addOpinion('{{ best_book.book._id }}', '{{ best_book.book.title }}', 'popular')">Add opinion</button>
                                 </div>
+                                <div class="col text-center text-md-left">
+                            {% else %}
+                                <div class="col text-center">
                             {% endif %}
+                                <button class="btn btn-green">
+                                        <a href="/book/{{ best_book.book._id }}" class="text-white">Book Details</a>
+                                    </button>
+                                </div>
                         </div>
                     </div>
                 {% endfor %}

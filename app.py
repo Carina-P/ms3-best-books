@@ -85,7 +85,7 @@ def get_books():
     )
 
 
-@app.route("/get_book/<book_id>")
+@app.route("/book/<book_id>")
 def get_book(book_id):
     book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
     book_details = mongo.db.books_details.find_one(
@@ -93,7 +93,7 @@ def get_book(book_id):
     )
 
     return render_template(
-        "get_book.html", book=book, book_details=book_details
+        "book.html", book=book, book_details=book_details
     )
 
 

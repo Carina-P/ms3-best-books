@@ -141,9 +141,10 @@ textarea.materialize-textarea{
      height: 4rem;
 }
 /* Get book */
-img.left{
+.left{
     margin-right: 1em;
-    margin-botton: 1em;
+    margin-bottom: 1em;
+    float: left;
 }
 .review_list{
     border-style: solid;
@@ -156,8 +157,11 @@ input, input-field{
 }
 
 /* For a responsive site */
-@media screen and (max-width: 400px){
+@media screen and (max-width: 576px){
     html{
         font-size: 14px;
+    }
+    .left{
+        float:none;
     }
 }
