@@ -97,6 +97,24 @@ def get_book(book_id):
     )
 
 
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    search_str = request.form.get("title_or_author")
+    books = list(
+            mongo.db.books.find({"title": {
+                "$regex": ".*" + search_str + ".*"
+            }})
+        )
+
+    if not(books):
+        flash("Sorry, there is no book in database matching your input")
+        return redirect(url_for("get_books"))
+
+    return render_template(
+        "search.html", books=books
+    )
+
+
 @app.route("/add_book", methods=["GET", "POST"])
 def add_book():
     if request.method == "POST":
