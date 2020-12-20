@@ -118,11 +118,6 @@ body{
     filter: invert(100%);
 }
 
-/* Search_for_book section */
-#search_card{
-    background-image: url('/static/images/books.jpg');
-    background-repeat: no-repeat;
-}
 /* Books: Add book section */
 #search_results .card .card-content,
 #search_category .card .card-content{
