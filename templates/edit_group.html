@@ -1,32 +1,26 @@
 {% extends "base.html" %}
 {% block content %}
-    <div class="row">
-        <div class="center-align">
+    <div class="container">
+        <div class="text-center m-5">
             <h2>Edit Category Group</h2>
         </div>
-        <div class="col s12 m10 offset-m1">
-            <div class="card">
-                <form class="col s12" method="POST" action="{{ url_for('edit_group', id=group._id) }}">
-                    <div class="card-content bgr-white">
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <input id="group_name" name="group_name" placeholder="Name of new category group" minlength="3" maxlength="25"
-                                    type="text" value="{{ group.group_name }}" class="validate" required>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col s12 center-align">
-                                <a href="{{url_for('get_category_groups')}}" class="btn-large btn-red waves-effect waves-light">
-                                    Cancel <i class="fas fa-times-circle right"></i>
-                                </a>
-                                <button type="submit" class="btn-large btn-green waves-effect waves-light">
-                                    Submit <i class="fas fa-plus-square right"></i>
-                                </button>
-                            </div>
-                        </div>
+        <div class="card">
+            <form method="POST" action="{{ url_for('edit_group', id=group._id) }}">
+                <div class="card-body bgr-white">
+                    <div class="input-field col text-center">
+                        <input id="group_name" name="group_name" placeholder="Name of new category group" minlength="3" maxlength="25"
+                            type="text" value="{{ group.group_name }}" class="validate" required>
                     </div>
-                </form>
-            </div>
+                </div>
+                <div class="card-footer text-center">
+                    <a href="{{url_for('get_category_groups')}}" class="btn btn-lg btn-red">
+                        Cancel <i class="fas fa-times-circle"></i>
+                    </a>
+                    <button type="submit" class="btn btn-lg btn-green">
+                        Submit <i class="fas fa-plus-square"></i>
+                    </button>
+                </div>
+            </form>
         </div>
-    </div> 
+    </div>
 {% endblock %}
