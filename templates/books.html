@@ -19,7 +19,7 @@
                 <img class="card-img-top" src="/static/images/books.jpg" alt="Card image" style="width:100%">
                 <div class="card-img-overlay">
                 -->
-                    <div class="card-content">
+                    <div class="card-body">
                         <form method="POST" action="{{ url_for('search') }}">
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -121,34 +121,6 @@
                 <i id="next" class="fas fa-chevron-right"></i>
             </a>
         </div>
-
-        
-        <!-- Modal Structure from Materialize
-        <div id="modal" class="modal modal-fixed-footer">
-            <div class="modal-content">
-                <h4 id="modal_header"></h4>
-                <form id="modal_form" method="POST" action="{{ url_for('add_opinion', return_to='books') }}">
-                    <div id="hidden_input"></div>
-                    <div class="input-field">
-                        <label for="grade_m"></label>
-                        <select id="grade_m" name="grade_m" class="validate">
-                            <option value="" disabled selected>Grade book</option>
-                            <option value="5">5</option>
-                            <option value="4">4</option>
-                            <option value="3">3</option>
-                            <option value="2">2</option>
-                            <option value="1">1</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="review_m">Your review of the book</label>
-                        <textarea id="review_m" name="review_m"></textarea>
-                    </div>
-                </form>
-            </div>
-            <div id="modal_buttons" class="modal-footer"></div>
-        </div>
-    -->
     </section>
 
     <section id="categories">
@@ -212,43 +184,42 @@
     
     <section id="book">
     {% if session.username %}
-        <div class="row">
-            <div class="center-align">
+        <div class="container">
+            <div class="text-center m-5">
                 <h2>Add book</h2>
             </div>
-            <div>
-                <div class="col s12 m10 offset-m1">
-                    <div class="card">
-                        <div class="card-content">
-                            <div class="center-align">
-                                <p>Search in ... for a book you want to add to this site</p>
-                            </div>
-                            <div class="row">
-                                <form id="title_form" onsubmit="searchTitle({{category_groups}}); return false">
-                                    <div class="input-field col s12 m7">
-                                        <input id="search_title" name="search_title" placeholder="Full title or part of title" type="text" maxlength="30"
-                                            class="validate" required>
-                                    </div>
-                                    <div class="col s12 m5">
-                                        <button type="submit" class="btn-large btn-grey waves-effect waves-light">
-                                            <i class="fas fa-search"></i>  Title 
-                                        </button>
-                                    </div>
-                                </form>
-                                <form id="author_form" onsubmit="searchAuthor({{ category_groups }}); return false">
-                                    <div class="input-field col s12 m7">
-                                        <input id="search_author" name="search_author" placeholder="Authors full name or part of name" maxlength="30"
-                                            type="text" class="validate" required>
-                                    </div>
-                                    <div class="col s12 m5">
-                                        <button type="submit" class="btn-large btn-grey waves-effect waves-light">
-                                            <i class="fas fa-search"></i>  Author
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="text-center">
+                        <p>Search in Google Books to get information about book you want to add</p>
                     </div>
+                    <form id="title_form" onsubmit="searchTitle({{category_groups}}); return false">
+                        <div class="form-group">
+                            <div class="input-group mb-2 mr-sm-2">
+                                <div class="input-group-prepend">
+                                    <button type="submit" class="btn btn-sm btn-green">
+                                            <i class="fas fa-search"></i> Search Books
+                                    </button> 
+                                </div>
+                                <input id="search_title" name="search_title" placeholder="Full title or part of title" type="text" minlength="2" maxlength="30"
+                                    class="form-control was-validated" required>
+                            </div> 
+                        </div>
+                    </form>
+                    <form id="author_form" onsubmit="searchAuthor({{ category_groups }}); return false">
+                        <div class="form-group">
+                            <div class="input-group mb-2 mr-sm-2">
+                                <div class="input-group-prepend">
+                                    <button type="submit" class="btn btn-sm btn-green">
+                                        <i class="fas fa-search"></i> Search Books
+                                    </button>
+                                </div>
+                                <input id="search_author" name="search_author" placeholder="Authors full name or part of name" type="text" minlength="2" maxlength="30"
+                                    class="form-control was-validated" required>
+                            </div> 
+                        </div>
+                    </form>
+                    <img src="https://books.google.com/googlebooks/images/poweredby.png" alt="Search ">
                 </div>
             </div>
         </div>
