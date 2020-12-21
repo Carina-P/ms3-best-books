@@ -13,7 +13,16 @@
                         <p>
                             <strong>Author/s:</strong> {{book.author}}<br>
                             <strong>Published:</strong> {{ book_details.published_date }}<br>
-                            <strong>Grade:</strong> {{ book.average_grade }}<br><br>
+                            <strong>Grade:</strong>
+                            <span>
+                                {% for count in range(stars) %}
+                                    <i class="fas fa-star"></i>
+                                {% endfor %}
+                                {% for count in range(5 - stars) %}
+                                    <i class="far fa-star"></i>
+                                {% endfor %}
+                                {{ book.average_grade }}<br><br>
+                            </span>
                             <strong>Category:</strong> {{ book.category}}<br>
                             <strong>Category Group:</strong> {{ book.category_group}}<br><br>
                             <strong>Industry identifier:</strong> {{ book_details.identifier }}<br><br>

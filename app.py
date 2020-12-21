@@ -20,6 +20,7 @@ mongo = PyMongo(app)
 
 def get_best_books():
     ten_best_books = mongo.db.books.find().sort("average_grade", -1).limit(10)
+    
     number_count = 1
     best_books = []
     for book in ten_best_books:
@@ -88,12 +89,17 @@ def get_books():
 @app.route("/book/<book_id>")
 def get_book(book_id):
     book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
+
+    stars = int(round(float(book["average_grade"]), 0))
+    average_grade = round(float(book["average_grade"]), 1)
+    book["average_grade"] = average_grade
+
     book_details = mongo.db.books_details.find_one(
         {"book_id": ObjectId(book_id)}
     )
 
     return render_template(
-        "book.html", book=book, book_details=book_details
+        "book.html", book=book, book_details=book_details, stars=stars
     )
 
 
