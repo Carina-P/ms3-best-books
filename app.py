@@ -417,26 +417,28 @@ def add_group():
         flash("New Category group Added")
         return redirect(url_for("get_category_groups"))
 
-    return render_template("add_group.html")
+    return render_template("category_group.html")
 
 
-@app.route("/edit_group/<id>", methods=["GET", "POST"])
-def edit_group(id):
+@app.route("/edit_group/<category_group_id>", methods=["GET", "POST"])
+def edit_group(category_group_id):
     if request.method == "POST":
         new_name = {
             "group_name": request.form.get("group_name")
         }
-        mongo.db.category_groups.update({"_id": ObjectId(id)}, new_name)
+        mongo.db.category_groups.update({
+            "_id": ObjectId(category_group_id)}, new_name)
         flash("Category Group Succesfully Updated")
         return redirect(url_for("get_category_groups"))
 
-    group = mongo.db.category_groups.find_one({"_id": ObjectId(id)})
-    return render_template("edit_group.html", group=group)
+    group = mongo.db.category_groups.find_one({
+        "_id": ObjectId(category_group_id)})
+    return render_template("category_group.html", group=group, edit=True)
 
 
-@app.route("/delete_group/<id>")
-def delete_group(id):
-    mongo.db.category_groups.remove({"_id": ObjectId(id)})
+@app.route("/delete_group/<category_group_id>")
+def delete_group(category_group_id):
+    mongo.db.category_groups.remove({"_id": ObjectId(category_group_id)})
     flash("Category Group Successfully Deleted")
     return redirect(url_for("get_category_groups"))
 

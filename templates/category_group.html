@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="container">
+        <div class="text-center m-5">
+            {% if edit %}
+                <h2>Edit Category Group</h2>
+            {% else %}
+                <h2>Add Category Group</h2>
+            {% endif %}
+        </div>
+        <div class="card">
+            {% if edit %}
+                <form method="POST" action="{{ url_for('edit_group', category_group_id=group._id) }}" class="was-validated">
+            {% else %}
+                <form method="POST" action="{{ url_for('add_group') }}" class="was-validated">
+            {% endif %}
+                <div class="card-body bgr-white">
+                    <div class="input-field col text-center">
+                        {% if edit %}
+                            <input id="group_name" class="form-control" type="text" name="group_name" placeholder="Enter New Category Group" minlength="3" maxlength="25"
+                                type="text" value="{{ group.group_name }}" required>
+                        {% else %}
+                            <input id="group_name2" class="form-control" type="text" name="group_name" placeholder="Enter New Category Group" minlength="3" maxlength="25"
+                                type="text" value="" required>
+                        {% endif %}   
+                    </div>
+                    <div class="text-center mt-3">
+                        <a href="{{url_for('get_category_groups')}}" class="btn btn-lg btn-red">
+                            Cancel <i class="fas fa-times-circle"></i>
+                        </a>
+                        <button type="submit" class="btn btn-lg btn-green">
+                            Submit <i class="fas fa-plus-square"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
