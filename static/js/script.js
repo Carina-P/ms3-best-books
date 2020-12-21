@@ -166,45 +166,47 @@ function addBook(index){
 }
 
 function searchToDocument(){
-    let text = `<div class="center-align">
-                <h3>Search results:</h3>
-            </div>`;
+    let text = `<div class="text-center m-5">
+                    <h3>Search results:</h3>
+                </div>`;
     
     if (search_result.totalItems==0){
-        text += `<div>No books found with the input given.</div>`;
+        text += `<div class="text-center mt-3">No books found with the input given.</div>`;
     }
     else{
         let index = 0;
+        text += `<div class="row">`;
         for (book of search_result.items){
             if ("volumeInfo" in book){
-                text += `<div class="col s12 m6 l4">
-                            <div class="card medium center-align">`;
+                text += `<div class="col-12 col-md-6 col-lg-4 mb-3">
+                            <div class="card h-100 text-center">
+                                <div class="card-body">`;
                 
+                if ("title" in book.volumeInfo){
+                    text +=`<div class="card-title">
+                                <h6>${book.volumeInfo.title}</h6>
+                            </div>`;
+                }
                 if ("imageLinks" in book.volumeInfo){
                     if ("thumbnail" in book.volumeInfo.imageLinks){
-                        text += `   <div class="card-image">
-                                        <img src=${book.volumeInfo.imageLinks.thumbnail}>
-                                    </div>`;
+                        text += `<img src=${book.volumeInfo.imageLinks.thumbnail}>`;
                     }
                 }
-                text += `   <div class="card-content">`;
-                if ("title" in book.volumeInfo){
-                    text +=`        <h6>${book.volumeInfo.title}</h6>`;
-                }
-                text += `<p>`;
+       
+                text += `<div class="card-text">`;
                 if ("authors" in book.volumeInfo){
                     for (author of book.volumeInfo.authors){
                         text += `${author} · `;
                     }
                 }
                 if ("publishedDate" in book.volumeInfo){
-                    text += `${book.volumeInfo.publishedDate}`;
+                    text += `<br>${book.volumeInfo.publishedDate}`;
                 }
 
-                text += `   </p>
+                text += `   </div>
                         </div>
-                        <div class="card-action">
-                            <button type="submit" class="btn-small btn-green waves-effect waves-light" onclick="addBook(${index})">
+                        <div class="card-footer bgr-white">
+                            <button type="submit" class="btn btn-sm btn-green" onclick="addBook(${index})">
                                 Add this book
                             </button>
                         </div>
@@ -214,7 +216,9 @@ function searchToDocument(){
                 index++;
             }
         }
+        text += `</div>`;
     }
+
     $("#search_results").html(text);
     $("#add_book").html("");
     window.location.href="#search_results";
@@ -225,12 +229,9 @@ function searchForBooks(title_or_author, search_text){
         console.log("ingen info");
     }
     else{
-        console.log(search_text);
-        console.log(title_or_author);
         fetch("https://www.googleapis.com/books/v1/volumes?q="+ title_or_author + ":" + search_text + "&printType=books&projection=full&key=AIzaSyAa48h04CAMjJ1bVewMoBx-_8EZv1IBNpI")
         .then(res =>res.json())
         .then(res => {
-            console.log(res);
             search_result = res;
             searchToDocument();
         })
@@ -241,15 +242,12 @@ function searchForBooks(title_or_author, search_text){
 }
 
 function searchTitle(group_names){
-    console.log("Sök title");
     category_groups = group_names;
-    console.log(category_groups);
     let search_title = $("#search_title").val();
     searchForBooks("intitle", search_title);
 }
 
 function searchAuthor(group_names){
-    console.log("Sök författare");
     category_groups = group_names;
     let search_author = $("#search_author").val();
     searchForBooks("inauthor", search_author);
