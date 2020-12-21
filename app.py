@@ -246,15 +246,15 @@ def add_opinion(return_to):
 def change_opinion():
     book_id = request.form.get("book_id")
     review_id = request.form.get("review_id")
-    grade_str = request.form.get("grade_m2")
-    review = request.form.get("review_m2")
+    grade_str = request.form.get("grade_m")
+    review = request.form.get("review_m")
     if not(review) and not(grade_str):
         flash("Something is wrong")
-        return redirect(url_for("get_book"))
+        return redirect(url_for("get_book", book_id=book_id))
 
     old_review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
     if (old_review["grade"] != grade_str):
-        grade_diff = int(old_review["grade"]) - int(grade_str)
+        grade_diff = int(grade_str) - int(old_review["grade"])
         book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
 
         no_of_votes = int(book["no_of_votes"])

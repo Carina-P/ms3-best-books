@@ -255,28 +255,15 @@ function searchAuthor(group_names){
     searchForBooks("inauthor", search_author);
 }
 
-function modalFooterToDocument(called_from){
-    text = `<a href="#${called_from}" class="modal-close btn-small btn-red waves-effect">Cancel</a>
-            <button type="submit" form="modal_form" class="btn-small btn-green waves-effect">
-                Add
-            </button>`;
-    
-    return text;   
-}
-
 function addOpinion(book_id, title, called_from){
     $("#book_title").html(title);
     $("#hidden_input").html(`<input type="hidden" name="book_id" value="${book_id}">`);
     $('#modal').modal('show');
 }
 
-function modal2Select(grade){
-    text = `<label for="grade_m"></label>
-            <select id="grade_m" name="grade_m" class="validate">
-                <option value="" disabled>Grade book</option>`;
-    for (i=0; i<5; i++){
-        console.log(grade);
-        console.log(Number(grade));
+function selectToDocument(grade){
+    text = ``;
+    for (i=5; i>0; i--){
         if (i == Number(grade)){
             text += `<option value="${i}" selected>${i}</option>`;
         }
@@ -284,25 +271,15 @@ function modal2Select(grade){
             text += `<option value="${i}">${i}</option>`;
         }
     }
-    text += `</select>`;
     return text;
 }
 
-function modal2FooterToDocument(){
-    text = `<a href="#details" class="modal-close btn-small btn-red waves-effect">Cancel</a>
-            <button type="submit" form="modal2_form" class="btn-small btn-green waves-effect">
-                Submit
-            </button>`;
-    
-    return text;   
-}
-
 function changeOpinion(book_id, title, review_id, grade, review){
-    $("#modal2_header").html(title);
-    $("#hidden2_input").html(`<input type="hidden" name="book_id" value="${book_id}"></input>
-        <input type="hidden" name="review_id" value="${review_id}"></input>`);
-    $("#grade_m2").html(modal2Select(grade));
-    $("#review_m2").html(review)
-    $("#modal2_buttons").html(modal2FooterToDocument());
-    $('#modal2').modal('open');
+    $("#book_title").html(title);
+    $('#modal_form').attr('action', '/change_opinion');
+    $("#hidden_input").html(`<input type="hidden" name="book_id" value="${book_id}">
+        <input type="hidden" name="review_id" value="${review_id}">`);
+    $("#grade_m").html(selectToDocument(grade));
+    $("#review_m").html(review)
+    $('#modal').modal('show');
 }
