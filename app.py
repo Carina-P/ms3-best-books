@@ -233,9 +233,7 @@ def add_opinion(return_to):
 
     flash("Opinion Successfully Added")
 
-    # if return_to == 'details':
-    #    return redirect(url_for("get_book", book_id=book_id))
-    return redirect(url_for("get_books"))
+    return redirect(url_for("get_book", book_id=book_id))
 
 
 @app.route("/change_opinion", methods=["GET", "POST"])
