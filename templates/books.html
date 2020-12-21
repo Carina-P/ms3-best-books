@@ -10,8 +10,6 @@
 
 {% block content %}
 
-{% include "modal.html" %}
-
     <section id="search_for_book" class="container">
         <div class="text-center mt-5">
             <h3>Search for book in this database</h3>
@@ -259,5 +257,7 @@
         <div id="add_book"></div>
     {% endif %}
     </section>
+    
+    {% include "modal.html" %}
 
 {% endblock %}

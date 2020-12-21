@@ -1,10 +1,7 @@
 let search_result = {};
 let category_groups = [];
 
-$(document).ready(function(){
-    $('.sidenav').sidenav({edge:"right"});
-    $('select').formSelect();
-    
+$(document).ready(function(){    
 /*
     $('#next').click( () => {
         $('.carousel.carousel-slider').carousel('next');
@@ -13,8 +10,6 @@ $(document).ready(function(){
         $('.carousel.carousel-slider').carousel('prev');
     });
 */
-    $('#modal').modal();
-    $('#modal2').modal();
 });
 
 function cancelAddBook(){
@@ -271,7 +266,7 @@ function modalFooterToDocument(called_from){
 
 function addOpinion(book_id, title, called_from){
     $("#book_title").html(title);
-    $("#hidden_input").html(`<input type="hidden" name="book_id" value="${book_id}"></input>`);
+    $("#hidden_input").html(`<input type="hidden" name="book_id" value="${book_id}">`);
     $('#modal').modal('show');
 }
 
