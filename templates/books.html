@@ -124,62 +124,26 @@
     </section>
 
     <section id="categories">
-        <div class="center-align">
+        <div class="text-center m-5">
             <h3>Most Popular in Category</h3>
             <div class="row">
                 {% for category_group in category_groups %}
-                    <div class="col s6 m3">
-                        <div class = "card-panel bgr-{{ category_group.colour }}" >
-                            <form method="POST" action="{{ url_for('get_books') }}">
-                                <input type="hidden" name="category" value="{{ category_group.group_name }}"> 
-                                <button type="submit" class="btn-small bgr-black text-light" onclick="moveTo()">
-                                    {{ category_group.group_name }}
-                                </button>
-                            </form>
+                    <div class="col-6 col-md-3 mb-3">
+                        <div class="card bgr-{{ category_group.colour }} p-3">
+                            <div class = "card-content" >
+                                <form method="POST" action="{{ url_for('search_category') }}">
+                                    <input type="hidden" name="category" value="{{ category_group.group_name }}"> 
+                                    <button type="submit" class="btn btn-sm bgr-black text-light" onclick="moveTo()">
+                                        {{ category_group.group_name }}
+                                    </button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 {% endfor %}
             </div>
         </div>
 
-        <div id="search_category">
-            {% if contains_category==1 %}
-                <div class="center-align">
-                    <h3>Popular in Category {{category}}:</h3>
-                </div>
-                <div class="row">
-                    {% for category_book in category_books %}
-                        <div class="col s12 m6 xl4">
-                            <div class="card medium center-align">
-                                <div class="card-content">
-                                    <img src="{{ category_book.image }}">
-                                    <h6>{{ category_book.title }}</h6>
-                                </div>
-                                <div class="card-action">
-                                    <div class="row">
-                                        <div class="col s12">
-                                            <a href="#" class="btn-small btn-red wave-effect wave-ligth">Buy</a>
-                                        </div>
-                                        <div class="col s6">
-                                            <a href="/get_book/{{ category_book._id }}" class="btn-small btn-green waves-effect waves-light">
-                                                    More
-                                            </a>
-                                        </div>
-                                        {% if session.username %}
-                                            <div class="col s6">
-                                                <button type="submit" class="btn-small btn-green waves-effect waves-light" onclick="addOpinion('{{ category_book._id  }}', '{{ category_book.title }}', 'search_category')">
-                                                    Add opinion
-                                                </button>
-                                            </div>
-                                        {% endif %}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
-            {% endif %}
-        </div>
     </section>  
     
     <section id="book">

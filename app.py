@@ -62,27 +62,11 @@ def get_groups():
 @app.route("/", methods=["GET", "POST"])
 @app.route("/get_books", methods=["GET", "POST"])
 def get_books():
-    if request.method == "POST":
-        category = request.form.get("category")
-        category_books = list(
-            mongo.db.books.find(
-                {"category_group": category}
-                ).sort("average_grade", -1).limit(10)
-        )
-        contains_category = 1
-    else:
-        category = ""
-        category_books = []
-        contains_category = 0
-
     best_books = get_best_books()
-
     category_groups = get_groups()
 
     return render_template(
-        "books.html", best_books=best_books, category_groups=category_groups,
-        contains_category=contains_category, category=category,
-        category_books=category_books
+        "books.html", best_books=best_books, category_groups=category_groups
     )
 
 
@@ -120,7 +104,7 @@ def search():
         book["average_grade"] = average_grade
 
     return render_template(
-        "search.html", books=books
+        "search_result.html", books=books
     )
 
 
@@ -444,6 +428,25 @@ def delete_group(category_group_id):
     mongo.db.category_groups.remove({"_id": ObjectId(category_group_id)})
     flash("Category Group Successfully Deleted")
     return redirect(url_for("get_category_groups"))
+
+
+@app.route("/search/category", methods=["GET", "POST"])
+def search_category():
+    category = request.form.get("category")
+    category_books = list(
+        mongo.db.books.find(
+            {"category_group": category}
+            ).sort("average_grade", -1).limit(10)
+        )
+
+    if not(category_books):
+        flash("No books in that category group in database")
+        return redirect(url_for("get_books"))
+
+    return render_template(
+        "search_result.html", books=category_books,
+        show_category=True, category=category
+    )
 
 
 if __name__ == "__main__":

@@ -1,11 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
     <div id="search_book_results" class="mt-5">
-        <div class="text-center">
-            <h2 class="mb-3">Your search result:</h2>
-            <button class="btn btn-lg btn-green mb-3">
+        <button class="btn btn-lg btn-green mb-3">
                 <a href="/" class="text-white">Return</a>
-            </button>
+        </button>
+        <div class="text-center">
+            {% if show_category %}
+                <h2 class="mb-3">Most Popular in Category Group {{ category }}:</h2>
+            {% else %}
+                <h2 class="mb-3">Your search result:</h2>
+            {% endif %}
         </div>
         
         <div class="row">
