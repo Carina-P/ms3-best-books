@@ -66,6 +66,17 @@
                             {% endif %}
                         </div>
                         {% endfor%}
+
+                        <div class="row">
+                            <div class="col-12">
+                                <p class="text-center">
+                                {% if book_details.more_reviews == "y" %}
+                                    Book have more reviews
+                                    <a href="{{ url_for('get_reviews', book_id=book._id, title=book.title) }}">See all reviews</a>
+                                {% endif %}
+                                </p>
+                            </div>
+                        </div>
                     </div>
             
         </div>

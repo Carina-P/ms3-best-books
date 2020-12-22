@@ -88,10 +88,10 @@ def get_book(book_id):
 @app.route("/search", methods=["GET", "POST"])
 def search():
     search_str = request.form.get("title_or_author")
-    books = list(mongo.db.books.find({"title": {
-                "$regex": ".*" + search_str + ".*"
-            }}
-        ))
+    books = list(mongo.db.books.find({"$or": [
+        {"title": {"$regex": ".*" + search_str + ".*"}},
+        {"author": {"$regex": ".*" + search_str + ".*"}}
+        ]}))
 
     if not(books):
         flash("Sorry, there is no book in database matching your input")
@@ -326,6 +326,15 @@ def delete_opinion(book_id, review_id):
     return redirect(url_for("get_book", book_id=book_id))
 
 
+@app.route("/reviews/<book_id>/<title>", methods=["GET", "POST"])
+def get_reviews(book_id, title):
+    reviews = list(mongo.db.reviews.find(
+        {"book_id": ObjectId(book_id)})
+    )
+
+    return render_template("reviews.html", reviews=reviews, title=title)
+
+
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
     if request.method == "POST":
@@ -460,7 +469,7 @@ def search_category():
 
     for book in category_books:
         book["avg_gr_rounded"] = round(float(book["average_grade"]), 1)
-    
+
     return render_template(
         "search_result.html", books=category_books,
         show_category=True, category=category

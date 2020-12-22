@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content%}
+    <div class="container text-center">
+        <div class="m-5">
+                <h2>All reviews for:  "{{ title }}"</h2>
+        </div>
+        <div class="card bgr-white">
+            <div class="card-content">
+               {% for review in reviews %}
+                    <div class="review_list">
+                        Opinion added by user <em>{{ review.added_by }}</em>:<br>
+                        <strong>Grade:</strong> {{ review.grade }}<br>
+                        "{{ review.review }}"
+                        
+                        {% if session.username == review.added_by %}
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-sm btn-green" onclick="changeOpinion('{{ review.book_id }}', '{{ title }}',
+                                    '{{ review._id}}', '{{ review.grade }}', '{{ review.review }}')">
+                                    Change
+                                </button>
+                                <a href="{{ url_for('delete_opinion', book_id=review.book_id, review_id=review._id) }}" class="btn btn-sm btn-red">
+                                    Delete 
+                                </a>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor%}
+            </div>
+        </div>
+    </div>
+{% endblock %}
