@@ -17,7 +17,7 @@
                         <div class="card">
                             <div class="card-body bgr-white text-center">
                                 <h5 class="card-title">{{ group.group_name }}</h5>
-                                <a href="{{ url_for('edit_group', category_group_id=group._id) }}" class="btn btn-green">Edit</a>
+                                <a href="{{ url_for('edit_group', category_group_id=group._id, old_group_name=group.group_name) }}" class="btn btn-green">Edit</a>
                                 <a href="{{ url_for('delete_group', category_group_id=group._id, category_group=group.group_name) }}" class="btn btn-red">Delete</a>
                             </div>
                         </div>
