@@ -22,14 +22,8 @@ function moveTo(){
 }
 
 function bookToDocument(book){
-    console.log(book);
-
-    let text = `<div class="text-center">
-                    <h3>Book to Add</h3>
-                </div>
-                <div class="text-center">
-                    <p>Choose category group(mandatory) and give your opinion(voluntary) of the book, before you add it.<br>
-                    More book information below (if you can not see whole text: resizing is possible by pointing and moving the bottom right corner).</p>
+    let text = `<div class="text-center mt-3">
+                    <h3>Retrieved information about the Book</h3>
                 </div>
                 <div class="col-12">
                     <div class="card">
@@ -48,7 +42,7 @@ function bookToDocument(book){
         if("title" in book.volumeInfo){  
             text += `<div class="col-12 form-group">
                                 <label for="title">Title:</label>
-                                <input id="title" name="title" type="text" value="${book.volumeInfo.title}" class="form-control readonly>
+                                <textarea id="title" name="title" class="form-control" readonly>${book.volumeInfo.title}</textarea>
                             </div>`;
         }
         
@@ -56,90 +50,97 @@ function bookToDocument(book){
             let categories = book.volumeInfo.categories.join(" · ");
             text += `       <div class="col-12 form-group">
                                 <label for="category">Category/ies:</label>
-                                <input id="category" name="category" type="text" value="${categories}" class="form-control" readonly>
+                                <textarea id="category" name="category" class="form-control" readonly>${categories}</textarea>
                             </div>`; 
         }
     }
-
-    text += `           <div class="col-12">
-                            <label for="category_group"></label>
-                            <select id="category_group" name="category_group" required>
-                                <option value="" disabled selected>Choose Category Group</option>`;
-    for (category_group of category_groups){
-        text += `              <option value="${category_group.group_name}">${category_group.group_name}</option>`;
-    }
-    text += `               </select>
-                        </div>
-                        <div class="col-12">
-                            <label for="grade"></label>
-                            <select id="grade" name="grade">
-                                <option value="" disabled selected>Grade book</option>
-                                <option value="5">5</option>
-                                <option value="4">4</option>
-                                <option value="3">3</option>
-                                <option value="2">2</option>
-                                <option value="1">1</option>
-                            </select>
-                        </div>
-                        <div class="col s12">
-                                <label for="review">Your review of the book</label>
-                                <textarea id="review" name="review"></textarea>
-                        </div>
-                        <div class="row">
-                            <div class="col-12 text-center">
-                                <button type="reset" class="btn-large btn-red" onclick="cancelAddBook()">
-                                    Cancel <i class="fas fa-times-circle"></i>
-                                </button>
-                                <button type="submit" class="btn-large btn-green">
-                                    Add <i class="fas fa-plus-square"></i>
-                                </button>
+    text += `           <div class="bgr-acid p-3">
+                            <div class="text-center">
+                                <h5>Before adding book</h5>
+                                <p>Choose category group(mandatory) and give your opinion(voluntary) of the book.</p>
                             </div>
-                        </div>
-                        <div class="text-center">
-                            <h5>More Information:</h5>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="category_group">Category Group:</label>
+                                </div>  
+                                <select id="category_group" name="category_group" class="custom-select" required>
+                                    <option value="" disabled selected>Choose...</option>`;
+    for (category_group of category_groups){
+        text += `               <option value="${category_group.group_name}">${category_group.group_name}</option>`;
+    }
+    text += `                   </select>
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="grade">Grade the book:</label>
+                                </div>
+                                <select id="grade" name="grade" class="custom-select">
+                                    <option value="" disabled selected>Choose...</option>`;
+    for (i=5; i>0; i--){
+        text += `                   <option value="${i}">${i}</option>`;
+    }
+    text += `                  </select>
+                            </div>
+                            <div class="col-12 form-group">
+                                <label for="review">Review</label>
+                                <textarea id="review" name="review" class="form-control" placeholder="Enter your review"></textarea>
+                            </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-12 text-center">
+                                    <button type="reset" class="btn btn-lg btn-red" onclick="cancelAddBook()">
+                                        Cancel <i class="fas fa-times-circle"></i>
+                                    </button>
+                                    <button type="submit" class=" btn btn-lg btn-green">
+                                        Add Book <i class="fas fa-plus-square"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        
+                        <div class="text-center mt-3">
+                            <h4>More Book Information:</h4>
                         </div>
                         <div class="row">`;
 
     if ("volumeInfo" in book){
         if ("authors" in book.volumeInfo){
             let authors = book.volumeInfo.authors.join(" · ");
-            text += `       <div class="col-12">
+            text += `       <div class="col-12 form-group">
                                 <label for="author">Author/s:</label>
-                                <textarea id="author" name="author" maxlength="200" readonly
-                                    >${authors}</textarea>
+                                <textarea id="author" name="author" class="form-control" readonly>${authors}</textarea>
                             </div>`;
         }
         if ("language" in book.volumeInfo){
-            text +=        `<div class="col-12">
+            text +=        `<div class="col-12 form-group">
                                 <label for="language">Language</label>
-                                <input id="language" name="language" value="${book.volumeInfo.language}" type="text" readonly>
+                                <input id="language" name="language" value="${book.volumeInfo.language}" class="form-control" type="text" readonly>
                             </div>`;
         }
         if ("publishedDate" in book.volumeInfo){
-            text +=        `<div class="col s12">
+            text +=        `<div class="col-12 form-group">
                                 <label for="publish_date">Published Date</label>
-                                <input id="publish_date" name="publish_date" value="${book.volumeInfo.publishedDate}" type="text" readonly>
+                                <input id="publish_date" name="publish_date" value="${book.volumeInfo.publishedDate}" class="form-control type="text" readonly>
                             </div>`;
         }
         if ("industryIdentifiers" in book.volumeInfo){
             let identifier = book.volumeInfo.industryIdentifiers[0].type + ", " + book.volumeInfo.industryIdentifiers[0].identifier;
-            text += `       <div class="col-12">
+            text += `       <div class="col-12 form-group">
                                 <label for="identifier">Identifier:</label>
-                                <input id="identifier" name="identifier" type="text" value="${identifier}" readonly>
+                                <input id="identifier" name="identifier" type="text" value="${identifier}" class="form-control" readonly>
                             </div>`;
         }
         if ("description" in book.volumeInfo){
-            text += `       <div class="col-12">
+            text += `       <div class="col-12 form-group">
                                 <label for="description">Description:</label>
-                                <textarea id="description" name="description" class="materialize-textarea" readonly
+                                <textarea id="description" name="description" class="form-control" readonly
                                     >${book.volumeInfo.description}</textarea>
                             </div>`;
         }
         if ("imageLinks" in book.volumeInfo){
             if ("thumbnail" in book.volumeInfo.imageLinks){
-                text += `   <div class="col-12">
+                text += `   <div class="col-12 form-group">
                                 <label for="image_link">Image Link:</label>
-                                <textarea id="image_link" name="image_link" readonly
+                                <textarea id="image_link" name="image_link" class="form-control" readonly
                                     >${book.volumeInfo.imageLinks.thumbnail}</textarea>
                             </div>`;
             }
@@ -207,7 +208,7 @@ function searchToDocument(){
                         </div>
                         <div class="card-footer bgr-white">
                             <button type="submit" class="btn btn-sm btn-green" onclick="addBook(${index})">
-                                Add this book
+                                Choose book
                             </button>
                         </div>
                     </div>
