@@ -24,54 +24,55 @@ function moveTo(){
 function bookToDocument(book){
     console.log(book);
 
-    let text = `<div class="center-align">
+    let text = `<div class="text-center">
                     <h3>Book to Add</h3>
                 </div>
-                <div class="center-align">
+                <div class="text-center">
                     <p>Choose category group(mandatory) and give your opinion(voluntary) of the book, before you add it.<br>
                     More book information below (if you can not see whole text: resizing is possible by pointing and moving the bottom right corner).</p>
                 </div>
-                <div class="col s12 m10 offset-m1">
+                <div class="col-12">
                     <div class="card">
-                        <div class="card-content bgr-white">
-                            <form method="POST" action="/add_book">`;
+                        <div class="card-body bgr-white">
+                            <form method="POST" action="/add/book">`;
     
     if ("volumeInfo" in book){
-         if("title" in book.volumeInfo){  
-            text += `<div class="col s12">
-                                <label for="title">Title:</label>
-                                <input id="title" name="title" type="text" value="${book.volumeInfo.title}" readonly>
-                            </div>`;
-        }
         if ("imageLinks" in book.volumeInfo){
             if ("thumbnail" in book.volumeInfo.imageLinks){
-                text += `<div class="center-align">
+                text += `<div class="text-center">
                             <img src="${book.volumeInfo.imageLinks.thumbnail}" 
                                 alt="Picture of book cover">
                         </div>`;
             }
+        } 
+        if("title" in book.volumeInfo){  
+            text += `<div class="col-12 form-group">
+                                <label for="title">Title:</label>
+                                <input id="title" name="title" type="text" value="${book.volumeInfo.title}" class="form-control readonly>
+                            </div>`;
         }
+        
         if("categories" in book.volumeInfo){
             let categories = book.volumeInfo.categories.join(" · ");
-            text += `       <div class="col s12">
+            text += `       <div class="col-12 form-group">
                                 <label for="category">Category/ies:</label>
-                                <input id="category" name="category" type="text" value="${categories}" readonly>
+                                <input id="category" name="category" type="text" value="${categories}" class="form-control" readonly>
                             </div>`; 
         }
     }
 
-    text += `           <div class="col s12">
+    text += `           <div class="col-12">
                             <label for="category_group"></label>
-                            <select id="category_group" name="category_group" class="validate" required>
+                            <select id="category_group" name="category_group" required>
                                 <option value="" disabled selected>Choose Category Group</option>`;
     for (category_group of category_groups){
         text += `              <option value="${category_group.group_name}">${category_group.group_name}</option>`;
     }
     text += `               </select>
                         </div>
-                        <div class="col s12">
+                        <div class="col-12">
                             <label for="grade"></label>
-                            <select id="grade" name="grade" class="validate">
+                            <select id="grade" name="grade">
                                 <option value="" disabled selected>Grade book</option>
                                 <option value="5">5</option>
                                 <option value="4">4</option>
@@ -85,16 +86,16 @@ function bookToDocument(book){
                                 <textarea id="review" name="review"></textarea>
                         </div>
                         <div class="row">
-                            <div class="col s12 center-align">
-                                <button type="reset" class="btn-large btn-red waves-effect waves-light" onclick="cancelAddBook()">
-                                    Cancel <i class="fas fa-times-circle right"></i>
+                            <div class="col-12 text-center">
+                                <button type="reset" class="btn-large btn-red" onclick="cancelAddBook()">
+                                    Cancel <i class="fas fa-times-circle"></i>
                                 </button>
-                                <button type="submit" class="btn-large btn-green waves-effect waves-light">
-                                    Add <i class="fas fa-plus-square right"></i>
+                                <button type="submit" class="btn-large btn-green">
+                                    Add <i class="fas fa-plus-square"></i>
                                 </button>
                             </div>
                         </div>
-                        <div class="center-align section">
+                        <div class="text-center">
                             <h5>More Information:</h5>
                         </div>
                         <div class="row">`;
@@ -102,14 +103,14 @@ function bookToDocument(book){
     if ("volumeInfo" in book){
         if ("authors" in book.volumeInfo){
             let authors = book.volumeInfo.authors.join(" · ");
-            text += `       <div class="col s12">
+            text += `       <div class="col-12">
                                 <label for="author">Author/s:</label>
-                                <textarea id="author" name="author" class="materialize-textarea" maxlength="200" readonly
+                                <textarea id="author" name="author" maxlength="200" readonly
                                     >${authors}</textarea>
                             </div>`;
         }
         if ("language" in book.volumeInfo){
-            text +=        `<div class="col s12">
+            text +=        `<div class="col-12">
                                 <label for="language">Language</label>
                                 <input id="language" name="language" value="${book.volumeInfo.language}" type="text" readonly>
                             </div>`;
@@ -122,13 +123,13 @@ function bookToDocument(book){
         }
         if ("industryIdentifiers" in book.volumeInfo){
             let identifier = book.volumeInfo.industryIdentifiers[0].type + ", " + book.volumeInfo.industryIdentifiers[0].identifier;
-            text += `       <div class="col s12">
+            text += `       <div class="col-12">
                                 <label for="identifier">Identifier:</label>
                                 <input id="identifier" name="identifier" type="text" value="${identifier}" readonly>
                             </div>`;
         }
         if ("description" in book.volumeInfo){
-            text += `       <div class="col s12">
+            text += `       <div class="col-12">
                                 <label for="description">Description:</label>
                                 <textarea id="description" name="description" class="materialize-textarea" readonly
                                     >${book.volumeInfo.description}</textarea>
@@ -136,9 +137,9 @@ function bookToDocument(book){
         }
         if ("imageLinks" in book.volumeInfo){
             if ("thumbnail" in book.volumeInfo.imageLinks){
-                text += `   <div class="col s12">
+                text += `   <div class="col-12">
                                 <label for="image_link">Image Link:</label>
-                                <textarea id="image_link" name="image_link" class="materialize-textarea" readonly
+                                <textarea id="image_link" name="image_link" readonly
                                     >${book.volumeInfo.imageLinks.thumbnail}</textarea>
                             </div>`;
             }
@@ -154,7 +155,6 @@ function bookToDocument(book){
         </div>`; 
 
     $("#add_book").html(text);
-    $('select').formSelect();
     window.location.href="#add_book";
 }
 
