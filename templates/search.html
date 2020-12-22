@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block content%}
+{% block content %}
     <div id="search_book_results" class="mt-5">
         <div class="text-center">
             <h2 class="mb-3">Your search result:</h2>
@@ -9,53 +9,35 @@
         </div>
         
         <div class="row">
-            <div class="col-12 col-md-6 col-xl-4">
-                <div class="card h-100 text-center">
-                    <div class="card-body">
-                        <div class="card-title">
-                            <h5>Harry Potter och den flammande bägaren</h5>
+            {% for book in books %}
+                <div class="col-12 col-md-6 col-xl-4 mb-3">
+                    <div class="card h-100 text-center">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <h5>{{ book.title }}</h5>
+                            </div>
+                            <img src="{{ book.image }}" alt="">
+                            <div class="card-text">
+                                {{ book.author }}<br>
+                                <i class="fas fa-star"></i>{{ book.average_grade }}<br>
+                            </div>
                         </div>
-                        <img src="http://books.google.com/books/content?id=M1FVAgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" alt="">
-                        <div class="card-text">
-                               J.K.Rowling<br>
-                            <i class="fas fa-star"></i>4.6<br>
-                        </div>
-                    </div>
-                    <div class="card-footer bgr-white">
-                        <button class="btn btn-green">
-                            <a href="#" class="text-white">Book details</a>
-                        </button>
-                        {% if session.username %}
-                            <button type="submit" class="btn btn-green">
-                                    Add opinion
+                        <div class="card-footer bgr-white">
+                            <button class="btn btn-green">
+                                <a href="#" class="text-white">Book details</a>
                             </button>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-6 col-xl-4">
-                <div class="card h-100 text-center">
-                    <div class="card-body">
-                        <div class="card-title">
-                            <h5>Harry Potter och den flammande bägaren och så kommer en liten bit till för att testa</h5>
-                        </div>
-                        <img src="http://books.google.com/books/content?id=NdtGNCK69WQC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" alt="">
-                        <div class="card-text">
-                            J.K.Rowling<br>
-                            <i class="fas fa-star"></i>4.6<br>
+                            {% if session.username %}
+                                <button type="submit" class="btn btn-green" onclick="addOpinion('{{ book._id }}', '{{ book.title }}', 'details')">
+                                    Add opinion
+                                </button>  
+                            {% endif %}
                         </div>
                     </div>
-                    <div class="card-footer bgr-white">
-                        <button class="btn btn-green">
-                            <a href="#" class="text-white">Book details</a>
-                        </button>
-                        <button type="submit" class="btn btn-green">
-                                Add opinion
-                        </button>
-                    </div>
                 </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
+
+    {% include "modal.html" %}
     
 {% endblock %}
