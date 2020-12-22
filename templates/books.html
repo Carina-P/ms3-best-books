@@ -55,27 +55,27 @@
             <!-- The slideshow -->
             <div class="carousel-inner">
                 {% for best_book in best_books %}
-                    {% if best_book.number == 1 %}
+                    {% if best_book.place == 1 %}
                         <div class="carousel-item active mt-4 mr-5 mb-3">
                     {% else %}
                         <div class="carousel-item mt-4 mr-5 mb-3">
                     {% endif %}
                         <div class="row">
                             <div class="col text-center">
-                                <h3>Number {{ best_book.number }}:</h3>
+                                <h3>Number {{ best_book.place }}:</h3>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-12 col-md-5 text-center">
-                                <img src="{{ best_book.book.image }}" alt="Picture of book cover">
+                                <img src="{{ best_book.image }}" alt="Picture of book cover">
                             </div>
                             <div class="col-12 text-left col-md-7 mt-2">
                                 <div class="row">
                                     <div class="col-12 d-none d-md-block">
-                                        <h4>{{ best_book.book.title }}</h4>
+                                        <h4>{{ best_book.title }}</h4>
                                     </div>
                                     <div class="col-12 text-center d-md-none">
-                                        <i class="fas fa-star"></i> {{ best_book.book.average_grade }}
+                                        <i class="fas fa-star"></i> {{ best_book.average_grade }}
                                     </div>
                                 </div>
                                 <div class="row d-none d-md-block mt-2">
@@ -87,9 +87,9 @@
                                             {% for count in range(5 - best_book.stars) %}
                                                 <i class="far fa-star"></i>
                                             {% endfor %}
-                                            {{ best_book.book.average_grade }} <br>
-                                            {{ best_book.book.author }}<br>
-                                            {{ best_book.book.published_date }}
+                                            {{ best_book.avg_gr_rounded }} <br>
+                                            {{ best_book.author }}<br>
+                                            {{ best_book.published_date }}
                                         </p>
                                     </div>
                                 </div>
@@ -98,14 +98,14 @@
                         <div class="row mt-3 mr-2 ml-2 mb-4">
                             {% if session.username %}
                                 <div class="col text-center text-md-right">
-                                    <button type="submit" class="btn btn-green" onclick="addOpinion('{{ best_book.book._id }}', '{{ best_book.book.title }}', 'popular')">Add opinion</button>
+                                    <button type="submit" class="btn btn-green" onclick="addOpinion('{{ best_book._id }}', '{{ best_book.title }}', 'popular')">Add opinion</button>
                                 </div>
                                 <div class="col text-center text-md-left">
                             {% else %}
                                 <div class="col text-center">
                             {% endif %}
                                 <button class="btn btn-green">
-                                        <a href="/book/{{ best_book.book._id }}" class="text-white">Book Details</a>
+                                        <a href="/book/{{ best_book._id }}" class="text-white">Book Details</a>
                                     </button>
                                 </div>
                         </div>
