@@ -407,13 +407,15 @@ def add_group():
     return render_template("category_group.html")
 
 
-@app.route("/edit_group/<category_group_id>", methods=["GET", "POST"])
+@app.route(
+    "/edit_group/<category_group_id>", methods=["GET", "POST"]
+)
 def edit_group(category_group_id):
     if request.method == "POST":
         new_name = {
             "group_name": request.form.get("group_name")
         }
-        mongo.db.category_groups.update({
+        mongo.db.category_groups.update_one({
             "_id": ObjectId(category_group_id)}, new_name)
         flash("Category Group Succesfully Updated")
         return redirect(url_for("get_category_groups"))
@@ -423,9 +425,16 @@ def edit_group(category_group_id):
     return render_template("category_group.html", group=group, edit=True)
 
 
-@app.route("/delete_group/<category_group_id>")
-def delete_group(category_group_id):
+@app.route("/delete/group/<category_group_id>/<category_group>")
+def delete_group(category_group_id, category_group):
     mongo.db.category_groups.remove({"_id": ObjectId(category_group_id)})
+
+    # Update all books, that has the deleted category group, to group "Other"
+    mongo.db.books.update_many({
+            "category_group": category_group
+            }, {
+                "$set": {"category_group": "Other"}
+                })
     flash("Category Group Successfully Deleted")
     return redirect(url_for("get_category_groups"))
 
