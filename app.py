@@ -25,11 +25,9 @@ def get_best_books():
 
     number_count = 1
     for book in ten_best_books:
-        stars = round(float(book["average_grade"]), 0)
-        avg_gr_rounded = round(float(book["average_grade"]), 1)
-        book["avg_gr_rounded"] = avg_gr_rounded
+        book["avg_gr_rounded"] = round(float(book["average_grade"]), 1)
         book["place"] = number_count
-        book["stars"] = int(stars)
+        book["stars"] = int(round(float(book["average_grade"]), 0))
 
         number_count += 1
 
@@ -100,8 +98,8 @@ def search():
         return redirect(url_for("get_books"))
 
     for book in books:
-        average_grade = round(float(book["average_grade"]), 1)
-        book["average_grade"] = average_grade
+        avg_gr_rounded = round(float(book["average_grade"]), 1)
+        book["avg_gr_rounded"] = avg_gr_rounded
 
     return render_template(
         "search_result.html", books=books
@@ -460,6 +458,9 @@ def search_category():
         flash("No books in that category group in database")
         return redirect(url_for("get_books"))
 
+    for book in category_books:
+        book["avg_gr_rounded"] = round(float(book["average_grade"]), 1)
+    
     return render_template(
         "search_result.html", books=category_books,
         show_category=True, category=category
