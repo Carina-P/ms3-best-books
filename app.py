@@ -121,7 +121,7 @@ def search():
     )
 
 
-@app.route("/add_book", methods=["GET", "POST"])
+@app.route("/add/book", methods=["GET", "POST"])
 def add_book():
     if request.method == "POST":
         username = session["username"]
