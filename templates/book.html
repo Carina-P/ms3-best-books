@@ -15,13 +15,13 @@
                             <strong>Published:</strong> {{ book_details.published_date }}<br>
                             <strong>Grade:</strong>
                             <span>
-                                {% for count in range(stars) %}
+                                {% for count in range(book.stars) %}
                                     <i class="fas fa-star"></i>
                                 {% endfor %}
-                                {% for count in range(5 - stars) %}
+                                {% for count in range(5 - book.stars) %}
                                     <i class="far fa-star"></i>
                                 {% endfor %}
-                                {{ book.average_grade }}<br><br>
+                                {{ book.avg_gr_rounded }}<br><br>
                             </span>
                             <strong>Category:</strong> {{ book.category}}<br>
                             <strong>Category Group:</strong> {{ book.category_group}}<br><br>

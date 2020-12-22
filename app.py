@@ -75,16 +75,15 @@ def get_books():
 def get_book(book_id):
     book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
 
-    stars = int(round(float(book["average_grade"]), 0))
-    average_grade = round(float(book["average_grade"]), 1)
-    book["average_grade"] = average_grade
+    book["avg_gr_rounded"] = round(float(book["average_grade"]), 1)
+    book["stars"] = int(round(float(book["average_grade"]), 0))
 
     book_details = mongo.db.books_details.find_one(
         {"book_id": ObjectId(book_id)}
     )
 
     return render_template(
-        "book.html", book=book, book_details=book_details, stars=stars
+        "book.html", book=book, book_details=book_details
     )
 
 
