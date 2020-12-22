@@ -20,7 +20,7 @@ mongo = PyMongo(app)
 
 def get_best_books():
     ten_best_books = mongo.db.books.find().sort("average_grade", -1).limit(10)
-    
+
     number_count = 1
     best_books = []
     for book in ten_best_books:

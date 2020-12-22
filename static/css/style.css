@@ -81,6 +81,9 @@ body{
 }
 
 /* Header */
+#nav-image{
+    max-height: 10vw;
+}
 .navbar-brand{
     color: #f4a261;
 }
