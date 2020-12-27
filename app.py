@@ -329,7 +329,7 @@ def delete_opinion(book_id, review_id):
 @app.route("/reviews/<book_id>/<title>", methods=["GET", "POST"])
 def get_reviews(book_id, title):
     reviews = list(mongo.db.reviews.find(
-        {"book_id": ObjectId(book_id)})
+        {"book_id": ObjectId(book_id)}).sort("_id", -1)
     )
 
     return render_template("reviews.html", reviews=reviews, title=title)
