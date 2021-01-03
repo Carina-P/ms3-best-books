@@ -1,9 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
     <div class="container">
-        <button class="btn btn-lg btn-green m-3">
-                <a href="{{url_for('get_category_groups')}}" class="text-white"><i class="fas fa-arrow-left"></i></a>
-        </button>
         <div class="text-center mb-5">
             {% if edit %}
                 <h2>Edit Category Group</h2>

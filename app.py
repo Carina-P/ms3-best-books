@@ -174,8 +174,8 @@ def delete_book(id):
     return redirect(url_for("get_books"))
 
 
-@app.route("/add_opinion/<return_to>", methods=["GET", "POST"])
-def add_opinion(return_to):
+@app.route("/add_opinion", methods=["GET", "POST"])
+def add_opinion():
     book_id = request.form.get("book_id")
     grade_str = request.form.get("grade_m")
     review = request.form.get("review_m")

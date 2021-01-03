@@ -257,7 +257,7 @@ function searchAuthor(group_names){
     searchForBooks("inauthor", search_author);
 }
 
-function addOpinion(book_id, title, called_from){
+function addOpinion(book_id, title){
     $("#book_title").html(title);
     $("#hidden_input").html(`<input type="hidden" name="book_id" value="${book_id}">`);
     $('#modal').modal('show');

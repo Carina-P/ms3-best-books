@@ -7,7 +7,7 @@
                 <button type="button" class="close text-white" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-                <form id="modal_form" method="POST" action="{{ url_for('add_opinion', return_to='books') }}">
+                <form id="modal_form" method="POST" action="{{ url_for('add_opinion') }}">
                     <div class="mb-3">
                         <label for="grade_m"></label>
                         <select id="grade_m" name="grade_m" class="custom-select validate">
