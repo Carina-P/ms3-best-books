@@ -37,20 +37,20 @@
 
             <div class="collapse navbar-collapse" id="navbarToggler">
                 <div class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <a class="nav-item nav-link" href="/#popular">Popular</a>
-                    <a class="nav-item nav-link" href="/#categories">Category Groups</a>
+                    <a class="nav-item nav-link js-collapse" href="/#popular">Popular</a>
+                    <a class="nav-item nav-link js-collapse" href="/#categories">Category Groups</a>
                     {% if session.username %}
-                        <a class="nav-item nav-link" href="/#book">Add Book</a>
+                        <a class="nav-item nav-link js-collapse" href="/#book">Add Book</a>
                     {% endif %}
                 </div>
                 <a class="navbar-brand dark-shadow mx-auto d-none d-lg-block" href="/">the Best Books</a>
                 <div class="navbar-nav ml-lg-auto mt-2 mt-lg-0">
                     {% if session.username %}
-                        <a class="nav-item nav-link" href="{{ url_for('get_category_groups') }}">Manage Category Groups</a>
-                        <a class="nav-item nav-link" href="{{ url_for('logout') }}">Log Out</a>
+                        <a class="nav-item nav-link js-collapse" href="{{ url_for('get_category_groups') }}">Manage Category Groups</a>
+                        <a class="nav-item nav-link js-collapse" href="{{ url_for('logout') }}">Log Out</a>
                     {% else %}
-                        <a class="nav-item nav-link" href="{{ url_for('login') }}">Log In</a>
-                        <a class="nav-item nav-link" href="{{ url_for('signup') }}">Sign Up</a>
+                        <a class="nav-item nav-link js-collapse" href="{{ url_for('login') }}">Log In</a>
+                        <a class="nav-item nav-link js-collapse" href="{{ url_for('signup') }}">Sign Up</a>
                     {% endif %}
                 </div>
             </div>

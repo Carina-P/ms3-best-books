@@ -11,6 +11,9 @@ $(document).ready(function(){
     });
 */
 });
+$(".js-collapse").on("click", function () { 
+  $(".navbar-collapse").collapse("hide");
+}); 
 
 function cancelAddBook(){
     $("#add_book").html(``);
