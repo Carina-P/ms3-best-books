@@ -24,11 +24,12 @@
     <title>The Best Books</title>
 </head>
 <body>
-    <header>
-        {% block header %}
-        {% endblock %}
+    <header class="sticky-top">
+        <div id="nav-image" class="image-fluid">
+            <img src="/static/images/bookshelf.jpg" alt="Card image" style="width:100%">
+        </div>
         <!-- Code inspired from Bootstrap -->
-        <nav class="navbar navbar-expand-lg bgr-darkgreen">
+        <nav id="navbar" class="navbar navbar-expand-lg bgr-darkgreen">
             <a class="navbar-toggler navbar-brand dark-shadow mx-auto" href="/">the Best Books</a>
             <button class="navbar-toggler bgr-white" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
