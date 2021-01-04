@@ -98,6 +98,14 @@ body{
 .navbar-brand{
     color: #f4a261;
 }
+.brand-img{
+    border: solid;
+    border-radius: 50%;
+    border-color: #ffffff;           
+}
+.brand-img:hover{
+    transform: scale(1.5);
+}
 .nav-item{
     color: #ffffff;
 }
