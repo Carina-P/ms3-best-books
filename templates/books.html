@@ -134,10 +134,10 @@
                     <div class="card-body">
                         <form method="POST" action="{{ url_for('search') }}" class="was-validated">
                             <div class="input-group">
+                                <input name="title_or_author" type="text" class="form-control" placeholder="Title or Author" minlength="3" maxlenght="15" required aria-label="search" aria-describedby="search_icon">
                                 <div class="input-group-prepend">
                                     <button type="submit" class="btn btn-green input-group-text" id="search_icon"><i class="fas fa-search"></i></button>
                                 </div>
-                                <input name="title_or_author" type="text" class="form-control" placeholder="Title or Author" minlength="3" maxlenght="15" required aria-label="search" aria-describedby="search_icon">
                             </div>
                         </form>
                     </div>    
