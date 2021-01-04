@@ -82,6 +82,9 @@ body{
 
 .buy{
     border-radius: 50%;
+    float: right;
+    margin-right: 2rem;
+    border: dotted;
 }
 
 /* Header */
@@ -113,6 +116,9 @@ body{
     top: 50%;
 }
 */
+.carousel-control-next, .carousel-control-prev{
+    width: 5%;
+}
 #next, #prev{
     /*position: absolute;
     right: 0.5rem;*/
@@ -123,6 +129,10 @@ body{
 }
 .carousel-indicators li {
     filter: invert(100%);
+}
+
+.number{
+    padding-left: 4rem;
 }
 
 /* Books: Add book section */
@@ -170,5 +180,11 @@ input, input-field{
     }
     .left{
         float:none;
+    }
+}
+
+@media screen and (min-width: 992px){
+    #popular{
+        width: 75%;
     }
 }
