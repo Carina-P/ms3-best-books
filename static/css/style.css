@@ -80,6 +80,10 @@ body{
     height: auto;
 }
 
+.buy{
+    border-radius: 50%;
+}
+
 /* Header */
 #nav-image{
     max-height: 10vw;
