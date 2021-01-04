@@ -162,7 +162,7 @@ def add_book():
         mongo.db.books_details.insert_one(book_details)
         flash("Book Successfully Added")
 
-    return redirect(url_for("get_books"))
+    return redirect(url_for("get_book", book_id=result.inserted_id))
 
 
 @app.route("/delete_book/<id>")

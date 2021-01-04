@@ -35,7 +35,7 @@
                 <div class="row mb-3">
                     <div class="col s12 text-center">
                         <a href="{{url_for('get_books')}}" class="btn btn-lg btn-green">
-                            Done
+                            Close
                         </a>
                         {% if session.username %}
                             <button type="submit" class="btn btn-lg btn-green" onclick="addOpinion('{{ book._id }}', '{{ book.title }}', 'details')">
