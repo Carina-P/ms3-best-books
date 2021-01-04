@@ -10,13 +10,13 @@
         <div class="col s12 m10 offset-m1">
             <div class="card">
                 <div class="card-content bgr-white">
-                    <form>
+                    <form class="was-validated">
                         <div class="center-align">
                             <img src="{{ book.volumeInfo.imageLinks.thumbnail }}" alt="Picture of book cover">
                         </div>
                         <div class="col s12">
                             <label for="category_group"></label>
-                            <select id="category_group" name="category_group" class="validate" required>
+                            <select id="category_group" name="category_group" required>
                                 <option value="" disabled selected>Choose Category Group</option>
                                 {% for group in category_groups %}
                                     <option value="{{ group.group_name}}">{{ group.group_name}}</option>
