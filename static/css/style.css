@@ -97,7 +97,7 @@ body{
     border: dotted;
 }
 
-/* Header */
+/* Navigation */
 #nav-image{
     max-height: 10vw;
 }
@@ -122,6 +122,10 @@ body{
 }
 .nav-item{
     color: #ffffff;
+}
+.nav-item:hover{
+    color: #f4a261;
+    transform: scale(1.1);
 }
 
 /* Footer */
