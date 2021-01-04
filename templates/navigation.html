@@ -1,0 +1,37 @@
+<div class="sticky-top">
+    <div id="nav-image" class="image-fluid">
+        <img src="/static/images/bookshelf.jpg" alt="Card image" style="width:100%">
+    </div>
+    <!-- Code inspired from Bootstrap -->
+    <nav id="navbar" class="navbar navbar-expand-lg bgr-darkgreen">
+        <div class="text-left">
+            <a class="navbar-toggler navbar-brand text-sandy dark-shadow mx-auto brand-toggler" href="/">BB</a>
+        </div>
+        <button class="navbar-toggler bgr-white" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarToggler">
+            <div class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <a class="nav-item nav-link js-collapse" href="/#popular">10-top</a>
+                <a class="nav-item nav-link js-collapse" href="/#categories">Best in category</a>
+                <a class="nav-item nav-link js-collapse" href="/#search">Search</a>
+                {% if session.username %}
+                    <a class="nav-item nav-link js-collapse" href="/#book">Add book</a>
+                {% endif %}
+            </div>
+            <div class="pr-5">
+                <a class="navbar-brand mx-auto text-sandy dark-shadow d-none d-lg-block" href="/">BB</a>
+            </div>
+            <div class="navbar-nav ml-lg-auto mt-2 mt-lg-0">
+                {% if session.username %}
+                    <a class="nav-item nav-link js-collapse" href="{{ url_for('get_category_groups') }}">Manage category groups</a>
+                    <a class="nav-item nav-link js-collapse" href="{{ url_for('logout') }}">Log out</a>
+                {% else %}
+                    <a class="nav-item nav-link js-collapse" href="{{ url_for('login') }}">Log in</a>
+                    <a class="nav-item nav-link js-collapse" href="{{ url_for('signup') }}">Sign up</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+</div>
