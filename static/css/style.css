@@ -97,6 +97,15 @@ body{
     color: #ffffff;
 }
 
+/* Footer */
+.icon{
+    color: #ffffff;
+}
+.icon:hover{
+    background-color: #acc12f;
+    transform: scale(1.5);
+}
+
 /* Carousel
 .carousel-item .card .card-img img{
     height: 100%;
