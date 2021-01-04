@@ -1,9 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-    
-    <h1 class="text-center text-sandy dark-shadow bgr-darkgreen p-3 mb-0">the Best Books</h1>
-
+    <div class="divider bgr-darkgreen"></div>
+    <div class="row bgr-darkgreen justify-content-center">
+        <div class="col-10 col-md-8 col-lg-6 col-xl-4 bgr-grey">
+            <h1 class="text-center text-sandy dark-shadow p-3 mb-0">the Best Books</h1>
+        </div>
+    </div>
     <section  class="bgr-darkgreen">
         <div class="divider"></div>
         <div id="popular" class="container w-90">
@@ -162,7 +165,7 @@
                     <form id="title_form" onsubmit="searchTitle({{category_groups}}); return false" class="was-validated">
                         <div class="form-group">
                             <div class="input-group mb-2 mr-sm-2">
-                                <input id="search_title" name="search_title" placeholder="Full title or part of title" type="text" minlength="2" maxlength="30"
+                                <input id="search_title" name="search_title" placeholder="Title" type="text" minlength="2" maxlength="30"
                                     class="form-control was-validated" required>
                                 <div class="input-group-prepend">
                                     <button type="submit" class="btn btn-sm btn-green">
@@ -175,7 +178,7 @@
                     <form id="author_form" onsubmit="searchAuthor({{ category_groups }}); return false" class="was-validated">
                         <div class="form-group">
                             <div class="input-group mb-2 mr-sm-2">
-                                <input id="search_author" name="search_author" placeholder="Authors full name or part of name" type="text" minlength="2" maxlength="30"
+                                <input id="search_author" name="search_author" placeholder="Author" type="text" minlength="2" maxlength="30"
                                     class="form-control was-validated" required>
                                 <div class="input-group-prepend">
                                     <button type="submit" class="btn btn-sm btn-green">
