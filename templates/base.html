@@ -30,7 +30,9 @@
         </div>
         <!-- Code inspired from Bootstrap -->
         <nav id="navbar" class="navbar navbar-expand-lg bgr-darkgreen">
-            <a class="navbar-toggler navbar-brand mx-auto" href="/"><img src="/static/favicon/favicon.ico" class="brand-img text-center"></a>
+            <div class="text-left">
+                <a class="navbar-toggler navbar-brand text-sandy dark-shadow mx-auto brand-toggler" href="/">BB</a>
+            </div>
             <button class="navbar-toggler bgr-white" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
             </button>
@@ -43,7 +45,9 @@
                         <a class="nav-item nav-link js-collapse" href="/#book">Add Book</a>
                     {% endif %}
                 </div>
-                <a class="navbar-brand mx-auto d-none d-lg-block" href="/"><img class="brand-img text-center" src="/static/favicon/favicon.ico"></a>
+                <div class="pr-5">
+                    <a class="navbar-brand mx-auto text-sandy dark-shadow d-none d-lg-block" href="/">BB</a>
+                </div>
                 <div class="navbar-nav ml-lg-auto mt-2 mt-lg-0">
                     {% if session.username %}
                         <a class="nav-item nav-link js-collapse" href="{{ url_for('get_category_groups') }}">Manage Category Groups</a>
