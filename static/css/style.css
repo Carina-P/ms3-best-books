@@ -83,7 +83,6 @@ body{
 .buy{
     border-radius: 50%;
     float: right;
-    margin-right: 2rem;
     border: dotted;
 }
 
@@ -127,10 +126,12 @@ body{
     background: #ffffff;
     color: #000000;
 }
-.carousel-indicators li {
+.carousel-indicators li{
     filter: invert(100%);
 }
-
+.margin2{
+    margin-right: 2rem;
+}
 .number{
     padding-left: 4rem;
 }
