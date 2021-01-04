@@ -148,9 +148,10 @@
     </section>
     
     <section id="book">
+        <div class="divider"></div>
     {% if session.username %}
         <div class="container">
-            <div class="text-center m-5">
+            <div class="text-center">
                 <h2>Add book</h2>
             </div>
             <div class="card">
@@ -158,33 +159,35 @@
                     <div class="text-center">
                         <p>Search in Google Books to get information about book you want to add</p>
                     </div>
-                    <form id="title_form" onsubmit="searchTitle({{category_groups}}); return false">
+                    <form id="title_form" onsubmit="searchTitle({{category_groups}}); return false" class="was-validated">
                         <div class="form-group">
                             <div class="input-group mb-2 mr-sm-2">
-                                <div class="input-group-prepend">
-                                    <button type="submit" class="btn btn-sm btn-green">
-                                            <i class="fas fa-search"></i> Search Books
-                                    </button> 
-                                </div>
                                 <input id="search_title" name="search_title" placeholder="Full title or part of title" type="text" minlength="2" maxlength="30"
                                     class="form-control was-validated" required>
+                                <div class="input-group-prepend">
+                                    <button type="submit" class="btn btn-sm btn-green">
+                                            <i class="fas fa-search"></i>Search Books
+                                    </button> 
+                                </div>
                             </div> 
                         </div>
                     </form>
-                    <form id="author_form" onsubmit="searchAuthor({{ category_groups }}); return false">
+                    <form id="author_form" onsubmit="searchAuthor({{ category_groups }}); return false" class="was-validated">
                         <div class="form-group">
                             <div class="input-group mb-2 mr-sm-2">
+                                <input id="search_author" name="search_author" placeholder="Authors full name or part of name" type="text" minlength="2" maxlength="30"
+                                    class="form-control was-validated" required>
                                 <div class="input-group-prepend">
                                     <button type="submit" class="btn btn-sm btn-green">
                                         <i class="fas fa-search"></i> Search Books
                                     </button>
                                 </div>
-                                <input id="search_author" name="search_author" placeholder="Authors full name or part of name" type="text" minlength="2" maxlength="30"
-                                    class="form-control was-validated" required>
                             </div> 
                         </div>
                     </form>
-                    <img src="https://books.google.com/googlebooks/images/poweredby.png" alt="Search ">
+                    <div class="text-center">
+                        <img src="https://books.google.com/googlebooks/images/poweredby.png" alt="Powered by Google">
+                    </div>
                 </div>
             </div>
         </div>
@@ -192,6 +195,7 @@
         <div id="search_results" class="container"></div>
         <div id="add_book" class="container"></div>
     {% endif %}
+        <div class="divider"></div>
     </section>
     
     {% include "modal.html" %}
