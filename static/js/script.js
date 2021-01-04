@@ -16,7 +16,10 @@ $(".js-collapse").on("click", function () {
 }); 
 
 function cancelAddBook(){
+    $("#search_results").html(``);
     $("#add_book").html(``);
+    document.getElementById("author_form").reset();
+    document.getElementById("title_form").reset();
     window.location.href="#book";
 }
 
