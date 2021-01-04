@@ -2,99 +2,106 @@
 
 {% block content %}
     
-    <section id="popular" class="container w-90 mt-5">
-        <div class="text-center">
-            <h2>10 Most Popular Books</h2>
-        </div>
-        <!-- Code inspired from Bootstrap -->
-        <div id="popular_carousel" class="carousel bgr-white" data-ride="carousel">
+    <h1 class="text-center text-sandy dark-shadow bgr-darkgreen p-3 mb-0">the Best Books</h1>
 
-            <!-- Indicators -->
-            <ul class="carousel-indicators">
-                {% for count in range(10) %}
-                     {% if count == 1 %}
-                        <li data-target="#popular_carousel" data-slide-to="{{ count }}" class="active"></li>
-                    {% else %}
-                        <li data-target="#popular_carousel" data-slide-to="{{ count }}"></li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-
-            <!-- The slideshow -->
-            <div class="carousel-inner">
-                {% for best_book in best_books %}
-                    {% if best_book.place == 1 %}
-                        <div class="carousel-item active mt-4 mr-5 mb-3">
-                    {% else %}
-                        <div class="carousel-item mt-4 mr-5 mb-3">
-                    {% endif %}
-                        <div class="row">
-                            <div class="col text-center">
-                                <button type="button" class="buy bgr-red text-white p-2 margin2" data-toggle="modal" data-target="#buyModal">
-                                    <i class="fas fa-shopping-cart fa-lg"></i>
-                                </button>
-                                <h3 class="number">Number {{ best_book.place }}:</h3>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12 col-md-5 text-center">
-                                <img src="{{ best_book.image }}" alt="Picture of book cover">
-                            </div>
-                            <div class="col-12 text-left col-md-7 mt-2">
-                                <div class="row">
-                                    <div class="col-12 d-none d-md-block">
-                                        <h4>{{ best_book.title }}</h4>
-                                    </div>
-                                    <div class="col-12 text-center d-md-none">
-                                        <i class="fas fa-star"></i> {{ best_book.average_grade }}
-                                    </div>
-                                </div>
-                                <div class="row d-none d-md-block mt-2">
-                                    <div class="col">
-                                        <p>
-                                            {% for count in range(best_book.stars) %}
-                                                <i class="fas fa-star"></i>
-                                            {% endfor %}
-                                            {% for count in range(5 - best_book.stars) %}
-                                                <i class="far fa-star"></i>
-                                            {% endfor %}
-                                            {{ best_book.avg_gr_rounded }} <br>
-                                            {{ best_book.author }}<br>
-                                            {{ best_book.published_date }}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row mt-3 mr-2 ml-2 mb-4">
-                            {% if session.username %}
-                                <div class="col text-center text-md-right">
-                                    <button type="submit" class="btn btn-green" onclick="addOpinion('{{ best_book._id }}', '{{ best_book.title }}', 'popular')">Add opinion</button>
-                                </div>
-                                <div class="col text-center text-md-left">
-                            {% else %}
-                                <div class="col text-center">
-                            {% endif %}
-                                <button class="btn btn-green">
-                                        <a href="/book/{{ best_book._id }}" class="text-white">Book Details</a>
-                                    </button>
-                                </div>
-                        </div>
-                    </div>
-                {% endfor %}
+    <section  class="bgr-darkgreen">
+        <div class="divider"></div>
+        <div id="popular" class="container w-90">
+            <div class="text-center text-white">
+                <h2>10-Top Books</h2>
             </div>
+            <!-- Code inspired from Bootstrap -->
+            <div id="popular_carousel" class="carousel bgr-white" data-ride="carousel">
 
-            <!-- Left and right controls -->
-            <a class="carousel-control-prev" href="#popular_carousel" data-slide="prev">
-                <i id="prev" class="fas fa-chevron-left"></i>
-            </a>
-            <a class="carousel-control-next" href="#popular_carousel" data-slide="next">
-                <i id="next" class="fas fa-chevron-right"></i>
-            </a>
+                <!-- Indicators -->
+                <ul class="carousel-indicators">
+                    {% for count in range(10) %}
+                        {% if count == 1 %}
+                            <li data-target="#popular_carousel" data-slide-to="{{ count }}" class="active"></li>
+                        {% else %}
+                            <li data-target="#popular_carousel" data-slide-to="{{ count }}"></li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+
+                <!-- The slideshow -->
+                <div class="carousel-inner">
+                    {% for best_book in best_books %}
+                        {% if best_book.place == 1 %}
+                            <div class="carousel-item active mt-4 mr-5 mb-3">
+                        {% else %}
+                            <div class="carousel-item mt-4 mr-5 mb-3">
+                        {% endif %}
+                            <div class="row">
+                                <div class="col text-center">
+                                    <button type="button" class="buy bgr-red text-white p-2 margin2" data-toggle="modal" data-target="#buyModal">
+                                        <i class="fas fa-shopping-cart fa-lg"></i>
+                                    </button>
+                                    <h3 class="number">Number {{ best_book.place }}:</h3>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-md-5 text-center">
+                                    <img src="{{ best_book.image }}" alt="Picture of book cover">
+                                </div>
+                                <div class="col-12 text-left col-md-7 mt-2">
+                                    <div class="row">
+                                        <div class="col-12 d-none d-md-block">
+                                            <h4>{{ best_book.title }}</h4>
+                                        </div>
+                                        <div class="col-12 text-center d-md-none">
+                                            <i class="fas fa-star"></i> {{ best_book.average_grade }}
+                                        </div>
+                                    </div>
+                                    <div class="row d-none d-md-block mt-2">
+                                        <div class="col">
+                                            <p>
+                                                {% for count in range(best_book.stars) %}
+                                                    <i class="fas fa-star"></i>
+                                                {% endfor %}
+                                                {% for count in range(5 - best_book.stars) %}
+                                                    <i class="far fa-star"></i>
+                                                {% endfor %}
+                                                {{ best_book.avg_gr_rounded }} <br>
+                                                {{ best_book.author }}<br>
+                                                {{ best_book.published_date }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-3 mr-2 ml-2 mb-4">
+                                {% if session.username %}
+                                    <div class="col text-center text-md-right">
+                                        <button type="submit" class="btn btn-green" onclick="addOpinion('{{ best_book._id }}', '{{ best_book.title }}', 'popular')">Add opinion</button>
+                                    </div>
+                                    <div class="col text-center text-md-left">
+                                {% else %}
+                                    <div class="col text-center">
+                                {% endif %}
+                                    <button class="btn btn-green">
+                                            <a href="/book/{{ best_book._id }}" class="text-white">Book Details</a>
+                                        </button>
+                                    </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <!-- Left and right controls -->
+                <a class="carousel-control-prev" href="#popular_carousel" data-slide="prev">
+                    <i id="prev" class="fas fa-chevron-left"></i>
+                </a>
+                <a class="carousel-control-next" href="#popular_carousel" data-slide="next">
+                    <i id="next" class="fas fa-chevron-right"></i>
+                </a>
+            </div>
         </div>
+        <div class="divider"></div>
     </section>
 
     <section id="categories">
+        <div class="divider"></div>
         <div class="text-center m-5">
             <h3>Most Popular in Category</h3>
             <div class="row">
@@ -114,24 +121,30 @@
                 {% endfor %}
             </div>
         </div>
+        <div class="divider"></div>
     </section>
     
-    <section id="search_for_book" class="container">
-        <div class="text-center mt-5">
-            <h3>Search for book in this database</h3>
-            <div class="card">
-                <div class="card-body">
-                    <form method="POST" action="{{ url_for('search') }}" class="was-validated">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <button type="submit" class="btn btn-green input-group-text" id="search_icon"><i class="fas fa-search"></i></button>
+    
+    <section  class="bgr-darkgreen">
+        <div class="divider"></div>
+        <div id="search_for_book" class="container w-90">
+            <div class="text-center text-white">
+                <h2>Search for book in this database</h2>
+                <div class="card">
+                    <div class="card-body">
+                        <form method="POST" action="{{ url_for('search') }}" class="was-validated">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <button type="submit" class="btn btn-green input-group-text" id="search_icon"><i class="fas fa-search"></i></button>
+                                </div>
+                                <input name="title_or_author" type="text" class="form-control" placeholder="Title or Author" minlength="3" maxlenght="15" required aria-label="search" aria-describedby="search_icon">
                             </div>
-                            <input name="title_or_author" type="text" class="form-control" placeholder="Title or Author" minlength="3" maxlenght="15" required aria-label="search" aria-describedby="search_icon">
-                        </div>
-                    </form>
-                </div>    
+                        </form>
+                    </div>    
+                </div>
             </div>
         </div>
+        <div class="divider"></div>
     </section>
     
     <section id="book">

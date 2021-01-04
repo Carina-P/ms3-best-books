@@ -24,6 +24,9 @@ body{
 .text-red{
     color: #cc2936;
 }
+.text-sandy{
+     color: #f4a261;
+}
 .text-light{
     color: #fffcf2;
 }
@@ -75,11 +78,13 @@ body{
 .bgr-brown{
     background-color: #774936;
 }
+.divider{
+    height: 5rem;
+}
 .img-fluid{
     width: 100%;
     height: auto;
 }
-
 .buy{
     border-radius: 50%;
     float: right;
