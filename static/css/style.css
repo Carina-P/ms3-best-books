@@ -101,6 +101,9 @@ body{
     max-height: 8rem;
     width: 100%;
 }
+.brand-center{
+    padding-right: 8rem;
+}
 .navbar-brand{
     color: #f4a261;
     border: none;
