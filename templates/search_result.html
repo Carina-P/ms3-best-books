@@ -33,11 +33,11 @@
                         </div>
                         <div class="card-footer bgr-white">
                             <button class="btn btn-green">
-                                <a href="/book/{{ book._id }}" class="text-white">Book details</a>
+                                <a href="/book/{{ book._id }}" class="text-white">Book details <i class="fas fa-info-circle"></i></a>
                             </button>
                             {% if session.username %}
                                 <button type="submit" class="btn btn-green" onclick="addOpinion(`{{ book._id }}`, `{{ book.title }}`)">
-                                    Add opinion
+                                    Add opinion <i class="fas fa-plus-square"></i>
                                 </button>  
                             {% endif %}
                         </div>
