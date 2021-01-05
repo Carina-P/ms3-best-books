@@ -14,8 +14,8 @@
                         
                         {% if session.username == review.added_by %}
                             <div class="text-center">
-                                <button type="submit" class="btn btn-sm btn-green" onclick="changeOpinion('{{ review.book_id }}', '{{ title }}',
-                                    '{{ review._id}}', '{{ review.grade }}', '{{ review.review }}')">
+                                <button type="submit" class="btn btn-sm btn-green" onclick="changeOpinion(`{{ review.book_id }}`, `{{ title }}`,
+                                    `{{ review._id}}`, `{{ review.grade }}`, `{{ review.review }}`)">
                                     Change
                                 </button>
                                 <a href="{{ url_for('delete_opinion', book_id=review.book_id, review_id=review._id) }}" class="btn btn-sm btn-red">
