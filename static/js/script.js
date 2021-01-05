@@ -166,9 +166,7 @@ function bookToDocument(book){
 }
 
 function addBook(index){
-    console.log(index, typeof(index));
     let book = search_result.items[index];
-    console.log(book);
     bookToDocument(book);
 }
 
@@ -235,7 +233,7 @@ function searchToDocument(){
 
 function searchForBooks(title_or_author, search_text){
     if (!search_text || search_text.trim().length === 0){
-        console.log("ingen info");
+        console.log("No information to search for!");
     }
     else{
         fetch("https://www.googleapis.com/books/v1/volumes?q="+ title_or_author + ":" + search_text + "&printType=books&projection=full&key=AIzaSyAa48h04CAMjJ1bVewMoBx-_8EZv1IBNpI")
@@ -245,7 +243,7 @@ function searchForBooks(title_or_author, search_text){
             searchToDocument();
         })
         .catch(error => {
-            console.log("something is wrong", error);
+            console.log("something went wrong when fetching info from Google Books", error);
         });
     }
 }
