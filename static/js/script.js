@@ -196,6 +196,8 @@ function searchToDocument(){
                 }
                 if ("imageLinks" in book.volumeInfo){
                     if ("thumbnail" in book.volumeInfo.imageLinks){
+                        image_link = book.volumeInfo.imageLinks.thumbnail;
+                        book.volumeInfo.imageLinks.thumbnail = image_link.replace("http:", "https:")
                         text += `<img src=${book.volumeInfo.imageLinks.thumbnail}>`;
                     }
                 }
