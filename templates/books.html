@@ -79,14 +79,16 @@
                             <div class="row mt-3 mr-2 ml-2 mb-4">
                                 {% if session.username %}
                                     <div class="col text-center text-md-right">
-                                        <button type="submit" class="btn btn-green" onclick="addOpinion(`{{ best_book._id }}`, `{{ best_book.title }}`)">Add opinion</button>
+                                        <button type="submit" class="btn btn-green" onclick="addOpinion(`{{ best_book._id }}`, `{{ best_book.title }}`)">
+                                            Add opinion <i class="fas fa-plus-square"></i>
+                                        </button>
                                     </div>
                                     <div class="col text-center text-md-left">
                                 {% else %}
                                     <div class="col text-center">
                                 {% endif %}
                                         <button class="btn btn-green">
-                                            <a href="/book/{{ best_book._id }}" class="text-white">Book Details</a>
+                                            <a href="/book/{{ best_book._id }}" class="text-white">Book Details <i class="fas fa-info-circle"></i></a>
                                         </button>
                                     </div>
                             </div>
