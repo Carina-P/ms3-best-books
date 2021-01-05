@@ -214,7 +214,7 @@ function searchToDocument(){
                         </div>
                         <div class="card-footer bgr-white">
                             <button type="submit" class="btn btn-sm btn-green" onclick="addBook(${index})">
-                                Choose book
+                                Choose book <i class="fas fa-hand-pointer"></i>
                             </button>
                         </div>
                     </div>
