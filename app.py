@@ -59,7 +59,6 @@ def get_groups():
 
 
 @app.route("/", methods=["GET", "POST"])
-@app.route("/books", methods=["GET", "POST"])
 def get_books():
     best_books = get_best_books()
     category_groups = get_groups()

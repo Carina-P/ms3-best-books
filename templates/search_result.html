@@ -1,9 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
     <div id="search_book_results" class="container mt-5">
-        <button class="btn btn-lg btn-green mb-3">
-                <a href="/" class="text-white"><i class="fas fa-arrow-left"></i></a>
-        </button>
+        <div class="text-right">
+            <button class="btn btn-green mb-3 closing">
+                <a href="/" class="text-white"><i class="fas fa-times-circle fa-lg"></i></a>
+            </button>
+        </div>
         <div class="text-center">
             {% if show_category %}
                 <h2 class="mb-3">Most Popular in Category Group {{ category }}:</h2>
