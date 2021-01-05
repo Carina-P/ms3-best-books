@@ -210,6 +210,11 @@ body{
     padding-left: 4rem;
 }
 
+/* Category groups section */
+.category-btn:hover{
+    transform: scale(1.2);
+}
+
 /* Books: Add book section */
 #search_results .card .card-content,
 #search_category .card .card-content{
