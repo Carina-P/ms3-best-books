@@ -87,9 +87,8 @@ body{
 .divider{
     height: 5rem;
 }
-.img-fluid{
-    width: 100%;
-    height: auto;
+.divider-sm{
+    height: 2rem;
 }
 .buy{
     border-radius: 50%;
@@ -99,7 +98,8 @@ body{
 
 /* Navigation */
 #nav-image{
-    max-height: 10vw;
+    max-height: 8rem;
+    width: 100%;
 }
 .navbar-brand{
     color: #f4a261;
