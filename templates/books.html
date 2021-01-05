@@ -3,14 +3,14 @@
 {% block content %}
     <!-- Start -->
     <div class="start-container">
-    <div class="start-image"></div>
-    <div class="start-text dark-shadow rounded-corners">
-        <h1>the Best Books</h1>
-    </div>
+        <div class="start-image"></div>
+        <div class="start-text dark-shadow rounded-corners">
+            <h1>the Best Books</h1>
+        </div>
     </div>
 
     <!-- Top-10 books -->
-    <section>
+    <section id="10-top">
         <div class="divider"></div>
         <div id="popular" class="container w-90">
             <div class="text-center">
@@ -103,7 +103,6 @@
                 </a>
             </div>
         </div>
-        <div class="divider"></div>
     </section>
 
     <section id="categories">
@@ -132,7 +131,7 @@
     
     
     <section id="search" class="bgr-darkgreen">
-        <div class="divider"></div>
+        <div class="divider-sm"></div>
         <div id="search_for_book" class="container w-90">
             <div class="text-center text-white">
                 <h2>Search for book in this database</h2>
@@ -150,7 +149,7 @@
                 </div>
             </div>
         </div>
-        <div class="divider"></div>
+        <div class="divider-sm"></div>
     </section>
     
     <section id="book">
@@ -201,7 +200,6 @@
         <div id="search_results" class="container"></div>
         <div id="add_book" class="container"></div>
     {% endif %}
-        <div class="divider"></div>
     </section>
     
     {% include "modal.html" %}

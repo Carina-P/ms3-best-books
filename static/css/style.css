@@ -85,10 +85,10 @@ body{
     background-color: #e0dde3;
 }
 .divider{
-    height: 5rem;
+    height: 10rem;
 }
 .divider-sm{
-    height: 2rem;
+    height: 5rem;
 }
 .buy{
     border-radius: 50%;
