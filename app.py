@@ -353,7 +353,7 @@ def signup():
         mongo.db.users.insert_one(sign_up)
 
         session["username"] = sign_up["username"]
-        flash("Sign Up successfull")
+        flash("Sign Up successfull - Welcome, {}!".format(request.form.get("username")))
         return redirect(url_for("get_books"))
 
     return render_template("login.html", login=False)
