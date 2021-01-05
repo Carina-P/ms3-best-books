@@ -165,7 +165,7 @@ def add_book():
     return redirect(url_for("get_book", book_id=result.inserted_id))
 
 
-@app.route("/delete_book/<id>")
+@app.route("/delete/book/<id>")
 def delete_book(id):
     mongo.db.books.delete_one({"_id": ObjectId(id)})
     mongo.db.books_details.delete_one({"book_id": ObjectId(id)})
@@ -174,7 +174,7 @@ def delete_book(id):
     return redirect(url_for("get_books"))
 
 
-@app.route("/add_opinion", methods=["GET", "POST"])
+@app.route("/add/opinion", methods=["GET", "POST"])
 def add_opinion():
     book_id = request.form.get("book_id")
     grade_str = request.form.get("grade_m")
@@ -227,7 +227,7 @@ def add_opinion():
     return redirect(url_for("get_book", book_id=book_id))
 
 
-@app.route("/change_opinion", methods=["GET", "POST"])
+@app.route("/change/opinion", methods=["GET", "POST"])
 def change_opinion():
     book_id = request.form.get("book_id")
     review_id = request.form.get("review_id")
@@ -280,7 +280,7 @@ def change_opinion():
     return redirect(url_for("get_book", book_id=book_id))
 
 
-@app.route("/delete_opinion/<book_id>/<review_id>")
+@app.route("/delete/opinion/<book_id>/<review_id>")
 def delete_opinion(book_id, review_id):
     opinion = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
     if not opinion:
@@ -332,7 +332,9 @@ def get_reviews(book_id, title):
         {"book_id": ObjectId(book_id)}).sort("_id", -1)
     )
 
-    return render_template("reviews.html", reviews=reviews, title=title)
+    return render_template(
+        "reviews.html", reviews=reviews, title=title, book_id=book_id
+    )
 
 
 @app.route("/signup", methods=["GET", "POST"])
@@ -353,7 +355,9 @@ def signup():
         mongo.db.users.insert_one(sign_up)
 
         session["username"] = sign_up["username"]
-        flash("Sign Up successfull - Welcome, {}!".format(request.form.get("username")))
+        flash("Sign Up successfull - Welcome, {}!".format(
+            request.form.get("username")
+        ))
         return redirect(url_for("get_books"))
 
     return render_template("login.html", login=False)
@@ -391,7 +395,7 @@ def logout():
     return redirect(url_for("get_books"))
 
 
-@app.route("/get_category_groups")
+@app.route("/categories")
 def get_category_groups():
     category_groups = list(
         mongo.db.category_groups.find().sort("group_name", 1)
@@ -401,7 +405,7 @@ def get_category_groups():
     )
 
 
-@app.route("/add_group", methods=["GET", "POST"])
+@app.route("/add/group", methods=["GET", "POST"])
 def add_group():
     if request.method == "POST":
         group_name = {
