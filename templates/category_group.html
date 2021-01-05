@@ -15,13 +15,13 @@
                 <form method="POST" action="{{ url_for('add_group') }}" class="was-validated">
             {% endif %}
                 <div class="card-body bgr-white">
-                    <div class="input-field col text-center">
+                    <div class="input-field text-center">
                         {% if edit %}
                             <input id="group_name" class="form-control" type="text" name="group_name" placeholder="Enter New Category Group" minlength="3" maxlength="25"
-                                type="text" value="{{ group.group_name }}" required>
+                                value="{{ group.group_name }}" required>
                         {% else %}
                             <input id="group_name2" class="form-control" type="text" name="group_name" placeholder="Enter New Category Group" minlength="3" maxlength="25"
-                                type="text" value="" required>
+                                value="" required>
                         {% endif %}   
                     </div>
                     <div class="text-center mt-3">

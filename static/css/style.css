@@ -238,8 +238,20 @@ textarea.materialize-textarea{
 }
 
 /* Log In */
-input, input-field{
-    border-style: none none solid none;
+.login-img {
+    max-width: 80%;
+    background-position: center;
+}
+.login-text {
+    background-color: rgb(224,221,227,0.6);
+    position: absolute;
+    top:20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 40%;
+    padding: 20px;
+    text-align: center;
 }
 
 /* For a responsive site */

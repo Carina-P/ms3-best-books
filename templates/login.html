@@ -1,46 +1,45 @@
 {% extends "base.html" %}
 {% block content%}
     <div class="container text-center">
-        <div class="m-5">
-            {% if login %}
-                <h2>Log In</h2>
-            {% else %}
-                <h2>Sign Up</h2>
-            {% endif %}
-        </div>
-        <div class="card bgr-white">
+        <div class="card">
             <div class="card-image-top">
-                <img src="./static/images/reading_by_the_sea.jpg" class="img-fluid">
-            </div>
-            <div class="card-content">
+                <img class="login-img" src="./static/images/reading_by_the_sea.jpg">
+                <div class="login-text rounded-corners">
                 {% if login %}
-                    <form method="POST" action="{{ url_for('login') }}">
+                    <h2>Log In</h2>
                 {% else %}
-                    <form method="POST" action="{{ url_for('signup') }}" class="was-validated">
+                    <h2>Sign Up</h2>
                 {% endif %}
-                        <div>
-                            <div class="row m-5">
-                                <div class="input-field col-12">
-                                    <i class="fas fa-user prefix"></i>
-                                    <input id="username" name="username" type="text" placeholder="Enter username"
-                                        minlength="3" maxlength="15" required>
-                                </div>
-                            </div>
-                            <div class="row m-5">
-                                <div class="input-field col-12">
-                                    <i class="fas fa-user-lock prefix"></i>
-                                    <input id="password" name="password" type="password" placeholder="Enter password"
-                                        minlength="3" maxlenght="15" required>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <button type="submit" class="col-12 col-md-8 btn-lg btn-green ml-auto mr-auto mb-5">
-                                    Submit <i class="fas fa-sign-in-alt"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                </div>
             </div>
+            {% if login %}
+            <form method="POST" action="{{ url_for('login') }}" class="was-validated">
+            {% else %}
+            <form method="POST" action="{{ url_for('signup') }}" class="was-validated">
+            {% endif %}
+                <div class="card-body bgr-white">
+                    <div class="input-group mb-2 mr-sm-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="fas fa-user"></i></div>
+                        </div>
+                        <input id="username" class="form-control" name="username" type="text" placeholder="Enter username"
+                            minlength="3" maxlength="15" required>          
+                    </div> 
+                    
+                    <div class="input-group mb-2 mr-sm-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="fas fa-user-lock"></i></div>
+                        </div>
+                        <input id="password" class="form-control" name="password" type="password" placeholder="Enter password"
+                            minlength="3" maxlenght="15" required>         
+                    </div> 
+                    <div class="text-center mt-3">
+                        <button type="submit" class="btn btn-lg btn-green">
+                            Submit <i class="fas fa-sign-in-alt"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
         </div>
 
         <div class="row">
