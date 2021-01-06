@@ -370,18 +370,19 @@ def change_opinion(return_to, title):
         return redirect(url_for("get_reviews", book_id=book_id, title=title))
 
 
-
-@app.route("/delete/opinion/<book_id>/<review_id>")
-def delete_opinion(book_id, review_id):
+@app.route("/delete/opinion/<book_id>/<review_id>/<return_to>/<title>")
+def delete_opinion(book_id, review_id, return_to, title):
     """
     Delete opinion, with id=review_id, from database.
     Notice: This affects the average grade for the book with id=book_id
     and it also might affect the last 5 reviews that is stored in collection:
     book_details.
-    Then redirect user to page with book details.
+    Then redirect user to page according to input parameter return_to.
     Input:
         book_id: (str) - Books id in database
         review_id: (str) - Reviews id in database
+        return_to: (str) - Redirect user to this page
+        title: (str) - Books title
     """
     opinion = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
     if not opinion:
@@ -411,7 +412,10 @@ def delete_opinion(book_id, review_id):
             {"book_id": ObjectId(book_id)}, {"$set": get_5_reviews(book_id)})
 
     flash("Opinion Successfully Deleted")
-    return redirect(url_for("get_book", book_id=book_id))
+    if (return_to == "book"):
+        return redirect(url_for("get_book", book_id=book_id))
+    else:
+        return redirect(url_for("get_reviews", book_id=book_id, title=title))
 
 
 @app.route("/reviews/<book_id>/<title>", methods=["GET", "POST"])

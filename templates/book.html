@@ -66,7 +66,7 @@
                                     `{{ review._id}}`, `{{ review.grade }}`, `{{ review.review }}`, `book`)">
                                     Edit <i class="fas fa-pen-square"></i></i>
                                 </button>
-                                <a href="{{ url_for('delete_opinion', book_id=book._id, review_id=review._id) }}" class="btn btn-sm btn-red">
+                                <a href="{{ url_for('delete_opinion', book_id=book._id, review_id=review._id, return_to='book', title=book.title) }}" class="btn btn-sm btn-red">
                                     Delete <i class="fas fa-trash-alt"></i>
                                 </a>
                             </div>
