@@ -9,7 +9,7 @@ html{
 body{
     font-family: "Poppins", "Roboto", sans-serif;
     color: #32292f;
-    background-color: #f5f4f6; 
+    background-color: #f4e0c3;
     font-size: 1rem;
 }
 .rounded-corners{
@@ -157,7 +157,7 @@ body{
     background-size: cover;
 }
 .start-text {
-    background-color: rgb(224,221,227,0.9);
+    background-color: rgb(255,255,255,0.8);
     color: #f4a261;
     position: absolute;
     top: 50%;
