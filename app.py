@@ -20,6 +20,7 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
+
 ###########
 # Book/s: #
 ###########
@@ -155,11 +156,14 @@ def add_book():
     """
     if request.method == "POST":
         username = session["username"]
-        grade = request.form.get("grade")
-        if grade:
+        grade_str = request.form.get("grade")
+        grade = int(grade_str)
+        if grade_str:
+            grade = int(grade_str)
             average_grade = grade
             no_of_votes = 1
         else:
+            grade=0
             average_grade = 0
             no_of_votes = 0
 
@@ -433,7 +437,8 @@ def add_group():
     """
     Render page with category groups.
     If form is filled out, new category group name is retrieved from form and
-    then added to database. When done redirect user to page with category groups.
+    then added to database. When done redirect user to page with category
+    groups.
     """
     if request.method == "POST":
         group_name = {
@@ -503,7 +508,7 @@ def delete_group(category_group_id, category_group):
 @app.route("/search/category", methods=["GET", "POST"])
 def search_category():
     """
-    Get category group from form and find the ten most popular books that 
+    Get category group from form and find the ten most popular books that
     belong to this category group.
     Then render page search_results.
     """
