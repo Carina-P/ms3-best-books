@@ -157,13 +157,13 @@ def add_book():
     if request.method == "POST":
         username = session["username"]
         grade_str = request.form.get("grade")
-        grade = int(grade_str)
+    
         if grade_str:
             grade = int(grade_str)
             average_grade = grade
             no_of_votes = 1
         else:
-            grade=0
+            grade = 0
             average_grade = 0
             no_of_votes = 0
 
@@ -300,6 +300,8 @@ def add_opinion():
         }
         mongo.db.books.update_one(
             {"_id": ObjectId(book_id)}, {"$set": new_grading})
+    else:
+        grade_str = "0"
 
     add_review = {
         "grade": grade_str,
@@ -343,14 +345,21 @@ def change_opinion(return_to, title):
         book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
 
         no_of_votes = int(book["no_of_votes"])
-        new_average = (
-            float(book["average_grade"]) * int(
-                book["no_of_votes"]) + grade_diff)/no_of_votes
-        new_grading = {
-            "average_grade": new_average
-        }
-        mongo.db.books.update_one(
-            {"_id": ObjectId(book_id)}, {"$set": new_grading})
+        
+        # If old review was 0 that vote was not counted before
+        if old_review["grade"] == "0":
+            no_of_votes += 1
+
+        # This should not happen but to be sure not to divide with 0
+        if no_of_votes != 0:
+            new_average = (
+                    float(book["average_grade"]) * int(
+                        book["no_of_votes"]) + grade_diff)/no_of_votes
+            new_grading = {
+                "average_grade": new_average
+            }
+            mongo.db.books.update_one(
+                {"_id": ObjectId(book_id)}, {"$set": new_grading})
 
     change_review = {
         "grade": grade_str,
@@ -392,7 +401,9 @@ def delete_opinion(book_id, review_id, return_to, title):
     mongo.db.reviews.delete_one({"_id": ObjectId(review_id)})
 
     book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
-    if opinion["grade"] and opinion["grade"] != "0":
+    
+    # If no grade no new average is needed
+    if opinion["grade"] != "0":
         if book["no_of_votes"] < 2:
             no_of_votes = 0
             average_grade = 0
