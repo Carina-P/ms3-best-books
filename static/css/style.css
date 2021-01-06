@@ -1,7 +1,7 @@
 /* Import fonts from Google Fonts: https://fonts.google.com/ */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-/* General */
+/** General **/
 html{
     scroll-behavior: smooth;
     font-size: 16px;
@@ -93,9 +93,6 @@ body{
 .closing:hover{
     transform: scale(1.5);
 }
-.card, .carousel-inner{
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-}
 .buy{
     border-radius: 50%;
     float: right;
@@ -137,6 +134,16 @@ body{
     transform: scale(1.1);
 }
 
+/* Footer */
+.icon{
+    color: #ffffff;
+}
+.icon:hover{
+    background-color: #264653;
+    transform: scale(1.5);
+}
+
+/** Home page **/
 /* Start */
 .start-container{
     position: relative;
@@ -162,33 +169,10 @@ body{
     text-align: center;
 }
 
-/* Footer */
-.icon{
-    color: #ffffff;
+/* Top- 10 section*/
+.card, .carousel-inner{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
-.icon:hover{
-    background-color: #264653;
-    transform: scale(1.5);
-}
-
-/* Carousel
-.carousel-item .card .card-img img{
-    height: 100%;
-    width: auto;
-    margin-top: 1rem;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.carousel-item{
-    height: 500px;
-}
-
-.container .carousel{
-    position: absolute;
-    top: 50%;
-}
-*/
 .carousel-control-next, .carousel-control-prev{
     width: 5%;
 }
@@ -215,7 +199,7 @@ body{
     transform: scale(1.2);
 }
 
-/* Books: Add book section */
+/* Add book section */
 #search_results .card .card-content,
 #search_category .card .card-content{
     padding: 1rem;
@@ -237,7 +221,8 @@ textarea.materialize-textarea{
 #image_link{
      height: 4rem;
 }
-/* Get book */
+
+/** Book details **/
 .left{
     margin-right: 1em;
     margin-bottom: 1em;
@@ -248,7 +233,7 @@ textarea.materialize-textarea{
     padding: 1em;
 }
 
-/* Log In */
+/** Log In **/
 .login-img {
     max-width: 80%;
     background-position: center;
