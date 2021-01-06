@@ -222,6 +222,9 @@ def delete_book(book_id):
     """
     Remove book with id = book_id from database.
     Redirect user to home page.
+
+    Input:
+        book_id: (str) - books id in database
     """
     mongo.db.books.delete_one({"_id": ObjectId(book_id)})
     mongo.db.books_details.delete_one({"book_id": ObjectId(book_id)})
@@ -314,20 +317,24 @@ def add_opinion():
     return redirect(url_for("get_book", book_id=book_id))
 
 
-@app.route("/change/opinion", methods=["GET", "POST"])
-def change_opinion():
+@app.route("/change/opinion/<return_to>/<title>", methods=["GET", "POST"])
+def change_opinion(return_to, title):
     """
     Read from form in page and update database with the change in opinion.
     Notice: If the grade is changed - average_grade must be recalculated.
     And if review is changed, besides collection: reviews, it might also effect
     collection: books-details that contains the five latest reviews.
+    Render page according to input parameter return_to
+    Input:
+        return_to: (str) - Where user should be redirected
+        title: (str) - Title of book
     """
     book_id = request.form.get("book_id")
     review_id = request.form.get("review_id")
     grade_str = request.form.get("grade_m")
     review = request.form.get("review_m")
     if not(review) and not(grade_str):
-        flash("Something is wrong")
+        flash("Something is wrong, no information retrieved")
         return redirect(url_for("get_book", book_id=book_id))
 
     old_review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
@@ -357,7 +364,11 @@ def change_opinion():
 
     flash("Opinion Successfully Changed")
 
-    return redirect(url_for("get_book", book_id=book_id))
+    if (return_to == "book"):
+        return redirect(url_for("get_book", book_id=book_id))
+    else:
+        return redirect(url_for("get_reviews", book_id=book_id, title=title))
+
 
 
 @app.route("/delete/opinion/<book_id>/<review_id>")
@@ -368,6 +379,9 @@ def delete_opinion(book_id, review_id):
     and it also might affect the last 5 reviews that is stored in collection:
     book_details.
     Then redirect user to page with book details.
+    Input:
+        book_id: (str) - Books id in database
+        review_id: (str) - Reviews id in database
     """
     opinion = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
     if not opinion:
@@ -405,6 +419,9 @@ def get_reviews(book_id, title):
     """
     Get all reviews for a book with id=book_id in database.
     Render the reviews page and show retrieved information.
+    Input:
+        book_id: (str) - Books id in database
+        title: (str) - Books title
     """
     reviews = list(mongo.db.reviews.find(
         {"book_id": ObjectId(book_id)}).sort("_id", -1)
@@ -462,6 +479,10 @@ def edit_group(category_group_id, old_group_name):
     Notice that all books that have this category group also have to be updated
     with changed category group name. Then user is redirected to category
     groups page
+
+    Input: 
+        category_group_id: (str) - Category groups id in database
+        old_group_name: (str) - Category group name to change from
     """
     if request.method == "POST":
         new_name = request.form.get("group_name")
@@ -492,6 +513,9 @@ def delete_group(category_group_id, category_group):
     Notice that all books in this category_group is effected. Their category
     group is changed to "Other".
     User is then redirected to page with category groups.
+    Input: 
+        category_group_id: (str) - Category groups id in databas
+        category_group: (str) - Name of category group
     """
     mongo.db.category_groups.remove({"_id": ObjectId(category_group_id)})
 
@@ -522,8 +546,8 @@ def search_category():
     if not(category_books):
         flash("No books in that category group in database")
         return redirect(url_for("get_books"))
-    
-    # The average grade is rounded to one decimal.
+
+    # The average grade is rounded before shown on page.
     for book in category_books:
         book["avg_gr_rounded"] = round(float(book["average_grade"]), 1)
 

@@ -279,9 +279,9 @@ function selectToDocument(grade){
     return text;
 }
 
-function changeOpinion(book_id, title, review_id, grade, review){
+function changeOpinion(book_id, title, review_id, grade, review, return_to){
     $("#book_title").html(title);
-    $('#modal_form').attr('action', '/change/opinion');
+    $('#modal_form').attr('action', `/change/opinion/${return_to}/${title}`);
     $("#hidden_input").html(`<input type="hidden" name="book_id" value="${book_id}">
         <input type="hidden" name="review_id" value="${review_id}">`);
     $("#grade_m").html(selectToDocument(grade));
