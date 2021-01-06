@@ -1,3 +1,7 @@
+"""
+Server-side code for the application ms3-best-books.
+"""
+
 import os
 from flask import (
     Flask, flash, render_template, redirect,
@@ -8,7 +12,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
 
-
 app = Flask(__name__)
 
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
@@ -17,8 +20,15 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
-
+###########
+# Book/s: #
+###########
 def get_best_books():
+    """
+    Search in database for the ten best books according to books grades.
+
+    Return: (list of dictionaries) - the ten best books
+    """
     ten_best_books = list(
         mongo.db.books.find().sort("average_grade", -1).limit(10)
     )
@@ -35,16 +45,27 @@ def get_best_books():
 
 
 def get_colours():
+    """
+    Returns colours used when showing category groups
+
+    return: (list of str) - the colours
+    """
     return [
         'darkgreen', 'acid', 'sandy', 'orange', 'brown'
         ]
 
 
 def get_groups():
+    """
+    Get current category groups from database
+
+    return: (list of dictionaries) - with category groups
+    """
     cat_groups = list(mongo.db.category_groups.find())
     category_groups = []
     colours = get_colours()
     length = len(colours)
+
     index = 0
     for group in cat_groups:
         category_groups.append(
@@ -60,6 +81,10 @@ def get_groups():
 
 @app.route("/", methods=["GET", "POST"])
 def get_books():
+    """
+    Fetch best books and current category groups.
+    Take user to home-page and show retrieved information.
+    """
     best_books = get_best_books()
     category_groups = get_groups()
 
@@ -70,9 +95,18 @@ def get_books():
 
 @app.route("/book/<book_id>")
 def get_book(book_id):
+    """
+    Get information about book with id equal to book_id.
+    Render the book information page and show retrieved information.
+
+    Input:
+        book_id (object): The database _id for book
+    """
     book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
 
+    # Round average grade, retrived from database, to one decimal
     book["avg_gr_rounded"] = round(float(book["average_grade"]), 1)
+    # Round average grade to integer - that is number of stars to show for book
     book["stars"] = int(round(float(book["average_grade"]), 0))
 
     book_details = mongo.db.books_details.find_one(
@@ -86,6 +120,12 @@ def get_book(book_id):
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
+    """
+    With given search-string (containing book title or author), retrieved from
+    form in page, search in database for books with that title or author.
+
+    Render search-result page and show retrieved information
+    """
     search_str = request.form.get("title_or_author")
     books = list(mongo.db.books.find({"$or": [
         {"title": {"$regex": ".*" + search_str + ".*"}},
@@ -97,6 +137,7 @@ def search():
         return redirect(url_for("get_books"))
 
     for book in books:
+        # Round average grade, retrived from database, to one decimal
         avg_gr_rounded = round(float(book["average_grade"]), 1)
         book["avg_gr_rounded"] = avg_gr_rounded
 
@@ -107,6 +148,11 @@ def search():
 
 @app.route("/add/book", methods=["GET", "POST"])
 def add_book():
+    """
+    Get information about book from form in page and add book information to
+    database. Inform user if book is added or not.
+    And then book details page is rendered with new database information.
+    """
     if request.method == "POST":
         username = session["username"]
         grade = request.form.get("grade")
@@ -131,6 +177,9 @@ def add_book():
 
         reviews_max5 = []
         review = request.form.get("review")
+        # Only add opinion if grade and/or review is given
+        # Notice that two collections are updated with review: reviews and
+        # book_details that contains the five last reviews.
         if grade or review:
             reviews = {
                 "grade": grade,
@@ -159,34 +208,82 @@ def add_book():
         }
 
         mongo.db.books_details.insert_one(book_details)
-        flash("Book Successfully Added")
+        flash('The book "' + book["title"] + '" is successfully added')
 
     return redirect(url_for("get_book", book_id=result.inserted_id))
 
 
-@app.route("/delete/book/<id>")
-def delete_book(id):
-    mongo.db.books.delete_one({"_id": ObjectId(id)})
-    mongo.db.books_details.delete_one({"book_id": ObjectId(id)})
-    mongo.db.reviews.delete_many({"book_id": ObjectId(id)})
+@app.route("/delete/book/<book_id>")
+def delete_book(book_id):
+    """
+    Remove book with id = book_id from database.
+    Redirect user to home page.
+    """
+    mongo.db.books.delete_one({"_id": ObjectId(book_id)})
+    mongo.db.books_details.delete_one({"book_id": ObjectId(book_id)})
+    mongo.db.reviews.delete_many({"book_id": ObjectId(book_id)})
     flash("Book Successfully Deleted")
     return redirect(url_for("get_books"))
 
 
+####################
+# Opinions/reviews #
+####################
+def get_5_reviews(book_id):
+    """
+    Get the five latest reviews for a book with id=book_id in database.
+
+    input:
+        book_id (str): Id for book in database
+    return: (directory with:
+                reviews_max5: (list with, at the most, five latest reviews)
+                more_reviews: (str "y" or "n" depending on if there are more
+                than five reviews)
+            )
+    )
+    """
+    # Try to retieve max six reviews to find out if there is more than five
+    reviews_max5 = list(mongo.db.reviews.find(
+        {"book_id": ObjectId(book_id)}).sort("_id", -1).limit(6))
+
+    # If more than 5 reviews remove oldest review of them
+    if len(reviews_max5) > 5:
+        reviews_max5.pop()
+        more_reviews = "y"
+    else:
+        more_reviews = "n"
+
+    five_reviews = {
+        "reviews_max5": reviews_max5,
+        "more_reviews": more_reviews
+    }
+    return five_reviews
+
+
 @app.route("/add/opinion", methods=["GET", "POST"])
 def add_opinion():
+    """
+    Get review information about book and opinion from form in page.
+    Add opinion about the book to database.
+
+    Then redirect user to book detail page.
+    """
     book_id = request.form.get("book_id")
     grade_str = request.form.get("grade_m")
     review = request.form.get("review_m")
+    # if something is wrong and review and grade is missing
     if not(review) and not(grade_str):
         flash("No opinion added since you gave no values")
         return redirect(url_for("get_books"))
 
+    # Grade is given
     if grade_str:
         grade = int(grade_str)
         book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
 
+        # Now one more vote is given for the book
         no_of_votes = int(book["no_of_votes"]) + 1
+        # New vote gives an new average_grade
         new_average = (
             float(book["average_grade"]) * int(book["no_of_votes"]) + grade
             )/no_of_votes
@@ -205,21 +302,8 @@ def add_opinion():
     }
     mongo.db.reviews.insert_one(add_review)
 
-    reviews_max5 = list(mongo.db.reviews.find(
-        {"book_id": ObjectId(book_id)}).sort("_id", -1).limit(6))
-
-    if len(reviews_max5) > 5:
-        reviews_max5.pop()
-        more_reviews = "y"
-    else:
-        more_reviews = "n"
-
-    update_details = {
-        "reviews_max5": reviews_max5,
-        "more_reviews": more_reviews
-    }
     mongo.db.books_details.update_one(
-            {"book_id": ObjectId(book_id)}, {"$set": update_details})
+            {"book_id": ObjectId(book_id)}, {"$set": get_5_reviews(book_id)})
 
     flash("Opinion Successfully Added")
 
@@ -228,6 +312,12 @@ def add_opinion():
 
 @app.route("/change/opinion", methods=["GET", "POST"])
 def change_opinion():
+    """
+    Read from form in page and update database with the change in opinion.
+    Notice: If the grade is changed - average_grade must be recalculated.
+    And if review is changed, besides collection: reviews, it might also effect
+    collection: books-details that contains the five latest reviews.
+    """
     book_id = request.form.get("book_id")
     review_id = request.form.get("review_id")
     grade_str = request.form.get("grade_m")
@@ -258,21 +348,8 @@ def change_opinion():
     mongo.db.reviews.update_one(
         {"_id": ObjectId(review_id)}, {"$set": change_review})
 
-    reviews_max5 = list(mongo.db.reviews.find(
-        {"book_id": ObjectId(book_id)}).sort("_id", -1).limit(6))
-
-    if len(reviews_max5) > 5:
-        reviews_max5.pop()
-        more_reviews = "y"
-    else:
-        more_reviews = "n"
-
-    update_details = {
-        "reviews_max5": reviews_max5,
-        "more_reviews": more_reviews
-    }
     mongo.db.books_details.update_one(
-            {"book_id": ObjectId(book_id)}, {"$set": update_details})
+            {"book_id": ObjectId(book_id)}, {"$set": get_5_reviews(book_id)})
 
     flash("Opinion Successfully Changed")
 
@@ -281,6 +358,13 @@ def change_opinion():
 
 @app.route("/delete/opinion/<book_id>/<review_id>")
 def delete_opinion(book_id, review_id):
+    """
+    Delete opinion, with id=review_id, from database.
+    Notice: This affects the average grade for the book with id=book_id
+    and it also might affect the last 5 reviews that is stored in collection:
+    book_details.
+    Then redirect user to page with book details.
+    """
     opinion = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
     if not opinion:
         flash("Something went wrong")
@@ -305,21 +389,8 @@ def delete_opinion(book_id, review_id):
         mongo.db.books.update_one(
             {"_id": ObjectId(book_id)}, {"$set": new_grading})
 
-    reviews_max5 = list(mongo.db.reviews.find(
-        {"book_id": ObjectId(book_id)}).sort("_id", -1).limit(6))
-
-    if len(reviews_max5) > 5:
-        reviews_max5.pop()
-        more_reviews = "y"
-    else:
-        more_reviews = "n"
-
-    update_details = {
-        "reviews_max5": reviews_max5,
-        "more_reviews": more_reviews
-    }
     mongo.db.books_details.update_one(
-            {"book_id": ObjectId(book_id)}, {"$set": update_details})
+            {"book_id": ObjectId(book_id)}, {"$set": get_5_reviews(book_id)})
 
     flash("Opinion Successfully Deleted")
     return redirect(url_for("get_book", book_id=book_id))
@@ -327,6 +398,10 @@ def delete_opinion(book_id, review_id):
 
 @app.route("/reviews/<book_id>/<title>", methods=["GET", "POST"])
 def get_reviews(book_id, title):
+    """
+    Get all reviews for a book with id=book_id in database.
+    Render the reviews page and show retrieved information.
+    """
     reviews = list(mongo.db.reviews.find(
         {"book_id": ObjectId(book_id)}).sort("_id", -1)
     )
@@ -336,8 +411,133 @@ def get_reviews(book_id, title):
     )
 
 
+###################
+# Category groups #
+###################
+@app.route("/categories")
+def get_category_groups():
+    """
+    Get all category groups from the database.
+    Render category_groups page and show retrieved information.
+    """
+    category_groups = list(
+        mongo.db.category_groups.find().sort("group_name", 1)
+    )
+    return render_template(
+        "category_groups.html", category_groups=category_groups
+    )
+
+
+@app.route("/add/group", methods=["GET", "POST"])
+def add_group():
+    """
+    Render page with category groups.
+    If form is filled out, new category group name is retrieved from form and
+    then added to database. When done redirect user to page with category groups.
+    """
+    if request.method == "POST":
+        group_name = {
+            "group_name": request.form.get("group_name")
+        }
+        mongo.db.category_groups.insert_one(group_name)
+        flash("New Category group Added")
+        return redirect(url_for("get_category_groups"))
+
+    return render_template("category_group.html")
+
+
+@app.route(
+    "/edit/group/<category_group_id>/<old_group_name>", methods=["GET", "POST"]
+)
+def edit_group(category_group_id, old_group_name):
+    """
+    Render category group page with current category group information.
+
+    If values in form is changed and posted, database is updated accordingly.
+    Notice that all books that have this category group also have to be updated
+    with changed category group name. Then user is redirected to category
+    groups page
+    """
+    if request.method == "POST":
+        new_name = request.form.get("group_name")
+
+        mongo.db.category_groups.update_one({
+            "_id": ObjectId(category_group_id)}, {
+                "$set": {"group_name": new_name}
+                })
+
+        # Update affected books with the new category group name
+        mongo.db.books.update_many({
+            "category_group": old_group_name
+            }, {
+                "$set": {"category_group": new_name}
+                })
+        flash("Category Group Succesfully Updated")
+        return redirect(url_for("get_category_groups"))
+
+    group = mongo.db.category_groups.find_one({
+        "_id": ObjectId(category_group_id)})
+    return render_template("category_group.html", group=group, edit=True)
+
+
+@app.route("/delete/group/<category_group_id>/<category_group>")
+def delete_group(category_group_id, category_group):
+    """
+    Delete group in database with id=category_group_id.
+    Notice that all books in this category_group is effected. Their category
+    group is changed to "Other".
+    User is then redirected to page with category groups.
+    """
+    mongo.db.category_groups.remove({"_id": ObjectId(category_group_id)})
+
+    # Update all affected books, to category group "Other"
+    mongo.db.books.update_many({
+            "category_group": category_group
+            }, {
+                "$set": {"category_group": "Other"}
+                })
+    flash("Category Group Successfully Deleted")
+    return redirect(url_for("get_category_groups"))
+
+
+@app.route("/search/category", methods=["GET", "POST"])
+def search_category():
+    """
+    Get category group from form and find the ten most popular books that 
+    belong to this category group.
+    Then render page search_results.
+    """
+    category = request.form.get("category")
+    category_books = list(
+        mongo.db.books.find(
+            {"category_group": category}
+            ).sort("average_grade", -1).limit(10)
+        )
+
+    if not(category_books):
+        flash("No books in that category group in database")
+        return redirect(url_for("get_books"))
+    
+    # The average grade is rounded to one decimal.
+    for book in category_books:
+        book["avg_gr_rounded"] = round(float(book["average_grade"]), 1)
+
+    return render_template(
+        "search_result.html", books=category_books,
+        show_category=True, category=category
+    )
+
+
+#########################
+# Access administration #
+#########################
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
+    """
+    Register user in database.
+    Then redirect user to home-page.
+    If user already exists in database, user is redirected to login page.
+    """
     if request.method == "POST":
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
@@ -353,6 +553,7 @@ def signup():
         }
         mongo.db.users.insert_one(sign_up)
 
+        # Put username in session-variable
         session["username"] = sign_up["username"]
         flash("Sign Up successfull - Welcome, {}!".format(
             request.form.get("username")
@@ -364,6 +565,11 @@ def signup():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    """
+    Get username and password from form in page. Check that combination of user
+    and password exists. If OK redirect user to home page. Otherwise user is
+    returned to login page.
+    """
     if request.method == "POST":
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()}
@@ -389,94 +595,13 @@ def login():
 
 @app.route("/logout")
 def logout():
+    """
+    Logout user, which is done by removing session variable username.
+    Redirect user to home page.
+    """
     flash("You have been logged out")
     session.pop("username")
     return redirect(url_for("get_books"))
-
-
-@app.route("/categories")
-def get_category_groups():
-    category_groups = list(
-        mongo.db.category_groups.find().sort("group_name", 1)
-    )
-    return render_template(
-        "category_groups.html", category_groups=category_groups
-    )
-
-
-@app.route("/add/group", methods=["GET", "POST"])
-def add_group():
-    if request.method == "POST":
-        group_name = {
-            "group_name": request.form.get("group_name")
-        }
-        mongo.db.category_groups.insert_one(group_name)
-        flash("New Category group Added")
-        return redirect(url_for("get_category_groups"))
-
-    return render_template("category_group.html")
-
-
-@app.route(
-    "/edit/group/<category_group_id>/<old_group_name>", methods=["GET", "POST"]
-)
-def edit_group(category_group_id, old_group_name):
-    if request.method == "POST":
-        new_name = request.form.get("group_name")
-
-        mongo.db.category_groups.update_one({
-            "_id": ObjectId(category_group_id)}, {
-                "$set": {"group_name": new_name}
-                })
-
-        # Update affected books with the new category group name
-        mongo.db.books.update_many({
-            "category_group": old_group_name
-            }, {
-                "$set": {"category_group": new_name}
-                })
-        flash("Category Group Succesfully Updated")
-        return redirect(url_for("get_category_groups"))
-
-    group = mongo.db.category_groups.find_one({
-        "_id": ObjectId(category_group_id)})
-    return render_template("category_group.html", group=group, edit=True)
-
-
-@app.route("/delete/group/<category_group_id>/<category_group>")
-def delete_group(category_group_id, category_group):
-    mongo.db.category_groups.remove({"_id": ObjectId(category_group_id)})
-
-    # Update all affected books, to category group "Other"
-    mongo.db.books.update_many({
-            "category_group": category_group
-            }, {
-                "$set": {"category_group": "Other"}
-                })
-    flash("Category Group Successfully Deleted")
-    return redirect(url_for("get_category_groups"))
-
-
-@app.route("/search/category", methods=["GET", "POST"])
-def search_category():
-    category = request.form.get("category")
-    category_books = list(
-        mongo.db.books.find(
-            {"category_group": category}
-            ).sort("average_grade", -1).limit(10)
-        )
-
-    if not(category_books):
-        flash("No books in that category group in database")
-        return redirect(url_for("get_books"))
-
-    for book in category_books:
-        book["avg_gr_rounded"] = round(float(book["average_grade"]), 1)
-
-    return render_template(
-        "search_result.html", books=category_books,
-        show_category=True, category=category
-    )
 
 
 if __name__ == "__main__":
