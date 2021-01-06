@@ -1,6 +1,7 @@
-{% extends "base.html" %}
+{% extends 'layouts/base.html' %}
+
 {% block content %}
-    <div class="container">
+    <section class="container">
         <div class="text-center m-5">
             {% if edit %}
                 <h2>Edit Category Group</h2>
@@ -35,6 +36,7 @@
                 </div>
             </form>
         </div>
-    </div>
-    <div class="divider"></div>  
+    </section>
+    <div class="divider"></div>
+ 
 {% endblock %}

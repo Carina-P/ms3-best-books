@@ -1,6 +1,8 @@
-{% extends "base.html" %}
+{% extends 'layouts/base.html' %}
+
 {% block content %}
-    <div id="search_book_results" class="container mt-5">
+
+    <section id="search_book_results" class="container mt-5">
         <div class="text-right">
             <button class="btn btn-green mb-3 closing">
                 <a href="/" class="text-white"><i class="fas fa-times-circle fa-lg"></i></a>
@@ -45,9 +47,9 @@
                 </div>
             {% endfor %}
         </div>
-    </div>
+    </section>
 
-    {% include "modal.html" %}
-    {% include "modal_buy.html" %}
+    {% include 'components/modal.html' %}
+    {% include 'components/modal_buy.html' %}
     
 {% endblock %}

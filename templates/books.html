@@ -1,15 +1,16 @@
-{% extends "base.html" %}
+{% extends 'layouts/base.html' %}
 
 {% block content %}
-    <!-- Start -->
-    <div class="start-container">
+    <!-- Start-section  -->
+    <section class="start-container">
         <div class="start-image"></div>
         <div class="start-text dark-shadow rounded-corners">
             <h1>the Best Books</h1>
         </div>
-    </div>
+    </section>
+    <!-- End of Start-section -->
 
-    <!-- Top-10 books -->
+    <!-- Top-10 books-section  -->
     <section id="10-top">
         <div class="divider"></div>
         <div id="popular" class="container w-90">
@@ -106,7 +107,9 @@
             </div>
         </div>
     </section>
+    <!-- End of top-10-section -->
 
+    <!-- Category groups-section -->
     <section id="categories">
         <div class="divider"></div>
         <div class="text-center m-5">
@@ -130,8 +133,9 @@
         </div>
         <div class="divider"></div>
     </section>
+    <!-- End of Category groups-section -->
     
-    
+    <!-- Search for book-section -->
     <section id="search" class="bgr-darkgreen">
         <div class="divider-sm"></div>
         <div id="search_for_book" class="container w-90">
@@ -153,7 +157,9 @@
         </div>
         <div class="divider-sm"></div>
     </section>
+    <!-- End of search for book-section -->
     
+    <!-- Add book-section -->
     <section id="book">
         <div class="divider"></div>
     {% if session.username %}
@@ -203,8 +209,9 @@
         <div id="add_book" class="container"></div>
     {% endif %}
     </section>
+    <!-- End of Add book-section -->
     
-    {% include "modal.html" %}
-    {% include "modal_buy.html" %}
+    {% include 'components/modal.html' %}
+    {% include 'components/modal_buy.html' %}
 
 {% endblock %}

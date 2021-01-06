@@ -3,7 +3,6 @@
 <head>
     <html lang="en">
   <head>
-    <!-- Required meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
@@ -19,17 +18,18 @@
     <link rel="icon" type="image/png" sizes="16x16"
         href="{{ url_for('static', filename='favicon/favicon-16x16.png') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
-    {% block styles %}
-    {% endblock %}
+    
     <title>The Best Books</title>
+
 </head>
+
 <body>
     <header class="sticky-top">
-        {% include "navigation.html" %}
+        {% include 'layouts/navigation.html' %}
     </header>
 
+    <!-- messages -->
     <section>
-        <!-- flash messages -->
         {% with messages = get_flashed_messages() %}
             {% if messages %}
                 {% for message in messages %}
@@ -48,14 +48,12 @@
         {% endblock %}
     </main>
     
-    {% include "footer.html" %}
+    {% include 'layouts/footer.html' %}
     
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" 
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" 
         integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-    {% block scripts %}
-    {% endblock %}
 </body>
 </html>
