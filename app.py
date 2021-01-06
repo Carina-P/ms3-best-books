@@ -157,7 +157,7 @@ def add_book():
     if request.method == "POST":
         username = session["username"]
         grade_str = request.form.get("grade")
-    
+
         if grade_str:
             grade = int(grade_str)
             average_grade = grade
@@ -345,7 +345,7 @@ def change_opinion(return_to, title):
         book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
 
         no_of_votes = int(book["no_of_votes"])
-        
+
         # If old review was 0 that vote was not counted before
         if old_review["grade"] == "0":
             no_of_votes += 1
@@ -401,7 +401,7 @@ def delete_opinion(book_id, review_id, return_to, title):
     mongo.db.reviews.delete_one({"_id": ObjectId(review_id)})
 
     book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
-    
+
     # If no grade no new average is needed
     if opinion["grade"] != "0":
         if book["no_of_votes"] < 2:
@@ -495,7 +495,7 @@ def edit_group(category_group_id, old_group_name):
     with changed category group name. Then user is redirected to category
     groups page
 
-    Input: 
+    Input:
         category_group_id: (str) - Category groups id in database
         old_group_name: (str) - Category group name to change from
     """
@@ -528,7 +528,7 @@ def delete_group(category_group_id, category_group):
     Notice that all books in this category_group is effected. Their category
     group is changed to "Other".
     User is then redirected to page with category groups.
-    Input: 
+    Input:
         category_group_id: (str) - Category groups id in databas
         category_group: (str) - Name of category group
     """

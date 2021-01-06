@@ -149,7 +149,7 @@ body{
     position: relative;
 }
 .start-image {
-    background-image: url("../images/books-in-shelf.jpg");
+    background-image: url("../images/book.jpg");
     max-width: 100%;
     height: 50vh;
     background-position: center;
