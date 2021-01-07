@@ -478,7 +478,7 @@ def add_group():
         }
         mongo.db.category_groups.insert_one(group_name)
 
-        flash('New Category "{}" group Added'.format(group_name["group_name"]))
+        flash('New Category group "{}" added'.format(group_name["group_name"]))
         return redirect(url_for("get_category_groups"))
 
     return render_template("category_group.html")

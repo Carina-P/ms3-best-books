@@ -37,7 +37,7 @@ body{
     color: #32292f;
 }
 .btn-green{
-    background-color: #264653;
+    background-color: #222823;
     color: #ffffff;
     text-shadow: 1px 1px 1px rgba(0,0,0,1);
 }
@@ -51,6 +51,10 @@ body{
     color: #ffffff;
     text-shadow: 1px 1px 1px rgba(0,0,0,1);
     }
+.btn:hover{
+    transform: scale(1.1);
+    color: #ffffff;
+}
 .bgr-black{
     background-color: #000000;
 }
@@ -64,7 +68,7 @@ body{
     background-color: #acc12f;
 }
 .bgr-darkgreen{
-    background-color: #264653;
+    background-color: #222823;
 }
 .bgr-green{
     background-color: #2a9d8f;
@@ -90,13 +94,13 @@ body{
 .divider-sm{
     height: 5rem;
 }
-.closing:hover{
-    transform: scale(1.5);
-}
 .buy{
     border-radius: 50%;
     float: right;
     border: dotted;
+}
+.buy:hover{
+     transform: scale(1.2);
 }
 
 /* Navigation */
