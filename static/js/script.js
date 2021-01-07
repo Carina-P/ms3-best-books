@@ -33,8 +33,10 @@ function cancelAddBook(){
  * @param {Object} book contains information about book
  */
 function bookToDocument(book){
-    let text = `<div class="text-center mt-3">
+    let text = `<div class="divider-sm"></div>
+                <div class="text-center mt-3">
                     <h3>Retrieved information about the Book</h3>
+                    <p>Add book further down</p>
                 </div>
                 <div class="col-12">
                     <div class="card">
@@ -65,53 +67,6 @@ function bookToDocument(book){
                             </div>`; 
         }
     }
-    text += `           <div class="bgr-acid p-3">
-                            <div class="text-center">
-                                <h5>Before adding book</h5>
-                                <p>Choose category group(mandatory) and give your opinion(voluntary) of the book.</p>
-                            </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <label class="input-group-text" for="category_group">Category Group:</label>
-                                </div>  
-                                <select id="category_group" name="category_group" class="custom-select" required>
-                                    <option value="" disabled selected>Choose...</option>`;
-    for (category_group of category_groups){
-        text += `               <option value="${category_group.group_name}">${category_group.group_name}</option>`;
-    }
-    text += `                   </select>
-                            </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <label class="input-group-text padding-r17" for="grade">Grade the book:</label>
-                                </div>
-                                <select id="grade" name="grade" class="custom-select">
-                                    <option value="" disabled selected>Choose...</option>`;
-    for (i=5; i>0; i--){
-        text += `                   <option value="${i}">${i}</option>`;
-    }
-    text += `                  </select>
-                            </div>
-                            <div class="col-12 form-group">
-                                <label for="review">Review</label>
-                                <textarea id="review" name="review" class="form-control" placeholder="Enter your review"></textarea>
-                            </div>
-                            </div>
-                            <div class="row mt-3">
-                                <div class="col-12 text-center">
-                                    <button type="reset" class="btn btn-lg btn-red" onclick="cancelAddBook()">
-                                        Cancel <i class="fas fa-times-circle"></i>
-                                    </button>
-                                    <button type="submit" class=" btn btn-lg btn-green">
-                                        Add Book <i class="fas fa-plus-square"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        
-                        <div class="text-center mt-3">
-                            <h4>More Book Information:</h4>
-                        </div>
-                        <div class="row">`;
 
     if ("volumeInfo" in book){
         if ("authors" in book.volumeInfo){
@@ -156,6 +111,45 @@ function bookToDocument(book){
                             </div>`;
             }
         }
+        text += `       <div class="col-12 bgr-acid pt-3 pb-3">
+                            <div class="text-center">
+                                <h5>Before adding book</h5>
+                                <p>Choose category group(mandatory) and give your opinion(voluntary) of the book.</p>
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="category_group">Category Group:</label>
+                                </div>  
+                                <select id="category_group" name="category_group" class="custom-select" required>
+                                    <option value="" disabled selected>Choose...</option>`;
+    for (category_group of category_groups){
+        text += `               <option value="${category_group.group_name}">${category_group.group_name}</option>`;
+    }
+    text += `                   </select>
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text padding-r17" for="grade">Grade the book:</label>
+                                </div>
+                                <select id="grade" name="grade" class="custom-select">
+                                    <option value="" disabled selected>Choose...</option>`;
+    for (i=5; i>0; i--){
+        text += `                   <option value="${i}">${i}</option>`;
+    }
+    text += `                  </select>
+                            </div>
+                            <div class="col-12 form-group">
+                                <label for="review">Review</label>
+                                <textarea id="review" name="review" class="form-control" placeholder="Enter your review"></textarea>
+                            </div>
+                            <div class="col-12 text-center">
+                                <button type="reset" class="btn btn-lg btn-red" onclick="cancelAddBook()">
+                                    Cancel <i class="fas fa-times-circle"></i>
+                                </button>
+                                <button type="submit" class=" btn btn-lg btn-green">
+                                    Add Book <i class="fas fa-plus-square"></i>
+                                </button>
+                            </div>`;
     } else{
         text += `No information about this book.`;
     }
