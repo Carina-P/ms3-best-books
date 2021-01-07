@@ -222,6 +222,9 @@ textarea.materialize-textarea{
 #image_link{
      height: 4rem;
 }
+.padding-r17{
+    padding-right: 17px;
+}
 
 /** Book details **/
 .left{

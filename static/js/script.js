@@ -83,7 +83,7 @@ function bookToDocument(book){
                             </div>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <label class="input-group-text" for="grade">Grade the book:</label>
+                                    <label class="input-group-text padding-r17" for="grade">Grade the book:</label>
                                 </div>
                                 <select id="grade" name="grade" class="custom-select">
                                     <option value="" disabled selected>Choose...</option>`;
