@@ -1,7 +1,6 @@
-"""
+""" 
 Server-side code for the application ms3-best-books.
 """
-
 import os
 from flask import (
     Flask, flash, render_template, redirect,
@@ -30,17 +29,24 @@ def get_best_books():
 
     Return: (list of dictionaries) - the ten best books
     """
-    ten_best_books = list(
-        mongo.db.books.find().sort("average_grade", -1).limit(10)
-    )
+    try:
+        ten_best_books = list(
+            mongo.db.books.find().sort("average_grade", -1).limit(10)
+        )
+    except Exception as e:
+        flash(
+            "Something went wrong when accessing the database, to get books"
+            + e
+        )
+        return []
+    else:
+        number_count = 1
+        for book in ten_best_books:
+            book["avg_gr_rounded"] = round(float(book["average_grade"]), 1)
+            book["place"] = number_count
+            book["stars"] = int(round(float(book["average_grade"]), 0))
 
-    number_count = 1
-    for book in ten_best_books:
-        book["avg_gr_rounded"] = round(float(book["average_grade"]), 1)
-        book["place"] = number_count
-        book["stars"] = int(round(float(book["average_grade"]), 0))
-
-        number_count += 1
+            number_count += 1
 
     return ten_best_books
 
@@ -60,20 +66,28 @@ def get_groups():
     Get current category groups from database
     Return: (list of dictionaries) - with category groups
     """
-    cat_groups = list(mongo.db.category_groups.find())
-    category_groups = []
-    colours = get_colours()
-    length = len(colours)
-
-    index = 0
-    for group in cat_groups:
-        category_groups.append(
-            {
-                "group_name": group['group_name'],
-                "colour": colours[index % length]
-            }
+    try:
+        cat_groups = list(mongo.db.category_groups.find())
+    except Exception as e:
+        flash(
+            "Something went wrong when accessing the database to get" +
+            "category groups" + e
         )
-        index += 1
+        return []
+    else:
+        category_groups = []
+        colours = get_colours()
+        length = len(colours)
+
+        index = 0
+        for group in cat_groups:
+            category_groups.append(
+                {
+                    "group_name": group['group_name'],
+                    "colour": colours[index % length]
+                }
+            )
+            index += 1
 
     return category_groups
 
@@ -85,7 +99,8 @@ def get_books():
     Take user to home-page and show retrieved information.
     """
     best_books = get_best_books()
-    category_groups = get_groups()
+    if best_books:
+        category_groups = get_groups()
 
     return render_template(
         "books.html", best_books=best_books, category_groups=category_groups
@@ -101,16 +116,31 @@ def get_book(book_id):
     Input:
         book_id (object): The database _id for book
     """
-    book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
+    try:
+        book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
+    except Exception as e:
+        flash(
+            "Something went wrong when accessing the database, to find book"
+            + e
+        )
+        return redirect(url_for("get_books"))
 
     # Round average grade, retrived from database, to one decimal
     book["avg_gr_rounded"] = round(float(book["average_grade"]), 1)
-    # Round average grade to integer - that is number of stars to show for book
+    # Round average grade to integer - that is number of stars to show
     book["stars"] = int(round(float(book["average_grade"]), 0))
 
-    book_details = mongo.db.books_details.find_one(
-        {"book_id": ObjectId(book_id)}
-    )
+    try:
+        book_details = mongo.db.books_details.find_one(
+            {"book_id": ObjectId(book_id)}
+        )
+    except Exception as e:
+        book_details = []
+        flash(
+            "Something went wrong when accessing the database, to find" +
+            "book details" + e
+        )
+        return redirect(url_for("get_books"))
 
     return render_template(
         "book.html", book=book, book_details=book_details
@@ -126,14 +156,22 @@ def search():
     Render search-result page and show retrieved information
     """
     search_str = request.form.get("title_or_author")
-    books = list(mongo.db.books.find({"$or": [
-        {"title": {"$regex": ".*" + search_str + ".*"}},
-        {"author": {"$regex": ".*" + search_str + ".*"}}
-        ]}))
-
-    if not(books):
-        flash("Sorry, there is no book in database matching your input")
+    try:
+        books = list(mongo.db.books.find({"$or": [
+            {"title": {"$regex": ".*" + search_str + ".*"}},
+            {"author": {"$regex": ".*" + search_str + ".*"}}
+            ]}))
+    except Exception as e:
+        flash(
+            "Something went wrong when accessing the database, to get books"
+            + e
+        )
+        books = []
         return redirect(url_for("get_books"))
+    else:
+        if not(books):
+            flash("Sorry, there is no book in database matching your input")
+            return redirect(url_for("get_books"))
 
     for book in books:
         # Round average grade, retrived from database, to one decimal
@@ -175,7 +213,16 @@ def add_book():
             "added_by": username,
             "category_group": request.form.get("category_group")
         }
-        result = mongo.db.books.insert_one(book)
+
+        try:
+            result = mongo.db.books.insert_one(book)
+        except Exception as e:
+            flash(
+                "Something went wrong when accessing the database, to insert"
+                + "book" + e
+            )
+            # Do not try to do anything more, go back to home page
+            return redirect(url_for("get_books"))
 
         reviews_max5 = []
         review = request.form.get("review")
@@ -189,7 +236,15 @@ def add_book():
                 "added_by": username,
                 "book_id": result.inserted_id
             }
-            review_result = mongo.db.reviews.insert_one(reviews)
+            try:
+                review_result = mongo.db.reviews.insert_one(reviews)
+            except Exception as e:
+                flash(
+                    "Something went wrong when accessing the database, to"
+                    + "insert review" + e
+                )
+                # Do not try to do anything more, go back to home page
+                return redirect(url_for("get_books"))
 
             opinion = {
                 "_id": review_result.inserted_id,
@@ -209,7 +264,20 @@ def add_book():
             "book_id": result.inserted_id
         }
 
-        mongo.db.books_details.insert_one(book_details)
+        try:
+            mongo.db.books_details.insert_one(book_details)
+        except Exception as e:
+            flash(
+                "Something went wrong when accessing the database, to insert"
+                + "book details" + e
+            )
+            flash(
+                "Notice! This probably means that book is inserted in " +
+                "collection book but not in collection book details."
+            )
+            # Do not try to do anything more, go back to home page
+            return redirect(url_for("get_books"))
+
         flash('The book "{}" is successfully added'.format(book["title"]))
 
     return redirect(url_for("get_book", book_id=result.inserted_id))
@@ -224,11 +292,19 @@ def delete_book(book_id):
     Input:
         book_id: (str) - books id in database
     """
-    mongo.db.books.delete_one({"_id": ObjectId(book_id)})
-    mongo.db.books_details.delete_one({"book_id": ObjectId(book_id)})
-    mongo.db.reviews.delete_many({"book_id": ObjectId(book_id)})
-    flash("Book Successfully Deleted")
-    return redirect(url_for("get_books"))
+    try:
+        mongo.db.books.delete_one({"_id": ObjectId(book_id)})
+        mongo.db.books_details.delete_one({"book_id": ObjectId(book_id)})
+        mongo.db.reviews.delete_many({"book_id": ObjectId(book_id)})
+    except Exception as e:
+        flash(
+            "Something went wrong when accessing database to " +
+            "delete book" + e
+        )
+    else:
+        flash("Book Successfully Deleted")
+    finally:
+        return redirect(url_for("get_books"))
 
 
 ####################
@@ -247,11 +323,18 @@ def get_5_reviews(book_id):
             )
     )
     """
-    # Try to retieve max six reviews to find out if there is more than five
-    reviews_max5 = list(mongo.db.reviews.find(
-        {"book_id": ObjectId(book_id)}).sort("_id", -1).limit(6))
+    # Try to retrieve max six reviews to find out if there is more than five
+    try:
+        reviews_max5 = list(mongo.db.reviews.find(
+            {"book_id": ObjectId(book_id)}).sort("_id", -1).limit(6))
+    except Exception as e:
+        flash(
+            "Something went wrong when accessing databas to retrieve " +
+            "reviews" + e
+        )
+        return []
 
-    # If more than 5 reviews remove oldest review of them
+    # More than 5 reviews remove oldest review of them
     if len(reviews_max5) > 5:
         reviews_max5.pop()
         more_reviews = "y"
@@ -276,6 +359,7 @@ def add_opinion():
     book_id = request.form.get("book_id")
     grade_str = request.form.get("grade_m")
     review = request.form.get("review_m")
+
     # if something is wrong and review and grade is missing
     if not(review) and not(grade_str):
         flash("No opinion added since you gave no values")
@@ -284,7 +368,15 @@ def add_opinion():
     # Grade is given
     if grade_str:
         grade = int(grade_str)
-        book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
+        try:
+            book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
+        except Exception as e:
+            flash(
+                "Something went wrong when accessing database to find book" +
+                "that opinion should be added to. Opinion is not added", e
+                )
+            # Do not try to do anything more, go back to home page
+            return redirect(url_for("get_books"))
 
         # Now one more vote is given for the book
         no_of_votes = int(book["no_of_votes"]) + 1
@@ -296,9 +388,20 @@ def add_opinion():
             "average_grade": new_average,
             "no_of_votes": no_of_votes
         }
-        mongo.db.books.update_one(
-            {"_id": ObjectId(book_id)}, {"$set": new_grading})
-    else:
+
+        try:
+            mongo.db.books.update_one(
+                {"_id": ObjectId(book_id)}, {"$set": new_grading}
+                )
+        except Exception as e:
+            flash(
+                "Something went wrong when accessing database to update" +
+                " books grading. Opinion is not added. " + e
+            )
+            # Do not try to do anything more, go back to home page
+            return redirect(url_for("get_books"))
+
+    else:    # Grade is not given
         grade_str = "0"
 
     add_review = {
@@ -307,14 +410,24 @@ def add_opinion():
         "added_by": session["username"],
         "book_id": ObjectId(book_id)
     }
-    mongo.db.reviews.insert_one(add_review)
+    try:
+        mongo.db.reviews.insert_one(add_review)
 
-    mongo.db.books_details.update_one(
-            {"book_id": ObjectId(book_id)}, {"$set": get_5_reviews(book_id)})
-
-    flash("Opinion Successfully Added")
-
-    return redirect(url_for("get_book", book_id=book_id))
+        mongo.db.books_details.update_one({
+                "book_id": ObjectId(book_id)
+            }, {"$set": get_5_reviews(book_id)
+                }
+        )
+    except Exception as e:
+        flash(
+            "Something went wrong when accessing database to insert " +
+            "opinion and update books details. Thus perhaps database is " +
+            "is corrupt regarding opinions for current book. " + e
+        )
+    else:
+        flash("Opinion Successfully Added")
+    finally:
+        return redirect(url_for("get_book", book_id=book_id))
 
 
 @app.route("/change/opinion/<return_to>/<title>", methods=["GET", "POST"])
@@ -333,11 +446,21 @@ def change_opinion(return_to, title):
     review_id = request.form.get("review_id")
     grade_str = request.form.get("grade_m")
     review = request.form.get("review_m")
+
     if not(review) and not(grade_str):
         flash("Something is wrong, no information retrieved")
         return redirect(url_for("get_book", book_id=book_id))
 
-    old_review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
+    try:
+        old_review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
+    except Exception as e:
+        flash(
+            "Something went wrong when accessing database, to find old grade" +
+            " and review. Opinion is not changed. " + e
+        )
+        # Do not try to do anything more, go back to home page
+        return redirect(url_for("get_books"))
+
     if (old_review["grade"] != grade_str):
         grade_diff = int(grade_str) - int(old_review["grade"])
         book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
@@ -363,18 +486,28 @@ def change_opinion(return_to, title):
         "grade": grade_str,
         "review": review
     }
-    mongo.db.reviews.update_one(
-        {"_id": ObjectId(review_id)}, {"$set": change_review})
 
-    mongo.db.books_details.update_one(
+    try:
+        mongo.db.reviews.update_one(
+            {"_id": ObjectId(review_id)}, {"$set": change_review})
+
+        mongo.db.books_details.update_one(
             {"book_id": ObjectId(book_id)}, {"$set": get_5_reviews(book_id)})
-
-    flash("Opinion Successfully Changed")
-
-    if (return_to == "book"):
-        return redirect(url_for("get_book", book_id=book_id))
+    except Exception as e:
+        flash(
+            "Something went wrong when accessing database to change " +
+            "opinion and update books details. Thus perhaps database is " +
+            "is corrupt regarding opinions for current book. " + e
+        )
     else:
-        return redirect(url_for("get_reviews", book_id=book_id, title=title))
+        flash("Opinion Successfully Changed")
+    finally:
+        if (return_to == "book"):
+            return redirect(url_for("get_book", book_id=book_id))
+        else:
+            return redirect(
+                url_for("get_reviews", book_id=book_id, title=title)
+            )
 
 
 @app.route("/delete/opinion/<book_id>/<review_id>/<return_to>/<title>")
@@ -391,18 +524,35 @@ def delete_opinion(book_id, review_id, return_to, title):
         return_to: (str) - Redirect user to this page
         title: (str) - Books title
     """
-    opinion = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
+    try:
+        opinion = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
+    except Exception as e:
+        flash(
+            "Something went wrong when accessing database. " +
+            e
+        )
+
+    # If did not find opinion
     if not opinion:
         flash(
-            "Error when deleting opinion - could not find book in database."
+            "Error when deleting opinion."
         )
         return redirect(url_for("get_book", book_id=book_id))
 
-    mongo.db.reviews.delete_one({"_id": ObjectId(review_id)})
+    try:
+        mongo.db.reviews.delete_one({"_id": ObjectId(review_id)})
 
-    book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
+        book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
+    except Exception as e:
+        flash(
+            "Something went wrong when accessing database to delete review. " +
+            "Database is perhaps corrupt now regarding current books reviews. "
+            + e
+        )
+        # Do not try to do anything more, go back to home page
+        return redirect(url_for("get_books"))
 
-    # If no grade no new average is needed
+    # If no grade is given, no new average is needed
     if opinion["grade"] != "0":
         if book["no_of_votes"] < 2:
             no_of_votes = 0
@@ -416,11 +566,29 @@ def delete_opinion(book_id, review_id, return_to, title):
             "average_grade": average_grade,
             "no_of_votes": no_of_votes
         }
-        mongo.db.books.update_one(
-            {"_id": ObjectId(book_id)}, {"$set": new_grading})
+        try:
+            mongo.db.books.update_one(
+                {"_id": ObjectId(book_id)}, {"$set": new_grading})
+        except Exception as e:
+            flash(
+                "Something went wrong when accessing database to update " +
+                "books grading. Database is perhaps corrupt now " +
+                "regarding current books reviews. " + e
+            )
+            # Do not try to do anything more, go back to home page
+            return redirect(url_for("get_books"))
 
-    mongo.db.books_details.update_one(
+    try:
+        mongo.db.books_details.update_one(
             {"book_id": ObjectId(book_id)}, {"$set": get_5_reviews(book_id)})
+    except Exception as e:
+        flash(
+            "Something went wrong when accessing database to update " +
+            "books details last 5 opinions. Database is perhaps corrupt now " +
+            "regarding current books reviews. " + e
+        )
+        # Do not try to do anything more, go back to home page
+        return redirect(url_for("get_books"))
 
     flash("Opinion Successfully Deleted")
     if (return_to == "book"):
@@ -438,13 +606,20 @@ def get_reviews(book_id, title):
         book_id: (str) - Books id in database
         title: (str) - Books title
     """
-    reviews = list(mongo.db.reviews.find(
-        {"book_id": ObjectId(book_id)}).sort("_id", -1)
-    )
-
-    return render_template(
-        "reviews.html", reviews=reviews, title=title, book_id=book_id
-    )
+    try:
+        reviews = list(mongo.db.reviews.find(
+            {"book_id": ObjectId(book_id)}).sort("_id", -1)
+        )
+    except Exception as e:
+        flash(
+            "Something went wrong when accessing database to retrive reviews. "
+            + e
+        )
+        reviews = []
+    finally:
+        return render_template(
+            "reviews.html", reviews=reviews, title=title, book_id=book_id
+        )
 
 
 ###################
@@ -456,9 +631,18 @@ def get_category_groups():
     Get all category groups from the database.
     Render category_groups page and show retrieved information.
     """
-    category_groups = list(
-        mongo.db.category_groups.find().sort("group_name", 1)
-    )
+    try:
+        category_groups = list(
+            mongo.db.category_groups.find().sort("group_name", 1)
+        )
+    except Exception as e:
+        flash(
+            "Something went wrong when accessing database to " +
+            "retrieve category groups." + e
+        )
+        # Go back to home page
+        return redirect(url_for("get_books"))
+
     return render_template(
         "category_groups.html", category_groups=category_groups
     )
@@ -476,10 +660,21 @@ def add_group():
         group_name = {
             "group_name": request.form.get("group_name")
         }
-        mongo.db.category_groups.insert_one(group_name)
-
-        flash('New category group "{}" added'.format(group_name["group_name"]))
-        return redirect(url_for("get_category_groups"))
+        try:
+            mongo.db.category_groups.insert_one(group_name)
+        except Exception as e:
+            flash(
+                "Something went wrong when accessing database to " +
+                "add category group. Group is not added. " + e
+            )
+        else:
+            flash(
+                'New category group "{}" added'.format(
+                    group_name["group_name"]
+                )
+            )
+        finally:
+            return redirect(url_for("get_category_groups"))
 
     return render_template("category_group.html")
 
@@ -503,23 +698,52 @@ def edit_group(category_group_id, old_group_name):
     if request.method == "POST":
         new_name = request.form.get("group_name")
 
-        mongo.db.category_groups.update_one({
-            "_id": ObjectId(category_group_id)}, {
-                "$set": {"group_name": new_name}
-                })
+        try:
+            mongo.db.category_groups.update_one({
+                "_id": ObjectId(category_group_id)}, {
+                    "$set": {"group_name": new_name}
+                    }
+                )
+        except Exception as e:
+            flash(
+                "Something went wrong when accessing database to update " +
+                "category group. Category group is not updated. " + e
+            )
+            return redirect(url_for("get_category_groups"))
 
-        # Update affected books with the new category group name
-        mongo.db.books.update_many({
-            "category_group": old_group_name
-            }, {
-                "$set": {"category_group": new_name}
-                })
-        flash('Category Group Succesfully Updated to "{}"'.format(new_name))
-        return redirect(url_for("get_category_groups"))
+        # Must update books belonging to changed category group
+        try:
+            mongo.db.books.update_many({
+                "category_group": old_group_name
+                }, {
+                    "$set": {"category_group": new_name}
+                    })
+        except Exception as e:
+            flash(
+                "Something went wrong when accessing database to update" +
+                " books belonging to changed category group. Database might" +
+                "be corrupt regarding books having unchanged category group " +
+                "name. " + e
+            )
+        else:
+            flash(
+                'Category Group Succesfully Updated to "{}"'.format(new_name)
+            )
+        finally:
+            return redirect(url_for("get_category_groups"))
 
-    group = mongo.db.category_groups.find_one({
-        "_id": ObjectId(category_group_id)})
-    return render_template("category_group.html", group=group, edit=True)
+    try:
+        group = mongo.db.category_groups.find_one({
+            "_id": ObjectId(category_group_id)})
+    except Exception as e:
+        flash(
+            "Something went wrong when accessing database to retrieve " +
+            "all category groups. " + e
+        )
+        # Return to home page
+        return redirect(url_for("get_books"))
+    else:    
+        return render_template("category_group.html", group=group, edit=True)
 
 
 @app.route("/delete/group/<category_group_id>/<category_group>")
@@ -533,16 +757,33 @@ def delete_group(category_group_id, category_group):
         category_group_id: (str) - Category groups id in databas
         category_group: (str) - Name of category group
     """
-    mongo.db.category_groups.remove({"_id": ObjectId(category_group_id)})
-
+    try:
+        mongo.db.category_groups.remove({"_id": ObjectId(category_group_id)})
+    except Exception as e:
+        flash(
+            "Something went wrong when accessing database, to remove " +
+            "category group. Category group is probably not removed. " + e
+        )
+        return redirect(url_for("get_category_groups"))
+    
     # Update all affected books, to category group "Other"
-    mongo.db.books.update_many({
+    try:
+        mongo.db.books.update_many({
             "category_group": category_group
             }, {
                 "$set": {"category_group": "Other"}
                 })
-    flash('Category group "{}" deleted'.format(category_group))
-    return redirect(url_for("get_category_groups"))
+    except Exception as e:
+        flash(
+            "Something went wrong when accessing database to change " +
+            "category groups for books affected by deletion of category group."
+            + " There might exist books that belong to deleted category group."
+            + e
+        )
+    else:
+        flash('Category group "{}" deleted'.format(category_group))
+    finally:
+        return redirect(url_for("get_category_groups"))
 
 
 @app.route("/search/category", methods=["GET", "POST"])
@@ -553,11 +794,19 @@ def search_category():
     Then render page search_results.
     """
     category = request.form.get("category")
-    category_books = list(
-        mongo.db.books.find(
-            {"category_group": category}
-            ).sort("average_grade", -1).limit(10)
+    try:
+        category_books = list(
+            mongo.db.books.find(
+                {"category_group": category}
+                ).sort("average_grade", -1).limit(10)
+            )
+    except Exception as e:
+        flash(
+            "Something went wrong when accessing database, to find books " +
+            "that belong to the category group. " + e
         )
+        # Return to home page
+        return redirect(url_for("get_books"))
 
     if not(category_books):
         flash('No books in that category group: "{}" in database'.format(
@@ -585,9 +834,18 @@ def signup():
     If user already exists in database, user is redirected to login page.
     """
     if request.method == "POST":
-        existing_user = mongo.db.users.find_one(
-            {"username": request.form.get("username").lower()})
+        try:
+            existing_user = mongo.db.users.find_one(
+                {"username": request.form.get("username").lower()})
+        except Exception as e:
+            flash(
+                "Something went wrong when accessing database to sign you up! "
+                + e
+            )
+            # Return to home page
+            return redirect(url_for("get_books"))
 
+        # If user already exists in database
         if existing_user:
             flash('Username: {}, already exists'.format(existing_user))
             return redirect(url_for("signup", login=False))
@@ -597,7 +855,15 @@ def signup():
             "password": generate_password_hash(request.form.get("password")),
             "email": request.form.get("email")
         }
-        mongo.db.users.insert_one(sign_up)
+        try:
+            mongo.db.users.insert_one(sign_up)
+        except Exception as e:
+            flash(
+                "Something went wrong when accessing database to sign you up! "
+                + e
+            )
+            # Return to home page
+            return redirect(url_for("get_books"))
 
         # Put username in session-variable
         session["username"] = sign_up["username"]
@@ -617,9 +883,17 @@ def login():
     returned to login page.
     """
     if request.method == "POST":
-        existing_user = mongo.db.users.find_one(
-            {"username": request.form.get("username").lower()}
-        )
+        try:
+            existing_user = mongo.db.users.find_one(
+                {"username": request.form.get("username").lower()}
+            )
+        except Exception as e:
+            flash(
+                "Something went wrong when accessing database to log in! "
+                + e
+            )
+            # Return to home page
+            return redirect(url_for("get_books"))
 
         if existing_user:
             if check_password_hash(
