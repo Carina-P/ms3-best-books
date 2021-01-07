@@ -9,7 +9,7 @@ html{
 body{
     font-family: "Poppins", "Roboto", sans-serif;
     color: #32292f;
-    background-color: #f4e0c3;
+    background-color: #f9eddd;
     font-size: 1rem;
 }
 .rounded-corners{
@@ -28,7 +28,7 @@ body{
     color: #cc2936;
 }
 .text-sandy{
-     color: #f4a261;
+     color: #e76f51;
 }
 .text-light{
     color: #fffcf2;
@@ -70,7 +70,7 @@ body{
     background-color: #2a9d8f;
 }
 .bgr-sandy{
-    background-color: #f4a261;
+    background-color: #e76f51;
 }
 .bgr-orange{
     background-color: #e76f51;
@@ -79,7 +79,7 @@ body{
     background-color: #cc2936;
 }
 .bgr-brown{
-    background-color: #774936;
+    background-color: #2f3730;
 }
 .bgr-grey{
     background-color: #e0dde3;
@@ -104,21 +104,18 @@ body{
     max-height: 8rem;
     width: 100%;
 }
-.brand-center{
-    padding-right: 8rem;
-}
 .navbar-brand{
-    color: #f4a261;
+    color: #e76f51;
     border: none;
     border-radius: 5%;
-    background-color: #e0dde3;
+    background-color: #ffffff;
     height: 40px;
     width: 40px;
     padding-left: 0.5rem;
 }
-.navbar-brand:hover{
-    transform: scale(1.5);
-    color: #f4a261;
+.navbar-brand:hover, .navbar-toggler:hover{
+    transform: scale(1.1);
+    color: #e76f51;
 }
 .brand-toggler{
     padding-left: 0.6rem;
@@ -158,7 +155,7 @@ body{
 }
 .start-text {
     background-color: rgb(255,255,255,0.8);
-    color: #f4a261;
+    color: #e76f51;
     position: absolute;
     top: 50%;
     left: 50%;
