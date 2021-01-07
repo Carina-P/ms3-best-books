@@ -114,7 +114,7 @@ function bookToDocument(book){
         text += `       <div class="col-12 bgr-acid pt-3 pb-3">
                             <div class="text-center">
                                 <h5>Before adding book</h5>
-                                <p>Choose category group(mandatory) and give your opinion(voluntary) of the book.</p>
+                                <p>Choose category group and, if you want, add an opinion of the book.</p>
                             </div>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
