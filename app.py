@@ -48,8 +48,7 @@ def get_best_books():
 def get_colours():
     """
     Returns colours used when showing category groups
-
-    return: (list of str) - the colours
+    Return: (list of str) - the colours
     """
     return [
         'darkgreen', 'acid', 'sandy', 'orange', 'brown'
@@ -59,8 +58,7 @@ def get_colours():
 def get_groups():
     """
     Get current category groups from database
-
-    return: (list of dictionaries) - with category groups
+    Return: (list of dictionaries) - with category groups
     """
     cat_groups = list(mongo.db.category_groups.find())
     category_groups = []
@@ -212,7 +210,7 @@ def add_book():
         }
 
         mongo.db.books_details.insert_one(book_details)
-        flash('The book "' + book["title"] + '" is successfully added')
+        flash('The book "{}" is successfully added'.format(book["title"]))
 
     return redirect(url_for("get_book", book_id=result.inserted_id))
 
@@ -242,7 +240,7 @@ def get_5_reviews(book_id):
 
     input:
         book_id (str): Id for book in database
-    return: (directory with:
+    Return: (directory with:
                 reviews_max5: (list with, at the most, five latest reviews)
                 more_reviews: (str "y" or "n" depending on if there are more
                 than five reviews)
@@ -395,7 +393,9 @@ def delete_opinion(book_id, review_id, return_to, title):
     """
     opinion = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
     if not opinion:
-        flash("Something went wrong")
+        flash(
+            "Error when deleting opinion - could not find book in database."
+        )
         return redirect(url_for("get_book", book_id=book_id))
 
     mongo.db.reviews.delete_one({"_id": ObjectId(review_id)})
@@ -477,7 +477,8 @@ def add_group():
             "group_name": request.form.get("group_name")
         }
         mongo.db.category_groups.insert_one(group_name)
-        flash("New Category group Added")
+
+        flash('New Category "{}" group Added'.format(group_name["group_name"]))
         return redirect(url_for("get_category_groups"))
 
     return render_template("category_group.html")
@@ -513,7 +514,7 @@ def edit_group(category_group_id, old_group_name):
             }, {
                 "$set": {"category_group": new_name}
                 })
-        flash("Category Group Succesfully Updated")
+        flash('Category Group Succesfully Updated to "{}"'.format(new_name))
         return redirect(url_for("get_category_groups"))
 
     group = mongo.db.category_groups.find_one({
@@ -559,7 +560,8 @@ def search_category():
         )
 
     if not(category_books):
-        flash("No books in that category group in database")
+        flash('No books in that category group: "{}" in database'.format(
+                category))
         return redirect(url_for("get_books"))
 
     # The average grade is rounded before shown on page.
@@ -587,7 +589,7 @@ def signup():
             {"username": request.form.get("username").lower()})
 
         if existing_user:
-            flash("Username already exists")
+            flash('Username: {}, already exists'.format(existing_user))
             return redirect(url_for("signup", login=False))
 
         sign_up = {
@@ -599,7 +601,7 @@ def signup():
 
         # Put username in session-variable
         session["username"] = sign_up["username"]
-        flash("Sign Up successfull - Welcome, {}!".format(
+        flash("Sign Up successful - Welcome, {}!".format(
             request.form.get("username")
         ))
         return redirect(url_for("get_books"))
