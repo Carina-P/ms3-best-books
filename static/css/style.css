@@ -246,6 +246,9 @@ textarea.materialize-textarea{
     padding: 20px;
     text-align: center;
 }
+.padding-r6{
+    padding-right: 6px;
+}
 
 /* For a responsive site */
 @media screen and (max-width: 576px){
