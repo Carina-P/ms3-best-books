@@ -22,8 +22,7 @@ function moveTo(){
 function cancelAddBook(){
     $("#search_results").html(``);
     $("#add_book").html(``);
-    document.getElementById("author_form").reset();
-    document.getElementById("title_form").reset();
+    document.getElementById("book_form").reset();
     window.location.href="#book";
 }
 
@@ -187,7 +186,8 @@ function addBook(index){
  * Then the cursor is moved to start of information.
  */
 function searchToDocument(){
-    let text = `<div class="text-center m-5">
+    let text = `<div class="divider-sm"></div>
+                <div class="text-center m-5">
                     <h3>Search results:</h3>
                 </div>`;
     
@@ -245,22 +245,22 @@ function searchToDocument(){
 
     $("#search_results").html(text);
     $("#add_book").html("");
+    document.getElementById("book_form").reset();
     window.location.href="#search_results";
 }
 
 /**
  * Search for books in Google Books that fits input parameters.
  * Then it calls a function that puts information in page.
- * 
- * @param {String} title_or_author, tells if search_text should match author or title 
+ *  
  * @param {String} search_text, the text to match with books in Google Books
  */
-function searchForBooks(title_or_author, search_text){
+function searchForBooks(search_text){
     if (!search_text || search_text.trim().length === 0){
         console.log("No information to search for!");
     }
     else{
-        fetch("https://www.googleapis.com/books/v1/volumes?q="+ title_or_author + ":" + search_text + "&printType=books&projection=full&key=AIzaSyAa48h04CAMjJ1bVewMoBx-_8EZv1IBNpI")
+        fetch("https://www.googleapis.com/books/v1/volumes?q=" + search_text + "&printType=books&projection=full&maxResults=21&key=AIzaSyAa48h04CAMjJ1bVewMoBx-_8EZv1IBNpI")
         .then(res =>res.json())
         .then(res => {
             // Global variable
@@ -274,31 +274,17 @@ function searchForBooks(title_or_author, search_text){
 }
 
 /**
- * When this function is called it starts a search for books in Google Books that have a title
- * looking like value retrived from page.
- * 
- * @param {Array} group_names, contains category group names
- */
-function searchTitle(group_names){
-    // Put group_names in global variable
-    category_groups = group_names;
-    // Retrive parameter from page
-    let search_title = $("#search_title").val();
-    searchForBooks("intitle", search_title);
-}
-
-/**
  * When this function is called it starts a search for books in Google Books that have an author with name
  * looking like value retrived from page.
  * 
  * @param {Array} group_names, contains category group names
  */
-function searchAuthor(group_names){
+function searchBooks(group_names){
     // Put group_names in global parameter
     category_groups = group_names;
     // Fetch information from page
-    let search_author = $("#search_author").val();
-    searchForBooks("inauthor", search_author);
+    let search_books = $("#search_books").val();
+    searchForBooks(search_books);
 }
 
 /**

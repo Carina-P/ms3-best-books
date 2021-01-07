@@ -111,7 +111,7 @@
     <section id="categories">
         <div class="divider"></div>
         <div class="text-center m-5">
-            <h3>Most Popular in Category</h3>
+            <h3>Best in Category</h3>
             <div class="row">
                 {% for category_group in category_groups %}
                     <div class="col-6 col-md-3 mb-3">
@@ -145,7 +145,9 @@
                             <div class="input-group">
                                 <input name="title_or_author" type="text" class="form-control" placeholder="Title or Author" minlength="3" maxlenght="15" required aria-label="search" aria-describedby="search_icon">
                                 <div class="input-group-prepend">
-                                    <button type="submit" class="btn btn-green input-group-text" id="search_icon"><i class="fas fa-search"></i></button>
+                                    <button type="submit" class="btn btn-sm btn-green">
+                                        <i class="fas fa-search"></i> This Database
+                                    </button>
                                 </div>
                             </div>
                         </form>
@@ -170,28 +172,15 @@
                     <div class="text-center">
                         <p>Search in Google Books to get information about book you want to add</p>
                     </div>
-                    <form id="title_form" onsubmit="searchTitle({{category_groups}}); return false" class="was-validated">
+                    <form id="book_form" onsubmit="searchBooks({{category_groups}}); return false" class="was-validated">
                         <div class="form-group">
                             <div class="input-group mb-2 mr-sm-2">
-                                <input id="search_title" name="search_title" placeholder="Title" type="text" minlength="2" maxlength="30"
+                                <input id="search_books" name="search_title" placeholder="Title and/or Author" type="text" minlength="2" maxlength="30"
                                     class="form-control was-validated" required>
                                 <div class="input-group-prepend">
                                     <button type="submit" class="btn btn-sm btn-green">
                                             <i class="fas fa-search"></i> Search Books
                                     </button> 
-                                </div>
-                            </div> 
-                        </div>
-                    </form>
-                    <form id="author_form" onsubmit="searchAuthor({{ category_groups }}); return false" class="was-validated">
-                        <div class="form-group">
-                            <div class="input-group mb-2 mr-sm-2">
-                                <input id="search_author" name="search_author" placeholder="Author" type="text" minlength="2" maxlength="30"
-                                    class="form-control was-validated" required>
-                                <div class="input-group-prepend">
-                                    <button type="submit" class="btn btn-sm btn-green">
-                                        <i class="fas fa-search"></i> Search Books
-                                    </button>
                                 </div>
                             </div> 
                         </div>
@@ -202,6 +191,7 @@
                 </div>
             </div>
         </div>
+        <div class="divider"></div>
         
         <div id="search_results" class="container"></div>
         <div id="add_book" class="container"></div>
