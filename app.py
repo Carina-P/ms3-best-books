@@ -541,7 +541,7 @@ def delete_group(category_group_id, category_group):
             }, {
                 "$set": {"category_group": "Other"}
                 })
-    flash("Category Group Successfully Deleted")
+    flash('Category group "{}" deleted'.format(category_group))
     return redirect(url_for("get_category_groups"))
 
 
