@@ -1,3 +1,4 @@
+/* Global variables */
 let search_result = {};
 let category_groups = [];
 
@@ -33,6 +34,12 @@ function cancelAddBook(){
  * @param {Object} book contains information about book
  */
 function bookToDocument(book){
+    if (book === undefined || book === null) {
+        console.log(
+            "Error in function bookToDocument, book undefined");
+            return;
+    }
+
     let text = `<div class="divider-sm"></div>
                 <div class="text-center mt-3">
                     <h3>Retrieved information about the Book</h3>
@@ -171,6 +178,12 @@ function bookToDocument(book){
  * @param {Int} index Place in list search_result.items of book to be shown 
  */
 function addBook(index){
+     if (index === undefined || index === null) {
+        console.log(
+            "Error in function addBook, index undefined");
+            return;
+    }
+
     let book = search_result.items[index];
     bookToDocument(book);
 }
@@ -274,6 +287,11 @@ function searchForBooks(search_text){
  * @param {Array} group_names, contains category group names
  */
 function searchBooks(group_names){
+     if (group_names === undefined || group_names === null) {
+        console.log(
+            "Error in function searchBooks, group_names undefined");
+            return;
+        }
     // Put group_names in global parameter
     category_groups = group_names;
     // Fetch information from page
@@ -288,6 +306,18 @@ function searchBooks(group_names){
  * @param {String} title, books title 
  */
 function addOpinion(book_id, title){
+    if (book_id === undefined || book_id === null) {
+        console.log(
+        "Error in function addOpinion, book_id undefined");
+        return;
+    }
+
+    if (title === undefined || title === null) {
+        console.log(
+        "Error in function addOpinion, title undefined");
+        return;
+    }
+
     $("#book_title").html(title);
     $("#hidden_input").html(`<input type="hidden" name="book_id" value="${book_id}">`);
     $('#modal').modal('show');
@@ -300,6 +330,11 @@ function addOpinion(book_id, title){
  * @return {String}, the resulting code
  */
 function selectToDocument(grade){
+    if (grade === undefined || grade === null) {
+        console.log(
+        "Error in function selectToDocument, grade undefined");
+        return;
+    }
     text = ``;
     for (i=5; i>0; i--){
         if (i == Number(grade)){
@@ -323,11 +358,45 @@ function selectToDocument(grade){
  * @param {String} return_to, page user should be redirected to when the change is done.
  */
 function changeOpinion(book_id, title, review_id, grade, review, return_to){
+    if (book_id === undefined || book_id === null) {
+        console.log(
+        "Error in function changeOpinion, book_id undefined");
+        return;
+    }
+    if (title === undefined || title === null) {
+        console.log(
+        "Error in function changeOpinion, title undefined");
+        return;
+    }
+    if (review_id === undefined || book_id === null) {
+        console.log(
+        "Error in function changeOpinion, review_id undefined");
+        return;
+    }
+    if (grade === undefined || grade === null) {
+        console.log(
+        "Error in function chageOpinion, grade undefined");
+        return;
+    }
+    if (review === undefined || review === null) {
+        console.log(
+        "Error in function changeOpinion, review undefined");
+        return;
+    }
+    if (return_to === undefined || return_to === null) {
+        console.log(
+        "Error in function changeOpinion, return_to undefined");
+        return;
+    }
     $("#book_title").html(title);
     $('#modal_form').attr('action', `/change/opinion/${return_to}/${title}`);
     $("#hidden_input").html(`<input type="hidden" name="book_id" value="${book_id}">
         <input type="hidden" name="review_id" value="${review_id}">`);
-    $("#grade_m").html(selectToDocument(grade));
+    // if there is no grade (grad="0") user can choose a grad as in add opinion
+    // else show current grade
+    if (grade != "0"){
+        $("#grade_m").html(selectToDocument(grade));
+    }
     $("#review_m").html(review)
     $('#modal').modal('show');
 }
