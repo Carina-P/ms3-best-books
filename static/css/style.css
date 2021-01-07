@@ -41,11 +41,6 @@ body{
     color: #ffffff;
     text-shadow: 1px 1px 1px rgba(0,0,0,1);
 }
-.btn-grey{
-    background-color: #e0dde3;
-    color: #000000;
-    text-shadow: 1px 1px 1px rgba(255,255,255,1);
-}
 .btn-red{
     background-color: #e76f51;
     color: #ffffff;
@@ -74,7 +69,7 @@ body{
     background-color: #2a9d8f;
 }
 .bgr-sandy{
-    background-color: #e76f51;
+    background-color: #f4a261;
 }
 .bgr-orange{
     background-color: #e76f51;
@@ -83,10 +78,7 @@ body{
     background-color: #cc2936;
 }
 .bgr-brown{
-    background-color: #2f3730;
-}
-.bgr-grey{
-    background-color: #e0dde3;
+    background-color: #774936;
 }
 .divider{
     height: 10rem;
