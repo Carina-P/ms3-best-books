@@ -1,3 +1,5 @@
+// jshint esversion:6
+
 // This HTML "back-link" is copied from
 // https://stackoverflow.com/questions/8814472/how-to-make-an-html-back-link
 // by https://stackoverflow.com/users/1495198/vivek-maharajh
@@ -12,4 +14,4 @@ element.onclick = function() {
   history.back();
   $('#flash-mess').html("");
   return false;
-}
+};

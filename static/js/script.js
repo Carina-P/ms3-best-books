@@ -1,3 +1,5 @@
+// jshint esversion:6
+
 /* Global variables */
 let search_result = {};
 let category_groups = [];
@@ -129,7 +131,7 @@ function bookToDocument(book){
                                 </div>  
                                 <select id="category_group" name="category_group" class="custom-select" required>
                                     <option value="" disabled selected>Choose...</option>`;
-    for (category_group of category_groups){
+    for (let category_group of category_groups){
         text += `               <option value="${category_group.group_name}">${category_group.group_name}</option>`;
     }
     text += `                   </select>
@@ -140,7 +142,7 @@ function bookToDocument(book){
                                 </div>
                                 <select id="grade" name="grade" class="custom-select">
                                     <option value="" disabled selected>Choose...</option>`;
-    for (i=5; i>0; i--){
+    for (let i=5; i>0; i--){
         text += `                   <option value="${i}">${i}</option>`;
     }
     text += `                  </select>
@@ -204,7 +206,7 @@ function searchToDocument(){
     else{
         let index = 0;
         text += `<div class="row">`;
-        for (book of search_result.items){
+        for (let book of search_result.items){
             if ("volumeInfo" in book){
                 text += `<div class="col-12 col-md-6 col-lg-4 mb-3">
                             <div class="card h-100 text-center">
@@ -217,16 +219,16 @@ function searchToDocument(){
                 }
                 if ("imageLinks" in book.volumeInfo){
                     if ("thumbnail" in book.volumeInfo.imageLinks){
-                        image_link = book.volumeInfo.imageLinks.thumbnail;
+                        let image_link = book.volumeInfo.imageLinks.thumbnail;
                         // Make sure the image_link is secure (https)
-                        book.volumeInfo.imageLinks.thumbnail = image_link.replace("http:", "https:")
+                        book.volumeInfo.imageLinks.thumbnail = image_link.replace("http:", "https:");
                         text += `<img src=${book.volumeInfo.imageLinks.thumbnail}>`;
                     }
                 }
        
                 text += `<div class="card-text">`;
                 if ("authors" in book.volumeInfo){
-                    for (author of book.volumeInfo.authors){
+                    for (let author of book.volumeInfo.authors){
                         text += `${author} · `;
                     }
                 }
@@ -336,8 +338,8 @@ function selectToDocument(grade){
         "Error in function selectToDocument, grade undefined");
         return;
     }
-    text = ``;
-    for (i=5; i>0; i--){
+    let text = ``;
+    for (let i=5; i>0; i--){
         if (i == Number(grade)){
             text += `<option value="${i}" selected>${i}</option>`;
         }
@@ -398,6 +400,6 @@ function changeOpinion(book_id, title, review_id, grade, review, return_to){
     if (grade != "0"){
         $("#grade_m").html(selectToDocument(grade));
     }
-    $("#review_m").html(review)
+    $("#review_m").html(review);
     $('#modal').modal('show');
 }
