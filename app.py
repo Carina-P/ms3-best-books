@@ -70,8 +70,8 @@ def get_groups():
         cat_groups = list(mongo.db.category_groups.find())
     except Exception as e:
         flash(
-            "Something went wrong when accessing the database to get" +
-            "category groups" + e
+            "Something went wrong when accessing the database to get"
+            + "category groups" + e
         )
         return []
     else:
@@ -137,8 +137,8 @@ def get_book(book_id):
     except Exception as e:
         book_details = []
         flash(
-            "Something went wrong when accessing the database, to find" +
-            "book details" + e
+            "Something went wrong when accessing the database, to find"
+            + "book details" + e
         )
         return redirect(url_for("get_books"))
 
@@ -272,8 +272,8 @@ def add_book():
                 + "book details" + e
             )
             flash(
-                "Notice! This probably means that book is inserted in " +
-                "collection book but not in collection book details."
+                "Notice! This probably means that book is inserted in "
+                + "collection book but not in collection book details."
             )
             # Do not try to do anything more, go back to home page
             return redirect(url_for("get_books"))
@@ -298,8 +298,8 @@ def delete_book(book_id):
         mongo.db.reviews.delete_many({"book_id": ObjectId(book_id)})
     except Exception as e:
         flash(
-            "Something went wrong when accessing database to " +
-            "delete book" + e
+            "Something went wrong when accessing database to "
+            + "delete book" + e
         )
     else:
         flash("Book Successfully Deleted")
@@ -329,8 +329,8 @@ def get_5_reviews(book_id):
             {"book_id": ObjectId(book_id)}).sort("_id", -1).limit(6))
     except Exception as e:
         flash(
-            "Something went wrong when accessing databas to retrieve " +
-            "reviews" + e
+            "Something went wrong when accessing databas to retrieve "
+            + "reviews" + e
         )
         return []
 
@@ -372,8 +372,8 @@ def add_opinion():
             book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
         except Exception as e:
             flash(
-                "Something went wrong when accessing database to find book" +
-                "that opinion should be added to. Opinion is not added", e
+                "Something went wrong when accessing database to find book"
+                + "that opinion should be added to. Opinion is not added", e
                 )
             # Do not try to do anything more, go back to home page
             return redirect(url_for("get_books"))
@@ -395,8 +395,8 @@ def add_opinion():
                 )
         except Exception as e:
             flash(
-                "Something went wrong when accessing database to update" +
-                " books grading. Opinion is not added. " + e
+                "Something went wrong when accessing database to update"
+                + " books grading. Opinion is not added. " + e
             )
             # Do not try to do anything more, go back to home page
             return redirect(url_for("get_books"))
@@ -420,9 +420,9 @@ def add_opinion():
         )
     except Exception as e:
         flash(
-            "Something went wrong when accessing database to insert " +
-            "opinion and update books details. Thus perhaps database is " +
-            "is corrupt regarding opinions for current book. " + e
+            "Something went wrong when accessing database to insert "
+            + "opinion and update books details. Thus perhaps database is "
+            + "is corrupt regarding opinions for current book. " + e
         )
     else:
         flash("Opinion Successfully Added")
@@ -455,8 +455,8 @@ def change_opinion(return_to, title):
         old_review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
     except Exception as e:
         flash(
-            "Something went wrong when accessing database, to find old grade" +
-            " and review. Opinion is not changed. " + e
+            "Something went wrong when accessing database, to find old grade"
+            + " and review. Opinion is not changed. " + e
         )
         # Do not try to do anything more, go back to home page
         return redirect(url_for("get_books"))
@@ -495,9 +495,9 @@ def change_opinion(return_to, title):
             {"book_id": ObjectId(book_id)}, {"$set": get_5_reviews(book_id)})
     except Exception as e:
         flash(
-            "Something went wrong when accessing database to change " +
-            "opinion and update books details. Thus perhaps database is " +
-            "is corrupt regarding opinions for current book. " + e
+            "Something went wrong when accessing database to change "
+            + "opinion and update books details. Thus perhaps database is "
+            + "is corrupt regarding opinions for current book. " + e
         )
     else:
         flash("Opinion Successfully Changed")
@@ -528,8 +528,8 @@ def delete_opinion(book_id, review_id, return_to, title):
         opinion = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
     except Exception as e:
         flash(
-            "Something went wrong when accessing database. " +
-            e
+            "Something went wrong when accessing database. "
+            + e
         )
 
     # If did not find opinion
@@ -545,9 +545,9 @@ def delete_opinion(book_id, review_id, return_to, title):
         book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
     except Exception as e:
         flash(
-            "Something went wrong when accessing database to delete review. " +
-            "Database is perhaps corrupt now regarding current books reviews. "
-            + e
+            "Something went wrong when accessing database to delete review. "
+            + "Database is perhaps corrupt now regarding current books"
+            "reviews. " + e
         )
         # Do not try to do anything more, go back to home page
         return redirect(url_for("get_books"))
@@ -571,9 +571,9 @@ def delete_opinion(book_id, review_id, return_to, title):
                 {"_id": ObjectId(book_id)}, {"$set": new_grading})
         except Exception as e:
             flash(
-                "Something went wrong when accessing database to update " +
-                "books grading. Database is perhaps corrupt now " +
-                "regarding current books reviews. " + e
+                "Something went wrong when accessing database to update "
+                + "books grading. Database is perhaps corrupt now "
+                + "regarding current books reviews. " + e
             )
             # Do not try to do anything more, go back to home page
             return redirect(url_for("get_books"))
@@ -583,9 +583,9 @@ def delete_opinion(book_id, review_id, return_to, title):
             {"book_id": ObjectId(book_id)}, {"$set": get_5_reviews(book_id)})
     except Exception as e:
         flash(
-            "Something went wrong when accessing database to update " +
-            "books details last 5 opinions. Database is perhaps corrupt now " +
-            "regarding current books reviews. " + e
+            "Something went wrong when accessing database to update "
+            + "books details last 5 opinions. Database is perhaps corrupt now "
+            + "regarding current books reviews. " + e
         )
         # Do not try to do anything more, go back to home page
         return redirect(url_for("get_books"))
@@ -637,8 +637,8 @@ def get_category_groups():
         )
     except Exception as e:
         flash(
-            "Something went wrong when accessing database to " +
-            "retrieve category groups." + e
+            "Something went wrong when accessing database to "
+            + "retrieve category groups." + e
         )
         # Go back to home page
         return redirect(url_for("get_books"))
@@ -664,8 +664,8 @@ def add_group():
             mongo.db.category_groups.insert_one(group_name)
         except Exception as e:
             flash(
-                "Something went wrong when accessing database to " +
-                "add category group. Group is not added. " + e
+                "Something went wrong when accessing database to "
+                + "add category group. Group is not added. " + e
             )
         else:
             flash(
@@ -706,8 +706,8 @@ def edit_group(category_group_id, old_group_name):
                 )
         except Exception as e:
             flash(
-                "Something went wrong when accessing database to update " +
-                "category group. Category group is not updated. " + e
+                "Something went wrong when accessing database to update "
+                + "category group. Category group is not updated. " + e
             )
             return redirect(url_for("get_category_groups"))
 
@@ -720,10 +720,10 @@ def edit_group(category_group_id, old_group_name):
                     })
         except Exception as e:
             flash(
-                "Something went wrong when accessing database to update" +
-                " books belonging to changed category group. Database might" +
-                "be corrupt regarding books having unchanged category group " +
-                "name. " + e
+                "Something went wrong when accessing database to update"
+                + " books belonging to changed category group. Database might"
+                + "be corrupt regarding books having unchanged category group "
+                + "name. " + e
             )
         else:
             flash(
@@ -737,8 +737,8 @@ def edit_group(category_group_id, old_group_name):
             "_id": ObjectId(category_group_id)})
     except Exception as e:
         flash(
-            "Something went wrong when accessing database to retrieve " +
-            "all category groups. " + e
+            "Something went wrong when accessing database to retrieve "
+            + "all category groups. " + e
         )
         # Return to home page
         return redirect(url_for("get_books"))
@@ -761,8 +761,9 @@ def delete_group(category_group_id, category_group):
         mongo.db.category_groups.remove({"_id": ObjectId(category_group_id)})
     except Exception as e:
         flash(
-            "Something went wrong when accessing database, to remove " +
-            "category group. Category group is probably not removed. " + e
+            "Something went wrong when accessing database, to remove "
+            + "category group. Category group is probably not removed. "
+            + e
         )
         return redirect(url_for("get_category_groups"))
 
@@ -775,10 +776,10 @@ def delete_group(category_group_id, category_group):
                 })
     except Exception as e:
         flash(
-            "Something went wrong when accessing database to change " +
-            "category groups for books affected by deletion of category group."
-            + " There might exist books that belong to deleted category group."
-            + e
+            "Something went wrong when accessing database to change "
+            + "category groups for books affected by deletion of category"
+            "group. There might exist books that belong to deleted category"
+            "group. " + e
         )
     else:
         flash('Category group "{}" deleted'.format(category_group))
@@ -802,8 +803,8 @@ def search_category():
             )
     except Exception as e:
         flash(
-            "Something went wrong when accessing database, to find books " +
-            "that belong to the category group. " + e
+            "Something went wrong when accessing database, to find books "
+            + "that belong to the category group. " + e
         )
         # Return to home page
         return redirect(url_for("get_books"))
