@@ -5,7 +5,7 @@
         <div class="divider-sm"></div>
         <div class="card">
             <div class="card-image-top mt-3">
-                <img class="login-img" src="./static/images/reading_by_the_sea.jpg">
+                <img class="login-img" src="./static/images/reading_by_the_sea.jpg" aria-hidden="true">
                 <div class="login-text rounded-corners">
                 {% if login %}
                     <h2>Log In</h2>
@@ -33,7 +33,7 @@
                             <div class="input-group-text"><i class="fas fa-user-lock"></i></div>
                         </div>
                         <input id="password" class="form-control" name="password" type="password" placeholder="Enter password"
-                            minlength="3" maxlenght="15" required>         
+                            minlength="3" maxlength="15" required>         
                     </div> 
                     <div class="text-center mt-3">
                         <button type="submit" class="btn btn-lg btn-green">

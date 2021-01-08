@@ -293,6 +293,7 @@ function searchBooks(group_names){
             return;
         }
     // Put group_names in global parameter
+    // Group_names is needed if/when user wants to add book
     category_groups = group_names;
     // Fetch information from page
     let search_books = $("#search_books").val();

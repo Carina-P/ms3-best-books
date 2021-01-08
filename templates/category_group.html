@@ -21,7 +21,6 @@
             {% endif %}
                 <div class="card-body bgr-white">
                     <div class="input-field text-center">
-                        <label class="sr-only" for="group_name">Choose category group</label>
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
@@ -29,9 +28,11 @@
                                 </div>
                             </div>
                             {% if edit %}
+                                <label class="sr-only" for="group_name">Choose category group</label>
                                 <input id="group_name" class="form-control" type="text" name="group_name" placeholder="Enter New Category Group" minlength="3" maxlength="25"
                                     value="{{ group.group_name }}" required>
                             {% else %}
+                                <label class="sr-only" for="group_name2">Choose category group</label>
                                 <input id="group_name2" class="form-control" type="text" name="group_name" placeholder="Enter New Category Group" minlength="3" maxlength="25"
                                     value="" required>
                             {% endif %}

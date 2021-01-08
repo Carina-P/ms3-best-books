@@ -9,9 +9,7 @@
     <!-- Book information -->
     <section id="details" class="container mt-5 mb-5">
         <div class="text-right">
-            <button class="btn btn-green mb-3 mr-5">
-                <a href="/" class="text-white"><i class="fas fa-times-circle fa-lg"></i></a>
-            </button>
+            <a href="/" class="btn btn-green mb-3 mr-5 text-white"><i class="fas fa-times-circle fa-lg"></i></a>
         </div>
         <div class="text-center">
             <h2>Book Details</h2>
@@ -22,7 +20,7 @@
                     <i class="fas fa-shopping-cart fa-lg"></i>
                 </button>
                 <h3 class="mb-3">{{book.title}}</h3>
-                <img class="left" src="{{book.image}}">
+                <img class="left" src="{{book.image}}" alt="Book cover:{{book.image}}">
                 <p>
                     <strong>Author/s:</strong> {{book.author}}<br>
                     <strong>Published:</strong> {{ book_details.published_date }}<br>

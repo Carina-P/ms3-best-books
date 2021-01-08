@@ -10,5 +10,6 @@ element.setAttribute("href", document.referrer);
  */
 element.onclick = function() {
   history.back();
+  $('#flash-mess').html("");
   return false;
 }

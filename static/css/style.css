@@ -97,8 +97,8 @@ body{
 
 /* Navigation */
 #nav-image{
-    max-height: 8rem;
     width: 100%;
+    max-height: 8rem;
 }
 .navbar-brand{
     color: #e76f51;

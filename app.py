@@ -1,4 +1,4 @@
-""" 
+"""
 Server-side code for the application ms3-best-books.
 """
 import os
@@ -742,7 +742,7 @@ def edit_group(category_group_id, old_group_name):
         )
         # Return to home page
         return redirect(url_for("get_books"))
-    else:    
+    else:
         return render_template("category_group.html", group=group, edit=True)
 
 
@@ -765,7 +765,7 @@ def delete_group(category_group_id, category_group):
             "category group. Category group is probably not removed. " + e
         )
         return redirect(url_for("get_category_groups"))
-    
+
     # Update all affected books, to category group "Other"
     try:
         mongo.db.books.update_many({
