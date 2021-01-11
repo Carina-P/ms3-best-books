@@ -1,16 +1,18 @@
-# Best Books
+# ![](https://github.com/Carina-P/ms3-best-books/blob/master/static/favicon/favicon.ico?raw=true)      Best Books
 
 This is the site where you get inspired and find new books to read. 
 You will find descriptions of different books and also reviews with other
 readers best tips.
+You are also welcome to add your own reviews and tips.
 
 The live project can be found here: [https://ms3-best-books.herokuapp.com/](https://ms3-best-books.herokuapp.com/)
 
 ## UX
 ### Strategy Plane
 #### Site owner's goal
-Get inspired from users reviews and recommendations.
-Earn money on each book purchased via link from the site.
+- Earn money on each book purchased via link from the site.
+- Get inspired from users reviews and recommendations.
+
 
 #### External users goal
 Find books they would like to read.
@@ -46,7 +48,7 @@ There are three types of users:
 - US_002: As a user I want to see detailed information about a book. 
 - US_003: As a user I want to buy a book
 - US_004: As a user I want to see which books are most popular on the site.
-- US_005: As a user I want to look for book in a category.
+- US_005: As a user I want to look for most popular books in a category.
 - US_006: As a user I want to add book to the site.
 - US_007: As a user I want to edit information about the book.
 - US_007: As a user I want to remove book.
@@ -54,7 +56,7 @@ There are three types of users:
 - US_009: As a user I want to review a book.
 - US_010: As a user I want to edit my opinion of a book.
 - US_011: As a user I want to remove my opinion of a book.
-- US_0012: As a user I want to register to the system.
+- US_0012: As a user I want to register (sign up) to the system.
 - US_0013: As a user I want to log in to the system.
 - US_0014: As a user I want to log out of the system.
 - US_0015: As a "administration" user I want to add categories.
@@ -67,7 +69,7 @@ There are three types of users:
 - Overview: many books with limited information for each book.
 - Possibility to easily get more detailed information about a book.
 - Add, edit and remove a book.
-- When adding a book: help to fill in information.
+- When adding a book: "help" to "automatically" fill in information about the book.
 - Add, edit and remove review and grade for a book.
 - Authentications system: User can only edit and remove "own books" and 
 "own reviews".
@@ -97,7 +99,7 @@ Here is a visual of the structure:
 ### Skeleton Plane
 - The user browses via navigation system.
 - User searches for book/s by giving book title or author or part of it.
-- User can filter search by giving categories (taged for this page)
+- User can filter search by giving categories
 - Interactive design that works on Mobile, Tablet as well as Desktop.
 #### Wireframes
 - [Mobile](https://github.com/Carina-P/ms3-best-books/blob/master/wireframes/wireframe-mobile.pdf)
