@@ -21,10 +21,10 @@
                 </button>
                 <h3 class="mb-3">{{book.title}}</h3>
                 <img class="left" src="{{book.image}}" alt="Book cover:{{book.image}}">
-                <p>
-                    <strong>Author/s:</strong> {{book.author}}<br>
-                    <strong>Published:</strong> {{ book_details.published_date }}<br>
-                    <strong>Grade:</strong>
+                <ul id="book_list">
+                    <li><strong>Author/s:</strong> {{book.author}}</li>
+                    <li><strong>Published:</strong> {{ book_details.published_date }}</li>
+                    <li><strong>Grade:</strong>
                     <span>
                         {% for count in range(book.stars) %}
                             <i class="fas fa-star"></i>
@@ -33,14 +33,13 @@
                             <i class="far fa-star"></i>
                         {% endfor %}
                         {{ book.avg_gr_rounded }}<br><br>
-                    </span>
-                    <strong>Category:</strong> {{ book.category}}<br>
-                    <strong>Category Group:</strong> {{ book.category_group}}<br><br>
-                    <strong>Industry identifier:</strong> {{ book_details.identifier }}<br><br>
-                    <strong>Description:</strong> {{ book_details.description }}<br><br>
-                    <strong>Image link:</strong> {{book.image}}<br><br>
-                    <strong>Book added by user:</strong> <em>{{ book.added_by}}</em>
-                </p>
+                    </span></li>
+                    <li><strong>Category:</strong> {{ book.category}}</li>
+                    <li><strong>Category Group:</strong> {{ book.category_group}}</li><br>
+                    <li><strong>Industry identifier:</strong> {{ book_details.identifier }}</li><br>
+                    <li><strong>Description:</strong> {{ book_details.description }}</li><br>
+                    <li><strong>Book added by user:</strong> <em>{{ book.added_by}}</em></li>
+                </ul>
                 <div class="row mb-3">
                     <div class="col s12 text-center">
                         {% if session.username %}

@@ -217,6 +217,9 @@ textarea.materialize-textarea{
 }
 
 /** Book details **/
+#book_list{
+    list-style-type: none;
+}
 .left{
     margin-right: 1em;
     margin-bottom: 1em;
@@ -245,11 +248,6 @@ textarea.materialize-textarea{
 }
 .padding-r6{
     padding-right: 6px;
-}
-
-/* Modal */
-#grade_m{
-    z-index: 1060;
 }
 
 /* For a responsive site */
