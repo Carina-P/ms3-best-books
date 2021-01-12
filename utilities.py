@@ -59,7 +59,9 @@ def get_groups():
     Return: (list of dictionaries) - with category groups
     """
     try:
-        cat_groups = list(mongo.db.category_groups.find())
+        cat_groups = list(
+            mongo.db.category_groups.find().sort("group_name", 1)
+        )
     except Exception as e:
         flash(
             "Something went wrong when accessing the database to get"

@@ -155,7 +155,6 @@ def add_book():
                 "Something went wrong when accessing the database, to insert"
                 + "book" + e
             )
-            
             return redirect(url_for("home"))
 
         reviews_max5 = []

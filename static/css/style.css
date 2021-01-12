@@ -247,6 +247,11 @@ textarea.materialize-textarea{
     padding-right: 6px;
 }
 
+/* Modal */
+#grade_m{
+    z-index: 1060;
+}
+
 /* For a responsive site */
 @media screen and (max-width: 576px){
     html{
