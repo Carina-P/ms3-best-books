@@ -30,16 +30,7 @@
             <div class="row">
                 {% for category_group in category_groups %}
                     <div class="col-6 col-md-3 mb-3">
-                        <div class="card bgr-{{ category_group.colour }} h-100 p-3">
-                            <div class = "card-content" >
-                                <form method="POST" action="{{ url_for('search_category') }}">
-                                    <input type="hidden" name="category" value="{{ category_group.group_name }}"> 
-                                    <button type="submit" class="category-btn btn btn-sm bgr-black text-light" onclick="moveTo()">
-                                        {{ category_group.group_name }} <i class="fas fa-search"></i>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
+                       {% include 'components/cards/select_category_card.html' %} 
                     </div>
                 {% endfor %}
             </div>
