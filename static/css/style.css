@@ -217,8 +217,9 @@ textarea.materialize-textarea{
 }
 
 /** Book details **/
-#book_list, .review_list{
+.book_list, .review_list{
     list-style-type: none;
+    padding-inline-start: 0px;
 }
 .left{
     margin-right: 1em;

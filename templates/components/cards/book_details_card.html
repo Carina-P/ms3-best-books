@@ -1,0 +1,76 @@
+<div class="card m-3">
+    <div class="card-content bgr-white m-5">
+        <button type="button" class="buy bgr-red text-white p-2" data-toggle="modal" data-target="#buyModal">
+            <i class="fas fa-shopping-cart fa-lg"></i>
+        </button>
+        <h3 class="mb-3">{{book.title}}</h3>
+        <img class="left" src="{{book.image}}" alt="Book cover:{{book.image}}">
+        <div>
+            <ul class="book_list">
+                <li><strong>Author/s:</strong> {{book.author}}</li>
+                <li><strong>Published:</strong> {{ book_details.published_date }}</li>
+                <li><strong>Grade:</strong>
+                    <span>
+                        {% for count in range(book.stars) %}
+                            <i class="fas fa-star"></i>
+                        {% endfor %}
+                        {% for count in range(5 - book.stars) %}
+                            <i class="far fa-star"></i>
+                        {% endfor %}
+                        {{ book.avg_gr_rounded }}<br><br>
+                    </span>
+                </li>
+                <li><strong>Category:</strong> {{ book.category}}</li>
+                <li><strong>Category Group:</strong> {{ book.category_group}}</li><br>
+                <li><strong>Industry identifier:</strong> {{ book_details.identifier }}</li><br>
+                <li><strong>Description:</strong> {{ book_details.description }}</li><br>
+                <li><strong>Book added by user:</strong> <em>{{ book.added_by}}</em></li>
+            </ul>
+        </div>
+        <div class="row mb-3">
+            <div class="col s12 text-center">
+                {% if session.username %}
+                    <button type="submit" class="btn btn-lg btn-green" onclick="addOpinion(`{{ book._id }}`, `{{ book.title }}`)">
+                        Add opinion <i class="fas fa-plus-square"></i>
+                    </button>  
+                {% endif %}
+                {% if session.username == book.added_by %}
+                    <a href="{{ url_for('delete_book', book_id=book._id) }}" class="btn btn-lg btn-red">
+                        Delete Book <i class="fas fa-trash-alt"></i>
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+        {% for review in book_details.reviews_max5 %}
+            <div class="review">
+                <ul class="review_list">
+                    <li><strong>Opinion added by user:</strong> <em>{{ review.added_by }}</em> </li><br>
+                    <li><strong>Grade:</strong> {{ review.grade }}</li>
+                    <li>"{{ review.review }}"</li>
+                </ul>
+                {% if session.username == review.added_by %}
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-sm btn-green" onclick="changeOpinion(`{{ book._id }}`, `{{ book.title }}`,
+                            `{{ review._id}}`, `{{ review.grade }}`, `{{ review.review }}`, `book`)">
+                            Edit <i class="fas fa-pen-square"></i>
+                        </button>
+                        <a href="{{ url_for('delete_opinion', book_id=book._id, review_id=review._id, return_to='book', title=book.title) }}" class="btn btn-sm btn-red">
+                            Delete <i class="fas fa-trash-alt"></i>
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor%}
+
+        <div class="row">
+            <div class="col-12">
+                <p class="text-center">
+                {% if book_details.more_reviews == "y" %}
+                    Book have more reviews
+                    <a href="{{ url_for('get_reviews', book_id=book._id, title=book.title) }}">See all reviews</a>
+                {% endif %}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
