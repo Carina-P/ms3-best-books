@@ -25,7 +25,7 @@ mongo = PyMongo(app)
 
 
 @app.route("/", methods=["GET", "POST"])
-def get_books():
+def home():
     """
     Fetch best books and current category groups.
     Take user to home-page and show retrieved information.
@@ -35,7 +35,7 @@ def get_books():
         category_groups = get_groups()
 
     return render_template(
-        "pages/books.html", best_books=best_books,
+        "pages/home.html", best_books=best_books,
         category_groups=category_groups
     )
 
@@ -56,10 +56,11 @@ def get_book(book_id):
             "Something went wrong when accessing the database, to find book"
             + e
         )
-        return redirect(url_for("get_books"))
+        return redirect(url_for("home"))
 
     # Round average grade, retrived from database, to one decimal
     book["avg_gr_rounded"] = round(float(book["average_grade"]), 1)
+
     # Round average grade to integer - that is number of stars to show
     book["stars"] = int(round(float(book["average_grade"]), 0))
 
@@ -73,7 +74,7 @@ def get_book(book_id):
             "Something went wrong when accessing the database, to find"
             + "book details" + e
         )
-        return redirect(url_for("get_books"))
+        return redirect(url_for("home"))
 
     return render_template(
         "pages/book.html", book=book, book_details=book_details
@@ -100,11 +101,11 @@ def search():
             + e
         )
         books = []
-        return redirect(url_for("get_books"))
+        return redirect(url_for("home"))
     else:
         if not(books):
             flash("Sorry, there is no book in database matching your input")
-            return redirect(url_for("get_books"))
+            return redirect(url_for("home"))
 
     for book in books:
         # Round average grade, retrived from database, to one decimal
@@ -154,11 +155,12 @@ def add_book():
                 "Something went wrong when accessing the database, to insert"
                 + "book" + e
             )
-            # Do not try to do anything more, go back to home page
-            return redirect(url_for("get_books"))
+            
+            return redirect(url_for("home"))
 
         reviews_max5 = []
         review = request.form.get("review")
+
         # Only add opinion if grade and/or review is given
         # Notice that two collections are updated with review: reviews and
         # book_details that contains the five last reviews.
@@ -176,8 +178,7 @@ def add_book():
                     "Something went wrong when accessing the database, to"
                     + "insert review" + e
                 )
-                # Do not try to do anything more, go back to home page
-                return redirect(url_for("get_books"))
+                return redirect(url_for("home"))
 
             opinion = {
                 "_id": review_result.inserted_id,
@@ -208,8 +209,7 @@ def add_book():
                 "Notice! This probably means that book is inserted in "
                 + "collection book but not in collection book details."
             )
-            # Do not try to do anything more, go back to home page
-            return redirect(url_for("get_books"))
+            return redirect(url_for("home"))
 
         flash('The book "{}" is successfully added'.format(book["title"]))
 
@@ -237,7 +237,7 @@ def delete_book(book_id):
     else:
         flash("Book Successfully Deleted")
     finally:
-        return redirect(url_for("get_books"))
+        return redirect(url_for("home"))
 
 
 ####################
@@ -258,7 +258,7 @@ def add_opinion():
     # if something is wrong and review and grade is missing
     if not(review) and not(grade_str):
         flash("No opinion added since you gave no values")
-        return redirect(url_for("get_books"))
+        return redirect(url_for("home"))
 
     # Grade is given
     if grade_str:
@@ -270,11 +270,11 @@ def add_opinion():
                 "Something went wrong when accessing database to find book"
                 + "that opinion should be added to. Opinion is not added", e
                 )
-            # Do not try to do anything more, go back to home page
-            return redirect(url_for("get_books"))
+            return redirect(url_for("home"))
 
         # Now one more vote is given for the book
         no_of_votes = int(book["no_of_votes"]) + 1
+
         # New vote gives an new average_grade
         new_average = (
             float(book["average_grade"]) * int(book["no_of_votes"]) + grade
@@ -293,8 +293,7 @@ def add_opinion():
                 "Something went wrong when accessing database to update"
                 + " books grading. Opinion is not added. " + e
             )
-            # Do not try to do anything more, go back to home page
-            return redirect(url_for("get_books"))
+            return redirect(url_for("home"))
 
     else:    # Grade is not given
         grade_str = "0"
@@ -353,8 +352,7 @@ def change_opinion(return_to, title):
             "Something went wrong when accessing database, to find old grade"
             + " and review. Opinion is not changed. " + e
         )
-        # Do not try to do anything more, go back to home page
-        return redirect(url_for("get_books"))
+        return redirect(url_for("home"))
 
     if (old_review["grade"] != grade_str):
         grade_diff = int(grade_str) - int(old_review["grade"])
@@ -444,8 +442,7 @@ def delete_opinion(book_id, review_id, return_to, title):
             + "Database is perhaps corrupt now regarding current books"
             "reviews. " + e
         )
-        # Do not try to do anything more, go back to home page
-        return redirect(url_for("get_books"))
+        return redirect(url_for("home"))
 
     # If no grade is given, no new average is needed
     if opinion["grade"] != "0":
@@ -470,8 +467,7 @@ def delete_opinion(book_id, review_id, return_to, title):
                 + "books grading. Database is perhaps corrupt now "
                 + "regarding current books reviews. " + e
             )
-            # Do not try to do anything more, go back to home page
-            return redirect(url_for("get_books"))
+            return redirect(url_for("home"))
 
     try:
         mongo.db.books_details.update_one(
@@ -482,8 +478,7 @@ def delete_opinion(book_id, review_id, return_to, title):
             + "books details last 5 opinions. Database is perhaps corrupt now "
             + "regarding current books reviews. " + e
         )
-        # Do not try to do anything more, go back to home page
-        return redirect(url_for("get_books"))
+        return redirect(url_for("home"))
 
     flash("Opinion Successfully Deleted")
     if (return_to == "book"):
@@ -535,8 +530,7 @@ def get_category_groups():
             "Something went wrong when accessing database to "
             + "retrieve category groups." + e
         )
-        # Go back to home page
-        return redirect(url_for("get_books"))
+        return redirect(url_for("home"))
 
     return render_template(
         "pages/category_groups.html", category_groups=category_groups
@@ -635,8 +629,7 @@ def edit_group(category_group_id, old_group_name):
             "Something went wrong when accessing database to retrieve "
             + "all category groups. " + e
         )
-        # Return to home page
-        return redirect(url_for("get_books"))
+        return redirect(url_for("home"))
     else:
         return render_template(
             "pages/category_group.html", group=group, edit=True
@@ -703,13 +696,12 @@ def search_category():
             "Something went wrong when accessing database, to find books "
             + "that belong to the category group. " + e
         )
-        # Return to home page
-        return redirect(url_for("get_books"))
+        return redirect(url_for("home"))
 
     if not(category_books):
         flash('No books in that category group: "{}" in database'.format(
                 category))
-        return redirect(url_for("get_books"))
+        return redirect(url_for("home"))
 
     # The average grade is rounded before shown on page.
     for book in category_books:
@@ -722,7 +714,7 @@ def search_category():
 
 
 #########################
-# Access administration #
+# Authorisation #
 #########################
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
@@ -740,8 +732,7 @@ def signup():
                 "Something went wrong when accessing database to sign you up! "
                 + e
             )
-            # Return to home page
-            return redirect(url_for("get_books"))
+            return redirect(url_for("home"))
 
         # If user already exists in database
         if existing_user:
@@ -760,15 +751,14 @@ def signup():
                 "Something went wrong when accessing database to sign you up! "
                 + e
             )
-            # Return to home page
-            return redirect(url_for("get_books"))
+            return redirect(url_for("home"))
 
         # Put username in session-variable
         session["username"] = sign_up["username"]
         flash("Sign Up successful - Welcome, {}!".format(
             request.form.get("username")
         ))
-        return redirect(url_for("get_books"))
+        return redirect(url_for("home"))
 
     return render_template("pages/login.html", login=False)
 
@@ -790,8 +780,7 @@ def login():
                 "Something went wrong when accessing database to log in! "
                 + e
             )
-            # Return to home page
-            return redirect(url_for("get_books"))
+            return redirect(url_for("home"))
 
         if existing_user:
             if check_password_hash(
@@ -799,7 +788,7 @@ def login():
             ):
                 session["username"] = request.form.get("username").lower()
                 flash("Welcome, {}!".format(request.form.get("username")))
-                return redirect(url_for("get_books"))
+                return redirect(url_for("home"))
             else:
                 flash("Incorrect Username and/or Password")
                 return redirect(url_for("login", login=True))
@@ -819,7 +808,7 @@ def logout():
     """
     flash("You have been logged out")
     session.pop("username")
-    return redirect(url_for("get_books"))
+    return redirect(url_for("home"))
 
 
 if __name__ == "__main__":
