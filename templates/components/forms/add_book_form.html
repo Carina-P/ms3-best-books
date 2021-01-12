@@ -1,0 +1,13 @@
+<form id="book_form" onsubmit="searchBooks({{ category_groups }}); return false" class="was-validated">
+    <div class="form-group">
+        <div class="input-group mb-2 mr-sm-2">
+            <input id="search_books" name="search_book" placeholder="Title and/or Author" type="text" minlength="2" maxlength="25"
+                class="form-control was-validated" required>
+            <div class="input-group-prepend">
+                <button type="submit" class="btn btn-sm btn-green">
+                        <i class="fas fa-search"></i> Search Books
+                </button> 
+            </div>
+        </div> 
+    </div>
+</form>

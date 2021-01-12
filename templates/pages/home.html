@@ -45,20 +45,7 @@
         <div id="search_for_book" class="container">
             <div class="text-center">
                 <h2>Search for book in this database</h2>
-                <div class="card">
-                    <div class="card-body">
-                        <form method="POST" action="{{ url_for('search') }}" class="was-validated">
-                            <div class="input-group">
-                                <input name="title_or_author" type="text" class="form-control" placeholder="Title or Author" minlength="3" maxlength="30" required>
-                                <div class="input-group-prepend">
-                                    <button type="submit" class="btn btn-sm btn-green">
-                                        <i class="fas fa-search"></i> This Database
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>    
+                {% include 'components/cards/search_book_card.html' %}
             </div>
         </div>
         <div class="divider-sm"></div>
@@ -73,31 +60,9 @@
             <div class="text-center">
                 <h2>Add book</h2>
             </div>
-            <div class="card">
-                <div class="card-body">
-                    <div class="text-center">
-                        <p>Search in Google Books to get information about book you want to add</p>
-                    </div>
-                    <form id="book_form" onsubmit="searchBooks({{ category_groups }}); return false" class="was-validated">
-                        <div class="form-group">
-                            <div class="input-group mb-2 mr-sm-2">
-                                <input id="search_books" name="search_book" placeholder="Title and/or Author" type="text" minlength="2" maxlength="25"
-                                    class="form-control was-validated" required>
-                                <div class="input-group-prepend">
-                                    <button type="submit" class="btn btn-sm btn-green">
-                                            <i class="fas fa-search"></i> Search Books
-                                    </button> 
-                                </div>
-                            </div> 
-                        </div>
-                    </form>
-                    <div class="text-center">
-                        <img src="https://books.google.com/googlebooks/images/poweredby.png" alt="Powered by Google">
-                    </div>
-                </div>
-            </div>
+            {% include 'components/cards/add_book_card.html' %}
         </div>
-        <div class="divider"></div>
+        <div class="divider-sm"></div>
         
         <div id="search_results" class="container"></div>
         <div id="add_book" class="container"></div>
