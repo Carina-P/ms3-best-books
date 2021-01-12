@@ -1,0 +1,18 @@
+<div class="review">
+    <ul>
+        <li><strong>Opinion added by user </strong><em>{{ review.added_by }}</em>:</li><br>
+        <li><strong>Grade:</strong> {{ review.grade }}</li>
+        <li>"{{ review.review }}"</li>
+    </ul>
+    {% if session.username == review.added_by %}
+        <div class="text-center">
+            <button type="submit" class="btn btn-sm btn-green" onclick="changeOpinion(`{{ review.book_id }}`, `{{ title }}`,
+                `{{ review._id}}`, `{{ review.grade }}`, `{{ review.review }}`, `reviews`)">
+                Change
+            </button>
+            <a href="{{ url_for('delete_opinion', book_id=review.book_id, review_id=review._id, return_to='reviews', title=title) }}" class="btn btn-sm btn-red">
+                Delete 
+            </a>
+        </div>
+    {% endif %}
+</div>  
