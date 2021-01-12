@@ -735,7 +735,11 @@ def signup():
 
         # If user already exists in database
         if existing_user:
-            flash('Username: {}, already exists'.format(existing_user))
+            flash(
+                'Username: {}, already exists'.format(
+                    existing_user["username"]
+                )
+            )
             return redirect(url_for("signup", login=False))
 
         sign_up = {
@@ -759,7 +763,7 @@ def signup():
         ))
         return redirect(url_for("home"))
 
-    return render_template("pages/login.html", login=False)
+    return render_template("pages/auth.html", login=False)
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -796,7 +800,7 @@ def login():
             flash("Incorrect Username and/or Password")
             return redirect(url_for("login", login=True))
 
-    return render_template("pages/login.html", login=True)
+    return render_template("pages/auth.html", login=True)
 
 
 @app.route("/logout")
