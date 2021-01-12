@@ -103,7 +103,8 @@ def get_books():
         category_groups = get_groups()
 
     return render_template(
-        "books.html", best_books=best_books, category_groups=category_groups
+        "pages/books.html", best_books=best_books,
+        category_groups=category_groups
     )
 
 
@@ -143,7 +144,7 @@ def get_book(book_id):
         return redirect(url_for("get_books"))
 
     return render_template(
-        "book.html", book=book, book_details=book_details
+        "pages/book.html", book=book, book_details=book_details
     )
 
 
@@ -179,7 +180,7 @@ def search():
         book["avg_gr_rounded"] = avg_gr_rounded
 
     return render_template(
-        "search_result.html", books=books
+        "pages/search_result.html", books=books
     )
 
 
@@ -618,7 +619,7 @@ def get_reviews(book_id, title):
         reviews = []
     finally:
         return render_template(
-            "reviews.html", reviews=reviews, title=title, book_id=book_id
+            "pages/reviews.html", reviews=reviews, title=title, book_id=book_id
         )
 
 
@@ -644,7 +645,7 @@ def get_category_groups():
         return redirect(url_for("get_books"))
 
     return render_template(
-        "category_groups.html", category_groups=category_groups
+        "pages/category_groups.html", category_groups=category_groups
     )
 
 
@@ -676,7 +677,7 @@ def add_group():
         finally:
             return redirect(url_for("get_category_groups"))
 
-    return render_template("category_group.html")
+    return render_template("pages/category_group.html")
 
 
 @app.route(
@@ -743,7 +744,7 @@ def edit_group(category_group_id, old_group_name):
         # Return to home page
         return redirect(url_for("get_books"))
     else:
-        return render_template("category_group.html", group=group, edit=True)
+        return render_template("pages/category_group.html", group=group, edit=True)
 
 
 @app.route("/delete/group/<category_group_id>/<category_group>")
@@ -819,7 +820,7 @@ def search_category():
         book["avg_gr_rounded"] = round(float(book["average_grade"]), 1)
 
     return render_template(
-        "search_result.html", books=category_books,
+        "pages/search_result.html", books=category_books,
         show_category=True, category=category
     )
 
@@ -873,7 +874,7 @@ def signup():
         ))
         return redirect(url_for("get_books"))
 
-    return render_template("login.html", login=False)
+    return render_template("pages/login.html", login=False)
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -911,7 +912,7 @@ def login():
             flash("Incorrect Username and/or Password")
             return redirect(url_for("login", login=True))
 
-    return render_template("login.html", login=True)
+    return render_template("pages/login.html", login=True)
 
 
 @app.route("/logout")
