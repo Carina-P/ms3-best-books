@@ -348,7 +348,6 @@ function selectToDocument(grade){
             text += `<option value="${i}">${i}</option>`;
         }
     }
-    $(select).selectpicker('refresh');
     return text;
 }
 
@@ -397,7 +396,8 @@ function changeOpinion(book_id, title, review_id, grade, review, return_to){
     $('#modal_form').attr('action', `/change/opinion/${return_to}/${title}`);
     $("#hidden_input").html(`<input type="hidden" name="book_id" value="${book_id}">
         <input type="hidden" name="review_id" value="${review_id}">`);
-    // if there is no grade (grad="0") user can choose a grad as in add opinion
+
+    // if there is no grade (grad="0") user can choose a grade as in add opinion
     // else show current grade
     if (grade != "0"){
         $("#grade_m").html(selectToDocument(grade));

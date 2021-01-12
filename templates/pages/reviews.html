@@ -15,11 +15,12 @@
         <div class="card bgr-white">
             <div class="card-content">
                {% for review in reviews %}
-                    <div class="review_list">
-                        Opinion added by user <em>{{ review.added_by }}</em>:<br>
-                        <strong>Grade:</strong> {{ review.grade }}<br>
-                        "{{ review.review }}"
-                        
+                    <div class="review">
+                        <ul>
+                            <li><strong>Opinion added by user </strong><em>{{ review.added_by }}</em>:</li><br>
+                            <li><strong>Grade:</strong> {{ review.grade }}</li>
+                            <li>"{{ review.review }}"</li>
+                        </ul>
                         {% if session.username == review.added_by %}
                             <div class="text-center">
                                 <button type="submit" class="btn btn-sm btn-green" onclick="changeOpinion(`{{ review.book_id }}`, `{{ title }}`,

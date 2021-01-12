@@ -217,7 +217,7 @@ textarea.materialize-textarea{
 }
 
 /** Book details **/
-#book_list{
+#book_list, .review_list{
     list-style-type: none;
 }
 .left{
@@ -225,7 +225,7 @@ textarea.materialize-textarea{
     margin-bottom: 1em;
     float: left;
 }
-.review_list{
+.review{
     border-style: solid;
     padding: 1em;
 }
