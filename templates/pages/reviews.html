@@ -12,7 +12,13 @@
         <div>
             <h2>All reviews for:  "{{ title }}"</h2>
         </div>
-        {% include 'components/cards/reviews_card.html' %}
+        <div class="card bgr-white">
+            <div class="card-content">
+                {% for review in reviews %}
+                    {% include 'components/review.html' %}
+                {% endfor%}
+            </div>
+        </div>
     </section>
 
     {% include 'components/modals/modal_opinion.html' %}

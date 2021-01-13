@@ -30,7 +30,11 @@
             <div class="row">
                 {% for category_group in category_groups %}
                     <div class="col-6 col-md-3 mb-3">
-                       {% include 'components/cards/select_category_card.html' %} 
+                       <div class="card bgr-{{ category_group.colour }} h-100 p-3">
+                            <div class = "card-content" >
+                                {% include 'components/forms/select_category_form.html' %}
+                            </div>
+                        </div> 
                     </div>
                 {% endfor %}
             </div>
@@ -45,7 +49,11 @@
         <div id="search_for_book" class="container">
             <div class="text-center">
                 <h2>Search for book in this database</h2>
-                {% include 'components/cards/search_book_card.html' %}
+                <div class="card">
+                    <div class="card-body">
+                    {% include 'components/forms/search_book_form.html' %} 
+                    </div>
+                </div> 
             </div>
         </div>
         <div class="divider-sm"></div>
