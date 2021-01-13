@@ -1,10 +1,10 @@
 <div class="card">
     <div class="card-body m-3">
         {% if card=='category_group' %}
-            {% include 'components/forms/category_group_form.html' %}
+            {% include 'components/forms/form_category_group.html' %}
 
         {% elif card=='search_book' %}
-            {% include 'components/forms/search_book_form.html' %}
+            {% include 'components/forms/form_search_book.html' %}
 
         {% elif  card=='review' %}
                 {% for review in reviews %}
@@ -15,7 +15,7 @@
             <div class="text-center">
                 <p>Search in Google Books to get information about book you want to add</p>
             </div>
-            {% include 'components/forms/add_book_form.html' %}
+            {% include 'components/forms/form_add_book.html' %}
             <div class="text-center">
                 <img src="https://books.google.com/googlebooks/images/poweredby.png" alt="Powered by Google">
             </div>
@@ -51,12 +51,11 @@
             <div class="row mb-3">
                 <div class="col s12 text-center">
                     {% if session.username %}
-                        <button type="submit" class="btn btn-lg btn-green" onclick="addOpinion(`{{ book._id }}`, `{{ book.title }}`)">
-                            Add opinion <i class="fas fa-plus-square"></i>
-                        </button>  
+                        {% include 'components/buttons_general/button_add_opinion.html' %}
                     {% endif %}
+
                     {% if session.username == book.added_by %}
-                        <a href="{{ url_for('delete_book', book_id=book._id)}}" class="btn btn-lg btn-red">
+                        <a href="{{ url_for('delete_book', book_id=book._id)}}" class="btn btn-red">
                             Delete Book <i class="fas fa-trash-alt"></i>
                         </a>
                     {% endif %}

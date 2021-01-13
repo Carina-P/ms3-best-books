@@ -15,9 +15,7 @@
     <div class="card-footer bgr-white">
         <a href="/book/{{ book._id }}/'book'" class="btn btn-green text-white">Book details <i class="fas fa-info-circle"></i></a>
         {% if session.username %}
-            <button type="submit" class="btn btn-green" onclick="addOpinion(`{{ book._id }}`, `{{ book.title }}`)">
-                Add opinion <i class="fas fa-plus-square"></i>
-            </button>  
+            {% include 'components/buttons_general/button_add_opinion.html' %}
         {% endif %}
     </div>
 </div>
