@@ -12,8 +12,8 @@
         <div>
             <h2>All reviews for:  "{{ title }}"</h2>
         </div>
-        <div class="card bgr-white">
-            <div class="card-content">
+        <div class="card">
+            <div class="card-body m-3">
                 {% for review in reviews %}
                     {% include 'components/review.html' %}
                 {% endfor%}

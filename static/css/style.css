@@ -191,21 +191,6 @@ body{
 }
 
 /* Add book section */
-#search_results .card .card-content,
-#search_category .card .card-content{
-    padding: 1rem;
-}
-#search_results .card .card-image img,
-#search_category .card .card-image img{
-    height: 100%;
-    width: auto;
-    margin-top: 1rem;
-    margin-left: auto;
-    margin-right: auto;
-}
-textarea.materialize-textarea{
-    resize: vertical;
-}
 #description{
     height: 5rem;
 }

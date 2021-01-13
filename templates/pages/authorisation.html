@@ -3,19 +3,7 @@
 {% block content%}
     <section class="container text-center mt-3">
         <div class="divider-sm"></div>
-        <div class="card">
-            <div class="card-image-top mt-3">
-                <img class="login-img" src="{{ url_for('static', filename='images/reading_by_the_sea.jpg') }}" aria-hidden="true">
-                <div class="login-text rounded-corners">
-                {% if login %}
-                    <h2>Log In</h2>
-                {% else %}
-                    <h2>Sign Up</h2>
-                {% endif %}
-                </div>
-            </div>
-            {% include 'components/forms/auth_form.html' %}
-        </div>
+        {% include 'components/cards/authorisation_card.html' %}
 
         <div class="row mt-3">
             <div class="col s12">
