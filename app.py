@@ -777,7 +777,7 @@ def signup():
         ))
         return redirect(url_for("home"))
 
-    return render_template("pages/auth.html", login=False)
+    return render_template("pages/authorisation.html", login=False)
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -814,7 +814,7 @@ def login():
             flash("Incorrect Username and/or Password")
             return redirect(url_for("login", login=True))
 
-    return render_template("pages/auth.html", login=True)
+    return render_template("pages/authorisation.html", login=True)
 
 
 @app.route("/logout")
