@@ -30,9 +30,7 @@
             <div class="row">
                 {% for category_group in category_groups %}
                     <div class="col-6 col-md-3 mb-3">
-                       <div class="card bgr-{{ category_group.colour }} h-100 p-3">
-                            {% include 'components/forms/select_category_form.html' %}
-                        </div> 
+                        {% include 'components/cards/best_category_card.html' %}
                     </div>
                 {% endfor %}
             </div>
