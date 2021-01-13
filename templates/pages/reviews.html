@@ -7,7 +7,7 @@
 {% block content%}
     <section class="container mt-5">
         <div class="text-right">
-            <a href="{{ url_for('get_book', book_id=book_id) }}" class="btn btn-green mb-3 text-white"><i class="fas fa-times-circle fa-lg"></i></a>
+            <a href="{{ url_for('get_book', book_id=book_id, page='book') }}" class="btn btn-green mb-3 text-white"><i class="fas fa-times-circle fa-lg"></i></a>
         </div>
         <div>
             <h2>All reviews for:  "{{ title }}"</h2>

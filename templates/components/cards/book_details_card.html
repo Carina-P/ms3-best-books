@@ -35,7 +35,7 @@
                     </button>  
                 {% endif %}
                 {% if session.username == book.added_by %}
-                    <a href="{{ url_for('delete_book', book_id=book._id) }}" class="btn btn-lg btn-red">
+                    <a href="{{ url_for('delete_book', book_id=book._id)}}" class="btn btn-lg btn-red">
                         Delete Book <i class="fas fa-trash-alt"></i>
                     </a>
                 {% endif %}
@@ -50,7 +50,7 @@
                 <p class="text-center">
                 {% if book_details.more_reviews == "y" %}
                     Book have more reviews
-                    <a href="{{ url_for('get_reviews', book_id=book._id, title=book.title) }}">See all reviews</a>
+                    <a href="{{ url_for('get_reviews', book_id=book._id, title=book.title, page='reviews') }}">See all reviews</a>
                 {% endif %}
                 </p>
             </div>

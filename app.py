@@ -40,14 +40,16 @@ def home():
     )
 
 
-@app.route("/book/<book_id>")
-def get_book(book_id):
+@app.route("/book/<book_id>/<page>")
+def get_book(book_id, page):
     """
     Get information about book with id equal to book_id.
     Render the book information page and show retrieved information.
 
     Input:
         book_id (object): The database _id for book
+        page (str): Current page, used when calling other pages to know where
+        to return to
     """
     try:
         book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
@@ -77,7 +79,8 @@ def get_book(book_id):
         return redirect(url_for("home"))
 
     return render_template(
-        "pages/book.html", book=book, book_details=book_details
+        "pages/book.html", book=book, book_details=book_details,
+        title=book["title"], page="book"
     )
 
 
@@ -212,7 +215,7 @@ def add_book():
 
         flash('The book "{}" is successfully added'.format(book["title"]))
 
-    return redirect(url_for("get_book", book_id=result.inserted_id))
+    return redirect(url_for("get_book", book_id=result.inserted_id, page="book"))
 
 
 @app.route("/delete/book/<book_id>")
@@ -320,7 +323,7 @@ def add_opinion():
     else:
         flash("Opinion Successfully Added")
     finally:
-        return redirect(url_for("get_book", book_id=book_id))
+        return redirect(url_for("get_book", book_id=book_id, page="book"))
 
 
 @app.route("/change/opinion/<return_to>/<title>", methods=["GET", "POST"])
@@ -342,7 +345,7 @@ def change_opinion(return_to, title):
 
     if not(review) and not(grade_str):
         flash("Something is wrong, no information retrieved")
-        return redirect(url_for("get_book", book_id=book_id))
+        return redirect(url_for("get_book", book_id=book_id, page="book"))
 
     try:
         old_review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
@@ -395,10 +398,12 @@ def change_opinion(return_to, title):
         flash("Opinion Successfully Changed")
     finally:
         if (return_to == "book"):
-            return redirect(url_for("get_book", book_id=book_id))
+            return redirect(url_for("get_book", book_id=book_id, page="book"))
         else:
             return redirect(
-                url_for("get_reviews", book_id=book_id, title=title)
+                url_for(
+                    "get_reviews", book_id=book_id, title=title, page="reviews"
+                )
             )
 
 
@@ -429,7 +434,7 @@ def delete_opinion(book_id, review_id, return_to, title):
         flash(
             "Error when deleting opinion."
         )
-        return redirect(url_for("get_book", book_id=book_id))
+        return redirect(url_for("get_book", book_id=book_id, page="book"))
 
     try:
         mongo.db.reviews.delete_one({"_id": ObjectId(review_id)})
@@ -481,19 +486,27 @@ def delete_opinion(book_id, review_id, return_to, title):
 
     flash("Opinion Successfully Deleted")
     if (return_to == "book"):
-        return redirect(url_for("get_book", book_id=book_id))
+        return redirect(
+            url_for("get_book", book_id=book_id, title=title, page="book")
+        )
     else:
-        return redirect(url_for("get_reviews", book_id=book_id, title=title))
+        return redirect(
+            url_for(
+                "get_reviews", book_id=book_id, title=title, page="reviews"
+            )
+        )
 
 
-@app.route("/reviews/<book_id>/<title>", methods=["GET", "POST"])
-def get_reviews(book_id, title):
+@app.route("/reviews/<book_id>/<title>/<page>", methods=["GET", "POST"])
+def get_reviews(book_id, title, page):
     """
     Get all reviews for a book with id=book_id in database.
     Render the reviews page and show retrieved information.
     Input:
         book_id: (str) - Books id in database
         title: (str) - Books title
+        page: (str) - Current page, used when calling other functions to know
+            where to return to.
     """
     try:
         reviews = list(mongo.db.reviews.find(
@@ -507,7 +520,8 @@ def get_reviews(book_id, title):
         reviews = []
     finally:
         return render_template(
-            "pages/reviews.html", reviews=reviews, title=title, book_id=book_id
+            "pages/reviews.html", reviews=reviews, title=title,
+            book_id=book_id, page="reviews"
         )
 
 
