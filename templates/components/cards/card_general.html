@@ -21,9 +21,7 @@
             </div>
 
         {% elif card=='book_details' %}
-            <button type="button" class="buy bgr-red text-white p-2" data-toggle="modal" data-target="#buyModal">
-                <i class="fas fa-shopping-cart fa-lg"></i>
-            </button>
+            {% include 'components/buttons_general/button_buy.html' %}
             <h3 class="mb-3 text-center">{{book.title}}</h3>
             <img class="left" src="{{book.image}}" alt="Book cover:{{book.image}}">
             <div>

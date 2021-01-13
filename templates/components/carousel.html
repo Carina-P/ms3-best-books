@@ -22,9 +22,7 @@
             {% endif %}
                 <div class="row">
                     <div class="col text-center">
-                        <button type="button" class="buy bgr-red text-white p-2 margin3" data-toggle="modal" data-target="#buyModal">
-                            <i class="fas fa-shopping-cart fa-lg"></i>
-                        </button>
+                        {% include 'components/buttons_general/button_buy.html' %}
                         <h3 class="number">Number {{ best_book.place }}:</h3>
                     </div>
                 </div>
