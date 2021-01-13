@@ -30,7 +30,7 @@
             <div class="row">
                 {% for category_group in category_groups %}
                     <div class="col-6 col-md-3 mb-3">
-                        {% include 'components/cards/best_category_card.html' %}
+                        {% include 'components/cards/card_best_category.html' %}
                     </div>
                 {% endfor %}
             </div>
@@ -45,11 +45,10 @@
         <div id="search_for_book" class="container">
             <div class="text-center">
                 <h2>Search for book in this database</h2>
-                <div class="card">
-                    <div class="card-body m-3">
-                    {% include 'components/forms/search_book_form.html' %} 
-                    </div>
-                </div> 
+
+                {% set card='search_book' %}
+                {% include 'components/cards/card_general.html' %}
+
             </div>
         </div>
         <div class="divider-sm"></div>
@@ -64,7 +63,10 @@
             <div class="text-center">
                 <h2>Add book</h2>
             </div>
-            {% include 'components/cards/add_book_card.html' %}
+
+            {% set card='add_book' %}
+            {% include 'components/cards/card_general.html' %}
+
         </div>
         <div class="divider-sm"></div>
         

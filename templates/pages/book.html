@@ -14,7 +14,10 @@
         <div class="text-center">
             <h2>Book Details</h2>
         </div>
-        {% include 'components/cards/book_details_card.html' %}
+
+        {% set card='book_details' %}
+        {% include 'components/cards/card_general.html' %}
+        
     </section>
 
     {% set modal='opinion' %}

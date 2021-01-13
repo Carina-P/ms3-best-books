@@ -13,11 +13,10 @@
                 <h2>Add Category Group</h2>
             {% endif %}
         </div>
-        <div class="card">
-            <div class="card-body m-3">
-                {% include 'components/forms/category_group_form.html' %}
-            </div>
-        </div>
+        
+        {% set card='category_group' %}
+        {% include 'components/cards/card_general.html' %}
+    
     </section>
     <div class="divider"></div>
  

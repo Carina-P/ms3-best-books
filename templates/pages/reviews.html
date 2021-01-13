@@ -12,13 +12,10 @@
         <div>
             <h2>All reviews for:  "{{ title }}"</h2>
         </div>
-        <div class="card">
-            <div class="card-body m-3">
-                {% for review in reviews %}
-                    {% include 'components/review.html' %}
-                {% endfor%}
-            </div>
-        </div>
+
+        {% set card='review' %}
+        {% include 'components/cards/card_general.html' %}
+
     </section>
 
     {% set modal='opinion' %}
