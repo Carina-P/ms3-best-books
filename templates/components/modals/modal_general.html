@@ -1,0 +1,24 @@
+<!-- Modal inspired from Bootstrap -->
+{% if modal=='opinion' %}
+    <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="book_title" aria-hidden="true">
+{% else %}
+    <div class="modal fade" id="buyModal" tabindex="-1" aria-labelledby="book_title" aria-hidden="true">
+{% endif %}
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bgr-darkgreen">
+                    {% if modal=='opinion' %}             
+                        <h4 id="book_title" class="modal-title text-white"></h4>
+                    {% else %}
+                        <h4 class="modal-title text-white" id="modalLabel">Thank you!</h4>
+                    {% endif %}
+                    <button type="button" class="close text-white" data-dismiss="modal">&times;</button>
+                </div>
+                {% if modal=='opinion' %}
+                    {% include 'components/modals/modal_body_opinion.html' %}
+                {% else %}
+                    {% include 'components/modals/modal_body_buy.html' %}
+                {% endif %}
+            </div>
+        </div>
+    </div>

@@ -27,8 +27,11 @@
         </div>
     </section>
 
-    {% include 'components/modals/modal_opinion.html' %}
-    {% include 'components/modals/modal_buy_book.html' %}
+    {% set modal='opinion' %}
+    {% include 'components/modals/modal_general.html' %}
+
+    {% set modal='buy' %}
+    {% include 'components/modals/modal_general.html' %}
     
 {% endblock %}
     
