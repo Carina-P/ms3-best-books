@@ -1,6 +1,6 @@
 <form method="POST" action="{{ url_for('search_category') }}">
     <input type="hidden" name="category" value="{{ category_group.group_name }}"> 
-    <button type="submit" class="category-btn btn btn-sm bgr-black text-light" onclick="moveTo()">
+    <button type="submit" class="category-btn btn btn-sm bgr-black text-white" onclick="moveTo()">
         {{ category_group.group_name }} <i class="fas fa-search"></i>
     </button>
 </form>

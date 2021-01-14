@@ -18,23 +18,8 @@ body{
 .dark-shadow{
     text-shadow: 2px 2px 2px rgba(50,41,47,1);
 }
-.light-shadow{
-    text-shadow: 2px 2px 2px rgba(255,252,242,1);
-}
 .text-white{
     color: #ffffff;
-}
-.text-red{
-    color: #cc2936;
-}
-.text-sandy{
-     color: #e76f51;
-}
-.text-light{
-    color: #fffcf2;
-}
-.text-dark{
-    color: #32292f;
 }
 .btn-green{
     background-color: #222823;
@@ -53,9 +38,6 @@ body{
 .bgr-black{
     background-color: #000000;
 }
-.bgr-light{
-    background-color: #fffcf2;
-}
 .bgr-white{
     background-color: #ffffff;
 }
@@ -70,9 +52,6 @@ body{
 }
 .bgr-sandy{
     background-color: #f4a261;
-}
-.bgr-orange{
-    background-color: #e76f51;
 }
 .bgr-red{
     background-color: #cc2936;
