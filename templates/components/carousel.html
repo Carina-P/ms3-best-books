@@ -28,7 +28,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12 col-md-5 text-center">
-                        <img src="{{ best_book.image }}" alt="Picture of book cover">
+                        <img src="{{ best_book.image }}" height="200" width="128" alt="Picture of book cover">
                     </div>
                     <div class="col-12 text-left col-md-7 mt-2">
                         <div class="row">
@@ -75,10 +75,10 @@
     </div>
 
     <!-- Left and right controls -->
-    <a class="carousel-control-prev" href="#popular_carousel" data-slide="prev">
+    <a class="carousel-control-prev" href="#popular_carousel" aria-label="Go to previous slide" data-slide="prev">
         <i id="prev" class="fas fa-chevron-left"></i>
     </a>
-    <a class="carousel-control-next" href="#popular_carousel" data-slide="next">
+    <a class="carousel-control-next" href="#popular_carousel" aria-label="Go to next slide" data-slide="next">
         <i id="next" class="fas fa-chevron-right"></i>
     </a>
 </div>
