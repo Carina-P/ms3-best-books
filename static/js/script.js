@@ -220,6 +220,7 @@ function searchToDocument(){
                 if ("imageLinks" in book.volumeInfo){
                     if ("thumbnail" in book.volumeInfo.imageLinks){
                         let image_link = book.volumeInfo.imageLinks.thumbnail;
+                        
                         // Make sure the image_link is secure (https)
                         book.volumeInfo.imageLinks.thumbnail = image_link.replace("http:", "https:");
                         text += `<img src=${book.volumeInfo.imageLinks.thumbnail} alt="Picture of book cover">`;
