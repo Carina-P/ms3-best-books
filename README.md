@@ -270,7 +270,8 @@ In this section, you should mention all of the languages, frameworks, libraries,
 - Favicon
     - to generate Favicon
     - [https://favicon.io/](https://favicon.io/)
-    
+- [Image Optim](https://imageoptim.com/api)
+    - To optimize images to load faster.    
 
 ## Testing
 "All tests passed without major issues?"
