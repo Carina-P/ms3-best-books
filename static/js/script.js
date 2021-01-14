@@ -311,32 +311,6 @@ function searchBooks(group_names){
     searchForBooks(search_books);
 }
 
-/**
- * Put information in a modal and activates the modal.
- * 
- * @param {String} book_id, books id in database 
- * @param {String} title, books title 
- */
-function addOpinion(book_id, title){
-    if (book_id === undefined || book_id === null) {
-        console.log(
-        "Error in function addOpinion, book_id undefined");
-        return;
-    }
-
-    if (title === undefined || title === null) {
-        console.log(
-        "Error in function addOpinion, title undefined");
-        return;
-    }
-
-    $("#book_title").html(title);
-    $('#modal_form').attr('action', `/add/opinion`);
-    $("#hidden_input").html(`<input type="hidden" name="book_id" value="${book_id}">`);
-    $("#grade_m").html(selectToDocument(false, "0"));
-    $("#review_m").html("");
-    $('#modal').modal('show');
-}
 
 /**
  * Put HTML code for a select, with option 1 to 5, in a string and return it.
@@ -367,8 +341,37 @@ function selectToDocument(grade_given, grade){
     return text;
 }
 
+
 /**
- * Put interesting information into a modal and then activates modal.
+ * Put information for add opinion into modal and activates the modal.
+ * 
+ * @param {String} book_id, books id in database 
+ * @param {String} title, books title 
+ */
+function addOpinion(book_id, title){
+    if (book_id === undefined || book_id === null) {
+        console.log(
+        "Error in function addOpinion, book_id undefined");
+        return;
+    }
+
+    if (title === undefined || title === null) {
+        console.log(
+        "Error in function addOpinion, title undefined");
+        return;
+    }
+
+    $("#book_title").html(title);
+    $('#modal_form').attr('action', `/add/opinion`);
+    $("#hidden_input").html(`<input type="hidden" name="book_id" value="${book_id}">`);
+    $("#grade_m").html(selectToDocument(false, "0"));
+    $("#review_m").html("");
+    $('#modal').modal('show');
+}
+
+
+/**
+ * Put information for choose opinion into modal and then activates modal.
  * 
  * @param {String} book_id, books id in database 
  * @param {String} title, title of book 
