@@ -9,7 +9,14 @@ let category_groups = [];
  */
 $(".js-collapse").on("click", function () { 
   $(".navbar-collapse").collapse("hide");
-}); 
+});
+
+/**
+ * Reset form in modal when modal is closed
+ */
+$("#modal").on('hidden.bs.modal', function () {
+    $(this).find('form')[0].reset();
+});
 
 /**
  * Move cursor to id search_book_results
@@ -324,25 +331,33 @@ function addOpinion(book_id, title){
     }
 
     $("#book_title").html(title);
+    $('#modal_form').attr('action', `/add/opinion`);
     $("#hidden_input").html(`<input type="hidden" name="book_id" value="${book_id}">`);
+    $("#grade_m").html(selectToDocument(false, "0"));
+    $("#review_m").html("");
     $('#modal').modal('show');
 }
 
 /**
  * Put HTML code for a select, with option 1 to 5, in a string and return it.
  * 
- * @param {String} grade, the option in select that is to be marked "selected" 
+ * @param {boolean} grade_given, if grade is given
+ * @param {String} grade, if given, the option in select that is to be marked
+ *                          "selected" 
  * @return {String}, the resulting code
  */
-function selectToDocument(grade){
+function selectToDocument(grade_given, grade){
     if (grade === undefined || grade === null) {
         console.log(
         "Error in function selectToDocument, grade undefined");
         return;
     }
     let text = ``;
+    if (!grade_given) {
+        text += `<option value="" disabled selected>Choose...</option>`
+    }
     for (let i=5; i>0; i--){
-        if (i == Number(grade)){
+        if (grade_given && i == Number(grade)){
             text += `<option value="${i}" selected>${i}</option>`;
         }
         else{
@@ -400,9 +415,14 @@ function changeOpinion(book_id, title, review_id, grade, review, return_to){
 
     // if there is no grade (grad="0") user can choose a grade as in add opinion
     // else show current grade
-    if (grade != "0"){
-        $("#grade_m").html(selectToDocument(grade));
+    if (grade == "0"){
+        grade_given = false;
     }
+    else{ 
+        grade_given = true;
+    }
+    $("#grade_m").html(selectToDocument(grade_given, grade));
+
     $("#review_m").html(review);
     $('#modal').modal('show');
 }
