@@ -115,7 +115,7 @@ function bookToDocument(book){
         if ("publishedDate" in book.volumeInfo){
             text +=        `<div class="col-12 form-group">
                                 <label for="publish_date">Published Date</label>
-                                <input id="publish_date" name="publish_date" value="${book.volumeInfo.publishedDate}" class="form-control type="text" readonly>
+                                <input id="publish_date" name="publish_date" value="${book.volumeInfo.publishedDate}" class="form-control" type="text" readonly>
                             </div>`;
         }
         if ("industryIdentifiers" in book.volumeInfo){

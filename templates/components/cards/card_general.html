@@ -76,7 +76,7 @@
 
         {% elif card=='category_groups'  %}
             <div class="text-center">
-                <h3 class="card-title">{{ group.group_name }}</h5>
+                <h3 class="card-title">{{ group.group_name }}</h3>
                 <a href="{{ url_for('edit_group', category_group_id=group._id, old_group_name=group.group_name) }}" class="btn btn-green">
                     Edit <i class="fas fa-pen-square"></i>
                 </a>
