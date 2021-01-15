@@ -21,6 +21,9 @@ body{
 .text-white{
     color: #ffffff;
 }
+.text-sandy{
+    color: #e76f51;
+}
 .btn-green{
     background-color: #222823;
     color: #ffffff;
@@ -118,20 +121,21 @@ body{
 .start-image {
     background-image: url("../images/book.jpg");
     max-width: 100%;
-    height: 50vh;
+    height: 70vh;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
+.start-width{
+    width: 60%;
+}
 .start-text {
     background-color: rgb(255,255,255,0.8);
-    color: #e76f51;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 2;
-    width: 60%;
     padding: 20px;
     text-align: center;
 }
@@ -219,6 +223,9 @@ body{
     }
     .left{
         float:none;
+    }
+    .start-width{
+        width: 90%;
     }
 }
 @media screen and (min-width: 992px){
