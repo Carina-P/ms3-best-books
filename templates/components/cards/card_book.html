@@ -5,7 +5,7 @@
             {% include 'components/buttons_general/button_buy.html' %}
             <h5>{{ book.title }}</h5><hr>
         </div>
-        <img src="{{ book.image }}" alt="Book cover: {{ book.image }} ">
+        <img src="{{ book.image }}" width="128" height="200" alt="Book cover: {{ book.image }} ">
         <ul class="book_list card-text">
             <li>{{ book.author }}</li>
             <li><i class="fas fa-star"></i>{{ book.avg_gr_rounded }}</li>

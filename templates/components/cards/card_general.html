@@ -23,7 +23,7 @@
         {% elif card=='book_details' %}
             {% include 'components/buttons_general/button_buy.html' %}
             <h3 class="mb-3 text-center">{{book.title}}</h3>
-            <img class="left" src="{{book.image}}" alt="Book cover:{{book.image}}">
+            <img class="left" src="{{book.image}}" width="128" height="200" alt="Book cover:{{book.image}}">
             <div>
                 <ul class="book_list">
                     <li><strong>Author/s:</strong> {{book.author}}</li>
