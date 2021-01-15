@@ -248,17 +248,23 @@ function searchToDocument(){
                     }
                 }
        
-                text += `<div class="card-text">`;
+                text += `<div class="card-text">
+                            <ul class="book_list">`;
                 if ("authors" in book.volumeInfo){
+                    text += `<li>`;
+                    let author_text = ``;
                     for (let author of book.volumeInfo.authors){
-                        text += `${author} · `;
+                        author_text += `${author} · `;
                     }
+                    text += author_text.slice(0,-3);
+                    text += `<li>`;
                 }
                 if ("publishedDate" in book.volumeInfo){
-                    text += `<br>${book.volumeInfo.publishedDate}`;
+                    text += `<li>${book.volumeInfo.publishedDate}</li>`;
                 }
 
-                text += `   </div>
+                text += `       </ul>
+                            </div>
                         </div>
                         <div class="card-footer bgr-white">
                             <button type="submit" class="btn btn-sm btn-green" onclick="addBook(${index})">

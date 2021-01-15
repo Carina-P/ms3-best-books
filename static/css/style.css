@@ -220,14 +220,6 @@ body{
     .left{
         float:none;
     }
-    .prepend-cat-grp{
-        display: none;
-    }
-}
-@media screen and (min-width: 576px){
-    .label-cat-grp{
-        display:none;
-    }
 }
 @media screen and (min-width: 992px){
     #popular{
