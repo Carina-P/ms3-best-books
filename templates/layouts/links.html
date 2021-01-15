@@ -9,5 +9,7 @@
     href="{{ url_for('static', filename='favicon/favicon-32x32.png') }}">
 <link rel="icon" type="image/png" sizes="16x16"
     href="{{ url_for('static', filename='favicon/favicon-16x16.png') }}">
-<link rel="manifest" href="{{ url_for('static', filename='favicon/site.webmanifest') }}">
+
+<!-- The following code I got from Aurélien Delogu https://medium.com/@aurelien.delogu/401-error-on-a-webmanifest-file-cb9e3678b9f3 -->
+<link rel="manifest" href="{{ url_for('static', filename='favicon/site.webmanifest' ) }}" crossorigin="use-credentials">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">

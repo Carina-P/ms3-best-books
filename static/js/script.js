@@ -8,7 +8,21 @@ let category_groups = [];
  * On smaller viewports menu should be removed when clicked
  */
 $(".js-collapse").on("click", function () { 
-  $(".navbar-collapse").collapse("hide");
+    $(".navbar-collapse").collapse("hide");
+});
+
+/**
+ * On smaller viewport - the collapsible menu hides part of page.
+ * When menu is hidden the parts are still hidden.
+ * This code makes page show again.
+ * 
+ * Got part of code from  https://stackoverflow.com/users/573373/adrian-garner at
+ * https://stackoverflow.com/questions/4086107/fixed-page-header-overlaps-in-page-anchors
+ */
+$(".navbar-collapse").on('hidden.bs.collapse', function(){
+    let offset = $(':target').offset();
+    let scrollto = offset.top;
+    $('html, body').animate({scrollTop:scrollto}, 0);
 });
 
 /**

@@ -9,7 +9,8 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
-    import env
+    from env import env
+    env()
 
 from utilities import (
     get_best_books, get_groups, get_5_reviews
@@ -215,7 +216,9 @@ def add_book():
 
         flash('The book "{}" is successfully added'.format(book["title"]))
 
-    return redirect(url_for("get_book", book_id=result.inserted_id, page="book"))
+    return redirect(
+        url_for("get_book", book_id=result.inserted_id, page="book")
+    )
 
 
 @app.route("/delete/book/<book_id>")
