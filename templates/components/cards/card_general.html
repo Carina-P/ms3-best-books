@@ -17,7 +17,7 @@
             </div>
             {% include 'components/forms/form_add_book.html' %}
             <div class="text-center">
-                <img src="https://books.google.com/googlebooks/images/poweredby.png" alt="Powered by Google">
+                <img src="https://books.google.com/googlebooks/images/poweredby.png" width="62" height="30" loading="lazy" alt="Powered by Google">
             </div>
 
         {% elif card=='book_details' %}
@@ -36,13 +36,13 @@
                             {% for count in range(5 - book.stars) %}
                                 <i class="far fa-star"></i>
                             {% endfor %}
-                            {{ book.avg_gr_rounded }}<br><br>
+                            {{ book.avg_gr_rounded }}<hr>
                         </span>
                     </li>
                     <li><strong>Category:</strong> {{ book.category}}</li>
-                    <li><strong>Category Group:</strong> {{ book.category_group}}</li><br>
-                    <li><strong>Industry identifier:</strong> {{ book_details.identifier }}</li><br>
-                    <li><strong>Description:</strong> {{ book_details.description }}</li><br>
+                    <li><strong>Category Group:</strong> {{ book.category_group}}<hr></li>
+                    <li><strong>Industry identifier:</strong> {{ book_details.identifier }}<hr></li>
+                    <li><strong>Description:</strong> {{ book_details.description }}<hr></li>
                     <li><strong>Book added by user:</strong> <em>{{ book.added_by}}</em></li>
                 </ul>
             </div>
