@@ -342,7 +342,7 @@ function selectToDocument(grade_given, grade){
     }
     let text = ``;
     if (!grade_given) {
-        text += `<option value="" disabled selected>Choose...</option>`
+        text += `<option value="" disabled selected>Choose...</option>`;
     }
     for (let i=5; i>0; i--){
         if (grade_given && i == Number(grade)){
@@ -432,12 +432,11 @@ function changeOpinion(book_id, title, review_id, grade, review, return_to){
 
     // if there is no grade (grad="0") user can choose a grade as in add opinion
     // else show current grade
+    let grade_given = true;
     if (grade == "0"){
         grade_given = false;
     }
-    else{ 
-        grade_given = true;
-    }
+    
     $("#grade_m").html(selectToDocument(grade_given, grade));
 
     $("#review_m").html(review);

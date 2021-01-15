@@ -180,7 +180,7 @@ body{
 /** Book details **/
 .book_list, .review_list{
     list-style-type: none;
-    padding-inline-start: 0px;
+    padding-left: 0;
 }
 .left{
     margin-right: 1em;
@@ -220,8 +220,15 @@ body{
     .left{
         float:none;
     }
+    .prepend-cat-grp{
+        display: none;
+    }
 }
-
+@media screen and (min-width: 576px){
+    .label-cat-grp{
+        display:none;
+    }
+}
 @media screen and (min-width: 992px){
     #popular{
         width: 75%;
