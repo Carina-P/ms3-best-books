@@ -194,7 +194,10 @@ In this section, you should go over the different parts of your project, and des
         - If **no book** in database is attached to the category group - a **message** is shown in top of page.
     - **Search for book in database**:
         - A **search-form** where user can print title/part of title, author or part of authors name and then search
-        for books. Result is shown in **result-page**
+        for books. Result is shown in **result-page**. The link to submit the search is called "Search Book" and this 
+        is according to Google Books [Branding Guidlines](https://developers.google.com/books/branding): 
+        "You may only use the verbs "Search," "Search Books," or "Search in this book" 
+        when prompting users for action that results in an API query (e.g., on a form 'submit' button)." 
         - If **no book** in database **matches** the search - a **message** is shown in top of page.
     - **Add book** - this feature is only available to users that are logged in:
         - User do not have to know all information about a book. Instead user **searches in the API: Google Books**
@@ -323,7 +326,13 @@ In this section, you should go over the different parts of your project, and des
 ### Features Left to Implement
 - Whenever user **deletes** a book or an opinion a question of **"are you sure"** should be answered before deletion takes place.
 - Implementing **authorisation for managing category groups**. Only a few selected user should be able to do this.
-
+- Ability to **change category group** attached to a book. No other book information can be changed, since the information is
+fetched from Google Books API. That is how I interpret the Google Books [branding policy](https://developers.google.com/books/branding).
+- It is easy to replace modal with an **affiliate link** when clicking on buy a book.
+- Add **indexes** to the database to speed up searching.
+- Put **image of book cover in add opinion-modal**, especially when choosing add opinon from book in carousel in home page. since
+carousel continues "moving" behind the modal, perhaps user gets confused which book opinion is added to. Notice: Books titel is
+given in modal and that is why this feature is not prioritized.
 
 ## Technologies Used
 <!--
