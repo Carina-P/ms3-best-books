@@ -313,8 +313,8 @@ In addition, if it is not obvious, you should also describe how to run your code
 - The text for section Y was copied from the [Wikipedia article Z](https://en.wikipedia.org/wiki/Z)
 
 ### Media
-- The photos used in this site were obtained from
-    - pixabay: [https://pixabay.com/](https://pixabay.com/)
+- The photos used in this site were obtained from [pixabay](https://pixabay.com/)
+    - Picture i some headers above navbar, part of bookshelf, photografer: [Lubos Houska]("https://pixabay.com/sv/users/luboshouska-198496/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1204029")
 
 ### Acknowledgements
 
