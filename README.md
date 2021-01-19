@@ -119,7 +119,8 @@ divid the information into two collections using the **subset pattern**
 The information in books collection is accessed often from the page but information in the books_details
 collection is less frequently-accessed.
 - The **subset pattern** 
-([MongoDB Documentation](https://docs.mongodb.com/manual/tutorial/model-embedded-one-to-many-relationships-between-documents/)) is also used for book_details and reviews collections.
+([MongoDB Documentation](https://docs.mongodb.com/manual/tutorial/model-embedded-one-to-many-relationships-between-documents/)) 
+is also used for book_details and reviews collections.
 It is possible to add a huge amount of reviews and I deceided to embed the five 
 latest reviews in the books_details collection.
 This five (or fewer if less reviews) reviews will be shown together with the 
@@ -167,18 +168,161 @@ This section is also where you would share links to any wireframes, mockups, dia
 ## Features
 <!--
 In this section, you should go over the different parts of your project, and describe each in a sentence or so.
- 
-### Existing Features
-- Feature 1 - allows users X to achieve Y, by having them fill out Z
-- ...
-
-For some/all of your features, you may choose to reference the specific project files that implement them, although this is entirely optional.
-
-In addition, you may also use this section to discuss plans for additional features to be implemented in the future:
 -->
-### Features Left to Implement
-- Another feature idea
+### Existing Features
+- Features in all pages:
+    - **Messages** to the user is shown in top of current page, with an "acid green" background colour.
+    - **Header**:
+    - logo and navbar fixed at the top of viewport:
+        - **logo**: When hover over, it becomes larger
+        - **navbar**: When hover over links, the color changes
+        - If **medium and smaller**  viewport widths: links are collapsed to a "hamburger" menu.
+    - **Footer**: In bottom of page with **social links**.
 
+- **Home page** and other pages reached from the home page:
+    - **Start**, Welcome on a background image:
+        - Short introduction to the site
+    - **Top ten** most popular books in a **carousel**:
+        - Possibility to **buy the book**: In top right corner is a read shopping cage with a link. 
+        Hoovering the link makes picture larger.        
+        - Possibility to link to more **details of the book**
+        - If user i logged in also possibility to **add opinion** about the book.
+    - **Best in category**:
+        - All **category groups** present in database is shown with **different background colours**.
+        - Possibility to **click on a category group** and then user is moved to **result-page** that shows
+        **most popular books within choosen category group**.
+        - If **no book** in database is attached to the category group - a **message** is shown in top of page.
+    - **Search for book in database**:
+        - A **search-form** where user can print title/part of title, author or part of authors name and then search
+        for books. Result is shown in **result-page**
+        - If **no book** in database **matches** the search - a **message** is shown in top of page.
+    - **Add book** - this feature is only available to users that are logged in:
+        - User do not have to know all information about a book. Instead user **searches in the API: Google Books**
+        for the book with information to add to the database.
+        - A **search-form** where user can print title/part of title and or author/part of authors name.
+        - The **resulting books** matching the search-criteria is **shown below** the search-form when user clicks search or 
+        presses return. User is moved to the place.
+        - The user continues with choosing which book he/she is interested in adding. When book is choosen, 
+        **more details about the book** is shown, in a **form**, further down. And user is moved to this place.
+        - **Finally** the user chooses a **category group** that book should be attached to in this database. User can also, voluntarily,
+        **add a grade and a review** of the book before submitting to the database.
+        - If user does not want to add book - he/she can click on **Cancel** and the information is removed and user
+        redirected to the search-form for adding book.
+
+- **Search-result page**:
+    - User ends up at this page when either:
+        - looking for **most popular** books belonging to a **category group** or
+        - **searching** for a book **in this database**
+    - **"Card deck"** of books i shown with:
+        - Possibility to **buy** each book.
+        - **Title, image of cover, author/s** and 
+        - Information which **average grade** book is given in this database.
+        - Possibility to go to **"book-details page"** with more information about choosen book.
+        - If user has logged in - there is also a possibility to **add opinion** of the book.
+    - **Close-Button** in top right corner takes user back to home-page.
+
+- **Book-details page**:
+    - User ends up at this page when choosing **"Book Details"-button** either in top-ten **carousel** or
+    in **book-card** in search-result page.
+    - The following information of the book is shown:
+        - **Title**
+        - **Image of book cover**
+        - **Author/s**
+        - **Published date**
+        - **Average grade** in this database. Grade is also represented by  **filled stars**.
+        - **Category in Google Books**
+        - **Category group** choosen for the book by user who added the book.
+        - **Identifier**
+        - **Description**
+        - Username of **user who added the book**.
+    - Up to **five** of the **latest opinions** given to the book is shown, with information:
+        - Of **who** gave the opinion
+        - **Grade** given
+        - And the **review** given
+    - If **more than five opinions** is give to the book:
+        User is given opportunity to go to **reviews-page** with all opinions given to the book.
+    - User who has added the book can also **delete** it. When book is deleted all opinions about the book are also deleted.
+    - It is possible to **add an opinion**:
+        - When this alternative is choosen an **add opion modal** is shown..
+    - User who has added an opinion can also **edit or delete the opinion**.
+    - If **Edit opinion** is choosen an **edit opinion modal** is shown.
+    - **Close-Button** in top right corner takes user back to home-page.
+
+- **Reviews page**:
+    - User ends up at this page when **"See all reviews"** is choosen in "Book details page".
+    - All opinions of current books is shown, with information about:
+        - **Who** has given the opinion
+        - **Grade** given
+        - **Review** given.
+    - **User who has added the opinion** has the possibilities to:
+        - **Change** review
+        - **Delete** review
+
+- **Add opinion modal**:
+    - Modal contains:
+        -  Book **title**
+        - **select-list** (1 to 5) for **grading** the book
+        - text-area for the **review** to be given in
+    - When information is submitted:
+        - if a grade is given a new average grade is calculated for the book and average grade for book in 
+        database is updated.
+        - Opinion is added to the database.
+        - user is directed to page, which is updated the added opinion, modal was called from.
+    - If modal is closed without submitting, user is returned to page where it was called from and no
+    updating of database takes place.
+
+- **Edit opinion modal**:
+    - Modal contains:
+        -  Current books **title**
+        - **select-list** with **grade** given to the book
+        - text-area with given **review**
+        - Grade and/or review can be changed.
+    - When information is submitted:
+        - If grade is changed a new average grade for book is calculated and updated in the database.
+        - Grade and/or review is updated in database.
+        - user is directed to page, which is updated with changed grade and/or review, modal was called from.
+    - If modal is closed without submitting, user is returned to page where it was called from, and no updating of database occurs.
+
+- **Authorisation pages**:
+    - **Log In** and **Sign in** are similar including:
+        - **Form** where user can give:
+            - **Username** and
+            - **Password**
+        - **Submitting**:
+            - **Password** sent over internet and stored in database, is **hashed**.
+            - **Sign In, username is checked** if it already exists. If it does, user is informed and
+            **returned to sign In page**. If username does not exist - user is **logged in and redirected to home page**.
+            - **Log in, username and password is checked**. If they does not exists or password is 
+            wrong: user is informed and **returned to login page**. If correct user is **redirected to 
+            home page**.
+        - Possibility to go to Sign up and Log in page respectively.
+
+- **Manage Categories pages**:
+    - Notice: The category group **Other** can not be changed or deleted.
+    - At the moment, anyone who has logged in, can reach this pages. In the future **only users, with
+    authority** is allowed to use these pages. And the users, with given authority, are supposed be more experienced 
+    of this site and know what to do. **First time users** might be **confused** by what "Managing category groups"
+    means.
+    - **Category groups page**:
+        - A page with all category groups represented in a **"card deck**.
+        - User can **add a category group** by clicking on link. User is then redirected to "Add category group page"
+        - For each category group user can:
+            - **Edit** category group, by clicking on link and is then redirected to "Edit category group page" 
+            - **Delete** category group. If category group is deleted. All **books** in database that are **attached to 
+            deleted category group** is updated with the category group: **Other**.
+    - **Add category group page**:
+        - A **form** where user types new category groups name.
+        - When form is submitted, new category group is added to the database and user redirected to "Category groups page".
+        "Category groups page" is updated with the new category group.
+        - If user clicks on cancel, he/she is returned to "Category groups page".
+    -**Edit category group page**:
+        - A **form** where current category groups name is given.
+        - User can edit the name and click on the **Submit-button**. When changed name is submitted:
+        Database for all **books attached to category groups name is updated** to the changed category groups name.
+
+### Features Left to Implement
+- Whenever user **deletes** a book or an opinion a question of **"are you sure"** should be answered before deletion takes place.
+- Implementing **authorisation for managing category groups**. Only a few selected user should be able to do this.
 
 
 ## Technologies Used
@@ -314,9 +458,9 @@ In addition, if it is not obvious, you should also describe how to run your code
 
 ### Media
 - The photos used in this site were obtained from [pixabay](https://pixabay.com/)
-    - Picture in start page, a book and a cup of coffee, photografer: [Daria-Yakovleva](https://pixabay.com/sv/users/daria-yakovleva-3938704/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2151200)
-    - Picture in above navbar on some pages, part of bookshelf, photografer: [Lubos Houska](https://pixabay.com/sv/users/luboshouska-198496/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1204029")
-    - Picture in authorisation page, of a woman reading by the sea, photografer: [StockSnap](https://pixabay.com/sv/users/stocksnap-894430/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=925589)
+    - Picture in start page, a book and a cup of coffee, photographer: [Daria-Yakovleva](https://pixabay.com/sv/users/daria-yakovleva-3938704/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2151200)
+    - Picture in above navbar on some pages, part of bookshelf, photographer: [Lubos Houska](https://pixabay.com/sv/users/luboshouska-198496/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1204029")
+    - Picture in authorisation page, of a woman reading by the sea, photographer: [StockSnap](https://pixabay.com/sv/users/stocksnap-894430/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=925589)
 ### Acknowledgements
 
 - I received inspiration for this project from X
