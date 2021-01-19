@@ -314,8 +314,9 @@ In addition, if it is not obvious, you should also describe how to run your code
 
 ### Media
 - The photos used in this site were obtained from [pixabay](https://pixabay.com/)
-    - Picture i some headers above navbar, part of bookshelf, photografer: [Lubos Houska]("https://pixabay.com/sv/users/luboshouska-198496/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1204029")
-
+    - Picture in start page, a book and a cup of coffee, photografer: [Daria-Yakovleva](https://pixabay.com/sv/users/daria-yakovleva-3938704/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2151200)
+    - Picture in above navbar on some pages, part of bookshelf, photografer: [Lubos Houska](https://pixabay.com/sv/users/luboshouska-198496/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1204029")
+    - Picture in authorisation page, of a woman reading by the sea, photografer: [StockSnap](https://pixabay.com/sv/users/stocksnap-894430/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=925589)
 ### Acknowledgements
 
 - I received inspiration for this project from X
