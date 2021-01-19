@@ -4,7 +4,8 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
 if os.path.exists("env.py"):
-    import env
+    from env import env
+    env()
 
 app = Flask(__name__)
 
@@ -49,7 +50,7 @@ def get_colours():
     Return: (list of str) - the colours
     """
     return [
-        'darkgreen', 'acid', 'sandy', 'orange', 'red', 'brown'
+        'darkgreen', 'metallic', 'acid', 'sandy', 'orange', 'brown'
         ]
 
 

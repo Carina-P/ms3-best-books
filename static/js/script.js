@@ -63,7 +63,7 @@ function bookToDocument(book){
             return;
     }
 
-    let text = `<div class="divider-sm"></div>
+    let text = `<div class="divider"></div>
                 <div class="text-center mt-3">
                     <h3>Retrieved information about the Book</h3>
                     <p>Add book further down</p>
@@ -216,7 +216,7 @@ function addBook(index){
  * Then the cursor is moved to start of information.
  */
 function searchToDocument(){
-    let text = `<div class="divider-sm"></div>
+    let text = `<div class="divider"></div>
                 <div class="text-center m-5">
                     <h3>Search results:</h3>
                 </div>`;
