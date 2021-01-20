@@ -179,7 +179,7 @@ In this section, you should go over the different parts of your project, and des
         - If **medium and smaller**  viewport widths: links are collapsed to a "hamburger" menu.
     - **Footer**: In bottom of page with **social links**.
 
-- **Home page** and other pages reached from the home page:
+- **Home - page** and other pages reached from the home page:
     - **Start**, Welcome on a background image:
         - Short introduction to the site
     - **Top ten** most popular books in a **carousel**:
@@ -212,7 +212,7 @@ In this section, you should go over the different parts of your project, and des
         - If user does not want to add book - he/she can click on **Cancel** and the information is removed and user
         redirected to the search-form for adding book.
 
-- **Search-result page**:
+- **Search result - page**:
     - User ends up at this page when either:
         - looking for **most popular** books belonging to a **category group** or
         - **searching** for a book **in this database**
@@ -224,7 +224,7 @@ In this section, you should go over the different parts of your project, and des
         - If user has logged in - there is also a possibility to **add opinion** of the book.
     - **Close-Button** in top right corner takes user back to home-page.
 
-- **Book-details page**:
+- **Book details - page**:
     - User ends up at this page when choosing **"Book Details"-button** either in top-ten **carousel** or
     in **book-card** in search-result page.
     - The following information of the book is shown:
@@ -251,7 +251,7 @@ In this section, you should go over the different parts of your project, and des
     - If **Edit opinion** is choosen an **edit opinion modal** is shown.
     - **Close-Button** in top right corner takes user back to home-page.
 
-- **Reviews page**:
+- **Reviews - page**:
     - User ends up at this page when **"See all reviews"** is choosen in "Book details page".
     - All opinions of current books is shown, with information about:
         - **Who** has given the opinion
@@ -261,7 +261,7 @@ In this section, you should go over the different parts of your project, and des
         - **Change** review
         - **Delete** review
 
-- **Add opinion modal**:
+- **Add opinion - modal**:
     - Modal contains:
         -  Book **title**
         - **select-list** (1 to 5) for **grading** the book
@@ -274,7 +274,7 @@ In this section, you should go over the different parts of your project, and des
     - If modal is closed without submitting, user is returned to page where it was called from and no
     updating of database takes place.
 
-- **Edit opinion modal**:
+- **Edit opinion - modal**:
     - Modal contains:
         -  Current books **title**
         - **select-list** with **grade** given to the book
@@ -286,7 +286,7 @@ In this section, you should go over the different parts of your project, and des
         - user is directed to page, which is updated with changed grade and/or review, modal was called from.
     - If modal is closed without submitting, user is returned to page where it was called from, and no updating of database occurs.
 
-- **Authorisation pages**:
+- **Authorisation - pages**:
     - **Log In** and **Sign in** are similar including:
         - **Form** where user can give:
             - **Username** and
@@ -300,28 +300,49 @@ In this section, you should go over the different parts of your project, and des
             home page**.
         - Possibility to go to Sign up and Log in page respectively.
 
-- **Manage Categories pages**:
+- **Manage Categories - pages**:
     - Notice: The category group **Other** can not be changed or deleted.
     - At the moment, anyone who has logged in, can reach this pages. In the future **only users, with
     authority** is allowed to use these pages. And the users, with given authority, are supposed be more experienced 
     of this site and know what to do. **First time users** might be **confused** by what "Managing category groups"
     means.
-    - **Category groups page**:
+    - **Category groups - page**:
         - A page with all category groups represented in a **"card deck**.
         - User can **add a category group** by clicking on link. User is then redirected to "Add category group page"
         - For each category group user can:
             - **Edit** category group, by clicking on link and is then redirected to "Edit category group page" 
             - **Delete** category group. If category group is deleted. All **books** in database that are **attached to 
             deleted category group** is updated with the category group: **Other**.
-    - **Add category group page**:
+    - **Add category group - page**:
         - A **form** where user types new category groups name.
         - When form is submitted, new category group is added to the database and user redirected to "Category groups page".
         "Category groups page" is updated with the new category group.
         - If user clicks on cancel, he/she is returned to "Category groups page".
-    -**Edit category group page**:
+    -**Edit category group - page**:
         - A **form** where current category groups name is given.
         - User can edit the name and click on the **Submit-button**. When changed name is submitted:
         Database for all **books attached to category groups name is updated** to the changed category groups name.
+
+### Responsive
+The site is design to fit devices with screen width from **300px** and larger.
+The following features are designed differently for different devices:
+- **Navbar**: On screen widths **smaller** than 992px the navbar **collapses**
+into "hamburger" menu.
+- In **carousel on home page**: On devices with a width **larger than 768px** book information
+is shown beside image of book cover and average grade is represented by stars. On smaller 
+devices the information is shown below the book cover and the average grade is only shown as a number.
+- When content is shown in **"card deck formation"**, number of **columns** change 
+**depending on viewport size**, the larger screen width the more columns. This applies to:
+    - Best in category buttons (with coloured background) on home page.
+    - Information about books resulting from search to add book on home page.
+    - Information about books resulting from search for books in sites database and searching
+    for books that are best in specific category. The result is shown in search result page.
+    - The different category groups shown in category groups page.
+    in search result page.
+- **"Instruction"** in beginning of home page i **wider on smaller viewports**. And that also
+applies to the width of the **carousel** on the home page.
+- On **very small devices** (width less than 400px) the **font size is 14px**.
+
 
 ### Features Left to Implement
 - Whenever user **deletes** a book or an opinion a question of **"are you sure"** should be answered before deletion takes place.
