@@ -1,6 +1,6 @@
 # ![](https://github.com/Carina-P/ms3-best-books/blob/master/static/favicon/favicon.ico?raw=true)      Best Books
 
-This is the site where you get inspired and find new books to read. 
+This is the site where you get inspired and find new books to read and/or buy.
 You will find descriptions of different books and also reviews with other
 readers best tips.
 You are also welcome to add your own reviews and tips.

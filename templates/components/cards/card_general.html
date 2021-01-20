@@ -21,6 +21,7 @@
             </div>
 
         {% elif card=='book_details' %}
+            {% set button = 'book' %}
             {% include 'components/buttons_general/button_buy.html' %}
             <h3 class="mb-3 text-center">{{book.title}}</h3>
             <img class="left" src="{{book.image}}" width="128" height="200" alt="Book cover:{{book.image}}">
