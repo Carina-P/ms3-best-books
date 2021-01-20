@@ -356,94 +356,59 @@ carousel continues "moving" behind the modal, perhaps user gets confused which b
 given in modal and that is why this feature is not prioritized.
 
 ## Technologies Used
-<!--
-In this section, you should mention all of the languages, frameworks, libraries, and any other tools that you have used to construct this project. For each, provide its name, a link to its official site and a short sentence of why it was used.
--->
-- [JQuery](https://jquery.com)
-    - The project uses **JQuery** to simplify DOM manipulation.
+
 ### Languages
-- HTML
-    - to structure the web content
-    - [https://developer.mozilla.org/en-US/docs/Web/HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
-- CSS
+- [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) 
+    - To structure the web content
+- [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) 
     - to describe the web page's appearance/presentation
-    - [https://www.w3.org/Style/CSS/](https://www.w3.org/Style/CSS/)
-- JavaScript
-    - to provide interactivity and logic
-    - [https://www.javascript.com/](https://www.javascript.com/)
-- Python
-    - to manage information on server side
-    - [https://www.python.org](https://www.python.org)
-- Jinja
-    - for templating logic
-    - [https://jinja.palletsprojects.com/en/2.11.x/](https://jinja.palletsprojects.com/en/2.11.x/)
+- [JavaScript](https://www.javascript.com/)
+    - Bringing interactivity and logic to the site.
+- [Python]((https://www.python.org))
+    - to manage logic and information on server side
 
-
-### Libraries
-- Flask
-    - a micro framework that makes it easy to manage databases from python
-    - [https://flask.palletsprojects.com/en/1.1.x/](https://flask.palletsprojects.com/en/1.1.x/)
-- Werkzeug
-    - used in this app for authentication
-    - [https://werkzeug.palletsprojects.com/en/1.0.x/](https://werkzeug.palletsprojects.com/en/1.0.x/)
-- PyMongo
-    - enables interaction with the MongoDB database through Python 
-    - [https://flask-pymongo.readthedocs.io/en/latest/](https://flask-pymongo.readthedocs.io/en/latest/)
-- JQuery
-    - to simplify DOM manipulation.
-    - [https://jquery.com/](https://jquery.com/)
-    
-!!!!- [JSON](https://www.json.org/json-en.html)
-    - A data-interchange format used when retrieve information from other 
-    sources as [Weather Unlocked](http://www.weatherunlocked.com/)
-- Font Awesome
-    - to use icons
-    - [https://fontawesome.com](https://fontawesome.com)
-- Materialize
-    - to add styling and interactivity
-    - [https://materializecss.com](https://materializecss.com)
-
-### Other tools
-- MongoDB
-    - the database used in this project
-    - [https://www.mongodb.com/cloud/atlas](https://www.mongodb.com/cloud/atlas)
-!!!!- Color blind filter
-    - to check the used color palette
-    - [https://www.toptal.com/designers/colorfilter](https://www.toptal.com/designers/colorfilter)
-!!!!- GT Metrix
-    - to check the loading times
-    - [https://gtmetrix.com](https://gtmetrix.com)
-- Google Fonts
-    - got the fonts used
-    - [https://fonts.google.com/](https://fonts.google.com/)
-- JSHint
-    - to check JavaScript
-    - [https://jshint.com](https://jshint.com)
-- Markup Validation Service
-    - to check HTML
-    - [https://validator.w3.org](https://validator.w3.org)
-- CSS Validation Service
-    - to check CSS
-    - [https://jigsaw.w3.org/css-validator/](https://jigsaw.w3.org/css-validator/)
-!!!!- Autoprefixer CSS online
-    - to add vendor prefixes
-    - [https://autoprefixer.github.io](https://autoprefixer.github.io)
-- GitPod
+### Frameworks, Libraries and Programs
+- [GitPod](https://gitpod.io/)
     - used for version control by utilizing the GitPod terminal to
     commit to Git and push to GitHub and Heroku.
-    - [https://gitpod.io/](https://gitpod.io/)
-- Heroku
+- [Heroku](https://www.heroku.com/home)
     - to host the web app
-    - [https://www.heroku.com](https://www.heroku.com/home)
-- Balsamiq
-    - for designing the wireframes
-    - [https://balsamiq.com/](https://balsamiq.com/)
-- Coolors
-    - to generate color-schemes
-    - [https://coolors.co/](https://coolors.co/)
-- Favicon
+- [GitHub](https://github.com)
+    - GitHub is used to store the code.
+- [Bootstrap](https://getbootstrap.com/)
+    - A helpful HTML, CSS (and JS) library that is great for responsive design.
+- [JQuery](https://jquery.com/)
+    - The project uses **JQuery** to simplify DOM manipulation.
+- [JSON](https://www.json.org/json-en.html)
+    - A data-interchange format used when retrieve information from other 
+    sources as Google Books.
+- [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
+    - Fetch API provides an interface for fetching resources. In this project
+    it is used for fetching data across the network.
+-[MongoDB](https://www.mongodb.com/cloud/atlas)
+    - database used in this project
+- [Flask](https://flask.palletsprojects.com/en/1.1.x/)
+    - a micro framework that makes it easy to manage databases from python
+- [Werkzeug](https://werkzeug.palletsprojects.com/en/1.0.x/)
+    - used in this app for authentication
+- [Jinja](https://jinja.palletsprojects.com/en/2.11.x/)
+    - for templating logic
+- [JSHint](https://jshint.com)
+    - to validate JavaScript code
+- [Markup Validation Service](https://validator.w3.org)
+    - to validate HTML code
+- [CSS Validation Service](https://jigsaw.w3.org/css-validator/)
+    - to check CSS
+- [Font-Awesome](https://fontawesome.com/icons?d=gallery)
+    - From this library the icons are fetched 
+- [Google fonts](https://fonts.google.com/)
+    - For inspiration and fonts
+- [Balsamiq Wireframes](https://balsamiq.com/)
+    - For designing the wireframes
+- [Coolors](https://balsamiq.com/)
+    - To generate color-schemes
+- [Favicon](https://favicon.io/)
     - to generate Favicon
-    - [https://favicon.io/](https://favicon.io/)
 - [ImageOptim](https://imageoptim.com/api)
     - To optimize images to load faster.    
 
