@@ -490,36 +490,36 @@ Alternatively, you can clone the repository using the following line in your ter
     - Within the **Network Access** option, **add IP Address** 0.0.0.0
 
 3. In your IDE, **create** a file containing your environmental variables called **env.py** at the root level of the application. 
-------------------------------------------------------------------------------------------
-    It will need to contain the following lines and variables:
+    It has to contain the following lines and variables:
     ```
-    import os
+    def env():
+        import os
 
-    os.environ["IP"] = "0.0.0.0"
-    os.environ["PORT"] = "5000"
-    os.environ["SECRET_KEY"] = "YOUR_SECRET_KEY"
-    os.environ["DEBUG"] = "True"
-    os.environ["MONGO_URI"] = "YOUR_MONGODB_URI"
-    os.environ["MONGO_DBNAME"]= "DATABASE_NAME" 
+        os.environ.setdefault("IP", "0.0.0.0")
+        os.environ.setdefault("PORT", "5000")
+        os.environ.setdefault("SECRET_KEY", "YOUR_SECRET_KEY")
+        os.environ.setdefault(
+            "MONGO_URI", "YOUR_MONGODB_URI"
+        )
+        os.environ.setdefault("MONGO_DBNAME", "best_books")
+        os.environ.setdefault("IS_DEBUGGING", "YES")
     ```
 
-    Please note that you will need to update the **SECRET_KEY** with your own secret key, as well as the **MONGO_URI** and **MONGO_DBNAME** variables with those provided by MongoDB.
-    Tip for your SECRET_KEY, you can use a [Password Generator](https://passwordsgenerator.net/) in order to have a secure secret key. 
-    I personlly recommend a length of 24 characters and exclude Symbols.
+    Please note that you will need to **update "YOUR_SECRET_KEY"** with your own secret key, as well as the **"YOUR_MONGODB_URI" variable** with those provided by MongoDB.
     To find your MONGO_URI, go to your clusters and click on connect. Choose connect your application and copy the link provided. 
-    Don't forget to update the necessary fields like password and database name. 
+    Don't forget to update the necessary fields like password and database name.
 
-    If you plan on pushing this application to a public repository, ensure that env.py is added to your .gitignore file.
+    If you plan on pushing this application to a public repository, ensure that **env.py is added to your .gitignore file**.
 
-1. The application can now be run locally. In your terminal, type the following command 
+4. **The application can now be run locally**. In your terminal, type the following command 
     ```
-    python3 app.py. 
+    python app.py 
     ```
     
 ### To deploy your project on Heroku, use the following steps: 
 
-1. Login to your Heroku account and create a new app. Choose your region. 
-1. Ensure the Procfile and requirements.txt files exist are present and up-to-date in your local repository.  
+1. **Login** to your Heroku account and **create a new app**. Choose your region. 
+2. Ensure the **Procfile** and **requirements.txt** files exists and up-to-date in your local repository.  
     Requirements:
     ```
     pip3 freeze --local > requirements.txt
@@ -528,15 +528,15 @@ Alternatively, you can clone the repository using the following line in your ter
     ```
     echo web: python app.py > Procfile
     ```
-1. The Procfile should contain the following line:
+3. The Procfile should contain the following line:
     ```
     web: python app.py
     ```
 
-1. Scroll down to "deployment method"-section. Choose "Github" for automatic deployment.
-1. From the inputs below, make sure your github user is selected, and then enter the name for your repo. Click "search". When it finds the repo, click the "connect" button.
-1. Scroll back up and click "settings". Scroll down and click "Reveal config vars". Set up the same variables as in your env.py (IP, PORT, SECRET_KEY, MONGO_URI and MONGODB_NAME):
-    !You shouldn't set the DEBUG variable in under config vars, only in your env.py to prevent DEBUG being active on live website. 
+4. Scroll down to **"deployment method"-section**. Choose **"Github" for automatic deployment**.
+5. From the inputs below, make sure your **github user is selected**, and then enter **your repo name**. Click "search". When it finds the repo, click the **"connect" button**.
+6. Scroll back up and **click "settings"**. Scroll down and **click "Reveal config vars"**. Set up the same variables **as in your env.py** 
+(IP, PORT, SECRET_KEY, MONGO_URI, MONGODB_NAME) except IS_DEBUGGING. **NOTICE! Do not set IS_DEBUGGING or set it to ""**. You do not want debugging in a production environment.
 
     ```
     IP = 0.0.0.0
@@ -544,100 +544,13 @@ Alternatively, you can clone the repository using the following line in your ter
     SECRET_KEY = YOUR_SECRET_KEY
     MONGO_URI = YOUR_MONGODB_URI
     MONGO_DBNAME = DATABASE_NAME
+    IS_DEBUGGING = ""
     ```
 
-1. Scroll back up and click "Deploy". Scroll down and click "Enable automatic deployment".
-1. Just beneath, click "Deploy branch". Heroku will now start building the app. When the build is complete, click "view app" to open it.
-1. In order to commit your changes to the branch, use git push to push your changes. 
-
-
------------------------------------
-Assumption: VSC and Python are installed locally. If not, please refer to these installation guides:
-- [Python](https://realpython.com/installing-python/)
-- [VSC](https://code.visualstudio.com/docs/setup/setup-overview)
-
-### Deploy locally
-#### Database Setup
-- Create a database on [Mongodb](https://www.mongodb.com/cloud/atlas).
-- Create collections as specified under [Data structure](#data-structure). XXXXX
-
-#### Clone GitHub repo
-- Start VSC and open the folder where you want to clone the project to.
-- Open the terminal (ctrl + `) and type ```git clone https://github.com/ChiefChingu/ideagogo.git```.
-- Navigate to the folder ideagogo and rename if preferred.
-
-#### Create and activate virtual environment
-Create a virtual environment to make sure dependencies only apply to this project.
-
-- Type ```python -m venv env```.
-- Open the command palette (ctrl + shift + p).
-- Type 'Python select interpreter' and select.
-- Select your Python version in the dropdown (in my case 'Python 3.7.7 64-bit ('env':venv)').
-- Then activate your virtual environment (ctrl + shift + `).
-- You'll see ```(env)``` before the directory name in your terminal.
-
-#### Install Flask and packages
-- Type ```pip3 install -r requirements.txt```. This will install all necessary programs and packages.
-
-#### Set valid connection Pymongo
-- The authentication is omitted from the app.py on purpose. Leaving credentials in a publicly visible file is bad practice.
-- To specify the correct credentals:
-    - Create a file named env.py
-    - Make sure this file is registered in your .gitignore.
-    - Copy the following into the env.py file and replace <password> with your own password (make sure to remove the <>).
-
-```
-import os
-
-os.environ[
-    "bashrc"
-] = "mongodb+srv://root:<password>@cluster0-36t8l.mongodb.net/ideas?retryWrites=true&w=majority"
-
-os.environ["SECRET_KEY"] = "ohsosecret"
-```
-
-#### Run the web app
-With all things set:
-
-- Make sure you are in the activated virtual environment.
-- Type ```$env:FLASK_APP = "app.py"``` and ```flask run``` to run the app in normal mode.
-- Type ```$env:FLASK_DEBUG=1``` and ```flask run```  to run the app in debug mode.
-
-### Deploy to Heroku
-After deploying locally, you can now deploy on a live site via Heroku.
-
-#### Create a GitHub repository
-- Create a repository on github.com.
-- Open a terminal and navigate to the project folder. Type:
-
-```
-echo "# NAME-REPO" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git remote set-url origin https://github.com/YOUR-GITHUB-ACCOUNT/NAME-REPO.git
-git push -u origin master
-```
-
-#### Setup Heroku
-- Go to [heroku.com](https://www.heroku.com/home) and create an account or log in.
-- Create a new app.
-- To configure GitHub integration, you have to authenticate with GitHub. You only have to do this once per Heroku account. Follow the instructions.
-- In the deploy tab, select GitHub - connect to GitHub.
-- Select the right repository in your GitHub account.
-- Select enable automatic deploys.
-- Go to the settings tab.
-- Click in reveal config vars and add:
-    - Key ```bashrc``` with value ```mongodb+srv://root:<yourpassword>@cluster0-36t8l.mongodb.net/ideas?retryWrites=true&w=majority```.
-    - Key ```IP``` with value ```0.0.0.0```.
-    - Key ```Port``` with value ```5000```.
-    - Key ```SECRET_KEY``` with value ```ohsosecret```.
-- At Buildpacks: select Python.
-- In your code editor make a slight change to the readme file. Add and commit. Then push to github. This will start an automatical deploy on Heroku.
-- On Heroku click the open app button to start your live app.
-
-Note: the debug mode is still on. To disable: change ```debug=True``` to ```debug=False``` in app.py at the bottom line:
-```app.run(host=os.environ.get("IP"), port=int(os.environ.get("PORT")), debug=True)```
+7. Scroll back up and **click "Deploy"**. Scroll down and **click "Enable automatic deployment"**.
+8. Just beneath, **click "Deploy branch"**. Heroku will now start building the app. When the build is complete, **click "view app"** to open it.
+9. To push changes to Heroku:
+    - In terminal window give the command **git push** to push your changes. 
 
 ## Credits
 
