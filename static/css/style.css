@@ -53,6 +53,9 @@ body{
 .bgr-sandy{
     background-color: rgb(244,162,97,1);
 }
+.bgr-red{
+    background-color: rgb(204,41,54,1);
+}
 .divider{
     height: 5rem;
 }
@@ -157,26 +160,14 @@ body{
 }
 
 /* Category groups section */
-.bgr-transparent-acid{
-    background-color: rgb(172,193,47,0.85);
+.bgr-orange{
+    background-color: rgb(231,111,81,1);
 }
-.bgr-transparent-darkgreen{
-    background-color: rgb(34,40,35,0.85);
+.bgr-metallic{
+    background-color: rgb(75,131,142,1);
 }
-.bgr-transparent-orange{
-    background-color: rgb(231,111,81,0.85);
-}
-.bgr-transparent-sandy{
-    background-color: rgb(244,162,97,0.85);
-}
-.bgr-red{
-    background-color: rgb(204,41,54,1);
-}
-.bgr-transparent-metallic{
-    background-color: rgb(75,131,142,0.85);
-}
-.bgr-transparent-brown{
-    background-color:rgb(119,73,54,0.7);
+.bgr-brown{
+    background-color:rgb(119,73,54,1);
 }
 .category-btn:hover{
     transform: scale(1.2);
