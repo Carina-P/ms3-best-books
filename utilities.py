@@ -41,6 +41,8 @@ def get_best_books():
 
             number_count += 1
 
+            book["affiliate"] = get_affiliate_link(book["title"])
+
     return ten_best_books
 
 
@@ -123,3 +125,19 @@ def get_5_reviews(book_id):
         "more_reviews": more_reviews
     }
     return five_reviews
+
+
+def get_affiliate_link(title):
+    """
+    Makes an affiliate link including books title.
+    At the moment this is a fake link
+
+    input:
+        title (str), A book title
+    return:
+        (str), affiliate link
+    """
+    # Replace blanks in title with + and make it lowercase.
+    affiliate_title = title.replace(" ", "+").lower()
+
+    return "https//:amazon.com/s?tag=faketag&k=" + affiliate_title

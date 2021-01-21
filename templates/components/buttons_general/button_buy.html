@@ -1,7 +1,7 @@
 {% if button=='book' %}
-    <button type="button" aria-label="buy the book" class="buy bgr-red text-white p-2" onclick="buyBook(`{{ book.title }}`)">
+    <button type="button" aria-label="buy the book" class="buy bgr-red text-white p-2" onclick="buyBook(`{{ book.affiliate }}`)">
 {% else %}
-    <button type="button" aria-label="buy the book" class="buy bgr-red text-white p-2 margin3" onclick="buyBook(`{{ best_book.title }}`)">
+    <button type="button" aria-label="buy the book" class="buy bgr-red text-white p-2 margin3" onclick="buyBook(`{{ best_book.affiliate }}`)">
 {% endif %}
         <i class="fas fa-shopping-cart fa-lg"></i>
     </button>

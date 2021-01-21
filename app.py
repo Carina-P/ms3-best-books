@@ -13,7 +13,7 @@ if os.path.exists("env.py"):
     env()
 
 from utilities import (
-    get_best_books, get_groups, get_5_reviews
+    get_best_books, get_groups, get_5_reviews, get_affiliate_link
 )
 
 app = Flask(__name__)
@@ -63,6 +63,9 @@ def get_book(book_id, page):
 
     # Round average grade, retrived from database, to one decimal
     book["avg_gr_rounded"] = round(float(book["average_grade"]), 1)
+
+    # Add an affiliate link to the dictionary. At the moment it is a fake link.
+    book["affiliate"] = get_affiliate_link(book["title"])
 
     # Round average grade to integer - that is number of stars to show
     book["stars"] = int(round(float(book["average_grade"]), 0))
@@ -115,6 +118,9 @@ def search():
         # Round average grade, retrived from database, to one decimal
         avg_gr_rounded = round(float(book["average_grade"]), 1)
         book["avg_gr_rounded"] = avg_gr_rounded
+
+        # Add affiliate link.
+        book["affiliate"] = get_affiliate_link(book["title"])
 
     return render_template(
         "pages/search_result.html", books=books
@@ -722,6 +728,9 @@ def search_category():
     # The average grade is rounded before shown on page.
     for book in category_books:
         book["avg_gr_rounded"] = round(float(book["average_grade"]), 1)
+
+        # Add affiliate link
+        book["affiliate"] = get_affiliate_link(book["title"])
 
     return render_template(
         "pages/search_result.html", books=category_books,

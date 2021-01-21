@@ -453,16 +453,15 @@ function changeOpinion(book_id, title, review_id, grade, review, return_to){
  * Puts information about affiliate link into modal called buyModal
  * and after that activates the modal
  * 
- * @param {String} title, Title of book that affiliate link is connected to 
+ * @param {String} affiliate_link, affiliate link
  */
-function buyBook(title){
-    if (title === undefined || title === null) {
+function buyBook(affiliate_link){
+    if (affiliate_link === undefined || affiliate_link === null) {
         console.log(
-        "Error in function buyBook, title undefined");
+        "Error in function buyBook, affiliate_link undefined");
         return;
     }
-    title_affiliate = title.replace(/ /g, "+");
-    $(".affiliate").html("<hr><strong>(fake) affiliate link:</strong>"
-    + "<br>https://www.amazon.com/s?tag=faketag&k=" +  title_affiliate);
+    $(".affiliate").html("<hr><strong>(fake) affiliate link:</strong><br>"
+    +  affiliate_link);
     $('#buyModal').modal('show');
 }
