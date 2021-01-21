@@ -52,7 +52,7 @@ def get_colours():
     Return: (list of str) - the colours
     """
     return [
-        'darkgreen', 'metallic', 'acid', 'sandy', 'orange', 'red', 'brown'
+        'darkgreen', 'metallic', 'acid', 'sandy', 'orange', 'red'
         ]
 
 

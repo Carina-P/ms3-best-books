@@ -50,9 +50,6 @@ body{
 .bgr-darkgreen{
     background-color: rgb(34,40,35,1);
 }
-.bgr-sandy{
-    background-color: rgb(244,162,97,1);
-}
 .bgr-red{
     background-color: rgb(204,41,54,1);
 }
@@ -163,11 +160,11 @@ body{
 .bgr-orange{
     background-color: rgb(231,111,81,1);
 }
+.bgr-sandy{
+    background-color: rgb(244,162,97,1);
+}
 .bgr-metallic{
     background-color: rgb(75,131,142,1);
-}
-.bgr-brown{
-    background-color:rgb(119,73,54,1);
 }
 .category-btn:hover{
     transform: scale(1.2);
