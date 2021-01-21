@@ -410,7 +410,12 @@ given in modal and that is why this feature is not prioritized.
 - [Favicon](https://favicon.io/)
     - to generate Favicon
 - [ImageOptim](https://imageoptim.com/api)
-    - To optimize images to load faster.    
+    - To optimize images to load faster. 
+
+### API (Application Programming Interfaces)
+- [Google Books](https://developers.google.com/books)
+    - Provides information about books. In this way user conveniently gets all
+    information about book, he/she wants to add to this site, automatically.
 
 ## Testing
 "All tests passed without major issues?"
