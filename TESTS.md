@@ -2,11 +2,12 @@
 
 Back to [README](https://github.com/Carina-P/ms3-best-books/blob/master/README.md)
 
-The bellow plan for testing was followed during development of the site:
-The TDD, **TestDriven Development**, process is followed. Test cases is
-developed/thought off, before code is implemented. The test process is
-conducted in an iterativ manner and implementation cycles are short with
-small code parts every time. 
+The below plan for testing was followed during development of the site:
+The TDD, **TestDriven Development**, process is followed as much as possible. 
+Test cases is developed/thought off, before code is implemented. The test
+process is conducted in an iterativ manner and implementation cycles are short
+with small code parts every time. In some cases **prototyping** is used and
+the thorough test is done when satisfied with the prototyping.
 
 Before new code is commited, testing of all code developed earlier are
 tested again.
@@ -20,10 +21,9 @@ responsiveness, as described below
 - **CSS-cod validated** by 
 [W3S CSS validation service](https://jigsaw.w3.org/css-validator/)
 - **JavaScript-code validated** by [JSHint](https://jshint.com/)
-- The site is tested on different browsers, as described below
-- The deployed version is tested
-
-<!-- Manual testing only or automated tests also? - description of each!! -->
+- **Python** code is **validated** by [PEP8](https://pypi.org/project/pep8/) 
+- The site is tested on **different browsers**, as described below
+- The **deployed version** in heroku is tested
 
 ## Tests of functionality and responsiveness
 Functionality tests and tests of responsiveness is done by following test cases

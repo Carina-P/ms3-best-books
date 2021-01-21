@@ -44,7 +44,8 @@ There are three types of users:
 
 ### Scoope Plane
 #### User stories
-- US_001: As a user I want to browse for a book.
+(this is not in prioritization scheme)
+- US_001: As a user I want to search for books in the database.
 - US_002: As a user I want to see detailed information about a book. 
 - US_003: As a user I want to buy a book
 - US_004: As a user I want to see which books are most popular on the site.
@@ -107,6 +108,43 @@ Here is a visual of the structure:
 - [Desktop](https://github.com/Carina-P/ms3-best-books/blob/master/wireframes/wireframe-desktop.pdf)
 
 ##### Major changes compared to wireframes
+###### Home page
+- Moved search for book further down. Prioritized to show most popular books
+since it is higher priority that users buy a book and I think that showing most
+popular books might inspire to spontaneous purchases.
+Someone who wants to search for a book probably do not mind moving further down
+the page.
+- Most Popular books: Shows one book at a time, in the carousel, instead of several. Users 
+thought it was more clear and appealing this way.
+- Search result/Category X: The search is shown in own page, instead of on the home page.
+This is due to clarity for the user and a more clean code.
+- Add Book: One more step to add a book: After user choosen which book to add, a form with all
+book information is shown. The forms layout is very similar to the Book details page. 
+One more step is needed because I want to show all information that is saved for the book,
+make user add a categroy group to the book and also give user opportunity to add grade and 
+review instantly.
+###### Book Details/Manage book page
+- Book information is not exactly the same in page as in wireframe.
+- User can not change Book Information. The button: Edit book info, is removed. Information for 
+a book is fetched from Google Books and as I understand Google Books policy, user is not allowed 
+to change information fetched from them. But category group is not fetched from Google Books 
+so in a futher version of Best Books changing category group should be added. Books grade
+and reviews can be changed.
+- Up to five reviews are shown in this page. If book has more reviews than that: link to 
+reviews page is shown.
+
+###### Reviews page
+- This page has not got a wireframe.
+- When talking to UI-testers it was decided that for most of the time only the five last 
+reviews is interesting. So in Book Details page only up to five reviews are shown. 
+This makes the page more clear. 
+User has oppotunity to click on link to Reviews page to
+see all reviews if more than five exists.
+- This page is designed as the layout of reviews in Book Details page.
+
+
+###### Manage Category groups
+- Using cards in card deck instead of table.
 
 #### Data structure
 According to project instructions the document-based 
@@ -418,7 +456,7 @@ given in modal and that is why this feature is not prioritized.
     information about book, he/she wants to add to this site, automatically.
 
 ## Testing
-"All tests passed without major issues?"
+"All tests passed without major issues?"XXXXX
 The tests conducted are detailed in [TESTS.md](https://github.com/Carina-P/ms3-best-books/blob/master/TESTS.md)
  <!---
  In this section, you need to convince the assessor that you have conducted enough testing to legitimately believe that the site works well. Essentially, in this part you will want to go over all of your user stories from the UX section and ensure that they all work as intended, with the project providing an easy and straightforward way for the users to achieve their goals.
@@ -438,17 +476,6 @@ In addition, you should mention in this section how your project looks and works
 You should also mention in this section any interesting bugs or problems you discovered during your testing, even if you haven't addressed them yet.
 
 If this section grows too long, you may want to split it off into a separate file and link to it from here.)
--->
-## Deployment
-<!--
-This section should describe the process you went through to deploy the project to a hosting platform (e.g. GitHub Pages or Heroku).
-
-In particular, you should provide all details of the differences between the deployed version and the development version, if any, including:
-- Different values for environment variables (Heroku Config Vars)?
-- Different configuration files?
-- Separate git branch?
-
-In addition, if it is not obvious, you should also describe how to run your code locally.
 -->
 ## Deployment
 ### Local Deployment
