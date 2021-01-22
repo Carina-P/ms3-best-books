@@ -114,8 +114,8 @@ function bookToDocument(book){
         }
         if ("publishedDate" in book.volumeInfo){
             text +=        `<div class="col-12 form-group">
-                                <label for="publish_date">Published Date</label>
-                                <input id="publish_date" name="publish_date" value="${book.volumeInfo.publishedDate}" class="form-control" type="text" readonly>
+                                <label for="published_date">Published Date</label>
+                                <input id="published_date" name="published_date" value="${book.volumeInfo.publishedDate}" class="form-control" type="text" readonly>
                             </div>`;
         }
         if ("industryIdentifiers" in book.volumeInfo){
@@ -329,6 +329,7 @@ function searchBooks(group_names){
     // Fetch information from page
     let search_books = $("#search_books").val();
     searchForBooks(search_books);
+    return false;
 }
 
 
