@@ -120,12 +120,12 @@ Here is a visual of the structure:
 ##### Major changes compared to wireframes
 ###### Home page
 - Moved search for book further down. Prioritized to show most popular books
-since it is higher priority that users buy a book and I think that showing most
+since it is high priority that users buys a book and I think that showing most
 popular books might inspire to spontaneous purchases.
 Someone who wants to search for a book probably do not mind moving further down
 the page.
-- Most Popular books: Shows one book at a time, in the carousel, instead of several. Users 
-thought it was more clear and appealing this way.
+- Most Popular books: Shows one book at a time, in the carousel, instead of several. Talked to
+users who thought it was more clear and appealing this way.
 - Search result/Category X: The search is shown in own page, instead of on the home page.
 This is due to clarity for the user and a more clean code.
 - Add Book: One more step to add a book: After user choosen which book to add, a form with all
@@ -133,6 +133,7 @@ book information is shown. The forms layout is very similar to the Book details 
 One more step is needed because I want to show all information that is saved for the book,
 make user add a categroy group to the book and also give user opportunity to add grade and 
 review instantly.
+
 ###### Book Details/Manage book page
 - Book information is not exactly the same in page as in wireframe.
 - User can not change Book Information. The button: Edit book info, is removed. Information for 
@@ -148,17 +149,16 @@ reviews page is shown.
 - When talking to UI-testers it was decided that for most of the time only the five last 
 reviews is interesting. So in Book Details page only up to five reviews are shown. 
 This makes the page more clear. 
-User has oppotunity to click on link to Reviews page to
-see all reviews if more than five exists.
+- User has oppotunity to click on link, from Book details, to Reviews page to
+see all reviews, if more than five exists.
 - This page is designed as the layout of reviews in Book Details page.
-
 
 ###### Manage Category groups
 - Using cards in card deck instead of table.
 
 #### Database structure
 According to project instructions the document-based 
-database MongoDB is used. Here is a visual of the collections:
+database MongoDB is used. Here is a **visual of the collections**:
 ![](https://github.com/Carina-P/ms3-best-books/blob/master/wireframes/database-design.jpg?raw=true)
 
 - Both books and books_details contain information about books. I decided to 
@@ -177,42 +177,53 @@ reviews are fetched from review collection.
 
 #### Design Choices
 ##### Fonts
-For this project the Google Font Poppins is choosen. Poppins is a newcommer in
+For this project the Google Font **Poppins** is choosen. Poppins is a newcommer in
 the geometric sans serif typefaces tradition. It is a rounded and modern fontawesome
 that I think feels friendly and fits on this site.
 As alternative Google Font Roboto is choosen.
 
 ##### Colours
+This is the colours used:
+![](https://github.com/Carina-P/ms3-best-books/blob/master/wireframes/best_books_colours.png)
+
 **Text and background**
-![](https://github.com/Carina-P/ms3-best-books/blob/master/wireframes/text-colour.png)
-- Floral White, #fffcf2, is used for background most of the time. But also for
-text on dark background.
-- Black Coffe, #32292f, is used for text most of the time. But also for text on
-light background.
+Text: mostly Black #000000
+Background: mostly White, #ffffff
+Choosen this colours as they give optimal contrast.
 
-Floral White and Black Coffe is chosed because they are a little softer than 
-White, #ffffff, and Black, #000000, respectively. But they still give good
-contrast when used together.
+Text on black background, in navbar and buttons are white: #ffffff.
 
-**For attention**
-![](https://github.com/Carina-P/ms3-best-books/blob/master/wireframes/category-colour.png)
-The following colours are used for the different categories. One or some of 
-them will also be used to draw attention to e.g. buttons. For me this is autumn
-colours and autumn is a good season to read a book.
-- Charcoal, #264653
-- Persian Green, #2a9d8f
-- Sandy Brown, #f4a261
-- Burnt Sienna, #e76f51
+**Extra attention**
+As buying books has a high priority the background for buying-icon is:
+Madder Lake, #cc2936
+Red is an optimistic colour that draws attention to it and makes people buy.
+
+**Messages**
+I wanted a "distinct colour" that makes user look, for the background of
+messages. I chosed:
+Acid Green, #acc12f
+
+**Navbar and buttons**
+Navbar: dark djungle green, #222823
+Buttons:
+    - Dark Jungle Green, #223823
+    - Burnt Sienna, #e76f51
+
+**Category groups background**
+I want something to make the page more "dynamic" and decided to have
+different background colours behind the category groups on home page.
+I am "reusing" some colours:
 - Madder Lake, #cc2936
-- Coffee, #774936
-<!--
-Use this section to provide insight into your UX process, focusing on who this website is for, what it is that they want to achieve and how your project is the best way to help them achieve these things.
+- Acid Green, #acc12f
+- Dark Jungle Green, #223823
+- Burnt Sienna, #e76f51
 
-In particular, as part of this section we recommend that you provide a list of User Stories, with the following general structure:
-- As a user type, I want to perform an action, so that I can achieve a goal.
+Some of the above colours are "autumn colours" to me so I added another
+autumn colour:
+- Sandy Brown, #f4a261
+And a colour from the start image:
+- Metallic Seaweed, #4b838e
 
-This section is also where you would share links to any wireframes, mockups, diagrams etc. that you created as part of the design process. These files should themselves either be included as a pdf file in the project itself (in an separate directory), or just hosted elsewhere online and can be in any format that is viewable inside the browser.
--->
 ## Features
 <!--
 In this section, you should go over the different parts of your project, and describe each in a sentence or so.
