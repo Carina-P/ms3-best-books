@@ -770,8 +770,7 @@ def signup():
 
         sign_up = {
             "username": request.form.get("username").lower(),
-            "password": generate_password_hash(request.form.get("password")),
-            "email": request.form.get("email")
+            "password": generate_password_hash(request.form.get("password"))
         }
         try:
             mongo.db.users.insert_one(sign_up)
