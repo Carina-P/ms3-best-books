@@ -46,22 +46,47 @@ There are three types of users:
 #### User stories
 (this is not in prioritization)
 - US_001: As a user I want to search for books in the database.
-- US_002: As a user I want to see detailed information about a book. 
+![implementation of US_001](wireframes/search_for_book.jpg) 
+- US_002: As a user I want to see detailed information about a book.
+![implementation of US_002](wireframes/book_details.jpg)
 - US_003: As a user I want to buy a book
+It is possible to buy book from four places on the site:
+![implementation of US_003](wireframes/buy_in_book_details.jpg)
+![implementation of US_003](wireframes/buy_in_search_for_books.jpg)
+![implementation of US_003](wireframes/buy_in_search_in_category.jpg)
+![implementation of US_003](wireframes/buy_in_ten_top_books.jpg)
 - US_004: As a user I want to see which books are most popular on the site.
+![implementation of US_004](wireframes/best_books.jpg)
 - US_005: As a user I want to look for most popular books in a category.
+![implementation of US_005](wireframes/search_best_in_category.jpg)
+![implementation of US_005](wireframes/result_search_in_category.jpg)
 - US_006: As a user I want to add book to the site.
+![implementation of US_006](wireframes/search_to_add_book.jpg)
+![implementation of US_006](wireframes/retrived_information_to_add_book_1.jpg)
+![implementation of US_006](wireframes/retrived_information_to_add_book_2.jpg)
 - US_007: As a user I want to edit information about the book.
+    - Notice! This user story is not implemented yet.
 - US_007: As a user I want to remove book.
+![implementation of US_007](wireframes/delete_book_and_add_opinion.jpg)
 - US_008: As a user I want to grade a book.
-- US_009: As a user I want to review a book.
+- US_009: As a user I want to give a review of a book.
+![implementation of US_008 and US_009](wireframes/best_books.jpg)
+![implementation of US_008 and US_009](wireframes/grade_and_review.jpg)
 - US_010: As a user I want to edit my opinion of a book.
 - US_011: As a user I want to remove my opinion of a book.
+![implementation of US_010 and US_011](wireframes/edit_opinion.jpg)
+![implementation of US_010](wireframes/change_opinion.jpg)
 - US_0012: As a user I want to register (sign up) to the system.
+![implementation of US_012](wireframes/signup.jpg)
 - US_0013: As a user I want to log in to the system.
+![implementation of US_013](wireframes/login.jpg)
 - US_0014: As a user I want to log out of the system.
+![implementation of US_014](wireframes/navbar_and_message.jpg)
 - US_0015: As a "administration" user I want to add categories.
-- US_0016: As a "administration" user I want to edit and remove categories.
+- US_0016: As a "administartion" user I want to remove category
+- US_0017: As a "administration" user I want to edit category.
+![implementation of US_015, US_016 and US_017](wireframes/category_groups.jpg)
+![implementation of US_017](wireframes/category_group.jpg)
 
 #### Features
 - Search for books. 
@@ -537,7 +562,7 @@ Alternatively, you can clone the repository using the following line in your ter
 
 2. **Sign-in** or sign-up to **[MongoDB](https://www.mongodb.com/)** and create a new cluster
     -  Within the Sandbox, click the collections button and then click **Create Database** (Add My Own Data) called **best_books**
-    - **Set up** the following **collections**: books, books_details, category_groups, reviews and users. XXXXXXX [Click here to see the exact Database Structure](#database-structure)
+    - **Set up** the following **collections**: books, books_details, category_groups, reviews and users. [Go to Database structure](#database-structure)
     - Under the **Security Menu** on the left, **select Database Access**.
     - **Add a new database user**, and keep the credentials secure
     - Within the **Network Access** option, **add IP Address** 0.0.0.0
