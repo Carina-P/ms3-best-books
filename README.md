@@ -250,29 +250,34 @@ And a colour from the start image:
 - Metallic Seaweed, #4b838e
 
 ## Features
-<!--
-In this section, you should go over the different parts of your project, and describe each in a sentence or so.
--->
 ### Existing Features
 - Features in all pages:
     - **Messages** to the user is shown in top of current page, with an "acid green" background colour.
+    ![implementation of messages](wireframes/category_groups.jpg)
     - **Header**:
     - logo and navbar fixed at the top of viewport:
         - **logo**: When hover over, it becomes larger
         - **navbar**: When hover over links, the color changes
         - If **medium and smaller**  viewport widths: links are collapsed to a "hamburger" menu.
+    ![implementation of navbar on larger screens](wireframes/navbar_and_messages.jpg)
+    ![implementation of navbar on smaller screens](wireframes/navbar_sm_screens.jpg)
     - **Footer**: In bottom of page with **social links**.
+    ![implementation of footer](wireframes/footer.jpg)
+
 
 - **Home - page** and other pages reached from the home page:
     - **Start**, Welcome on a background image:
         - Short introduction to the site
+    ![implementation of homepage start](wireframes/start.jpg)
     - **Top ten** most popular books in a **carousel**:
         - Possibility to **buy the book**: In top right corner is a read shopping cage with a link. 
         Hoovering the link makes picture larger.        
         - Possibility to link to more **details of the book**
         - If user i logged in also possibility to **add opinion** about the book.
+    ![implementation of most popular books](wireframes/best_books.jpg)
     - **Best in category**:
         - All **category groups** present in database is shown with **different background colours**.
+        ![implementation of category groups to search](wireframes/search_best_in_category.jpg)
         - Possibility to **click on a category group** and then user is moved to **result-page** that shows
         **most popular books within choosen category group**.
         - If **no book** in database is attached to the category group - a **message** is shown in top of page.
@@ -282,6 +287,7 @@ In this section, you should go over the different parts of your project, and des
         is according to Google Books [Branding Guidlines](https://developers.google.com/books/branding): 
         "You may only use the verbs "Search," "Search Books," or "Search in this book" 
         when prompting users for action that results in an API query (e.g., on a form 'submit' button)." 
+        ![implementation of search for book](wireframes/search_for_book.jpg)
         - If **no book** in database **matches** the search - a **message** is shown in top of page.
     - **Add book** - this feature is only available to users that are logged in:
         - User do not have to know all information about a book. Instead user **searches in the API: Google Books**
@@ -289,12 +295,15 @@ In this section, you should go over the different parts of your project, and des
         - A **search-form** where user can print title/part of title and or author/part of authors name.
         - The **resulting books** matching the search-criteria is **shown below** the search-form when user clicks search or 
         presses return. User is moved to the place.
+        ![implementation of search to add book and search result](wireframes/search_to_add_book.jpg)
         - The user continues with choosing which book he/she is interested in adding. When book is choosen, 
         **more details about the book** is shown, in a **form**, further down. And user is moved to this place.
         - **Finally** the user chooses a **category group** that book should be attached to in this database. User can also, voluntarily,
         **add a grade and a review** of the book before submitting to the database.
         - If user does not want to add book - he/she can click on **Cancel** and the information is removed and user
         redirected to the search-form for adding book.
+        ![implementation of add book](wireframes/retrieved_information_to_add_book_1.jpg)
+        ![implementation of add book](wireframes/retrieved_information_to_add_book_2.jpg)
 
 - **Search result - page**:
     - User ends up at this page when either:
@@ -307,6 +316,7 @@ In this section, you should go over the different parts of your project, and des
         - Possibility to go to **"book-details page"** with more information about choosen book.
         - If user has logged in - there is also a possibility to **add opinion** of the book.
     - **Close-Button** in top right corner takes user back to home-page.
+    ![implementation of add book](wireframes/search_result.jpg)
 
 - **Book details - page**:
     - User ends up at this page when choosing **"Book Details"-button** either in top-ten **carousel** or
@@ -334,6 +344,8 @@ In this section, you should go over the different parts of your project, and des
     - User who has added an opinion can also **edit or delete the opinion**.
     - If **Edit opinion** is choosen an **edit opinion modal** is shown.
     - **Close-Button** in top right corner takes user back to home-page.
+    ![implementation of book details](wireframes/book_details.jpg)
+    ![implementation of more reviews](wireframes/more_reviews.jpg)
 
 - **Reviews - page**:
     - User ends up at this page when **"See all reviews"** is choosen in "Book details page".
@@ -344,7 +356,7 @@ In this section, you should go over the different parts of your project, and des
     - **User who has added the opinion** has the possibilities to:
         - **Change** review
         - **Delete** review
-
+![implementation of all reviews](wireframes/reviews.jpg)
 - **Add opinion - modal**:
     - Modal contains:
         -  Book **title**
@@ -357,6 +369,7 @@ In this section, you should go over the different parts of your project, and des
         - user is directed to page, which is updated the added opinion, modal was called from.
     - If modal is closed without submitting, user is returned to page where it was called from and no
     updating of database takes place.
+    ![implementation of add opinion](wireframes/add_opinion.jpg)
 
 - **Edit opinion - modal**:
     - Modal contains:
@@ -369,7 +382,7 @@ In this section, you should go over the different parts of your project, and des
         - Grade and/or review is updated in database.
         - user is directed to page, which is updated with changed grade and/or review, modal was called from.
     - If modal is closed without submitting, user is returned to page where it was called from, and no updating of database occurs.
-
+    ![implementation of edit opinion](wireframes/change_opinion.jpg)
 - **Authorisation - pages**:
     - **Log In** and **Sign in** are similar including:
         - **Form** where user can give:
@@ -383,6 +396,8 @@ In this section, you should go over the different parts of your project, and des
             wrong: user is informed and **returned to login page**. If correct user is **redirected to 
             home page**.
         - Possibility to go to Sign up and Log in page respectively.
+        ![implementation of sign up](wireframes/signup.jpg)
+        ![implementation of log in](wireframes/login.jpg)
 
 - **Manage Categories - pages**:
     - Notice: The category group **Other** can not be changed or deleted.
@@ -406,6 +421,8 @@ In this section, you should go over the different parts of your project, and des
         - A **form** where current category groups name is given.
         - User can edit the name and click on the **Submit-button**. When changed name is submitted:
         Database for all **books attached to category groups name is updated** to the changed category groups name.
+    ![implementation of category groups](wireframes/category_groups.jpg)
+    ![implementation of category groups](wireframes/category_group.jpg)
 
 ### Responsive
 The site is design to fit devices with screen width from **300px** and larger.
