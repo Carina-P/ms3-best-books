@@ -44,7 +44,7 @@ There are three types of users:
 
 ### Scoope Plane
 #### User stories
-(this is not in prioritization scheme)
+(this is not in prioritization)
 - US_001: As a user I want to search for books in the database.
 - US_002: As a user I want to see detailed information about a book. 
 - US_003: As a user I want to buy a book
@@ -78,19 +78,29 @@ There are three types of users:
 capability to those with administator privleges.
 
 ### Structure Plane
-- The site starts with the homepage: "Books", where you can search and find books.
-- From navbar you can choose to Register, Log In/Log Out and Manage Categories, 
-depending on your authorities.
-- From "Books" you reach:
-    - "Book Details/ Manage Book" with more details about book. Here user also can add
-opinion about book and manage user own opinions. User can edit and remove if it is 
-users "own" book. If user deletes book: all opinions is also deleted. When book is 
-removed, user is redirected to homepage.
+The site starts with the homepage:  where you can search and find books.
+- From navbar you can choose to got to homepage by clicking the Brand-image, 
+Register, Log In, Log Out, see 10-top books, see best books for category group,
+search for book, add book and Manage Category groups, 
+all depending on your authorities.
+- In Home page you can:
+    - search for books either:
+        - in 10-top list
+            - from this list you reach Book details and/or add opinion.
+        - in best in category
+            - the result is presented in search result page
+        - by giving title or author
+            - the result is presented in search result page
     - "Add Book": User search with title or author and gets suggestions from system
-that user choose between. After adding a book user is moved to 
-"Book details/Manage Book" page.
-    - Result from book search. User can choose a book from search-result and 
-being redirected to "Book details/Manage Book".
+    that user choose between. After adding a book user is moved to 
+    "Book details/Manage Book" page.
+- In search result page:
+    - You can choose a book and go to Book details or Add opinion
+- In Book Details page:
+    - You can:
+        - Delete book
+        - Add opinion
+        - Change or delete opinion
 
 - "Register", "Log In" and "Manage Categories" has separate pages.
 
