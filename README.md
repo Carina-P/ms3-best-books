@@ -151,21 +151,6 @@ According to project instructions the document-based
 database MongoDB is used. Here is a visual of the collections:
 ![](https://github.com/Carina-P/ms3-best-books/blob/master/wireframes/database-design.jpg?raw=true)
 
-##### Collection: Books
-| Name | Type | Comment |
-|---|---|---|
-| _id | ObjectId | Identifier |
-| title | String | Books title |
-| author | String | Books author/s |
-| image | String | A link to an image of the book cover |
-| category | String | Category given by Google Books |
-| average_grade | Double | The average of all grades given to the book on Best Books site |
-| no_of_votes | Int32 | Number of votes given |
-| added_by | String | Username who has added the book to Best Books site |
-| category_group | String | The category group in Best Books site book belongs to |
-
-
-
 - Both books and books_details contain information about books. I decided to 
 divid the information into two collections using the **subset pattern**
 ([Mongo DB Documentation](https://docs.mongodb.com/manual/tutorial/model-embedded-one-to-one-relationships-between-documents/))
@@ -177,7 +162,7 @@ is also used for book_details and reviews collections.
 It is possible to add a huge amount of reviews and I deceided to embed the five 
 latest reviews in the books_details collection.
 This five (or fewer if less reviews) reviews will be shown together with the 
-book details. User is given possibility to see more reviews and then all
+book details. User can choose to see more reviews and then all
 reviews are fetched from review collection.
 
 #### Design Choices
