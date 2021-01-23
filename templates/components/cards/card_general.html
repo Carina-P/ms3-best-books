@@ -8,7 +8,7 @@
 
         {% elif  card=='review' %}
                 {% for review in reviews %}
-                    {% include 'components/review.html' %}
+                    {% include 'components/opinion.html' %}
                 {% endfor%}
 
         {% elif card=='add_book' %}
@@ -61,15 +61,15 @@
                 </div>
             </div>
             {% for review in book_details.reviews_max5 %}
-                {% include 'components/review.html' %}
+                {% include 'components/opinion.html' %}
             {% endfor%}
 
             <div class="row">
                 <div class="col-12">
                     <p class="text-center">
                     {% if book_details.more_reviews == "y" %}
-                        Book have more reviews
-                        <a href="{{ url_for('get_reviews', book_id=book._id, title=book.title, page='reviews') }}">See all reviews</a>
+                        There are more opinions about the book! 
+                        <a href="{{ url_for('get_opinions', book_id=book._id, title=book.title, page='reviews') }}"> See all opinions</a>
                     {% endif %}
                     </p>
                 </div>

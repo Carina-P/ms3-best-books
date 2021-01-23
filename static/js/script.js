@@ -92,7 +92,7 @@ function bookToDocument(book){
         if("categories" in book.volumeInfo){
             let categories = book.volumeInfo.categories.join(" · ");
             text += `       <div class="col-12 form-group">
-                                <label for="category">Category/ies:</label>
+                                <label for="category">Category/ies (from Google Books):</label>
                                 <textarea id="category" name="category" class="form-control" readonly>${categories}</textarea>
                             </div>`; 
         }

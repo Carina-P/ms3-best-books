@@ -411,7 +411,7 @@ def change_opinion(return_to, title):
         else:
             return redirect(
                 url_for(
-                    "get_reviews", book_id=book_id, title=title, page="reviews"
+                    "get_opinions", book_id=book_id, title=title, page="reviews"
                 )
             )
 
@@ -489,7 +489,7 @@ def delete_opinion(book_id, review_id, return_to, title):
         flash(
             "Something went wrong when accessing database to update "
             + "books details last 5 opinions. Database is perhaps corrupt now "
-            + "regarding current books reviews. " + e
+            + "regarding opinions about current book. " + e
         )
         return redirect(url_for("home"))
 
@@ -501,16 +501,16 @@ def delete_opinion(book_id, review_id, return_to, title):
     else:
         return redirect(
             url_for(
-                "get_reviews", book_id=book_id, title=title, page="reviews"
+                "get_opinions", book_id=book_id, title=title, page="reviews"
             )
         )
 
 
-@app.route("/reviews/<book_id>/<title>/<page>", methods=["GET", "POST"])
-def get_reviews(book_id, title, page):
+@app.route("/opinions/<book_id>/<title>/<page>", methods=["GET", "POST"])
+def get_opinions(book_id, title, page):
     """
-    Get all reviews for a book with id=book_id in database.
-    Render the reviews page and show retrieved information.
+    Get all opinions about a book with id=book_id in database.
+    Render the opinions page and show retrieved information.
     Input:
         book_id: (str) - Books id in database
         title: (str) - Books title
@@ -529,7 +529,7 @@ def get_reviews(book_id, title, page):
         reviews = []
     finally:
         return render_template(
-            "pages/reviews.html", reviews=reviews, title=title,
+            "pages/opinons.html", reviews=reviews, title=title,
             book_id=book_id, page="reviews"
         )
 
