@@ -50,11 +50,12 @@ There are three types of users:
 - US_002: As a user I want to see detailed information about a book.
 ![implementation of US_002](wireframes/book_details.jpg)
 - US_003: As a user I want to buy a book
-It is possible to buy book from four places on the site:
+It is possible to buy book from four places on the site( high priority):
 ![implementation of US_003](wireframes/buy_in_book_details.jpg)
 ![implementation of US_003](wireframes/buy_in_search_for_books.jpg)
 ![implementation of US_003](wireframes/buy_in_search_in_category.jpg)
 ![implementation of US_003](wireframes/buy_in_ten_top_books.jpg)
+![implementation of US_003](wireframes/buy_modal.jpg)
 - US_004: As a user I want to see which books are most popular on the site.
 ![implementation of US_004](wireframes/best_books.jpg)
 - US_005: As a user I want to look for most popular books in a category.
