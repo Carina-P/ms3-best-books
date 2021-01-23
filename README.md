@@ -254,23 +254,29 @@ And a colour from the start image:
 ### Existing Features
 - Features in all pages:
     - **Messages** to the user is shown in top of current page, with an "acid green" background colour.
-    ![implementation of messages](wireframes/category_groups.jpg)
+        - **template**: templates/components/messages.html
+        ![implementation of messages](wireframes/category_groups.jpg)
     - **Header**:
-    - logo and navbar fixed at the top of viewport:
-        - **logo**: When hover over, it becomes larger
-        - **navbar**: When hover over links, the color changes
-        - If **medium and smaller**  viewport widths: links are collapsed to a "hamburger" menu.
-    ![implementation of navbar on larger screens](wireframes/navbar_and_messages.jpg)
-    ![implementation of navbar on smaller screens](wireframes/navbar_sm_screens.jpg)
-    - **Footer**: In bottom of page with **social links**.
+        - logo and navbar fixed at the top of viewport:
+            - **template**: templates/layouts/navigation.html
+            - **logo**: When hover over, it becomes larger
+            - **navbar**: When hover over links, the color changes
+            - If **medium and smaller**  viewport widths: links are collapsed to a "hamburger" menu.
+        ![implementation of navbar on larger screens](wireframes/navbar_and_messages.jpg)
+        ![implementation of navbar on smaller screens](wireframes/navbar_sm_screens.jpg)
+    - **Footer**: 
+        - **template**: templates/layouts/footer.html
+        - In bottom of page with **social links**.
     ![implementation of footer](wireframes/footer.jpg)
 
 
 - **Home - page** and other pages reached from the home page:
+    - **template**: templates/pages/home.html
     - **Start**, Welcome on a background image:
         - Short introduction to the site
     ![implementation of homepage start](wireframes/start.jpg)
     - **Top ten** most popular books in a **carousel**:
+        - **template**: templates/components/carousel.html
         - Possibility to **buy the book**: In top right corner is a read shopping cage with a link. 
         Hoovering the link makes picture larger.        
         - Possibility to link to more **details of the book**
@@ -278,6 +284,7 @@ And a colour from the start image:
     ![implementation of most popular books](wireframes/best_books.jpg)
     - **Best in category**:
         - All **category groups** present in database is shown with **different background colours**.
+        - **template**: templates/components/components/cards/card_best_category.html
         ![implementation of category groups to search](wireframes/search_best_in_category.jpg)
         - Possibility to **click on a category group** and then user is moved to **result-page** that shows
         **most popular books within choosen category group**.
@@ -291,6 +298,7 @@ And a colour from the start image:
         ![implementation of search for book](wireframes/search_for_book.jpg)
         - If **no book** in database **matches** the search - a **message** is shown in top of page.
     - **Add book** - this feature is only available to users that are logged in:
+        - Interactive logic in **JavaScript**': static/js/script.js
         - User do not have to know all information about a book. Instead user **searches in the API: Google Books**
         for the book with information to add to the database.
         - A **search-form** where user can print title/part of title and or author/part of authors name.
@@ -307,6 +315,7 @@ And a colour from the start image:
         ![implementation of add book](wireframes/retrieved_information_to_add_book_2.jpg)
 
 - **Search result - page**:
+    - **template**: templates/pages/search_result-html
     - User ends up at this page when either:
         - looking for **most popular** books belonging to a **category group** or
         - **searching** for a book **in this database**
@@ -320,6 +329,7 @@ And a colour from the start image:
     ![implementation of add book](wireframes/search_result.jpg)
 
 - **Book details - page**:
+    - **template**: templates/pages/book.html
     - User ends up at this page when choosing **"Book Details"-button** either in top-ten **carousel** or
     in **book-card** in search-result page.
     - The following information of the book is shown:
@@ -338,18 +348,19 @@ And a colour from the start image:
         - **Grade** given
         - And the **review** given
     - If **more than five opinions** is give to the book:
-        User is given opportunity to go to **reviews-page** with all opinions given to the book.
+        User is given opportunity to go to **opinions-page** with all opinions given to the book.
     - User who has added the book can also **delete** it. When book is deleted all opinions about the book are also deleted.
     - It is possible to **add an opinion**:
-        - When this alternative is choosen an **add opion modal** is shown..
+        - When this alternative is choosen an **add opion modal** is shown.
     - User who has added an opinion can also **edit or delete the opinion**.
     - If **Edit opinion** is choosen an **edit opinion modal** is shown.
     - **Close-Button** in top right corner takes user back to home-page.
     ![implementation of book details](wireframes/book_details.jpg)
     ![implementation of more reviews](wireframes/more_reviews.jpg)
 
-- **Reviews - page**:
-    - User ends up at this page when **"See all reviews"** is choosen in "Book details page".
+- **Opinions - page**:
+    - **Template**: templates/pages/opinons.html
+    - User ends up at this page when **"See all opinions"** is choosen in "Book details page".
     - All opinions of current books is shown, with information about:
         - **Who** has given the opinion
         - **Grade** given
@@ -359,6 +370,8 @@ And a colour from the start image:
         - **Delete** review
 ![implementation of all reviews](wireframes/reviews.jpg)
 - **Add opinion - modal**:
+    - **Template**: templates/components/modals/modal_general.html and
+        templates/components/modals/modal_body_opinion.html
     - Modal contains:
         -  Book **title**
         - **select-list** (1 to 5) for **grading** the book
@@ -373,6 +386,8 @@ And a colour from the start image:
     ![implementation of add opinion](wireframes/add_opinion.jpg)
 
 - **Edit opinion - modal**:
+    - **Template**: templates/components/modals/modal_general.html and
+        templates/components/modals/modal_body_opinion.html
     - Modal contains:
         -  Current books **title**
         - **select-list** with **grade** given to the book
@@ -385,6 +400,7 @@ And a colour from the start image:
     - If modal is closed without submitting, user is returned to page where it was called from, and no updating of database occurs.
     ![implementation of edit opinion](wireframes/change_opinion.jpg)
 - **Authorisation - pages**:
+    - **Template**: templates/pages/authorisation.html
     - **Log In** and **Sign in** are similar including:
         - **Form** where user can give:
             - **Username** and
@@ -407,6 +423,7 @@ And a colour from the start image:
     of this site and know what to do. **First time users** might be **confused** by what "Managing category groups"
     means.
     - **Category groups - page**:
+        - **Template**: templates/pages/category_groups.html
         - A page with all category groups represented in a **"card deck**.
         - User can **add a category group** by clicking on link. User is then redirected to "Add category group page"
         - For each category group user can:
@@ -414,11 +431,13 @@ And a colour from the start image:
             - **Delete** category group. If category group is deleted. All **books** in database that are **attached to 
             deleted category group** is updated with the category group: **Other**.
     - **Add category group - page**:
+        - **Template**: templates/pages/category_group.html
         - A **form** where user types new category groups name.
         - When form is submitted, new category group is added to the database and user redirected to "Category groups page".
         "Category groups page" is updated with the new category group.
         - If user clicks on cancel, he/she is returned to "Category groups page".
     -**Edit category group - page**:
+        - **Template**: templates/pages/category_groups.html
         - A **form** where current category groups name is given.
         - User can edit the name and click on the **Submit-button**. When changed name is submitted:
         Database for all **books attached to category groups name is updated** to the changed category groups name.
