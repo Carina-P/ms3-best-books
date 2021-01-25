@@ -151,7 +151,7 @@ Please **start with** testcases **TC_015, TC016, TC017 and TC020**
 - Testing use case **US_007**, As a user I want to edit information about a book:
 
 **TC_010** Edit book information
-**Notice!** This test is **obsolete** since use case is not implemented.
+**Notice!** This test is **obsolete** since use case is not yet implemented.
 - How to test:
     - Log in with same user as added Pippi Longstocking
     - Search in search-field ("Search for book" in navbar) for "Pippi Longstocking"
@@ -369,6 +369,28 @@ The outcome of testing according to above test cases is documented [here]XXXXXXX
 ## UX testing
 UX testing is conducted by watching and interviewing users when they used
 the page. Examples of issues/discussions:
+- I had the "brand-image" in the middle of the navbar from the beginning. But users
+wanted it to the left instead. Had a discussion with them if I should have a navitem
+called home also/insteda of bar image. But they thought it was well known that 
+brand-image is the way to the home page.
+- I tried to have a picture this picture on all pages above navbar:
+![Image above navbar](static/images/bookshelf.jpg)
+Users thought it was to much with that picture and a "start-picture" on the 
+home page. So I removed it from home, login and sign up pages.
+- In Add book-form I have the background color: acid green, in the part of the
+form user has to fill in. (The rest of the form is information fetched from Google
+Books that is not supposed to be changed.):
+![Part in add book form for user to fill out](wireframes/retrived_information_to_add_book_2.jpg)
+The green part was in the beginning of the form. I thought this was a way to attract
+users attention quickly to this part of the form. 
+User thought it was good that the background is green but they thought it was 
+confusing that it was in the beginning of the form.
+I moved the green part to bottom of form.
+- Users whiched for a return/close-button in "Book Details page" and "Search result page":
+![Close-button](wireframes/close.jpg)
+- I started with using Materialize but after a while I felt limited compared to Bootstrap, especially when 
+trying to do a carousel and also for card decks. So I did a big change to Bootstrap.
+
 
 ## Code validation
 ## Different browsers
