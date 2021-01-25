@@ -42,17 +42,19 @@
                         </div>
                         <div class="row d-none d-md-block mt-2">
                             <div class="col">
-                                <p>
-                                    {% for count in range(best_book.stars) %}
-                                        <i class="fas fa-star"></i>
-                                    {% endfor %}
-                                    {% for count in range(5 - best_book.stars) %}
-                                        <i class="far fa-star"></i>
-                                    {% endfor %}
-                                    {{ best_book.avg_gr_rounded }} <br>
-                                    {{ best_book.author }}<br>
-                                    {{ best_book.published_date }}
-                                </p>
+                                <ul class="book_list">
+                                    <li>
+                                        {% for count in range(best_book.stars) %}
+                                            <i class="fas fa-star"></i>
+                                        {% endfor %}
+                                        {% for count in range(5 - best_book.stars) %}
+                                            <i class="far fa-star"></i>
+                                        {% endfor %}
+    
+                                        {{ best_book.avg_gr_rounded }}
+                                    </li>
+                                    <li>{{ best_book.author }}</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
