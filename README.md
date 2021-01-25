@@ -680,9 +680,8 @@ Alternatively, you can clone the repository using the following line in your ter
     - In terminal window give the command **git push** to push your changes. 
 
 ## Credits
-
-### Content
-- The text for section Y was copied from the [Wikipedia article Z](https://en.wikipedia.org/wiki/Z)
+### Contents
+Book information is fetched from the API: [Google Books](https://developers.google.com/books)
 
 ### Media
 - The photos used in this site were obtained from [pixabay](https://pixabay.com/)
@@ -690,8 +689,11 @@ Alternatively, you can clone the repository using the following line in your ter
     - Picture in above navbar on some pages, part of bookshelf, photographer: [Lubos Houska](https://pixabay.com/sv/users/luboshouska-198496/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1204029")
     - Picture in authorisation page, of a woman reading by the sea, photographer: [StockSnap](https://pixabay.com/sv/users/stocksnap-894430/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=925589)
 ### Acknowledgements
+I received inspiration and help for this project from: 
+- Help from above all: [w3.schools.com](https://www.w3schools.com/) and
+[stackoverflow](https://stackoverflow.com/questions)
 - I got some inspiration to the Development-section in this document from 
 [Dog-Health-Tracker](https://github.com/AnoukSmet/Dog-Health-Tracker) 
 made by [AnoukSmet](https://github.com/AnoukSmet)  
-
-- I received inspiration for this project from X
+- A big Thank you! to my mentor [Simen Daehlien](https://www.github.com/eventyret) who
+has inspired me and given me lots of tips as for example how to structure templates for reuse and clarity.
