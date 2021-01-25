@@ -394,6 +394,19 @@ trying to do a carousel and also for card decks. So I did a big change to Bootst
 
 ## Code validation
 ## Different browsers
+The code is **mainly tested with Chrome**. But also **Firefox and Safari**.
+- According to [W3 Schools](https://www.w3schools.com/js/js_es6.asp) the 
+**JavaScript** code will probably not work well on browsers less than the 
+following versions: **Chrome 58, Edge 14, Firefox 54, Safari 10 and Opera 55**. 
+That are because following features from **ECMAScriptS6** is used: 
+    - let
+    - template literal syntax
+    - arrow function
+- **Bootstrap 4** is used and according to [Bootstrap](https://getbootstrap.com/docs/4.6/getting-started/browsers-devices/)
+**IE9** and earlier is not supported.
+- **HTML5 semantics and form features** are used and that requires at least **IE9, Firefox 4, Safari 4
+and Android Browser 4.4**. **Opera mini** can not be used.
+    
 
 ## Some of the bugs
 
