@@ -56,7 +56,7 @@ Please **start with** testcases **TC_015, TC016, TC017 and TC020**
 - How to test:
     - Go to homepage and look for the header: "Search for book in this databas" or
     Use navigation bar and choose "Search for book"
-    - Print "Where the crawdads sings" in the field
+    - Print "Where the Crawdads Sing" in the field
     - Press return
 - Expected outcome:
     - View is moved to the "Search results" page.
@@ -77,7 +77,7 @@ Please **start with** testcases **TC_015, TC016, TC017 and TC020**
 - How to test:
     - Go to homepage and look for the header: "Search for book in this databas" or
     Use navigation bar and choose "Search for book"
-    - Print "crawdads sings" in the field
+    - Print "Crawdads Sing" in the field
     - Press return
 - Expected outcome:
     - View is moved to the "Search results" page.
@@ -91,7 +91,7 @@ Please **start with** testcases **TC_015, TC016, TC017 and TC020**
     - Press return
 - Expected outcome:
     - View is moved to the "Search results" page.
-    - Book/S written by August Strindberg is found there. Or message that book is
+    - Book/s written by August Strindberg is found there. Or message that book is
     not present in site.
 
 
@@ -204,7 +204,8 @@ Please **start with** testcases **TC_015, TC016, TC017 and TC020**
     - Log in, if needed sign in first (See TC015)
     - In navbar choose "Search for book"
     - In search-form print "Where the crawdads sings"
-    - In search results choose book with title "Where the crawdads sings"
+    - In search results choose book with title "Where the Crawdads Sing" and press
+    "Book details"
     - Notice average grade given to the book
     - Press Add opinion
     - In "Opinion"-modal:
@@ -223,7 +224,7 @@ Please **start with** testcases **TC_015, TC016, TC017 and TC020**
 **TC_013** Edit opinion
 - How to test:
     - Log in with same user as added review and grade for 
-    "Where the crawdads sings" (TC_012)
+    "Where the Crawdads Sing" (TC_012)
     - In Homepage search for "Where the crawdads sings"
     - In search results press "Book Details" for the book
     - In "Book details"-page find the  added opinon in TC012.
@@ -267,6 +268,7 @@ How to test:
         - Press "Submit"-button
 - Expected outcome
     - Redirected to homepage with A welcome-message in the top.
+    - Check in database that the user David is added to users collection.
 
 
 - Testing use case **US_0014**, As a user I want to log in to the system:
@@ -311,6 +313,7 @@ add category groups.
     - The new category is added to list of category groups in "Category groups"-page
     - In homepage the new category is shown if "Best books in category" is choosen in
     navigation bar.
+    - Check in database that Horor is present in collection category_groups
 
 
 - Testing use case **US_0017**, As a "administration" user I want to edit and remove categories:
@@ -328,6 +331,7 @@ edit category groups.
     - The category group is changed in the list of category groups in "Category groups"-page
     - In homepage the changed category group is shown if "Best books in category" is choosen in
     navigation bar.
+    - Check in database that collection category_groups is updated.
 
 - Testing **general features**:
 **TC_020** Navbar works as expected
@@ -380,7 +384,8 @@ edit category groups.
 
 
 #### Test protocol
-The outcome of testing according to above test cases is documented [here]XXXXXXXXXX.
+The outcome of testing according to above test cases is documented [Test Protocol](testhttps://github.com/Carina-P/ms3-best-books/blob/master/test/protocol_test_cases.pdf).
+
 ## UX testing
 UX testing is conducted by watching and interviewing users when they used
 the page. Examples of issues/discussions:

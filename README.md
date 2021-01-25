@@ -636,7 +636,7 @@ given in modal and that is why this feature is not prioritized.
 
 ## Testing
 "All tests passed without major issues?
-The tests conducted are detailed in [TESTS.md](https://github.com/Carina-P/ms3-best-books/blob/master/TESTS.md)
+The tests conducted are detailed in [TESTS.md](https://github.com/Carina-P/ms3-best-books/blob/master/test/TESTS.md)
 
 ## Deployment
 ### Local Deployment
