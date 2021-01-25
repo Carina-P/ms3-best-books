@@ -6,18 +6,57 @@ And you are of course **welcome to add your own reviews**, grades and tips.
 
 The live project can be found here: [https://ms3-best-books.herokuapp.com/](https://ms3-best-books.herokuapp.com/)
 
-|**Browser requirements** (at least version):|
+|**Browser requirements** (at least version)|
 |---------------------------|
-Chrome 58|
-Edge 14|
-Firefox 54|
-Safari 10|
-Opera 55|
-Opera mini can not be used|
-IE10|
-iOS 9|
-Android 4.4|
-|
+|Chrome 58|
+|Edge 14|
+|Firefox 54|
+|Safari 10|
+|Opera 55|
+|Opera mini can not be used|
+|IE10|
+|iOS 9|
+|Android 4.4|
+
+## Contents
+- [UX](#ux)
+  * [Strategy Plane](#strategy-plane)
+    + [Site owner's goal](#site-owner-s-goal)
+    + [External users goal](#external-users-goal)
+  * [Scoope Plane](#scoope-plane)
+    + [User stories](#user-stories)
+    + [Features](#features)
+  * [Structure Plane](#structure-plane)
+  * [Skeleton Plane](#skeleton-plane)
+    + [Wireframes](#wireframes)
+      - [Major changes compared to wireframes](#major-changes-compared-to-wireframes)
+        * [Home page](#home-page)
+        * [Book Details/Manage book page](#book-details-manage-book-page)
+        * [Reviews page](#reviews-page)
+        * [Manage Category groups](#manage-category-groups)
+    + [Database structure](#database-structure)
+    + [Design Choices](#design-choices)
+      - [Fonts](#fonts)
+      - [Colours](#colours)
+- [Features](#features-1)
+  * [Existing Features](#existing-features)
+  * [Responsive](#responsive)
+  * [Features Left to Implement](#features-left-to-implement)
+- [Technologies Used](#technologies-used)
+  * [Languages](#languages)
+  * [Frameworks, Libraries and Programs](#frameworks--libraries-and-programs)
+  * [API (Application Programming Interfaces)](#api--application-programming-interfaces-)
+- [Testing](#testing)
+- [Deployment](#deployment)
+  * [Local Deployment](#local-deployment)
+  * [To deploy your project on Heroku, use the following steps:](#to-deploy-your-project-on-heroku--use-the-following-steps-)
+- [Credits](#credits)
+  * [Contents](#contents)
+  * [Media](#media)
+  * [Acknowledgements](#acknowledgements)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 
 ## UX
 ### Strategy Plane
@@ -58,47 +97,71 @@ There are three types of users:
 #### User stories
 (this is not in prioritization)
 - US_001: As a user I want to search for books in the database.
+
 ![implementation of US_001](wireframes/search_for_book.jpg) 
 - US_002: As a user I want to see detailed information about a book.
+
 ![implementation of US_002](wireframes/book_details.jpg)
-- US_003: As a user I want to buy a book
-It is possible to buy book from four places on the site( high priority):
+- US_003: As a user I want to buy a book. 
+It is possible to buy book from four places on the site
+(this is a high priority for site owner):
+
 ![implementation of US_003](wireframes/buy_in_book_details.jpg)
+
 ![implementation of US_003](wireframes/buy_in_search_for_books.jpg)
+
 ![implementation of US_003](wireframes/buy_in_search_in_category.jpg)
+
 ![implementation of US_003](wireframes/buy_in_ten_top_books.jpg)
+
 ![implementation of US_003](wireframes/buy_modal.jpg)
 - US_004: As a user I want to see which books are most popular on the site.
+
 ![implementation of US_004](wireframes/best_books.jpg)
 - US_005: As a user I want to look for most popular books in a category.
+
 ![implementation of US_005](wireframes/search_best_in_category.jpg)
+
 ![implementation of US_005](wireframes/result_search_in_category.jpg)
 - US_006: As a user I want to add book to the site.
+
 ![implementation of US_006](wireframes/search_to_add_book.jpg)
-![implementation of US_006](wireframes/retrived_information_to_add_book_1.jpg)
-![implementation of US_006](wireframes/retrived_information_to_add_book_2.jpg)
+
+![implementation of US_006](wireframes/retrieved_information_to_add_book_1.jpg)
+
+![implementation of US_006](wireframes/retrieved_information_to_add_book_2.jpg)
 - US_007: As a user I want to edit information about the book.
     - Notice! This user story is not implemented yet.
 - US_007: As a user I want to remove book.
+
 ![implementation of US_007](wireframes/delete_book_and_add_opinion.jpg)
 - US_008: As a user I want to grade a book.
 - US_009: As a user I want to give a review of a book.
+
 ![implementation of US_008 and US_009](wireframes/best_books.jpg)
+
 ![implementation of US_008 and US_009](wireframes/grade_and_review.jpg)
 - US_010: As a user I want to edit my opinion of a book.
 - US_011: As a user I want to remove my opinion of a book.
+
 ![implementation of US_010 and US_011](wireframes/edit_opinion.jpg)
+
 ![implementation of US_010](wireframes/change_opinion.jpg)
 - US_0012: As a user I want to register (sign up) to the system.
+
 ![implementation of US_012](wireframes/signup.jpg)
 - US_0013: As a user I want to log in to the system.
+
 ![implementation of US_013](wireframes/login.jpg)
 - US_0014: As a user I want to log out of the system.
+
 ![implementation of US_014](wireframes/navbar_and_message.jpg)
 - US_0015: As a "administration" user I want to add categories.
 - US_0016: As a "administartion" user I want to remove category
 - US_0017: As a "administration" user I want to edit category.
+
 ![implementation of US_015, US_016 and US_017](wireframes/category_groups.jpg)
+
 ![implementation of US_017](wireframes/category_group.jpg)
 
 #### Features
@@ -267,18 +330,22 @@ And a colour from the start image:
 - Features in all pages:
     - **Messages** to the user is shown in top of current page, with an "acid green" background colour.
         - **template**: templates/components/messages.html
-        ![implementation of messages](wireframes/category_groups.jpg)
+
+        ![implementation of messages](wireframes/message_and_navbar.jpg)
     - **Header**:
         - logo and navbar fixed at the top of viewport:
             - **template**: templates/layouts/navigation.html
             - **logo**: When hover over, it becomes larger
             - **navbar**: When hover over links, the color changes
             - If **medium and smaller**  viewport widths: links are collapsed to a "hamburger" menu.
-        ![implementation of navbar on larger screens](wireframes/navbar_and_messages.jpg)
+
+        ![implementation of navbar on larger screens](wireframes/message_and_navbar.jpg)
+
         ![implementation of navbar on smaller screens](wireframes/navbar_sm_screens.jpg)
     - **Footer**: 
         - **template**: templates/layouts/footer.html
         - In bottom of page with **social links**.
+
     ![implementation of footer](wireframes/footer.jpg)
 
 
@@ -286,6 +353,7 @@ And a colour from the start image:
     - **template**: templates/pages/home.html
     - **Start**, Welcome on a background image:
         - Short introduction to the site
+
     ![implementation of homepage start](wireframes/start.jpg)
     - **Top ten** most popular books in a **carousel**:
         - **template**: templates/components/carousel.html
@@ -293,10 +361,12 @@ And a colour from the start image:
         Hoovering the link makes picture larger.        
         - Possibility to link to more **details of the book**
         - If user i logged in also possibility to **add opinion** about the book.
+
     ![implementation of most popular books](wireframes/best_books.jpg)
     - **Best in category**:
         - All **category groups** present in database is shown with **different background colours**.
         - **template**: templates/components/components/cards/card_best_category.html
+
         ![implementation of category groups to search](wireframes/search_best_in_category.jpg)
         - Possibility to **click on a category group** and then user is moved to **result-page** that shows
         **most popular books within choosen category group**.
@@ -307,6 +377,7 @@ And a colour from the start image:
         is according to Google Books [Branding Guidlines](https://developers.google.com/books/branding): 
         "You may only use the verbs "Search," "Search Books," or "Search in this book" 
         when prompting users for action that results in an API query (e.g., on a form 'submit' button)." 
+
         ![implementation of search for book](wireframes/search_for_book.jpg)
         - If **no book** in database **matches** the search - a **message** is shown in top of page.
     - **Add book** - this feature is only available to users that are logged in:
@@ -316,6 +387,7 @@ And a colour from the start image:
         - A **search-form** where user can print title/part of title and or author/part of authors name.
         - The **resulting books** matching the search-criteria is **shown below** the search-form when user clicks search or 
         presses return. User is moved to the place.
+
         ![implementation of search to add book and search result](wireframes/search_to_add_book.jpg)
         - The user continues with choosing which book he/she is interested in adding. When book is choosen, 
         **more details about the book** is shown, in a **form**, further down. And user is moved to this place.
@@ -323,7 +395,9 @@ And a colour from the start image:
         **add a grade and a review** of the book before submitting to the database.
         - If user does not want to add book - he/she can click on **Cancel** and the information is removed and user
         redirected to the search-form for adding book.
+
         ![implementation of add book](wireframes/retrieved_information_to_add_book_1.jpg)
+
         ![implementation of add book](wireframes/retrieved_information_to_add_book_2.jpg)
 
 - **Search result - page**:
@@ -361,14 +435,17 @@ And a colour from the start image:
         - And the **review** given
     - If **more than five opinions** is give to the book:
         User is given opportunity to go to **opinions-page** with all opinions given to the book.
+
+        ![implementation of more reviews](wireframes/more_reviews.jpg)
     - User who has added the book can also **delete** it. When book is deleted all opinions about the book are also deleted.
     - It is possible to **add an opinion**:
         - When this alternative is choosen an **add opion modal** is shown.
     - User who has added an opinion can also **edit or delete the opinion**.
     - If **Edit opinion** is choosen an **edit opinion modal** is shown.
     - **Close-Button** in top right corner takes user back to home-page.
+
     ![implementation of book details](wireframes/book_details.jpg)
-    ![implementation of more reviews](wireframes/more_reviews.jpg)
+    
 
 - **Opinions - page**:
     - **Template**: templates/pages/opinons.html
@@ -380,6 +457,7 @@ And a colour from the start image:
     - **User who has added the opinion** has the possibilities to:
         - **Change** review
         - **Delete** review
+
 ![implementation of all reviews](wireframes/reviews.jpg)
 - **Add opinion - modal**:
     - **Template**: templates/components/modals/modal_general.html and
@@ -395,6 +473,7 @@ And a colour from the start image:
         - user is directed to page, which is updated the added opinion, modal was called from.
     - If modal is closed without submitting, user is returned to page where it was called from and no
     updating of database takes place.
+
     ![implementation of add opinion](wireframes/add_opinion.jpg)
 
 - **Edit opinion - modal**:
@@ -410,6 +489,7 @@ And a colour from the start image:
         - Grade and/or review is updated in database.
         - user is directed to page, which is updated with changed grade and/or review, modal was called from.
     - If modal is closed without submitting, user is returned to page where it was called from, and no updating of database occurs.
+
     ![implementation of edit opinion](wireframes/change_opinion.jpg)
 - **Authorisation - pages**:
     - **Template**: templates/pages/authorisation.html
@@ -425,7 +505,9 @@ And a colour from the start image:
             wrong: user is informed and **returned to login page**. If correct user is **redirected to 
             home page**.
         - Possibility to go to Sign up and Log in page respectively.
+
         ![implementation of sign up](wireframes/signup.jpg)
+        
         ![implementation of log in](wireframes/login.jpg)
 
 - **Manage Categories - pages**:
@@ -453,7 +535,9 @@ And a colour from the start image:
         - A **form** where current category groups name is given.
         - User can edit the name and click on the **Submit-button**. When changed name is submitted:
         Database for all **books attached to category groups name is updated** to the changed category groups name.
+
     ![implementation of category groups](wireframes/category_groups.jpg)
+    
     ![implementation of category groups](wireframes/category_group.jpg)
 
 ### Responsive
@@ -472,7 +556,7 @@ devices the information is shown below the book cover and the average grade is o
     for books that are best in specific category. The result is shown in search result page.
     - The different category groups shown in category groups page.
     in search result page.
-- **"Instruction"** in beginning of home page i **wider on smaller viewports**. And that also
+- **"Instruction"** in beginning of home page is **wider on smaller viewports**. And that also
 applies to the width of the **carousel** on the home page.
 - On **very small devices** (width less than 400px) the **font size is 14px**.
 
@@ -485,7 +569,7 @@ fetched from Google Books API. That is how I interpret the Google Books [brandin
 - It is easy to replace modal with an **affiliate link** when clicking on buy a book.
 - Add **indexes** to the database to speed up searching.
 - Put **image of book cover in add opinion-modal**, especially when choosing add opinon from book in carousel in home page. since
-carousel continues "moving" behind the modal, perhaps user gets confused which book opinion is added to. Notice: Books titel is
+carousel continues "moving" behind the modal, perhaps user gets confused which book, opinion is added to. Notice: Books titel is
 given in modal and that is why this feature is not prioritized.
 
 ## Technologies Used
@@ -551,27 +635,9 @@ given in modal and that is why this feature is not prioritized.
     information about book, he/she wants to add to this site, automatically.
 
 ## Testing
-"All tests passed without major issues?"XXXXX
+"All tests passed without major issues?
 The tests conducted are detailed in [TESTS.md](https://github.com/Carina-P/ms3-best-books/blob/master/TESTS.md)
- <!---
- In this section, you need to convince the assessor that you have conducted enough testing to legitimately believe that the site works well. Essentially, in this part you will want to go over all of your user stories from the UX section and ensure that they all work as intended, with the project providing an easy and straightforward way for the users to achieve their goals.
- 
-Whenever it is feasible, prefer to automate your tests, and if you've done so, provide a brief explanation of your approach, link to the test file(s) and explain how to run them.
 
-For any scenarios that have not been automated, test the user stories manually and provide as much detail as is relevant. A particularly useful form for describing your testing process is via scenarios, such as:
-
-1. Contact form:
-    1. Go to the "Contact Us" page
-    2. Try to submit the empty form and verify that an error message about the required fields appears
-    3. Try to submit the form with an invalid email address and verify that a relevant error message appears
-    4. Try to submit the form with all inputs valid and verify that a success message appears.
-
-In addition, you should mention in this section how your project looks and works on different browsers and screen sizes.
-
-You should also mention in this section any interesting bugs or problems you discovered during your testing, even if you haven't addressed them yet.
-
-If this section grows too long, you may want to split it off into a separate file and link to it from here.)
--->
 ## Deployment
 ### Local Deployment
 Best Books was developed on **GitPod**, using **git** and **GitHub** to host the
@@ -611,7 +677,8 @@ Alternatively, you can clone the repository using the following line in your ter
 
 2. **Sign-in** or sign-up to **[MongoDB](https://www.mongodb.com/)** and create a new cluster
     -  Within the Sandbox, click the collections button and then click **Create Database** (Add My Own Data) called **best_books**
-    - **Set up** the following **collections**: books, books_details, category_groups, reviews and users. [Go to Database structure](#database-structure)
+    - **Set up** the following **collections**: books, books_details, category_groups, reviews and users. 
+    Collections are shown in chapter: Database structure [Go to Database structure](#database-structure)
     - Under the **Security Menu** on the left, **select Database Access**.
     - **Add a new database user**, and keep the credentials secure
     - Within the **Network Access** option, **add IP Address** 0.0.0.0
@@ -692,7 +759,7 @@ Book information is fetched from the API: [Google Books](https://developers.goog
 I received inspiration and help for this project from: 
 - Help from above all: [w3.schools.com](https://www.w3schools.com/) and
 [stackoverflow](https://stackoverflow.com/questions)
-- I got some inspiration to the Development-section in this document from 
+- I got some inspiration to the deployment section in this document from 
 [Dog-Health-Tracker](https://github.com/AnoukSmet/Dog-Health-Tracker) 
 made by [AnoukSmet](https://github.com/AnoukSmet)  
 - A big Thank you! to my mentor [Simen Daehlien](https://www.github.com/eventyret) who

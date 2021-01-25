@@ -2,6 +2,21 @@
 
 Back to [README](https://github.com/Carina-P/ms3-best-books/blob/master/README.md)
 
+## Contents
+- [Tests of functionality and responsiveness](#tests-of-functionality-and-responsiveness)
+  * [Test cases](#test-cases)
+    + [Test protocol](#test-protocol)
+- [UX testing](#ux-testing)
+- [Code validation](#code-validation)
+  * [Validation with W3S](#validation-with-w3s)
+  * [Validation with JSHint](#validation-with-jshint)
+  * [Validation with PEP8](#validation-with-pep8)
+- [Different browsers](#different-browsers)
+- [Some of the bugs](#some-of-the-bugs)
+- [Remaining bugs](#remaining-bugs)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 The below plan for testing was followed during development of the site:
 The TDD, **TestDriven Development**, process is followed as much as possible. 
 Test cases is developed/thought off, before code is implemented. The test
