@@ -1,11 +1,23 @@
 # ![](https://github.com/Carina-P/ms3-best-books/blob/master/static/favicon/favicon.ico?raw=true)      Best Books
 
-This is the site where you get inspired and find new books to read and/or buy.
-You will find descriptions of different books and also reviews with other
-readers best tips.
-You are also welcome to add your own reviews and tips.
+This is the site where you will find the **best books to read**, inspired by 
+other readers **recommendations, grades and tips**.
+And you are of course **welcome to add your own reviews**, grades and tips.
 
 The live project can be found here: [https://ms3-best-books.herokuapp.com/](https://ms3-best-books.herokuapp.com/)
+
+|**Browser requirements** (at least version):|
+|---------------------------|
+Chrome 58|
+Edge 14|
+Firefox 54|
+Safari 10|
+Opera 55|
+Opera mini can not be used|
+IE10|
+iOS 9|
+Android 4.4|
+|
 
 ## UX
 ### Strategy Plane
