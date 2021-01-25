@@ -544,6 +544,11 @@ def get_category_groups():
     Get all category groups from the database.
     Render category_groups page and show retrieved information.
     """
+    if not("username" in session.keys()):
+        flash(
+            'You must log in before you can manage category groups')
+        return redirect(url_for("home"))
+
     try:
         category_groups = list(
             mongo.db.category_groups.find().sort("group_name", 1)
@@ -568,6 +573,11 @@ def add_group():
     then added to database. When done redirect user to page with category
     groups.
     """
+    if not("username" in session.keys()):
+        flash(
+            'You must log in before you can add category group')
+        return redirect(url_for("home"))
+
     if request.method == "POST":
         group_name = {
             "group_name": request.form.get("group_name")
@@ -607,6 +617,11 @@ def edit_group(category_group_id, old_group_name):
         category_group_id: (str) - Category groups id in database
         old_group_name: (str) - Category group name to change from
     """
+    if not("username" in session.keys()):
+        flash(
+            'You must log in before you can edit category group')
+        return redirect(url_for("home"))
+
     if request.method == "POST":
         new_name = request.form.get("group_name")
 
