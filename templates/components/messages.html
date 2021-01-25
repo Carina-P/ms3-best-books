@@ -1,11 +1,14 @@
 {% with messages = get_flashed_messages() %}
     {% if messages %}
+        <div class="bgr-acid text-dark text-center mt-3 mb-3">
+            <h3>Message/s:</h3>
         {% for message in messages %}
-            <div class="row bgr-acid text-dark text-center mt-3 mb-3">
+            <div class="row">
                 <div class="col">
                     <h5 id="flash-mess">{{ message }}</h5>         
                 </div>
             </div>
         {% endfor %}
+        </div>
     {% endif %}
 {% endwith %}
