@@ -393,6 +393,27 @@ trying to do a carousel and also for card decks. So I did a big change to Bootst
 
 
 ## Code validation
+### Validation with W3S
+- **HTML**: Validated with **no errors** or warnings. Notice! Some headers are filled from JavaScript, if
+code is validated when the JavaScript has not been run, you will get warnings about empty headers. That 
+applies to code belonging to Add Book and also for Modals.
+    - In GitHub the template: form_add_book.html, is marked as it has en error. The code is working as
+    I want it to and I cannot find any problem. I talked to Code Institutes Tutore, and they told me
+    "The code is fine but validators don't want to read JavaScript functionality on a HTML page in the body content."
+- **CSS**: Validated with **no errors** or warnings.
+
+### Validation with JSHint
+**JavaScript** validated with **no errors**. 
+- There are **one undefined variables**: 
+    - $ (JQuery)
+- There are **seven unused variables**:
+    - moveTo, cancelAddBook, addBook, searchBooks, addOpinion, changeOpinion and buyBook:
+    These are all functions called from HTML.
+
+### Validation with PEP8
+PEP8 was included in the IDE and thus the **python** code is validated within GitHub.
+Validation without errors or warnings.
+
 ## Different browsers
 The code is **mainly tested with Chrome**. But also **Firefox and Safari**.
 - According to [W3 Schools](https://www.w3schools.com/js/js_es6.asp) the 

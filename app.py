@@ -411,7 +411,8 @@ def change_opinion(return_to, title):
         else:
             return redirect(
                 url_for(
-                    "get_opinions", book_id=book_id, title=title, page="reviews"
+                    "get_opinions", book_id=book_id, title=title,
+                    page="reviews"
                 )
             )
 
