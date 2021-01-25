@@ -749,6 +749,11 @@ def signup():
     Then redirect user to home-page.
     If user already exists in database, user is redirected to login page.
     """
+    if "username" in session.keys():
+        flash(
+            'You must log out before you can sign up again')
+        return redirect(url_for("home"))
+
     if request.method == "POST":
         try:
             existing_user = mongo.db.users.find_one(
@@ -799,6 +804,12 @@ def login():
     and password exists. If OK redirect user to home page. Otherwise user is
     returned to login page.
     """
+
+    if "username" in session.keys():
+        flash(
+            'You must log out before you can login again')
+        return redirect(url_for("home"))
+
     if request.method == "POST":
         try:
             existing_user = mongo.db.users.find_one(

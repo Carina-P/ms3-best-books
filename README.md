@@ -1,6 +1,6 @@
 # ![](https://github.com/Carina-P/ms3-best-books/blob/master/static/favicon/favicon.ico?raw=true)      Best Books
 
-This is the site where you will find the **best books to read**, inspired by 
+This is the site where you will find the **best books to read**. Get inspired by 
 other readers **recommendations, grades and tips**.
 And you are of course **welcome to add your own reviews**, grades and tips.
 
@@ -566,7 +566,7 @@ applies to the width of the **carousel** on the home page.
 - Implementing **authorisation for managing category groups**. Only a few selected user should be able to do this.
 - Ability to **change category group** attached to a book. No other book information can be changed, since the information is
 fetched from Google Books API. That is how I interpret the Google Books [branding policy](https://developers.google.com/books/branding).
-- It is easy to replace modal with an **affiliate link** when clicking on buy a book.
+- It is easy to replace modal with an real **affiliate link** when clicking on buy a book.
 - Add **indexes** to the database to speed up searching.
 - Put **image of book cover in add opinion-modal**, especially when choosing add opinon from book in carousel in home page. since
 carousel continues "moving" behind the modal, perhaps user gets confused which book, opinion is added to. Notice: Books titel is
