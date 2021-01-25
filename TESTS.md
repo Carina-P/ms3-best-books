@@ -402,12 +402,32 @@ That are because following features from **ECMAScriptS6** is used:
     - let
     - template literal syntax
     - arrow function
-- **Bootstrap 4** is used and according to [Bootstrap](https://getbootstrap.com/docs/4.6/getting-started/browsers-devices/)
-**IE9** and earlier is not supported.
-- **HTML5 semantics and form features** are used and that requires at least **IE9, Firefox 4, Safari 4
-and Android Browser 4.4**. **Opera mini** can not be used.
+- **Bootstrap 4** is used and according to [Bootstrap](https://getbootstrap.com/docs/4.6/getting-started/browsers-devices/
+you need at least: 
+**Chrome 45, Firefox 38, Edge 12, IE10, iOS 9, Safari 9, Android 4.4 and Opera 30**.
+- **HTML5 semantics and form features** are used, according to [Can I use](https://caniuse.com/?search=HTML5), that requires at least:
+**IE9, Firefox 4, Safari 4 and Android Browser 4.4**. **Opera mini** can not be used.
     
 
 ## Some of the bugs
+- Got a warning in console that **book cover images** were **not secure**. Google Books give links to http instead of
+https. So "http/" in the link is replaced by "/https".
+- **Average grade** for a book must be **recalculated** if user **changes or deletes** an opinion.
+- On smaller devices navbar has a "hamburger menu". When user clicks on the "hamburger": menu alternatives 
+are shown. If user clicks on a menu item: the user is directed to choosen place in the site, and menu 
+is "closed/hidden". But **when the menu is "closed"**: The **marker ends up further down in page** than expected.
+**Solution**: Found JS code on [Stackoverflow](https://stackoverflow.com/questions/4086107/fixed-page-header-overlaps-in-page-anchors) 
+by [Adrian Garner](https://stackoverflow.com/users/573373/adrian-garner) that I modified to suit my
+problem.
+- Same modal is used for Add opinion and Change opinion. In the beginning I had modal modal for adding opinion
+as "standard" in the HTML-code. When user wanted to change opinion, values were put into the modal from JS.
+Suddenly I realised that if user leaves modal without submitting (that is by close-button), the modal is not
+cleared and when user wants to add another opinion, **values from earlier(wrong values) are shown in the modal**.
+**Solution**: JS is called both for add opinion and change opinion to controll what is present in modal.
 
 ## Remaining bugs
+- I guess the following is not a bug, but it got me realy confused: If i use "inspect" in Chomes Developers Tool
+when looking at Best Books, suddenly/randomly? the select-lists in "opinion"-modal stops
+working. But if I remove the "inspect"-"mode" everything works OK again.
+- Warning from Lighthouse in Chomes Dev Tool: Contrast in brand-image in navbar is not enough. I have choosen to not fix it
+since it is a brand.
