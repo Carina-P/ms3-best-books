@@ -80,7 +80,7 @@ There are three types of users:
 **Viewers and Reviewers** needs:
 - Easy and intuitive way to browse books: priority 1.
 - Easy find more information about a book: priority 2.
-- Buy book/s. 
+- Buy book/s: priority 2. 
 - See what other users think about book: priority 2.
 
 **Reviewers** needs:
@@ -90,12 +90,11 @@ There are three types of users:
 - Update and remove "own reviews" (reviews that user has added): priority 3.
 
 **Administrators** needs:
-- Authority to edit and remove all ideas of all users: priority 3.
 - Authority to manage categories: priority 3.
 
 ### Scoope Plane
 #### User stories
-(this is not in prioritization)
+(this is not in priority order)
 - US_001: As a user I want to search for books in the database.
 
 ![implementation of US_001](wireframes/search_for_book.jpg) 
@@ -104,11 +103,11 @@ There are three types of users:
 ![implementation of US_002](wireframes/book_details.jpg)
 - US_003: As a user I want to buy a book. 
 It is possible to buy book from four places on the site
-(this is a high priority for site owner):
+(this is priority no 1 for site owner):
 
 ![implementation of US_003](wireframes/buy_in_book_details.jpg)
 
-![implementation of US_003](wireframes/buy_in_search_for_books.jpg)
+![implementation of US_003](wireframes/buy_in_search_for_book.jpg)
 
 ![implementation of US_003](wireframes/buy_in_search_in_category.jpg)
 
@@ -155,7 +154,7 @@ It is possible to buy book from four places on the site
 ![implementation of US_013](wireframes/login.jpg)
 - US_0014: As a user I want to log out of the system.
 
-![implementation of US_014](wireframes/navbar_and_message.jpg)
+![implementation of US_014](wireframes/message_and_navbar.jpg)
 - US_0015: As a "administration" user I want to add categories.
 - US_0016: As a "administartion" user I want to remove category
 - US_0017: As a "administration" user I want to edit category.
@@ -179,34 +178,34 @@ It is possible to buy book from four places on the site
 capability to those with administator privleges.
 
 ### Structure Plane
-The site starts with the homepage:  where you can search and find books.
-- From navbar you can choose to got to homepage by clicking the Brand-image, 
-Register, Log In, Log Out, see 10-top books, see best books for category group,
-search for book, add book and Manage Category groups, 
+The site **starts** with the **homepage**:  where you can **search and find** books.
+- From **navbar** you can choose to got to **homepage by clicking the Brand-image, 
+Sign Up, Log In, Log Out, see 10-top books, see Best books in category group,
+Search for book, Sdd book and Manage Category groups**, 
 all depending on your authorities.
-- In Home page you can:
-    - search for books either:
-        - in 10-top list
-            - from this list you reach Book details and/or add opinion.
-        - in best in category
+- In **Home page** you can:
+    - **search** for books either:
+        - in **10-top** list
+            - from this list you reach Book details and/or Add opinion.
+        - in **best in category**
             - the result is presented in search result page
-        - by giving title or author
+        - by giving **title or author** i Search for book-form
             - the result is presented in search result page
-    - "Add Book": User search with title or author and gets suggestions from system
-    that user choose between. After adding a book user is moved to 
+    - **"Add Book"**: User **search** with title or author or part of and gets **suggestions** from system
+    that user **choose** between. After adding a book user is moved to 
     "Book details/Manage Book" page.
-- In search result page:
-    - You can choose a book and go to Book details or Add opinion
-- In Book Details page:
+- In **Search result page**:
+    - You can choose a book and go to **Book details or Add opinion**
+- In **Book Details page**:
     - You can:
-        - Delete book
-        - Add opinion
-        - Change or delete opinion
+        - **Delete book**
+        - **Add opinion**
+        - **Change or delete opinion**
 
-- "Register", "Log In" and "Manage Categories" has separate pages.
+- **"Register", "Log In" and "Manage Categories"** has separate pages.
 
 Here is a visual of the structure:
-![](https://github.com/Carina-P/ms3-best-books/blob/master/wireframes/structure.jpg?raw=true)
+![Structure](https://github.com/Carina-P/ms3-best-books/blob/master/wireframes/structure.jpg?raw=true)
 
 ### Skeleton Plane
 - The user browses via navigation system.
@@ -220,42 +219,40 @@ Here is a visual of the structure:
 
 ##### Major changes compared to wireframes
 ###### Home page
-- Moved search for book further down. Prioritized to show most popular books
+- **Moved "search for book" further down**. Prioritized to show most popular books
 since it is high priority that users buys a book and I think that showing most
 popular books might inspire to spontaneous purchases.
-Someone who wants to search for a book probably do not mind moving further down
-the page.
-- Most Popular books: Shows one book at a time, in the carousel, instead of several. Talked to
+- **Most Popular books**: Shows **one book at a time**, in the carousel, instead of several books. Talked to
 users who thought it was more clear and appealing this way.
-- Search result/Category X: The search is shown in own page, instead of on the home page.
+- **Search result**/Category X: The search is shown in **own page**, instead of on the home page.
 This is due to clarity for the user and a more clean code.
-- Add Book: One more step to add a book: After user choosen which book to add, a form with all
+- **Add Book**: **One more step** to add a book: After user choosen which book to add, a form with all
 book information is shown. The forms layout is very similar to the Book details page. 
 One more step is needed because I want to show all information that is saved for the book,
-make user add a categroy group to the book and also give user opportunity to add grade and 
-review instantly.
+make **user add a categroy group** to the book and also give user **opportunity to add grade and 
+review instantly**.
 
 ###### Book Details/Manage book page
-- Book information is not exactly the same in page as in wireframe.
-- User can not change Book Information. The button: Edit book info, is removed. Information for 
+- **Book information** is **not exactly the same** in page as in wireframe.
+- User **can not change Book information**. The **button**: Edit book info, is **removed**. Information for 
 a book is fetched from Google Books and as I understand Google Books policy, user is not allowed 
 to change information fetched from them. But category group is not fetched from Google Books 
-so in a futher version of Best Books changing category group should be added. Books grade
+so in a futher version of Best Books, changing category group should be added as a possiblity. Books grade
 and reviews can be changed.
-- Up to five reviews are shown in this page. If book has more reviews than that: link to 
+- **Up to five reviews are shown** in this page. If book has more reviews than that: link to 
 reviews page is shown.
 
 ###### Reviews page
 - This page has not got a wireframe.
 - When talking to UI-testers it was decided that for most of the time only the five last 
-reviews is interesting. So in Book Details page only up to five reviews are shown. 
+reviews is interesting. So in **Book Details page only up to five reviews are shown**. 
 This makes the page more clear. 
-- User has oppotunity to click on link, from Book details, to Reviews page to
+- User has **oppotunity to click on link, from Book details, to Reviews page** to
 see all reviews, if more than five exists.
-- This page is designed as the layout of reviews in Book Details page.
+- This page is **designed as the layout of reviews** in Book Details page.
 
 ###### Manage Category groups
-- Using cards in card deck instead of table.
+- Using cards in **card deck** instead of table.
 
 #### Database structure
 According to project instructions the document-based 
@@ -263,14 +260,15 @@ database MongoDB is used. Here is a **visual of the collections**:
 ![](https://github.com/Carina-P/ms3-best-books/blob/master/wireframes/database-design.jpg?raw=true)
 
 - **Text index** The users will search in database for books with title or author or part of the
-title or part of the author. Text index is used on the fields title and author to simplify the 
+title or part of the author. Text index is used on the fields **title** and **author** to simplify the 
 query but also to improve the **performance**.
 
 - Both books and books_details contain information about books. I decided to 
 divid the information into two collections using the **subset pattern**
 ([Mongo DB Documentation](https://docs.mongodb.com/manual/tutorial/model-embedded-one-to-one-relationships-between-documents/))
-The information in books collection is accessed often from the page but information in the books_details
-collection is less frequently-accessed.
+The information in books collection is accessed often from the page to show information about many books on 
+same page. Information in the books_details collections is shown when user chooses to look at one books details.
+Book-details collection is less frequently-accessed.
 - The **subset pattern** 
 ([MongoDB Documentation](https://docs.mongodb.com/manual/tutorial/model-embedded-one-to-many-relationships-between-documents/)) 
 is also used for book_details and reviews collections.
@@ -278,7 +276,7 @@ It is possible to add a huge amount of reviews and I deceided to embed the five
 latest reviews in the books_details collection.
 This five (or fewer if less reviews) reviews will be shown together with the 
 book details. User can choose to see more reviews and then all
-reviews are fetched from review collection.
+reviews are fetched from reviews collection.
 
 #### Design Choices
 ##### Fonts
@@ -294,17 +292,17 @@ This is the colours used:
 **Text and background**
 Text: mostly Black #000000
 Background: mostly White, #ffffff
-Choosen this colours as they give optimal contrast.
+Choosen this colours as they give **optimal contrast**.
 
 Text on black background, in navbar and buttons are white: #ffffff.
 
 **Extra attention**
 As buying books has a high priority the background for buying-icon is:
 Madder Lake, #cc2936
-Red is an optimistic colour that draws attention to it and makes people buy.
+**Red** is an optimistic colour that **draws attention** to it and hopefully makes people buy.
 
 **Messages**
-I wanted a "distinct colour" that makes user look, for the background of
+I wanted a **"distinct colour"** that **makes user look**, for the background of
 messages. I chosed:
 Acid Green, #acc12f
 
@@ -326,6 +324,7 @@ I am "reusing" some colours:
 Some of the above colours are "autumn colours" to me so I added another
 autumn colour:
 - Sandy Brown, #f4a261
+
 And a colour from the start image:
 - Metallic Seaweed, #4b838e
 
@@ -361,10 +360,10 @@ And a colour from the start image:
     ![implementation of homepage start](wireframes/start.jpg)
     - **Top ten** most popular books in a **carousel**:
         - **template**: templates/components/carousel.html
-        - Possibility to **buy the book**: In top right corner is a read shopping cage with a link. 
+        - Possibility to **buy the book**: In top right corner is a red shopping cage with a link. 
         Hoovering the link makes picture larger.        
         - Possibility to link to more **details of the book**
-        - If user i logged in also possibility to **add opinion** about the book.
+        - If user has logged in: he/she gets possibility to **add opinion** about the book.
 
     ![implementation of most popular books](wireframes/best_books.jpg)
     - **Best in category**:
@@ -372,12 +371,12 @@ And a colour from the start image:
         - **template**: templates/components/components/cards/card_best_category.html
 
         ![implementation of category groups to search](wireframes/search_best_in_category.jpg)
-        - Possibility to **click on a category group** and then user is moved to **result-page** that shows
+        - Possibility to **click on a category group** and then user is moved to **Search result-page** that shows
         **most popular books within choosen category group**.
         - If **no book** in database is attached to the category group - a **message** is shown in top of page.
     - **Search for book in database**:
         - A **search-form** where user can print title/part of title, author or part of authors name and then search
-        for books. Result is shown in **result-page**. The link to submit the search is called "Search Book" and this 
+        for books. Result is shown in **Search result-page**. The link to submit the search is called "Search Book" and this 
         is according to Google Books [Branding Guidlines](https://developers.google.com/books/branding): 
         "You may only use the verbs "Search," "Search Books," or "Search in this book" 
         when prompting users for action that results in an API query (e.g., on a form 'submit' button)." 
@@ -385,12 +384,12 @@ And a colour from the start image:
         ![implementation of search for book](wireframes/search_for_book.jpg)
         - If **no book** in database **matches** the search - a **message** is shown in top of page.
     - **Add book** - this feature is only available to users that are logged in:
-        - Interactive logic in **JavaScript**': static/js/script.js
-        - User do not have to know all information about a book. Instead user **searches in the API: Google Books**
+        - Interactive logic in **JavaScript**: static/js/script.js
+        - User do not have to know all information about a book. Instead information is **fetched from the API: Google Books**
         for the book with information to add to the database.
         - A **search-form** where user can print title/part of title and or author/part of authors name.
         - The **resulting books** matching the search-criteria is **shown below** the search-form when user clicks search or 
-        presses return. User is moved to the place.
+        presses return. User is moved to the "Search results".
 
         ![implementation of search to add book and search result](wireframes/search_to_add_book.jpg)
         - The user continues with choosing which book he/she is interested in adding. When book is choosen, 
@@ -437,8 +436,8 @@ And a colour from the start image:
         - Of **who** gave the opinion
         - **Grade** given
         - And the **review** given
-    - If **more than five opinions** is give to the book:
-        User is given opportunity to go to **opinions-page** with all opinions given to the book.
+    - If **more than five opinions** is given to the book:
+        User is given the opportunity to go to **opinions-page** with all opinions given to the book.
 
         ![implementation of more reviews](wireframes/more_reviews.jpg)
     - User who has added the book can also **delete** it. When book is deleted all opinions about the book are also deleted.
@@ -474,7 +473,7 @@ And a colour from the start image:
         - if a grade is given a new average grade is calculated for the book and average grade for book in 
         database is updated.
         - Opinion is added to the database.
-        - user is directed to page, which is updated the added opinion, modal was called from.
+        - user is directed to page modal was called from, and this page is updated with the added opinion.
     - If modal is closed without submitting, user is returned to page where it was called from and no
     updating of database takes place.
 
@@ -484,14 +483,14 @@ And a colour from the start image:
     - **Template**: templates/components/modals/modal_general.html and
         templates/components/modals/modal_body_opinion.html
     - Modal contains:
-        -  Current books **title**
+        -  Current book's **title**
         - **select-list** with **grade** given to the book
         - text-area with given **review**
         - Grade and/or review can be changed.
     - When information is submitted:
         - If grade is changed a new average grade for book is calculated and updated in the database.
         - Grade and/or review is updated in database.
-        - user is directed to page, which is updated with changed grade and/or review, modal was called from.
+        - user is directed to page modal was called from, and the page is updated with changed grade and/or review, modal was called from.
     - If modal is closed without submitting, user is returned to page where it was called from, and no updating of database occurs.
 
     ![implementation of edit opinion](wireframes/change_opinion.jpg)
@@ -503,10 +502,10 @@ And a colour from the start image:
             - **Password**
         - **Submitting**:
             - **Password** sent over internet and stored in database, is **hashed**.
-            - **Sign In, username is checked** if it already exists. If it does, user is informed and
+            - **Sign In: username is checked** if it already exists. If it does, user is informed and
             **returned to sign In page**. If username does not exist - user is **logged in and redirected to home page**.
-            - **Log in, username and password is checked**. If they does not exists or password is 
-            wrong: user is informed and **returned to login page**. If correct user is **redirected to 
+            - **Log in: username and password is checked**. If they does not exists or password is 
+            wrong: user is informed and **returned to login page**. If correct: user is **redirected to 
             home page**.
         - Possibility to go to Sign up and Log in page respectively.
 
@@ -532,9 +531,9 @@ And a colour from the start image:
         - **Template**: templates/pages/category_group.html
         - A **form** where user types new category groups name.
         - When form is submitted, new category group is added to the database and user redirected to "Category groups page".
-        "Category groups page" is updated with the new category group.
-        - If user clicks on cancel, he/she is returned to "Category groups page".
-    -**Edit category group - page**:
+        This page is updated with the new category group.
+        - If user clicks on "Cancel", he/she is returned to "Category groups page".
+    - **Edit category group - page**:
         - **Template**: templates/pages/category_groups.html
         - A **form** where current category groups name is given.
         - User can edit the name and click on the **Submit-button**. When changed name is submitted:
@@ -556,10 +555,9 @@ devices the information is shown below the book cover and the average grade is o
 **depending on viewport size**, the larger screen width the more columns. This applies to:
     - Best in category buttons (with coloured background) on home page.
     - Information about books resulting from search to add book on home page.
-    - Information about books resulting from search for books in sites database and searching
-    for books that are best in specific category. The result is shown in search result page.
-    - The different category groups shown in category groups page.
-    in search result page.
+    - Information about books resulting from search for books in "this database" and searching
+    for books that are best in specific category. The result is shown in "Search result page".
+    - The different category groups shown in "Category groups page".
 - **"Instruction"** in beginning of home page is **wider on smaller viewports**. And that also
 applies to the width of the **carousel** on the home page.
 - On **very small devices** (width less than 400px) the **font size is 14px**.
@@ -573,8 +571,8 @@ fetched from Google Books API. That is how I interpret the Google Books [brandin
 - **Real affilite link**: It is easy to replace buy-modal with an real affiliate link when clicking on buy a book.
 - **A more sophisticated Close button** in Book Details page. When pressing the Close-button (in upper right corner) user is redirected to home page.
 The Book Details page can be reached not only from homepage but also from Search result page.
-- Put **image of book cover in add opinion-modal**, especially when choosing add opinon from book in carousel in home page. since
-carousel continues "moving" behind the modal, perhaps user gets confused which book, opinion is added to. Notice: Books titel is
+- Put **image of book cover in add opinion-modal**, especially when choosing add opinon from book in carousel in home page.
+Carousel continues "moving" behind the modal, perhaps user gets confused which book, opinion is added to. Notice: Books titel is
 given in modal and that is why this feature is not prioritized.
 
 ## Technologies Used
@@ -586,7 +584,7 @@ given in modal and that is why this feature is not prioritized.
     - to describe the web page's appearance/presentation
 - [JavaScript](https://www.javascript.com/)
     - Bringing interactivity and logic to the site.
-- [Python]((https://www.python.org))
+- [Python](https://www.python.org)
     - to manage logic and information on server side
 
 ### Frameworks, Libraries and Programs
@@ -607,7 +605,7 @@ given in modal and that is why this feature is not prioritized.
 - [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
     - Fetch API provides an interface for fetching resources. In this project
     it is used for fetching data across the network.
--[MongoDB](https://www.mongodb.com/cloud/atlas)
+- [MongoDB](https://www.mongodb.com/cloud/atlas)
     - database used in this project
 - [Flask](https://flask.palletsprojects.com/en/1.1.x/)
     - a micro framework that makes it easy to manage databases from python
@@ -765,8 +763,8 @@ Book information is fetched from the API: [Google Books](https://developers.goog
     - Picture in authorisation page, of a woman reading by the sea, photographer: [StockSnap](https://pixabay.com/sv/users/stocksnap-894430/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=925589)
 ### Acknowledgements
 I received inspiration and help for this project from: 
-- Help from above all: [w3.schools.com](https://www.w3schools.com/) and
-[stackoverflow](https://stackoverflow.com/questions)
+- Help from above all: [w3.schools.com](https://www.w3schools.com/),
+[stackoverflow](https://stackoverflow.com/questions) and [MongoDB Documentation](https://docs.mongodb.com/)
 - I got some inspiration to the deployment section in this document from 
 [Dog-Health-Tracker](https://github.com/AnoukSmet/Dog-Health-Tracker) 
 made by [AnoukSmet](https://github.com/AnoukSmet)  

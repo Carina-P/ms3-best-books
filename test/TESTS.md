@@ -384,33 +384,34 @@ edit category groups.
 
 
 #### Test protocol
-The outcome of testing according to above test cases is documented [Test Protocol](testhttps://github.com/Carina-P/ms3-best-books/blob/master/test/protocol_test_cases.pdf).
+The outcome of testing according to above test cases is documented in [Test Protocol](https://github.com/Carina-P/ms3-best-books/blob/master/test/protocol_test_cases.pdf).
 
 ## UX testing
-UX testing is conducted by watching and interviewing users when they used
+UX testing is **conducted by watching and interviewing users** when they used
 the page. Examples of issues/discussions:
-- I had the "brand-image" in the middle of the navbar from the beginning. But users
-wanted it to the left instead. Had a discussion with them if I should have a navitem
-called home also/insteda of bar image. But they thought it was well known that 
+- I had the **"brand-image" in the middle of the navbar** from the beginning. But users
+wanted it to the **left instead**. Had a discussion with them if I should have a navitem
+called home also/instead of bar image. But they thought it was well known that 
 brand-image is the way to the home page.
-- I tried to have a picture this picture on all pages above navbar:
+- I had **this picture on all pages above navbar**:
 
-![Image above navbar](.static/images/bookshelf.jpg)
-Users thought it was to much with that picture and a "start-picture" on the 
-home page. So I removed it from home, login and sign up pages.
-- In Add book-form I have the background color: acid green, in the part of the
-form user has to fill in. (The rest of the form is information fetched from Google
+![Image above navbar](https://github.com/Carina-P/ms3-best-books/blob/master/static/images/bookshelf.jpg?raw=true)
+Users thought it was **too much** with that picture and a "start-picture" on the 
+home page. So I **removed it from home, login and sign up pages**.
+- In Add book-form I have the background color: **acid green**, in the part of the
+form **user has to fill in**. (The rest of the form is information fetched from Google
 Books that is not supposed to be changed.):
-![Part in add book form for user to fill out](wireframes/retrived_information_to_add_book_2.jpg)
-The green part was in the beginning of the form. I thought this was a way to attract
-users attention quickly to this part of the form. 
-User thought it was good that the background is green but they thought it was 
-confusing that it was in the beginning of the form.
-I moved the green part to bottom of form.
-- Users whiched for a return/close-button in "Book Details page" and "Search result page":
-![Close-button](wireframes/close.jpg)
-- I started with using Materialize but after a while I felt limited compared to Bootstrap, especially when 
-trying to do a carousel and also for card decks. So I did a big change to Bootstrap.
+
+![Part in add book form for user to fill out](https://github.com/Carina-P/ms3-best-books/blob/master/wireframes/retrieved_information_to_add_book_2.jpg?raw=true)
+The green part **was in the beginning of the form**. I thought this was a way to **attract
+users attention** quickly to this part of the form. 
+User thought it was **good that the background is green** but they thought it was 
+**confusing** that it was in the **beginning** of the form.
+**Solution**: I **moved** the green part **to bottom of form**.
+- Users wanted a **Close-button** in "Book Details page" and "Search result page":
+![Close-button](https://github.com/Carina-P/ms3-best-books/blob/master/wireframes/close.jpg?raw=true)
+- I started with using **Materialize** but after a while I **felt limited** compared to Bootstrap, especially when 
+trying to do a carousel and also for card decks. So I did a big **change to Bootstrap**.
 
 
 ## Code validation
@@ -444,7 +445,7 @@ That are because following features from **ECMAScriptS6** is used:
     - let
     - template literal syntax
     - arrow function
-- **Bootstrap 4** is used and according to [Bootstrap](https://getbootstrap.com/docs/4.6/getting-started/browsers-devices/
+- **Bootstrap 4** is used and according to [Bootstrap](https://getbootstrap.com/docs/4.6/getting-started/browsers-devices/)
 you need at least: 
 **Chrome 45, Firefox 38, Edge 12, IE10, iOS 9, Safari 9, Android 4.4 and Opera 30**.
 - **HTML5 semantics and form features** are used, according to [Can I use](https://caniuse.com/?search=HTML5), that requires at least:
@@ -452,23 +453,25 @@ you need at least:
     
 
 ## Some of the bugs
-- Got a warning in console that **book cover images** were **not secure**. Google Books give links to http instead of
-https. So "http/" in the link is replaced by "/https".
+- Got a warning in console that **link to book cover images** were **not secure**. The link is retrieved from Google Books and they have links 
+to http instead of https. **Solution** replace "http/" in the string with "/https".
 - **Average grade** for a book must be **recalculated** if user **changes or deletes** an opinion.
 - On smaller devices navbar has a "hamburger menu". When user clicks on the "hamburger": menu alternatives 
-are shown. If user clicks on a menu item: the user is directed to choosen place in the site, and menu 
+are shown. If user then clicks on a menu alternatives: the user is directed to choosen place in the site, and menu 
 is "closed/hidden". But **when the menu is "closed"**: The **marker ends up further down in page** than expected.
 **Solution**: Found JS code on [Stackoverflow](https://stackoverflow.com/questions/4086107/fixed-page-header-overlaps-in-page-anchors) 
-by [Adrian Garner](https://stackoverflow.com/users/573373/adrian-garner) that I modified to suit my
-problem.
+by [Adrian Garner](https://stackoverflow.com/users/573373/adrian-garner) that I modified to scroll to offset top and problem was solved.
 - Same modal is used for Add opinion and Change opinion. In the beginning I had modal modal for adding opinion
 as "standard" in the HTML-code. When user wanted to change opinion, values were put into the modal from JS.
-Suddenly I realised that if user leaves modal without submitting (that is by close-button), the modal is not
+I realised that if user **leaves modal without submitting** (that is by close-button), the modal is not
 cleared and when user wants to add another opinion, **values from earlier(wrong values) are shown in the modal**.
-**Solution**: JS is called both for add opinion and change opinion to controll what is present in modal.
+**Solution**: **JavaScript** is called **both for add opinion and change opinion to controll what is present in modal**.
 - The search for books, in home page, giving title or author or part of tilte or authors name, was **case sensitive**.
-Some titles mix lowercase and upppercase letters and makes them hard to find, if case sensitive.
+Some titles mix lowercase and upppercase letters and makes them **hard to find, if case sensitive**.
 **Solution**: Using **text index** on collection books which also improves performance.
+- By using the **"Back button"** user could return to login page or sign up page after having logged in. 
+User was also able to manage category pages after being logged out. This is not supposed to happen.
+**Solution**: In the python view, test if user is logged in alternatively not, in above case.
  
 
 
@@ -476,5 +479,4 @@ Some titles mix lowercase and upppercase letters and makes them hard to find, if
 - I guess the following is not a bug, but it got me realy confused: If i use "inspect" in Chomes Developers Tool
 when looking at Best Books, suddenly/randomly? the select-lists in "opinion"-modal stops
 working. But if I remove the "inspect"-"mode" everything works OK again.
-- Warning from Lighthouse in Chomes Dev Tool: Contrast in brand-image in navbar is not enough. I have choosen to not fix it
-since it is a brand.
+- Warning from Lighthouse in Chomes Dev Tool: Contrast in brand-image in navbar is not enough. I have choosen to not fix this.
