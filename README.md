@@ -262,6 +262,10 @@ According to project instructions the document-based
 database MongoDB is used. Here is a **visual of the collections**:
 ![](https://github.com/Carina-P/ms3-best-books/blob/master/wireframes/database-design.jpg?raw=true)
 
+- **Text index** The users will search in database for books with title or author or part of the
+title or part of the author. Text index is used on the fields title and author to simplify the 
+query but also to improve the **performance**.
+
 - Both books and books_details contain information about books. I decided to 
 divid the information into two collections using the **subset pattern**
 ([Mongo DB Documentation](https://docs.mongodb.com/manual/tutorial/model-embedded-one-to-one-relationships-between-documents/))
@@ -566,8 +570,7 @@ applies to the width of the **carousel** on the home page.
 - Implementing **authorisation for managing category groups**. Only a few selected user should be able to do this.
 - Ability to **change category group** attached to a book. No other book information can be changed, since the information is
 fetched from Google Books API. That is how I interpret the Google Books [branding policy](https://developers.google.com/books/branding).
-- It is easy to replace modal with an real **affiliate link** when clicking on buy a book.
-- Add **indexes** to the database to speed up searching.
+- **Real affilite link**: It is easy to replace buy-modal with an real affiliate link when clicking on buy a book.
 - Put **image of book cover in add opinion-modal**, especially when choosing add opinon from book in carousel in home page. since
 carousel continues "moving" behind the modal, perhaps user gets confused which book, opinion is added to. Notice: Books titel is
 given in modal and that is why this feature is not prioritized.
@@ -679,6 +682,9 @@ Alternatively, you can clone the repository using the following line in your ter
     -  Within the Sandbox, click the collections button and then click **Create Database** (Add My Own Data) called **best_books**
     - **Set up** the following **collections**: books, books_details, category_groups, reviews and users. 
     Collections are shown in chapter: Database structure [Go to Database structure](#database-structure)
+    - **Add a text index** to the collection books, for the fields **title** and **author**:
+    ![Create text index to books](wireframes/books_text_index.jpg)
+
     - Under the **Security Menu** on the left, **select Database Access**.
     - **Add a new database user**, and keep the credentials secure
     - Within the **Network Access** option, **add IP Address** 0.0.0.0

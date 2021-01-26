@@ -466,6 +466,11 @@ as "standard" in the HTML-code. When user wanted to change opinion, values were 
 Suddenly I realised that if user leaves modal without submitting (that is by close-button), the modal is not
 cleared and when user wants to add another opinion, **values from earlier(wrong values) are shown in the modal**.
 **Solution**: JS is called both for add opinion and change opinion to controll what is present in modal.
+- The search for books, in home page, giving title or author or part of tilte or authors name, was **case sensitive**.
+Some titles mix lowercase and upppercase letters and makes them hard to find, if case sensitive.
+**Solution**: Using **text index** on collection books which also improves performance.
+ 
+
 
 ## Remaining bugs
 - I guess the following is not a bug, but it got me realy confused: If i use "inspect" in Chomes Developers Tool
