@@ -8,7 +8,7 @@
 
     <section id="search_book_results" class="container mt-5">
         <div class="text-right">
-            <a id="back-link" class="btn btn-green text-white mb-3" aria-label="Close Page"><i class="fas fa-times-circle fa-lg"></i></a>
+            <a href="/" class="btn btn-green text-white mb-3" aria-label="Close Page"><i class="fas fa-times-circle fa-lg"></i></a>
         </div>
         <div class="text-center">
             {% if show_category %}
@@ -33,8 +33,4 @@
     {% set modal='buy' %}
     {% include 'components/modals/modal_general.html' %}
     
-{% endblock %}
-    
-{% block scripts %}
-    <script src="{{ url_for('static', filename='js/search_result.js') }}"></script>
 {% endblock %}

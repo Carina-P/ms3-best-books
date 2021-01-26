@@ -568,9 +568,11 @@ applies to the width of the **carousel** on the home page.
 ### Features Left to Implement
 - Whenever user **deletes** a book or an opinion a question of **"are you sure"** should be answered before deletion takes place.
 - Implementing **authorisation for managing category groups**. Only a few selected user should be able to do this.
-- Ability to **change category group** attached to a book. No other book information can be changed, since the information is
+- Ability to **change category group** attached to a book. But no other book information can be changed, since the information is
 fetched from Google Books API. That is how I interpret the Google Books [branding policy](https://developers.google.com/books/branding).
 - **Real affilite link**: It is easy to replace buy-modal with an real affiliate link when clicking on buy a book.
+- **A more sophisticated Close button** in Book Details page. When pressing the Close-button (in upper right corner) user is redirected to home page.
+The Book Details page can be reached not only from homepage but also from Search result page.
 - Put **image of book cover in add opinion-modal**, especially when choosing add opinon from book in carousel in home page. since
 carousel continues "moving" behind the modal, perhaps user gets confused which book, opinion is added to. Notice: Books titel is
 given in modal and that is why this feature is not prioritized.
