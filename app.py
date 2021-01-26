@@ -529,7 +529,7 @@ def get_opinions(book_id, title, page):
         reviews = []
     finally:
         return render_template(
-            "pages/opinons.html", reviews=reviews, title=title,
+            "pages/opinions.html", reviews=reviews, title=title,
             book_id=book_id, page="reviews"
         )
 
