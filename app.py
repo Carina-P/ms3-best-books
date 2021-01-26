@@ -98,10 +98,9 @@ def search():
     """
     search_str = request.form.get("title_or_author")
     try:
-        books = list(mongo.db.books.find({"$or": [
-            {"title": {"$regex": ".*" + search_str + ".*"}},
-            {"author": {"$regex": ".*" + search_str + ".*"}}
-            ]}))
+        books = list(mongo.db.books.find(
+            {"$text": {"$search": "\"{}\"".format(search_str)}}
+        ))
     except Exception as e:
         flash(
             "Something went wrong when accessing the database, to get books"

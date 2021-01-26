@@ -394,7 +394,8 @@ wanted it to the left instead. Had a discussion with them if I should have a nav
 called home also/insteda of bar image. But they thought it was well known that 
 brand-image is the way to the home page.
 - I tried to have a picture this picture on all pages above navbar:
-![Image above navbar](static/images/bookshelf.jpg)
+
+![Image above navbar](.static/images/bookshelf.jpg)
 Users thought it was to much with that picture and a "start-picture" on the 
 home page. So I removed it from home, login and sign up pages.
 - In Add book-form I have the background color: acid green, in the part of the
