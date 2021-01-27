@@ -133,6 +133,11 @@ def add_book():
     database. Inform user if book is added or not.
     And then book details page is rendered with new database information.
     """
+    if not("username" in session.keys()):
+        flash(
+            'You must be logged in to add a book')
+        return redirect(url_for("home"))
+    
     if request.method == "POST":
         username = session["username"]
         grade_str = request.form.get("grade")
@@ -235,6 +240,11 @@ def delete_book(book_id):
     Input:
         book_id: (str) - books id in database
     """
+    if not("username" in session.keys()):
+        flash(
+            'You must be logged in to delete a book')
+        return redirect(url_for("home"))
+
     try:
         mongo.db.books.delete_one({"_id": ObjectId(book_id)})
         mongo.db.books_details.delete_one({"book_id": ObjectId(book_id)})
@@ -268,6 +278,11 @@ def add_opinion():
     # if something is wrong and review and grade is missing
     if not(review) and not(grade_str):
         flash("No opinion added since you gave no values")
+        return redirect(url_for("home"))
+
+    if not("username" in session.keys()):
+        flash(
+            'You must be logged in to add an opinion')
         return redirect(url_for("home"))
 
     # Grade is given
@@ -355,6 +370,11 @@ def change_opinion(return_to, title):
         flash("Something is wrong, no information retrieved")
         return redirect(url_for("get_book", book_id=book_id, page="book"))
 
+    if not("username" in session.keys()):
+        flash(
+            'You must be logged in to change an opinion')
+        return redirect(url_for("get_book", book_id=book_id, page="book"))
+
     try:
         old_review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
     except Exception as e:
@@ -362,6 +382,12 @@ def change_opinion(return_to, title):
             "Something went wrong when accessing database, to find old grade"
             + " and review. Opinion is not changed. " + e
         )
+        return redirect(url_for("home"))
+
+    # Can only change own opinions
+    if (session["username"] != old_review["added_by"]):
+        flash(
+            'Opinion is not changed. You can not change someone else opinion')
         return redirect(url_for("home"))
 
     if (old_review["grade"] != grade_str):
@@ -430,6 +456,11 @@ def delete_opinion(book_id, review_id, return_to, title):
         return_to: (str) - Redirect user to this page
         title: (str) - Books title
     """
+    if not("username" in session.keys()):
+        flash(
+            'You must be logged in to remove an opinion')
+        return redirect(url_for("home"))
+
     try:
         opinion = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
     except Exception as e:
@@ -444,6 +475,12 @@ def delete_opinion(book_id, review_id, return_to, title):
             "Error when deleting opinion."
         )
         return redirect(url_for("get_book", book_id=book_id, page="book"))
+
+    # If not the same user as added the opinion
+    if (session["username"] != opinion["added_by"]):
+        flash(
+            'Opinion is not deleted. You can not remove someone else opinion')
+        return redirect(url_for("home"))
 
     try:
         mongo.db.reviews.delete_one({"_id": ObjectId(review_id)})
@@ -684,6 +721,11 @@ def delete_group(category_group_id, category_group):
         category_group_id: (str) - Category groups id in databas
         category_group: (str) - Name of category group
     """
+    if not("username" in session.keys()):
+        flash(
+            'You must be logged in to remove a category group')
+        return redirect(url_for("home"))
+
     try:
         mongo.db.category_groups.remove({"_id": ObjectId(category_group_id)})
     except Exception as e:
