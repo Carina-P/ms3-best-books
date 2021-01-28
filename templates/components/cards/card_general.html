@@ -1,90 +1,94 @@
-<div class="card">
-    <div class="card-body m-3">
-        {% if card=='category_group' %}
-            {% include 'components/forms/form_category_group.html' %}
+{% if card== 'category_groups' %}
+    <div class="card h-100">
+{% else %}
+    <div class="card">
+{% endif %}
+        <div class="card-body m-3">
+            {% if card=='category_group' %}
+                {% include 'components/forms/form_category_group.html' %}
 
-        {% elif card=='search_book' %}
-            {% include 'components/forms/form_search_book.html' %}
+            {% elif card=='search_book' %}
+                {% include 'components/forms/form_search_book.html' %}
 
-        {% elif  card=='review' %}
-                {% for review in reviews %}
+            {% elif  card=='review' %}
+                    {% for review in reviews %}
+                        {% include 'components/opinion.html' %}
+                    {% endfor%}
+
+            {% elif card=='add_book' %}
+                <div class="text-center">
+                    <p>Search in Google Books to get information about book you want to add</p>
+                </div>
+                {% include 'components/forms/form_add_book.html' %}
+                <div class="text-center">
+                    <img src="https://books.google.com/googlebooks/images/poweredby.png" width="62" height="30" loading="lazy" alt="Powered by Google">
+                </div>
+
+            {% elif card=='book_details' %}
+                {% set button = 'book' %}
+                {% include 'components/buttons_general/button_buy.html' %}
+                <h3 class="mb-3 text-center">{{book.title}}</h3>
+                <img class="left" src="{{book.image}}" width="128" height="200" alt="Book cover:{{book.image}}">
+                <div>
+                    <ul class="book_list">
+                        <li><strong>Author/s:</strong> {{book.author}}</li>
+                        <li><strong>Published:</strong> {{ book_details.published_date }}</li>
+                        <li><strong>Grade:</strong>
+                            <span>
+                                {% for count in range(book.stars) %}
+                                    <i class="fas fa-star"></i>
+                                {% endfor %}
+                                {% for count in range(5 - book.stars) %}
+                                    <i class="far fa-star"></i>
+                                {% endfor %}
+                                {{ book.avg_gr_rounded }}<br>
+                            </span>
+                        </li>
+                        <li><strong>Category:</strong> {{ book.category}}</li>
+                        <li><strong>Category Group:</strong> {{ book.category_group}}<hr></li>
+                        <li><strong>Industry identifier:</strong> {{ book_details.identifier }}<hr></li>
+                        <li><strong>Description:</strong> {{ book_details.description }}<hr></li>
+                        <li><strong>Book added by user:</strong> <em>{{ book.added_by}}</em></li>
+                    </ul>
+                </div>
+                <div class="row mb-3">
+                    <div class="col s12 text-center">
+                        {% if session.username %}
+                            {% include 'components/buttons_general/button_add_opinion.html' %}
+                        {% endif %}
+
+                        {% if session.username == book.added_by %}
+                            <a href="{{ url_for('delete_book', book_id=book._id)}}" class="btn btn-red">
+                                Delete Book <i class="fas fa-trash-alt"></i>
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+                {% for review in book_details.reviews_max5 %}
                     {% include 'components/opinion.html' %}
                 {% endfor%}
 
-        {% elif card=='add_book' %}
-            <div class="text-center">
-                <p>Search in Google Books to get information about book you want to add</p>
-            </div>
-            {% include 'components/forms/form_add_book.html' %}
-            <div class="text-center">
-                <img src="https://books.google.com/googlebooks/images/poweredby.png" width="62" height="30" loading="lazy" alt="Powered by Google">
-            </div>
-
-        {% elif card=='book_details' %}
-            {% set button = 'book' %}
-            {% include 'components/buttons_general/button_buy.html' %}
-            <h3 class="mb-3 text-center">{{book.title}}</h3>
-            <img class="left" src="{{book.image}}" width="128" height="200" alt="Book cover:{{book.image}}">
-            <div>
-                <ul class="book_list">
-                    <li><strong>Author/s:</strong> {{book.author}}</li>
-                    <li><strong>Published:</strong> {{ book_details.published_date }}</li>
-                    <li><strong>Grade:</strong>
-                        <span>
-                            {% for count in range(book.stars) %}
-                                <i class="fas fa-star"></i>
-                            {% endfor %}
-                            {% for count in range(5 - book.stars) %}
-                                <i class="far fa-star"></i>
-                            {% endfor %}
-                            {{ book.avg_gr_rounded }}<br>
-                        </span>
-                    </li>
-                    <li><strong>Category:</strong> {{ book.category}}</li>
-                    <li><strong>Category Group:</strong> {{ book.category_group}}<hr></li>
-                    <li><strong>Industry identifier:</strong> {{ book_details.identifier }}<hr></li>
-                    <li><strong>Description:</strong> {{ book_details.description }}<hr></li>
-                    <li><strong>Book added by user:</strong> <em>{{ book.added_by}}</em></li>
-                </ul>
-            </div>
-            <div class="row mb-3">
-                <div class="col s12 text-center">
-                    {% if session.username %}
-                        {% include 'components/buttons_general/button_add_opinion.html' %}
-                    {% endif %}
-
-                    {% if session.username == book.added_by %}
-                        <a href="{{ url_for('delete_book', book_id=book._id)}}" class="btn btn-red">
-                            Delete Book <i class="fas fa-trash-alt"></i>
-                        </a>
-                    {% endif %}
+                <div class="row">
+                    <div class="col-12">
+                        <p class="text-center">
+                        {% if book_details.more_reviews == "y" %}
+                            There are more opinions about the book! 
+                            <a href="{{ url_for('get_opinions', book_id=book._id, title=book.title, page='reviews') }}"> See all opinions</a>
+                        {% endif %}
+                        </p>
+                    </div>
                 </div>
-            </div>
-            {% for review in book_details.reviews_max5 %}
-                {% include 'components/opinion.html' %}
-            {% endfor%}
 
-            <div class="row">
-                <div class="col-12">
-                    <p class="text-center">
-                    {% if book_details.more_reviews == "y" %}
-                        There are more opinions about the book! 
-                        <a href="{{ url_for('get_opinions', book_id=book._id, title=book.title, page='reviews') }}"> See all opinions</a>
-                    {% endif %}
-                    </p>
+            {% elif card=='category_groups'  %}
+                <div class="text-center">
+                    <h3 class="card-title">{{ group.group_name }}</h3>
+                    <a href="{{ url_for('edit_group', category_group_id=group._id, old_group_name=group.group_name) }}" class="btn btn-green btn-sm">
+                        Edit <i class="fas fa-pen-square"></i>
+                    </a>
+                    <a href="{{ url_for('delete_group', category_group_id=group._id, category_group=group.group_name) }}" class="btn btn-red btn-sm">
+                        Delete <i class="fas fa-trash-alt"></i>
+                    </a>
                 </div>
-            </div>
-
-        {% elif card=='category_groups'  %}
-            <div class="text-center">
-                <h3 class="card-title">{{ group.group_name }}</h3>
-                <a href="{{ url_for('edit_group', category_group_id=group._id, old_group_name=group.group_name) }}" class="btn btn-green">
-                    Edit <i class="fas fa-pen-square"></i>
-                </a>
-                <a href="{{ url_for('delete_group', category_group_id=group._id, category_group=group.group_name) }}" class="btn btn-red">
-                    Delete <i class="fas fa-trash-alt"></i>
-                </a>
-            </div>
-        {% endif %}
+            {% endif %}
+        </div>
     </div>
-</div>
