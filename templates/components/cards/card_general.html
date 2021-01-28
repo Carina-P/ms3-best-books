@@ -82,10 +82,10 @@
             {% elif card=='category_groups'  %}
                 <div class="text-center">
                     <h3 class="card-title">{{ group.group_name }}</h3>
-                    <a href="{{ url_for('edit_group', category_group_id=group._id, old_group_name=group.group_name) }}" class="btn btn-green btn-sm">
+                    <a href="{{ url_for('edit_group', category_group_id=group._id, old_group_name=group.group_name) }}" class="btn btn-green">
                         Edit <i class="fas fa-pen-square"></i>
                     </a>
-                    <a href="{{ url_for('delete_group', category_group_id=group._id, category_group=group.group_name) }}" class="btn btn-red btn-sm">
+                    <a href="{{ url_for('delete_group', category_group_id=group._id, category_group=group.group_name) }}" class="btn btn-red">
                         Delete <i class="fas fa-trash-alt"></i>
                     </a>
                 </div>
