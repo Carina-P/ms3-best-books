@@ -19,15 +19,15 @@ Back to [README](https://github.com/Carina-P/ms3-best-books/blob/master/README.m
 
 The below plan for testing was followed during development of the site:
 The TDD, **TestDriven Development**, process is followed as much as possible. 
-Test cases is developed/thought off, before code is implemented. The test
-process is conducted in an iterativ manner and implementation cycles are short
-with small code parts every time. In some cases **prototyping** is used and
-the thorough test is done when satisfied with the prototyping.
+Test cases are developed/thought off, before the code is implemented. The test
+process is conducted in an iterative manner and implementation cycles are short
+with small code parts every time. In some cases, **prototyping** is used and
+the thorough test is done when satisfied with the prototype.
 
-Before new code is commited, testing of all code developed earlier are
-tested again.
+Before new code is committed, testing of all code developed earlier are
+repeated again.
 
-When all features are implemented and tested the following tests are 
+When all features are implemented and tested, the following tests are 
 performed:
 - Go through the test cases for functional testing and testing of
 responsiveness, as described below
@@ -41,18 +41,18 @@ responsiveness, as described below
 - The **deployed version** in heroku is tested
 
 ## Tests of functionality and responsiveness
-Functionality tests and tests of responsiveness is done by following test cases
+Functionality tests and tests of responsiveness are done by following test cases
 below.
 Test of responsiveness is mainly performed with help of Chrome Developers Tool. 
-But the site is also tested with iPad mini and iPhone8.
+The site is also tested with iPad mini and iPhone8.
 
 ### Test cases
-Test cases are described below linked to use cases. Each test case have
+Test cases are described below and linked to use cases. Each test case have
 a name beginning with TC and then a number, for example TC_001.
 
 When testing: Please **start with** testcases **TC_015, TC016, TC017 and TC020**
 
-- Testing use case **US_001**, As a user I want to browse for a book:
+- Testing use case **US_001**. As a user I want to browse for a book:
 
     **TC_001** Browse for a book by giving the books title:
     - How to test:
@@ -87,7 +87,7 @@ When testing: Please **start with** testcases **TC_015, TC016, TC017 and TC020**
         - The book is found there. Or message that book/s is not present in site.
         - Check that information in database corresponds to the result in the page.
 
-    **TC_004** Browse for book by giving part of an authors name:
+    **TC_004** Browse for book by giving part of an author's name:
     - How to test:
         - Go to homepage and look for the header: "Search for book in this databas" or
         Use navigation bar and choose "Search for book"
@@ -107,7 +107,7 @@ When testing: Please **start with** testcases **TC_015, TC016, TC017 and TC020**
         Use navigation bar and choose "10-top books"
         - In carousel choose a book and press the button/link: "Book details"
     - Expected outcome:
-        - Page "Book details" appears with information about choosen book.
+        - Page "Book details" appears with information about chosen book.
         - Check that information in database corresponds to the result in the page.
 
 
@@ -161,7 +161,7 @@ When testing: Please **start with** testcases **TC_015, TC016, TC017 and TC020**
         - Scroll down in "Retrieved information" and:
             - Choose category "Young & Children"
             - Give it the grade 4 in selection list
-            - Add a review "This is a very good childrens book"
+            - Add a review "This is a very good children's book"
             - Click "Add Book"
     - Expected outcome:
         - Moved to page "Book details" with information about
@@ -201,7 +201,7 @@ When testing: Please **start with** testcases **TC_015, TC016, TC017 and TC020**
         - Expected outcome:
             - A message on top of homepage informing that book is deleted.
             - When searching for the book it no longer appears on the site.
-            - Check in database that book has disappeard from book, book_details and if relevant the reviews collections.
+            - Check in database that book has disappearded from books, books_details and if relevant the reviews collections.
 
 
 - Testing use case **US_009**, As a user I want to grade a book **and* use case
@@ -244,11 +244,11 @@ When testing: Please **start with** testcases **TC_015, TC016, TC017 and TC020**
     - Expected outcome:
         - Redirected to an updated "Book Details" page where
         the opinion is changed.
-        - Check the affect on average grade.
+        - Check the effect on average grade.
         - Check in database that opinion is changed both in book_details and reviews collections.
 
 
-    Testing use case US_012, As a user I want to remove my opinion of a book:
+    Testing use case US_012. As a user I want to remove my opinion of a book:
 
     **TC_014** Remove opinion
     How to test:
@@ -298,12 +298,12 @@ When testing: Please **start with** testcases **TC_015, TC016, TC017 and TC020**
     **TC_017** Log out
     - How to test:
         - If not logged in: Log In (see TC016)
-        - In navigation bar choose Log out.
+        - In navigation bar, choose Log out.
     - Expected outcome:
         - A message that you are logged out in top of the Homepage.
  
 
-- Testing use case **US_0016**, As a "administrative" user I want to add category group:
+- Testing use case **US_0016**. As a "administrative" user I want to add category group:
 **Notice**: The administrative authority is not implemented yet. Any user can 
 add category groups.
     **TC_018** Add category
@@ -319,12 +319,12 @@ add category groups.
             - Press "Submit"-button"
     - Expected outcome:
         - The new category is added to list of category groups in "Category groups"-page
-        - In homepage the new category is shown if "Best books in category" is choosen in
+        - In homepage, the new category is shown if "Best books in category" is chosen in
         navigation bar.
         - Check in database that Horor is present in collection category_groups
 
 
-- Testing use case **US_0017**, As a "administration" user I want to edit and remove categories:
+- Testing use case **US_0017**. As an "administration" user I want to edit and remove categories:
 **Notice**: The administrative authority is not implemented yet. Any user can 
 edit category groups.
     **TC_019** Edit category
@@ -337,7 +337,7 @@ edit category groups.
         - Press "Submit"-button
     - Expected outcome:
         - The category group is changed in the list of category groups in "Category groups"-page
-        - In homepage the changed category group is shown if "Best books in category" is choosen in
+        - In homepage the changed category group is shown, if "Best books in category" is chosen in
         navigation bar.
         - Check in database that collection category_groups is updated.
 
@@ -386,7 +386,7 @@ edit category groups.
             Add category group page)
             - "Close-image" in top right corner (Book details page and Search results page)
     - Expected outcome:
-        - Check that you end up where you expected. And if it is a cancel button that nothing is
+        - Check that you end up where you expected. Moreover, if it is a Cancel button that nothing is
         changed on pages or in database.
 
 #### Test protocol
@@ -396,29 +396,29 @@ The outcome of testing according to above test cases is documented in [Test Prot
 ## UX testing
 UX testing is **conducted by watching and interviewing users** when they used
 the page. Examples of issues/discussions:
-- I had the **"brand-image" in the middle of the navbar** from the beginning. But users
+- I had the **"brand-image" in the middle of the navbar** from the beginning. However users
 wanted it to the **left instead**. Had a discussion with them if I should have a navitem
-called home also/instead of bar image. But they thought it was well known that 
+called home also/instead of bar image. They thought it was well known that 
 brand-image is the way to the home page.
 - I had **this picture on all pages above navbar**:
 
 ![Image above navbar](https://github.com/Carina-P/ms3-best-books/blob/master/static/images/bookshelf.jpg?raw=true)
-Users thought it was **too much** with that picture and a "start-picture" on the 
+Users thought it was **too much** with this picture and a "start-picture" on the 
 home page. So I **removed it from home, login and sign up pages**.
 - In Add book-form I have the background color: **acid green**, in the part of the
 form **user has to fill in**. (The rest of the form is information fetched from Google
 Books that is not supposed to be changed.):
 
 ![Part in add book form for user to fill out](https://github.com/Carina-P/ms3-best-books/blob/master/wireframes/retrieved_information_to_add_book_2.jpg?raw=true)
-The green part **was in the beginning of the form**. I thought this was a way to **attract
+The green part **was in the beginning of the form**. I thought this was a way to **get
 users attention** quickly to this part of the form. 
 User thought it was **good that the background is green** but they thought it was 
 **confusing** that it was in the **beginning** of the form.
 **Solution**: I **moved** the green part **to bottom of form**.
 - Users wanted a **Close-button** in "Book Details page" and "Search result page":
 ![Close-button](https://github.com/Carina-P/ms3-best-books/blob/master/wireframes/close.jpg?raw=true)
-- I started with using **Materialize** but after a while I **felt limited** compared to Bootstrap, especially when 
-trying to do a carousel and also for card decks. So I did a big **change to Bootstrap**.
+- I started with using **Materialize** but after a while, I **felt limited** compared to Bootstrap, especially when 
+trying to do a carousel and also for card decks. Therefore, I did a big **change to Bootstrap**.
 
 
 ## Code validation
@@ -426,7 +426,7 @@ trying to do a carousel and also for card decks. So I did a big **change to Boot
 - **HTML**: Validated with **no errors** or warnings. Notice! Some headers are filled from JavaScript, if
 code is validated when the JavaScript has not been run, you will get warnings about empty headers. That 
 applies to code belonging to Add Book and also for Modals.
-    - In GitHub the template: form_add_book.html, is marked as it has en error. The code is working as
+    - In GitHub the template: form_add_book.html, is marked as it has an error. The code is working as
     I want it to and I cannot find any problem. I talked to Code Institutes Tutore, and they told me
     "The code is fine but validators don't want to read JavaScript functionality on a HTML page in the body content."
 - **CSS**: Validated with **no errors** or warnings.
@@ -456,25 +456,25 @@ That are because following features from **ECMAScriptS6** is used:
 you need at least: 
 **Chrome 45, Firefox 38, Edge 12, IE10, iOS 9, Safari 9, Android 4.4 and Opera 30**.
 - **HTML5 semantics and form features** are used, according to [Can I use](https://caniuse.com/?search=HTML5), that requires at least:
-**IE9, Firefox 4, Safari 4 and Android Browser 4.4**. **Opera mini** can not be used.
+**IE9, Firefox 4, Safari 4 and Android Browser 4.4**. **Opera mini** cannot be used.
     
 
 ## Some of the bugs
-- Got a warning in console that **link to book cover images** were **not secure**. The link is retrieved from Google Books and they have links 
+- Got a warning in console that **links to book cover images** were **not secure**. The link is retrieved from Google Books and they have links 
 to http instead of https. **Solution** replace "http/" in the string with "/https".
 - **Average grade** for a book must be **recalculated** if user **changes or deletes** an opinion.
 - On smaller devices navbar has a "hamburger menu". When user clicks on the "hamburger": menu alternatives 
-are shown. If user then clicks on a menu alternatives: the user is directed to choosen place in the site, and menu 
-is "closed/hidden". But **when the menu is "closed"**: The **marker ends up further down in page** than expected.
+are shown. If user then clicks on a menu alternatives: the user is directed to chosen place in the site, and menu 
+is "closed/hidden". However **when the menu is "closed"**: The **marker ends up further down in page** than expected.
 **Solution**: Found JS code on [Stackoverflow](https://stackoverflow.com/questions/4086107/fixed-page-header-overlaps-in-page-anchors) 
 by [Adrian Garner](https://stackoverflow.com/users/573373/adrian-garner) that I modified to scroll to offset top and problem was solved.
 - Same modal is used for Add opinion and Change opinion. In the beginning I had modal for adding opinion
 as "standard" in the HTML-code. When user wanted to change opinion, values were put into the modal from JavaScript.
-I realised that if user **leaves modal without submitting** (that is by close-button), the modal is not
-cleared and when user wants to add another opinion, **values from earlier(wrong values) are shown in the modal**.
-**Solution**: **JavaScript** is called **both for add opinion and change opinion to controll what is present in modal**.
+I realized that if user **leaves modal without submitting** (that is by close-button), the modal is not
+cleared and when user wants to add another opinion, **values from earlier (wrong values) are shown in the modal**.
+**Solution**: **JavaScript** is called **both for add opinion and change opinion to control what is present in modal**.
 - The search for books, in home page, giving title or author or part of title or authors name, was **case sensitive**.
-Some titles mix lowercase and upppercase letters and makes them **hard to find, if case sensitive**.
+Some titles mix lowercase and uppercase letters and makes them **hard to find, if case sensitive**.
 **Solution**: Using **text index** on collection books which also improves performance.
 - By using the **"Back button"** user could return to login page or sign up page after having logged in. 
 User was also able to manage category pages after being logged out. This is not supposed to happen.
@@ -483,7 +483,7 @@ User was also able to manage category pages after being logged out. This is not 
 
 
 ## Remaining bugs
-- I guess the following is not a bug, but it got me realy confused: If I use "inspect" in Chomes Developers Tool
-when looking at Best Books, suddenly/randomly? the select-lists in "opinion"-modal stops
-working. But if I remove the "inspect"-"mode" everything works OK again.
-- Warning from Lighthouse in Chomes Dev Tool: Contrast in brand-image in navbar is not enough. I have choosen to not fix this.
+- I guess the following is **not a bug**, but it got me really confused: If I use **"inspect" in Chomes Developers Tool**
+when looking at Best Books, suddenly/randomly? the **select-lists** in "opinion"-modal stops
+working. However if I remove the "inspect"-"mode" everything works OK again.
+- Warning from Lighthouse in Chomes Dev Tool: **Contrast in brand-image in navbar is not enough**. I have chosen to not fix this.
