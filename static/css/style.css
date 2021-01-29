@@ -45,13 +45,13 @@ body{
     background-color: #ffffff;
 }
 .bgr-acid{
-    background-color: rgb(172,193,47,1);
+    background-color: #acc12f;
 }
 .bgr-darkgreen{
-    background-color: rgb(34,40,35,1);
+    background-color: #222823;
 }
 .bgr-red{
-    background-color: rgb(204,41,54,1);
+    background-color: #cc2936;
 }
 .divider{
     height: 5rem;
@@ -133,7 +133,7 @@ body{
 
 /* Top- 10 section*/
 .card, .carousel-inner{
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
 }
 .carousel-control-next, .carousel-control-prev{
     width: 5%;
@@ -158,13 +158,13 @@ body{
 
 /* Category groups section */
 .bgr-orange{
-    background-color: rgb(231,111,81,1);
+    background-color: #e76f51;
 }
 .bgr-sandy{
-    background-color: rgb(244,162,97,1);
+    background-color: #f4a261;
 }
 .bgr-metallic{
-    background-color: rgb(75,131,142,1);
+    background-color: #4b838e;
 }
 .category-btn:hover{
     transform: scale(1.2);
