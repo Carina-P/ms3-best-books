@@ -287,50 +287,43 @@ that I think feels friendly and fits on this site.
 As alternative Google Font Roboto is chosen.
 
 ##### Colours
-These are the colours used:
-![](https://github.com/Carina-P/ms3-best-books/blob/master/wireframes/best_books_colours.png)
 
-**Text and background**
+###### Text, backgrounds, navbar and buttons
 
-Text: Mostly Black #000000
-Background: Mostly White, #ffffff
-Chosen this colours as they give **optimal contrast**.
+![Best Books base colours](https://github.com/Carina-P/ms3-best-books/blob/master/wireframes/best_books_basecolours.png?raw=true)
+- **Text: **Black** #000000, most of the time. If it is a dark background: White #ffffff
+- **Text background: White**, #ffffff
+I have chosen these colours as they give **optimal contrast**.
 
-Text on black background, in navbar and buttons are white: #ffffff.
+- **Background: Peach Puff** #fbdec6
+- **Navbar: Dark Jungle** #222823
 
-**Extra attention**
+- **Buttons: Dark Jungle** #222823
+- **Close and Delete buttons: Burnt Sienna** #e76f51
 
-As buying books has a high priority the background for buying-icon is:
-Madder Lake, #cc2936
-**Red** is an optimistic colour that **draws attention** to it and hopefully makes people buy.
+###### Extra attention
 
-**Messages**
+![Best Books colours for attention](https://github.com/Carina-P/ms3-best-books/blob/master/wireframes/best_books_attentioncolours.png?raw=true)
 
-I wanted a **"distinct colour"** that **makes user look**, for the background of
-messages. I choosed:
-Acid Green, #acc12f
+To draw attention to messages and buying, eye-catching colours are used:
+- **Messages: Acid Green** #acc12f
+- **Buying icon: Madder Lake** #cc2936. As buying books has a high priority a reddish colour is chosen.
+**Red** is an optimistic colour that often is used to make people buy things.
 
-**Navbar and buttons**
-Navbar: dark djungle green, #222823
-Buttons:
-    - Dark Jungle Green, #223823
-    - Burnt Sienna, #e76f51
+###### Category groups background
 
-**Category groups background**
+![Best Book's colours for categroy groups backgrounds](https://github.com/Carina-P/ms3-best-books/blob/master/wireframes/best_books_categorycolours.png?raw=true)
 
-I wanted something to make the page more "dynamic" and decided to have
+I wanted something to make the page more "vibrant" and decided to have
 different background colours behind the category groups on home page.
-I am "reusing" some colours:
+I am "reusing" some colours from above:
 - Madder Lake, #cc2936
 - Acid Green, #acc12f
 - Dark Jungle Green, #223823
 - Burnt Sienna, #e76f51
 
-Some of the above colours are "autumn colours" to me so I added another
-autumn colour:
-- Sandy Brown, #f4a261
-
-And a colour from the start image:
+And I added:
+- Sandy Brown, #f4a26 and
 - Metallic Seaweed, #4b838e
 
 ## Features
