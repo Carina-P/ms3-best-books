@@ -291,7 +291,7 @@ As alternative Google Font Roboto is chosen.
 ###### Text, backgrounds, navbar and buttons
 
 ![Best Books base colours](https://github.com/Carina-P/ms3-best-books/blob/master/wireframes/best_books_basecolours.png?raw=true)
-- **Text: **Black** #000000, most of the time. If it is a dark background: White #ffffff
+- **Text: Black** #000000, most of the time. If it is a dark background: White #ffffff
 - **Text background: White**, #ffffff
 I have chosen these colours as they give **optimal contrast**.
 
@@ -314,7 +314,7 @@ To draw attention to messages and buying, eye-catching colours are used:
 
 ![Best Book's colours for categroy groups backgrounds](https://github.com/Carina-P/ms3-best-books/blob/master/wireframes/best_books_categorycolours.png?raw=true)
 
-I wanted something to make the page more "vibrant" and decided to have
+I wanted more parts of the page to attract attention and decided to have
 different background colours behind the category groups on home page.
 I am "reusing" some colours from above:
 - Madder Lake, #cc2936
@@ -757,7 +757,7 @@ Book information is fetched from the API: [Google Books](https://developers.goog
 ### Media
 - The photos used in this site were obtained from [pixabay](https://pixabay.com/)
     - Picture in start page, a book and a cup of coffee, photographer: [Daria-Yakovleva](https://pixabay.com/sv/users/daria-yakovleva-3938704/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2151200)
-    - Picture in above navbar on some pages, part of bookshelf, photographer: [Lubos Houska](https://pixabay.com/sv/users/luboshouska-198496/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1204029")
+    - Picture above navbar on some pages, part of bookshelf, photographer: [Lubos Houska](https://pixabay.com/sv/users/luboshouska-198496/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1204029")
     - Picture in authorisation page, of a woman reading by the sea, photographer: [StockSnap](https://pixabay.com/sv/users/stocksnap-894430/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=925589)
 ### Acknowledgements
 I received inspiration and help for this project from: 
