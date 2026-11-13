@@ -1,5 +1,14 @@
 # ![](https://github.com/Carina-P/ms3-best-books/blob/master/static/favicon/favicon.ico?raw=true)      Best Books
 
+
+> **Project Status – Archived Educational Project**
+>
+> This project was developed as part of my Code Institute Diploma in Full Stack Software Development. It is preserved as a portfolio project to demonstrate my work at the time.
+>
+> The project is no longer maintained, and its dependencies and integrations may be outdated. It has not been verified against current security standards and should not be deployed to production without a thorough review and updates.
+
+
+
 This is the site where you will find the **best books to read** and get inspired by 
 other reader's **recommendations, grades and tips**.
 You are also, of course, **welcome to add your own reviews**, grades and tips.
